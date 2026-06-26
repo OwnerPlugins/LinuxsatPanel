@@ -12,6 +12,7 @@ from os.path import exists, dirname, join
 from os import popen, environ, statvfs, system
 import gettext
 import sys
+import requests
 
 # ═════════════════════════════════════════════════════════════════════
 #
@@ -39,12 +40,6 @@ __version__ = "2.9.0"
 
 
 def check_and_install_requests():
-    try:
-        import requests
-        return
-    except ImportError:
-        pass
-
     python_version = sys.version_info[0]
 
     if exists("/usr/bin/apt-get"):
@@ -324,7 +319,6 @@ def checkGZIP(url):
     url = url
     from io import StringIO
     import gzip
-    import requests
     import sys
     if sys.version_info[0] == 3:
         from urllib.request import (urlopen, Request)

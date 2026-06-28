@@ -33,8 +33,10 @@
   </a>
 </p>
 ---
-![Linuxsat Panel](https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LinuxsatPanel.png)
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LinuxsatPanel.png" alt="Linuxsat Panel">
+</p>
 ---
 
 🗓️ **2024.07.20 - INIT UPDATE PANEL PLUGIN**

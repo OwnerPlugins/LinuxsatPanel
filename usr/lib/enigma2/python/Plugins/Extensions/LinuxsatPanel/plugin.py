@@ -1945,22 +1945,33 @@ class LulullaScript(Screen):
             "Rai Play",
             "rai_play.png",
             "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RaiPlay/main/installer.sh -O - | /bin/sh")
+
+        # add_menu_item(
+            # menu_list,
+            # self.titles,
+            # self.pics,
+            # self.urls,
+            # "Revolution Lite",
+            # "revolutionlite.png",
+            # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionlite/main/installer.sh -O - | /bin/sh")
+        # add_menu_item(
+            # menu_list,
+            # self.titles,
+            # self.pics,
+            # self.urls,
+            # "Revolution Pro",
+            # "revolution_pro.png",
+            # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionpro/main/installer.sh -O - | /bin/sh")
+
         add_menu_item(
             menu_list,
             self.titles,
             self.pics,
             self.urls,
-            "Revolution Lite",
-            "revolutionlite.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionlite/main/installer.sh -O - | /bin/sh")
-        add_menu_item(
-            menu_list,
-            self.titles,
-            self.pics,
-            self.urls,
-            "Revolution Pro",
-            "revolution_pro.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionpro/main/installer.sh -O - | /bin/sh")
+            "Rsi Live",
+            "rsilive.png",
+            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/rsilive/main/installer.sh -O - | /bin/bash")
+
         add_menu_item(
             menu_list,
             self.titles,
@@ -1977,6 +1988,32 @@ class LulullaScript(Screen):
             "Rss Reader",
             "rss_reader.png",
             "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RSSReader/main/installer.sh -O - | /bin/sh")
+        
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Scsearch",
+            "scsearch.png",
+            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/scsearch/main/installer.sh -O - | /bin/bash")        
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "StreamProxy",
+            "streamproxy.png",
+            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/StreamProxy/main/installer.sh -O - | /bin/bash")        
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "SlWebcams",
+            "slwebcams.png",
+            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/SLwebcams/main/installer.sh -O - | /bin/bash")  
+
         add_menu_item(
             menu_list,
             self.titles,

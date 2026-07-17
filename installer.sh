@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='2.9.0'
-changelog="\n--fix Locale Language"
+version='2.9.1'
+changelog="\n--Add some script\nMinor fix "
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

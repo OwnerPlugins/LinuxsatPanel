@@ -65,13 +65,15 @@ class StbInfo:
         self.is_vti_image = self._is_vti_image()
         self.is_dmm_image = self._is_dmm_image()
 
+        self.has_internet = False
         self.internetline = self.get_internet_status()
         self.mountid = self.get_mount_info()
         self.storhdd = self.get_storage_info()
         self.memin = self.get_memory_info()
         self.ipub = self.get_ip()
         self.current_format = self.getResolution()
-        self.pip = self.get_public_ip()
+        # Skip the slow public IP lookups when there is no connection
+        self.pip = self.get_public_ip() if self.has_internet else None
 
     def to_string(self):
         def fmt(label, value):
@@ -143,6 +145,7 @@ class StbInfo:
 
             # Test 1: Ping Google DNS
             if system("ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1") == 0:
+                self.has_internet = True
                 return _("Internet: Connected")
 
             # Test 2: TCP connection to port 80 (HTTP) of a reliable server
@@ -152,6 +155,7 @@ class StbInfo:
                 sock.settimeout(3)
                 sock.connect(("www.google.com", 80))
                 sock.close()
+                self.has_internet = True
                 return _("Internet: Connected")
             except BaseException:
                 pass
@@ -344,7 +348,7 @@ class StbInfo:
 
         for service in services:
             try:
-                response = requests.get(service, timeout=5)
+                response = requests.get(service, timeout=3)
                 if response.status_code == 200:
                     ip = response.text.strip()
                     if ip and '.' in ip:  # Validazione base IP

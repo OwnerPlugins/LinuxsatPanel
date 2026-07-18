@@ -4737,6 +4737,49 @@ class LSinfo(Screen):
             self["list"].setText(_("Unable to download updates!"))
 
     def openinfo(self):
+        # Collect in a background thread: the first stbinfo import runs
+        # network probes and must not freeze the GUI. The screen updates
+        # from an eTimer on the main thread when the data is ready.
+        import threading
+        self["list"].setText(_("Collecting system information..."))
+        self._info_content = None
+        self._info_closed = False
+        self.onClose.append(self._stopInfoPoll)
+
+        def collect():
+            try:
+                self._info_content = self._collectInfo()
+            except Exception as e:
+                print("Error in openinfo collect:", e)
+                self._info_content = "Error loading information"
+
+        info_thread = threading.Thread(target=collect)
+        info_thread.daemon = True
+        info_thread.start()
+
+        self.info_poll = eTimer()
+        try:
+            self.info_poll_conn = self.info_poll.timeout.connect(
+                self._checkInfoReady)
+        except BaseException:
+            self.info_poll.callback.append(self._checkInfoReady)
+        self.info_poll.start(250, False)
+
+    def _stopInfoPoll(self):
+        self._info_closed = True
+        try:
+            self.info_poll.stop()
+        except BaseException:
+            pass
+
+    def _checkInfoReady(self):
+        if self._info_closed:
+            return
+        if self._info_content is not None:
+            self.info_poll.stop()
+            self["list"].setText(str(self._info_content))
+
+    def _collectInfo(self):
         from .addons.stbinfo import stbinfo
         try:
             header = "Suggested by: @masterG - @oktus - @pcd\n"
@@ -4800,14 +4843,14 @@ class LSinfo(Screen):
                     with open("/tmp/output.txt", "r") as filer:
                         content = filer.read().decode("utf-8")
 
-                self["list"].setText(str(content))
+                return str(content)
             except Exception as e:
                 print("Final read/display error: {0}".format(str(e)))
-                self["list"].setText("Error loading system information")
+                return "Error loading system information"
 
         except Exception as e:
             print("Error in openinfo:", e)
-            self["list"].setText("Error loading information")
+            return "Error loading information"
 
     def cancel(self):
         self.close()

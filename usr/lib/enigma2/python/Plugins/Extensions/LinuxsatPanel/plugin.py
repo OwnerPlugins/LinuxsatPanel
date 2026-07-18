@@ -2393,8 +2393,7 @@ class LulullaScript(Screen):
                         self._view_log,
                         MessageBox,
                         _("Script execution completed.\nDo you want to view the log?"),
-                        MessageBox.TYPE_YESNO
-                    )
+                        MessageBox.TYPE_YESNO)
 
             self.session.openWithCallback(
                 console_closed,
@@ -2874,7 +2873,13 @@ class CiefpInstaller(Screen):
     def okClicked(self, answer=False):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
-            keywords = ["google", "cloudfaire", "quad9", "emm", "keys", "source"]
+            keywords = [
+                "google",
+                "cloudfaire",
+                "quad9",
+                "emm",
+                "keys",
+                "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
             try:
@@ -2904,8 +2909,7 @@ class CiefpInstaller(Screen):
                             self._view_log,
                             MessageBox,
                             _("Script execution completed.\nDo you want to view the log?"),
-                            MessageBox.TYPE_YESNO
-                        )
+                            MessageBox.TYPE_YESNO)
 
                 self.session.openWithCallback(
                     console_closed,
@@ -2920,6 +2924,7 @@ class CiefpInstaller(Screen):
     def _view_log(self, answer):
         if answer:
             from enigma import eTimer
+
             def open_fc():
                 from .addons.File_Commander import File_Commander
                 if fileExists(file_log):
@@ -3591,7 +3596,13 @@ class ScriptInstaller(Screen):
     def okClicked(self, answer=False):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
-            keywords = ["google", "cloudfaire", "quad9", "emm", "keys", "source"]
+            keywords = [
+                "google",
+                "cloudfaire",
+                "quad9",
+                "emm",
+                "keys",
+                "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
             try:
@@ -3621,8 +3632,7 @@ class ScriptInstaller(Screen):
                             self._view_log,
                             MessageBox,
                             _("Script execution completed.\nDo you want to view the log?"),
-                            MessageBox.TYPE_YESNO
-                        )
+                            MessageBox.TYPE_YESNO)
 
                 self.session.openWithCallback(
                     console_closed,
@@ -3637,6 +3647,7 @@ class ScriptInstaller(Screen):
     def _view_log(self, answer):
         if answer:
             from enigma import eTimer
+
             def open_fc():
                 from .addons.File_Commander import File_Commander
                 if fileExists(file_log):

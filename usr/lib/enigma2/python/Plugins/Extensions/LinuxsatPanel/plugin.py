@@ -232,6 +232,7 @@ from . import (
     RequestUrl,
     make_request,
     refreshPlugins,
+    version_tuple,
     xmlurl,
     HALIGN,
     __version__,
@@ -4538,8 +4539,7 @@ class LSinfo(Screen):
             self.new_changelog = str(self.new_changelog)
         if not isinstance(self.new_version, str):
             self.new_version = str(self.new_version)
-        # if float(__version__) < float(remote_version):
-        if __version__ < remote_version:
+        if version_tuple(__version__) < version_tuple(remote_version):
             self.Update = True
             self.show_update_message()
 

@@ -117,6 +117,17 @@ def setup_timer(callback_method):
     return timer
 
 
+def version_tuple(version):
+    """'2.10.1' -> (2, 10, 1) for a numeric comparison"""
+    parts = []
+    for part in str(version).strip().split("."):
+        try:
+            parts.append(int(part))
+        except (TypeError, ValueError):
+            parts.append(0)
+    return tuple(parts) or (0,)
+
+
 def check_version(currversion, installer_url, AgentRequest):
     """Controllo versione con gestione avanzata formato numerico"""
     print("[Version Check] Starting...")
@@ -148,24 +159,26 @@ def check_version(currversion, installer_url, AgentRequest):
                 remote_changelog = "No changelog available"
 
                 for line in lines:
+                    line = line.strip()
                     if line.startswith("version"):
                         parts = line.split("=")
                         if len(parts) > 1:
-                            remote_version = parts[1].strip().strip("'")
-                        if line.startswith("changelog"):
-                            parts = line.split("=")
-                            if len(parts) > 1:
-                                try:
-                                    remote_changelog = parts[1].strip().strip(
-                                        "'")
-                                except BaseException:
-                                    remote_changelog = "No changelog available"
-                                break
+                            remote_version = parts[1].strip().strip(
+                                "'").strip('"')
+                    elif line.startswith("changelog"):
+                        parts = line.split("=")
+                        if len(parts) > 1:
+                            remote_changelog = parts[1].strip().strip(
+                                "'").strip('"')
+                        break
 
                 new_version = remote_version or "Unknown"
                 new_changelog = remote_changelog or "No changelog available"
 
-                return new_version, new_changelog, currversion < remote_version
+                return new_version, new_changelog, version_tuple(
+                    currversion) < version_tuple(remote_version)
+
+        return None, None, False
 
     except Exception as e:
         print("Error while checking version:", e)
@@ -294,6 +307,7 @@ def fetch_url(url, retries=3, initial_timeout=5):
     else:
         from urllib2 import (urlopen)
         from urllib2 import URLError
+        PY3 = False
     timeout = initial_timeout
     for i in range(retries):
         try:
@@ -322,7 +336,7 @@ def fetch_url(url, retries=3, initial_timeout=5):
 
 def checkGZIP(url):
     url = url
-    from io import StringIO
+    from io import BytesIO
     import gzip
     import requests
     import sys
@@ -337,7 +351,7 @@ def checkGZIP(url):
     try:
         response = urlopen(request, timeout=10)
         if response.info().get('Content-Encoding') == 'gzip':
-            buffer = StringIO(response.read())
+            buffer = BytesIO(response.read())
             deflatedContent = gzip.GzipFile(fileobj=buffer)
             if sys.version_info[0] == 3:
                 return deflatedContent.read().decode('utf-8')
@@ -371,9 +385,9 @@ def b64decoder(s):
             print('Invalid base64 string: {}'.format(s))
             return ""
         elif padding == 2:
-            s += b'=='
+            s += '=='
         elif padding == 3:
-            s += b'='
+            s += '='
         else:
             return ""
         output = base64.b64decode(s)

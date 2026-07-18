@@ -336,7 +336,6 @@ def Plugins(**kwargs):
 
         def __newfunc(self, *args, **kwargs):
             if self["scan"].isDone() and "Terrestrial" in str(self.scanList):
-                from .LCNScanner.Terrestrial import TerrestrialBouquet
                 print(
                     "[TerrestrialBouquet] rebuilding terrestrial bouquet -",
                     TerrestrialBouquet().rebuild() or "was successful")

@@ -293,14 +293,17 @@ class LCN():
         try:
             with open('/etc/enigma2/bouquets.tv', 'r') as f:
                 ret = f.read().splitlines()
-            dttbouquet_str = Bouquet()  # "FROM BOUQUET \"userbouquet.terrestrial_lcn.tv\""
+            dttbouquet = Bouquet()
+            # bouquets.tv references the bouquet by file name, not full path
+            name = os.path.basename(
+                dttbouquet) if dttbouquet else "userbouquet.terrestrial_lcn.tv"
             for line in ret:
-                if dttbouquet_str in line:
+                if name in line:
                     return
             with open('/etc/enigma2/bouquets.tv', 'w') as f:
                 f.write(ret[0] + "\n")
                 f.write(
-                    '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.terrestrial_lcn.tv" ORDER BY bouquet\n')
+                    '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet\n' % name)
                 for line in ret[1:]:
                     f.write(line + "\n")
         except Exception as e:
@@ -821,7 +824,7 @@ def TransferBouquetTerrestrialFinal():
             if terrestrial_bouquet_path:
                 with open(terrestrial_bouquet_path, 'w') as bouquet_file:
                     for line in terrestrial_channel_list:
-                        if '#NAME' in line.lower():
+                        if '#name' in line.lower():
                             bouquet_file.write('#NAME Digitale Terrestre\n')
                         else:
                             bouquet_file.write(line)
@@ -829,6 +832,8 @@ def TransferBouquetTerrestrialFinal():
         except Exception as e:
             print("Errore durante il ripristino del bouquet:", e)
             return False
+
+    return RestoreTerrestrial(TerChArch)
 
 
 # ===== by lululla

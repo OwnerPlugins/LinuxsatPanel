@@ -20,6 +20,9 @@ However, if required, you can get help to resolve the issue.
 
 🚀 Init version 2.0 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+📋 Changelog:
+🛠️ find all chenge on github repository
+https://github.com/OwnerPlugins/LinuxsatPanel
 
 🆕 20260125 - 2.8.8 version is online
 📋 Changelog:

@@ -1,0 +1,5 @@
+<!-- by lululla 01072024 -->
+<screen name="Plgnstrt" position="center,center" size="2560,1440" backgroundColor="transparent" flags="wfNoBorder">
+  <widget name="poster" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons3/Logo.png" scale="1" position="939,549" size="680,340" zPosition="0" alphatest="off" />
+  <widget name="version" position="941,831" size="679,53" zPosition="2" backgroundColor="#30000000" transparent="1" font="Regular; 32" halign="center" foregroundColor="#ffffff" />
+</screen>

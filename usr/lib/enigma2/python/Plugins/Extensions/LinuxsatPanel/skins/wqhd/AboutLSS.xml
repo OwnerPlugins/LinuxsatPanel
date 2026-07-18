@@ -1,0 +1,21 @@
+<!-- by lululla 01072024 -->
+<screen name="AboutLSS" position="center,center" size="2560,1440" title="Linuxsat Addons Setup">
+  <ePixmap position="0,0" zPosition="-1" size="2560,1440" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons3/panel3.png" scale="1" alphatest="blend" />
+  <ePixmap position="1625,341" size="200,200" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons3/pic_frame2.png" zPosition="3" alphatest="on" />
+  <ePixmap position="1625,341" zPosition="2" size="200,200" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LSicons3/oe2.0.png" alphatest="blend" />
+  <eLabel position="0,0" zPosition="-10" size="2560,1440" backgroundColor="black" />
+  <!-- list -->
+  <widget name="Info" position="107,267" size="1333,1020" zPosition="99" font="lmsat;32" halign="center" foregroundColor="#49bbff" backgroundColor="#54111112" scrollbarForegroundColor="#ffffff" scrollbarBorderWidth="1" scrollbarBorderColor="#ffffff" scrollbarWidth="11" />
+  <!-- minitv -->
+  <widget source="session.VideoPicture" render="Pig" position="1625,632" size="813,460" zPosition="1" backgroundColor="#ff000000" />
+  <!-- clock -->
+  <widget source="global.CurrentTime" render="Label" position="2073,1147" size="467,120" font="lsat; 75" noWrap="1" halign="center" valign="bottom" foregroundColor="#49bbff" backgroundColor="#20000000" transparent="1" zPosition="2">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="2087,1227" size="447,72" font="lsat; 24" halign="center" valign="bottom" foregroundColor="#707070" backgroundColor="#20000000" transparent="1" zPosition="1">
+    <convert type="ClockToText">Format %A %d %B</convert>
+  </widget>
+  <!-- buttons -->
+  <widget name="key_red" position="613,1320" size="400,53" valign="center" halign="left" zPosition="4" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="0,0" />
+  <widget name="pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons3/redk.png" scale="1" position="600,1363" size="267,40" zPosition="4" alphatest="on" />
+</screen>

@@ -1,0 +1,19 @@
+<!-- by lululla 01072024 -->
+<screen name="Console LS" position="center,center" size="2560,1440" title="Command execution..." backgroundColor="#16000000" flags="wfNoBorder">
+  <ePixmap position="0,0" zPosition="-1" size="2560,1440" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons3/panel2.png" scale="1" backgroundColor="#25062748" alphatest="on" />
+  <!-- <widget source="session.CurrentService" render="lsPicsmap" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/xmas/d0.png,/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/xmas/d1.png" pixdelay="590" control="1" position="1216,425" size="600,56" zPosition="5" transparent="1" alphatest="on" /> -->
+  <widget name="text" position="107,344" size="1333,867" halign="left" foregroundColor="#49bbff" backgroundColor="#40000000" font="Console;28" zPosition="5" transparent="1" />
+  <!-- minitv -->
+  <widget source="session.VideoPicture" render="Pig" position="1625,632" size="813,460" zPosition="1" backgroundColor="#ff000000" />
+  <!-- clock -->
+  <widget source="global.CurrentTime" render="Label" position="2073,1147" size="467,120" font="lsat; 75" noWrap="1" halign="center" valign="bottom" foregroundColor="#49bbff" backgroundColor="#20000000" transparent="1" zPosition="2">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="2087,1227" size="447,72" font="lsat; 24" halign="center" valign="bottom" foregroundColor="#707070" backgroundColor="#20000000" transparent="1" zPosition="1">
+    <convert type="ClockToText">Format %A %d %B</convert>
+  </widget>
+  <!-- buttons -->
+  <widget name="key_red" position="113,1320" size="440,53" valign="center" halign="left" zPosition="6" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="0,0" />
+  <widget name="key_green" position="473,1320" size="440,53" valign="center" halign="left" zPosition="6" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="0,0" />
+  <widget name="key_blue" position="1173,1320" size="440,53" valign="center" halign="left" zPosition="6" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="0,0" />
+</screen>

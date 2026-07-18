@@ -21,12 +21,6 @@
 
 
 
-
-
-
-
-
-
 msgid "%s"
 msgstr ""
 

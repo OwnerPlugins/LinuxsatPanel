@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='2.9.1'
-changelog="\n--Add some script\nMinor fix "
+version='2.9.2'
+changelog="\n--Add WQHD PANEL"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

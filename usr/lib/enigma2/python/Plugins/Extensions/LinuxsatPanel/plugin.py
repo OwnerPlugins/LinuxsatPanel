@@ -313,7 +313,13 @@ if sslverify:
 
 picfold = plugin_path + "/LSicons2/"
 nss_pic = picfold + "LSS.png"
-if isWQHD() or isFHD():
+if isWQHD():
+    skin_path = plugin_path + "/skins/wqhd"
+    # picfold = plugin_path + "/LSicons2/"
+    pngx = plugin_path + "/icons3/link.png"
+    # nss_pic = picfold + "LSS.png"
+
+elif isFHD():
     skin_path = plugin_path + "/skins/fhd"
     # picfold = plugin_path + "/LSicons2/"
     pngx = plugin_path + "/icons2/link.png"
@@ -329,7 +335,11 @@ else:
 class LPSlist(MenuList):
     def __init__(self, list):
         MenuList.__init__(self, list, True, eListboxPythonMultiContent)
-        if isWQHD() or isFHD():
+        if isWQHD():
+            self.l.setItemHeight(50)
+            textfont = int(38)
+            self.l.setFont(0, gFont("lsat", textfont))
+        elif isFHD():
             self.l.setItemHeight(50)
             textfont = int(34)
             self.l.setFont(0, gFont("lsat", textfont))
@@ -347,7 +357,13 @@ def LPListEntry(name, item):
 
     png = loadPNG(pngx)
 
-    if isWQHD() or isFHD():
+    if isWQHD():
+        icon_size = (40, 40)
+        text_size = (930, 50)
+        icon_x_right = 940
+        icon_x_left = 5
+        text_x_left = 55
+    elif isFHD():
         icon_size = (40, 40)
         text_size = (930, 50)
         icon_x_right = 940
@@ -417,7 +433,15 @@ class ListSortUtility:
 # pixmaplist
 def get_positions(resolution):
     positions = []
-    if resolution == "FHD":
+    if resolution == "WQHD":
+        positions = [
+            [133, 280], [413, 280], [700, 280], [980, 280], [1253, 280],
+            [133, 560], [413, 560], [700, 560], [980, 560], [1253, 560],
+            [133, 847], [413, 847], [700, 847], [980, 847], [1253, 847],
+            [133, 1113], [413, 1113], [700, 1113], [980, 1113], [1253, 1113]
+        ]
+
+    elif resolution == "FHD":
         positions = [
             [100, 210], [310, 210], [525, 210], [735, 210], [940, 210],
             [100, 420], [310, 420], [525, 420], [735, 420], [940, 420],
@@ -457,7 +481,9 @@ class LinuxsatPanel(Screen):
         with codecs.open(skin, "r", encoding="utf-8") as f:
             self.skin = f.read()
 
-        if isWQHD() or isFHD():
+        if isWQHD():
+            self.pos = get_positions("WQHD")
+        elif isFHD():
             self.pos = get_positions("FHD")
         elif isHD():
             self.pos = get_positions("HD")
@@ -1151,7 +1177,9 @@ class LSskin(Screen):
 
         self.data = checkGZIP(xmlurl)
         # self.data = fetch_url(xmlurl)
-        if isWQHD() or isFHD():
+        if isWQHD():
+            self.pos = get_positions("WQHD")
+        elif isFHD():
             self.pos = get_positions("FHD")
         elif isHD():
             self.pos = get_positions("HD")
@@ -1479,7 +1507,9 @@ class LSChannel(Screen):
         with codecs.open(skin, "r", encoding="utf-8") as f:
             self.skin = f.read()
 
-        if isWQHD() or isFHD():
+        if isWQHD():
+            self.pos = get_positions("WQHD")
+        elif isFHD():
             self.pos = get_positions("FHD")
         elif isHD():
             self.pos = get_positions("HD")
@@ -1774,7 +1804,9 @@ class LulullaScript(Screen):
         with codecs.open(skin, "r", encoding="utf-8") as f:
             self.skin = f.read()
 
-        if isWQHD() or isFHD():
+        if isWQHD():
+            self.pos = get_positions("WQHD")
+        elif isFHD():
             self.pos = get_positions("FHD")
         elif isHD():
             self.pos = get_positions("HD")
@@ -1945,24 +1977,24 @@ class LulullaScript(Screen):
             "Rai Play",
             "rai_play.png",
             "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RaiPlay/main/installer.sh -O - | /bin/sh")
-
+        """
         # add_menu_item(
-        # menu_list,
-        # self.titles,
-        # self.pics,
-        # self.urls,
-        # "Revolution Lite",
-        # "revolutionlite.png",
-        # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionlite/main/installer.sh -O - | /bin/sh")
+            # menu_list,
+            # self.titles,
+            # self.pics,
+            # self.urls,
+            # "Revolution Lite",
+            # "revolutionlite.png",
+            # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionlite/main/installer.sh -O - | /bin/sh")
         # add_menu_item(
-        # menu_list,
-        # self.titles,
-        # self.pics,
-        # self.urls,
-        # "Revolution Pro",
-        # "revolution_pro.png",
-        # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionpro/main/installer.sh -O - | /bin/sh")
-
+            # menu_list,
+            # self.titles,
+            # self.pics,
+            # self.urls,
+            # "Revolution Pro",
+            # "revolution_pro.png",
+            # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionpro/main/installer.sh -O - | /bin/sh")
+        """
         add_menu_item(
             menu_list,
             self.titles,
@@ -2385,7 +2417,9 @@ class CiefpInstaller(Screen):
         with codecs.open(skin, "r", encoding="utf-8") as f:
             self.skin = f.read()
 
-        if isWQHD() or isFHD():
+        if isWQHD():
+            self.pos = get_positions("WQHD")
+        elif isFHD():
             self.pos = get_positions("FHD")
         elif isHD():
             self.pos = get_positions("HD")
@@ -2874,7 +2908,9 @@ class ScriptInstaller(Screen):
         with codecs.open(skin, "r", encoding="utf-8") as f:
             self.skin = f.read()
 
-        if isWQHD() or isFHD():
+        if isWQHD():
+            self.pos = get_positions("WQHD")
+        elif isFHD():
             self.pos = get_positions("FHD")
         elif isHD():
             self.pos = get_positions("HD")
@@ -3120,7 +3156,7 @@ class ScriptInstaller(Screen):
             self.urls,
             "WireGuard Vpn",
             "WireGuard.png",
-            'wget -q --no-check-certificate "wget -qO /tmp/WireGuard.sh "https://raw.githubusercontent.com/m4dhouse/Wireguard-Vpn/python-3.12/WireGuard.sh?inline=false" -O - | /bin/sh')
+            'wget -qO- --no-check-certificate "https://raw.githubusercontent.com/m4dhouse/Wireguard-Vpn/python-3.12/WireGuard.sh" -O -  | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -3136,7 +3172,7 @@ class ScriptInstaller(Screen):
             self.urls,
             "Xstreamity",
             "xstreamity.png",
-            'wget -q --no-check-certificate https://raw.githubusercontent.com/biko-73/xstreamity/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget -q --no-check-certificate "https://raw.githubusercontent.com/biko-73/xstreamity/main/installer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,

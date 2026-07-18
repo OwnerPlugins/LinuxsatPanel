@@ -226,7 +226,7 @@ msgid "Removing %s"
 msgstr "%s kentzen"
 
 msgid "Restart enigma"
-msgstr "Berrabiarazi enigma"
+msgstr ""
 
 msgid "SD Provisionals"
 msgstr "Behin-behineko SDak"
@@ -235,13 +235,13 @@ msgid "Save"
 msgstr "Gorde"
 
 msgid "Select your region."
-msgstr "Hautatu zure eskualdea."
+msgstr ""
 
 msgid "Semi-Generalists"
-msgstr "Erdi jeneralistak"
+msgstr ""
 
 msgid "Settings Not Installed ..."
-msgstr "Ezarpenak ez dira instalatuta..."
+msgstr ""
 
 msgid "Skip duplicates"
 msgstr "Saltatu bikoiztuak"
@@ -250,13 +250,13 @@ msgid "Sky Channels"
 msgstr ""
 
 msgid "Sort A-Z"
-msgstr "Ordenatu A-Z"
+msgstr ""
 
 msgid "Sort Default"
 msgstr "Ordenatu lehenetsia"
 
 msgid "Sports"
-msgstr "Kirolak"
+msgstr ""
 
 msgid "Suggested by: @masterG - @oktus - @pcd\n"
 msgstr "Honek iradokitua: @masterG - @oktus - @pcd\n"

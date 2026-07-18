@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/Belfagor2005/LinuxsatPanel">
-    <img src="https://img.shields.io/badge/Version-2.8.5-blue.svg" alt="Version">
+    <img src="https://img.shields.io/badge/Version-2.9.2-blue.svg" alt="Version">
   </a>
 
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">

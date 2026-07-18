@@ -4344,34 +4344,79 @@ class addInstall(Screen):
                 if keepiptv():
                     print("-----save iptv channels-----")
 
-                from six.moves.urllib.request import urlretrieve
-                urlretrieve(url, dest)
-                if exists(dest) and ".zip" in dest:
-                    fdest1 = "/tmp/unzipped"
-                    fdest2 = "/etc/enigma2"
-                    if exists("/tmp/unzipped"):
-                        system("rm -rf /tmp/unzipped")
-                    makedirs("/tmp/unzipped")
-                    cmd2 = "unzip -o -q '/tmp/settings.zip' -d " + fdest1
-                    system(cmd2)
-                    for root, dirs, files in walk(fdest1):
-                        for name in dirs:
-                            self.namel = name
-                    system("rm -rf /etc/enigma2/lamedb")
-                    system("rm -rf /etc/enigma2/*.radio")
-                    system("rm -rf /etc/enigma2/*.tv")
-                    system("rm -rf /etc/enigma2/*.del")
-                    system("cp -rf  '/tmp/unzipped/" +
-                           str(self.namel) + "/'* " + fdest2)
-                    system("rm -rf /tmp/unzipped")
-                    system("rm -rf /tmp/settings.zip")
-                    title = (_("Installing %s\nPlease Wait...") % self.name)
-                    self.session.openWithCallback(
-                        self.yes,
-                        lsConsole,
-                        title=_(title),
-                        cmdlist=["wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 > /tmp/inst.txt 2>&1 &"],
-                        closeOnSuccess=False)
+                fdest1 = "/tmp/unzipped"
+                fdest2 = "/etc/enigma2"
+                backup = "/tmp/settings_backup.tar.gz"
+
+                def cleanup_tmp():
+                    system("rm -rf " + fdest1)
+                    system("rm -f " + dest)
+
+                # Download and verify BEFORE touching /etc/enigma2, so a
+                # failed transfer can never leave the box without channels
+                try:
+                    response = requests.get(url, timeout=30)
+                    response.raise_for_status()
+                    with open(dest, "wb") as f:
+                        f.write(response.content)
+                except Exception as e:
+                    print("[Settings] download failed:", e)
+                    self["info"].setText(
+                        _("Download failed! Settings NOT installed."))
+                    return
+
+                if exists(fdest1):
+                    system("rm -rf " + fdest1)
+                makedirs(fdest1)
+                if system("unzip -o -q '%s' -d %s" % (dest, fdest1)) != 0:
+                    print("[Settings] corrupted archive:", url)
+                    self["info"].setText(
+                        _("Corrupted archive! Settings NOT installed."))
+                    cleanup_tmp()
+                    return
+
+                # The channel list may live at the root of the zip or in a
+                # single top-level folder
+                srcdir = fdest1
+                for root, dirs, files in walk(fdest1):
+                    if dirs and not files:
+                        self.namel = dirs[0]
+                        srcdir = join(fdest1, self.namel)
+                    break
+                payload = []
+                for root, dirs, files in walk(srcdir):
+                    payload.extend(files)
+                    break
+                if "lamedb" not in payload and not any(
+                        name.endswith(".tv") for name in payload):
+                    print("[Settings] no channel list in archive:", url)
+                    self["info"].setText(
+                        _("No channel list in archive! Settings NOT installed."))
+                    cleanup_tmp()
+                    return
+
+                # Safety net: keep the current configuration until reboot
+                system("tar -czf %s -C / etc/enigma2 2>/dev/null" % backup)
+
+                system("rm -rf /etc/enigma2/lamedb")
+                system("rm -rf /etc/enigma2/*.radio")
+                system("rm -rf /etc/enigma2/*.tv")
+                system("rm -rf /etc/enigma2/*.del")
+                if system("cp -rf '%s/'* %s" % (srcdir, fdest2)) != 0:
+                    system("tar -xzf %s -C / 2>/dev/null" % backup)
+                    print("[Settings] install failed, backup restored")
+                    self["info"].setText(
+                        _("Install failed! Previous settings restored."))
+                    cleanup_tmp()
+                    return
+                cleanup_tmp()
+                title = (_("Installing %s\nPlease Wait...") % self.name)
+                self.session.openWithCallback(
+                    self.yes,
+                    lsConsole,
+                    title=_(title),
+                    cmdlist=["wget -qO - http://127.0.0.1/web/servicelistreload?mode=0 > /tmp/inst.txt 2>&1 &"],
+                    closeOnSuccess=False)
             else:
                 self["info"].setText(_("Settings Not Installed ..."))
 

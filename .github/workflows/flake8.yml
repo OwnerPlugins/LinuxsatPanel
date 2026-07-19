@@ -5,9 +5,11 @@ on:
   push:
     branches:
       - main
+      - develop
   pull_request:
     branches:
       - main
+      - develop
 
 jobs:
   pep8-check:
@@ -41,11 +43,13 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Pull latest changes
+        if: github.event_name == 'push'
         run: |
-          git pull origin main --no-rebase || echo "No remote changes to pull"
+          git pull origin ${{ github.ref_name }} --no-rebase || echo "No remote changes to pull"
 
       - name: Commit and push if changes exist
+        if: github.event_name == 'push'
         run: |
           git add .
           git diff --cached --quiet || git commit -m "Apply auto PEP8 aggressive fixes"
-          git push origin main || echo "Push failed (e.g. due to race condition)"
+          git push origin ${{ github.ref_name }} || echo "Push failed (e.g. due to race condition)"

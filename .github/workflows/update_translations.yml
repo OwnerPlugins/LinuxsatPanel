@@ -2,7 +2,7 @@ name: Update Translations
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   workflow_dispatch:
 
 jobs:
@@ -49,8 +49,8 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Update translations via workflow"
                                                                                                                   
-            git pull --rebase origin main
-            git push origin main
+            git pull --rebase origin ${{ github.ref_name }}
+            git push origin ${{ github.ref_name }}
           else
             echo "No changes to commit"
           fi

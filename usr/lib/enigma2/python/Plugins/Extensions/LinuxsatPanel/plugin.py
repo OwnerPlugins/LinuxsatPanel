@@ -722,33 +722,27 @@ class LPGridScreen(AsyncMixin, Screen):
             print("Error in paintFrame: ", e)
 
     def openTest(self):
-        if self.ipage < self.npage:
-            self.maxentry = (self.PIXMAPS_PER_PAGE * self.ipage) - 1
-            self.minentry = (self.ipage - 1) * self.PIXMAPS_PER_PAGE
-
-        elif self.ipage == self.npage:
+        if self.ipage == self.npage:
             self.maxentry = len(self.pics) - 1
-            self.minentry = (self.ipage - 1) * self.PIXMAPS_PER_PAGE
-            i1 = 0
-            while i1 < self.PIXMAPS_PER_PAGE:
-                self["label" + str(i1 + 1)].setText(" ")
-                self["pixmap" + str(i1 + 1)
-                     ].instance.setPixmapFromFile(nss_pic)
-                i1 += 1
+        else:
+            self.maxentry = (self.PIXMAPS_PER_PAGE * self.ipage) - 1
+        self.minentry = (self.ipage - 1) * self.PIXMAPS_PER_PAGE
         self.npics = len(self.pics)
-        i = 0
-        i1 = 0
-        self.picnum = 0
-        ln = self.maxentry - (self.minentry - 1)
-        while i < ln:
-            idx = self.minentry + i
-            # self["label" + str(i + 1)].setText(self.names[idx])  # this show
-            # label to bottom of png pixmap
-            pic = self.pics[idx]
-            if not exists(self.pics[idx]):
-                pic = nss_pic
-            self["pixmap" + str(i + 1)].instance.setPixmapFromFile(pic)
-            i += 1
+        ln = self.maxentry - self.minentry + 1
+        for i in range(self.PIXMAPS_PER_PAGE):
+            pixmap = self["pixmap" + str(i + 1)]
+            if i < ln:
+                idx = self.minentry + i
+                pic = self.pics[idx]
+                if not exists(pic):
+                    pic = nss_pic
+                pixmap.instance.setPixmapFromFile(pic)
+                pixmap.show()
+            else:
+                # a partial last page hides the unused tiles instead of
+                # filling them with the placeholder picture
+                self["label" + str(i + 1)].setText(" ")
+                pixmap.hide()
         self.index = self.minentry
         self.paintFrame()
 

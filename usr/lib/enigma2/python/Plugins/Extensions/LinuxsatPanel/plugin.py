@@ -1664,24 +1664,6 @@ class LulullaScript(LPGridScreen):
             "Rai Play",
             "rai_play.png",
             "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RaiPlay/main/installer.sh -O - | /bin/sh")
-        """
-        # add_menu_item(
-            # menu_list,
-            # self.titles,
-            # self.pics,
-            # self.urls,
-            # "Revolution Lite",
-            # "revolutionlite.png",
-            # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionlite/main/installer.sh -O - | /bin/sh")
-        # add_menu_item(
-            # menu_list,
-            # self.titles,
-            # self.pics,
-            # self.urls,
-            # "Revolution Pro",
-            # "revolution_pro.png",
-            # "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionpro/main/installer.sh -O - | /bin/sh")
-        """
         add_menu_item(
             menu_list,
             self.titles,
@@ -1690,15 +1672,6 @@ class LulullaScript(LPGridScreen):
             "Rsi Live",
             "rsilive.png",
             "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/rsilive/main/installer.sh -O - | /bin/bash")
-
-        add_menu_item(
-            menu_list,
-            self.titles,
-            self.pics,
-            self.urls,
-            "Revolution XXX",
-            "revolution_xxx.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/revolutionxxx/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1707,7 +1680,6 @@ class LulullaScript(LPGridScreen):
             "Rss Reader",
             "rss_reader.png",
             "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RSSReader/main/installer.sh -O - | /bin/sh")
-
         add_menu_item(
             menu_list,
             self.titles,
@@ -1732,7 +1704,6 @@ class LulullaScript(LPGridScreen):
             "SlWebcams",
             "slwebcams.png",
             "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/SLwebcams/main/installer.sh -O - | /bin/bash")
-
         add_menu_item(
             menu_list,
             self.titles,

@@ -583,6 +583,7 @@ class LPGridScreen(AsyncMixin, Screen):
     """Shared 20-tile grid engine used by all category screens."""
 
     PIXMAPS_PER_PAGE = 20
+    GRID_COLS = 5
 
     def __init__(self, session):
         Screen.__init__(self, session)
@@ -752,75 +753,51 @@ class LPGridScreen(AsyncMixin, Screen):
         self.paintFrame()
 
     def key_left(self):
-        # Decrement the index only if we are not at the first pixmap
-        if self.index >= 0:
+        # One step back; from the first tile of a page wrap to the last
+        # tile of the previous page (or the last page from page 1)
+        if self.index > self.minentry:
             self.index -= 1
         else:
-            # If we are at the first pixmap, go back to the last pixmap of the
-            # last page
-            self.ipage = self.npage
-            self.index = self.npics - 1
-        # Check if we need to change pages
-        if self.index < self.minentry:
-            self.ipage -= 1
-            if self.ipage < 1:  # If we go beyond the first page
-                self.ipage = self.npage
-                self.index = self.npics - 1  # Back to the last pixmap of the last page
+            self.ipage = self.npage if self.ipage == 1 else self.ipage - 1
             self.openTest()
-        else:
-            self.paintFrame()
+            self.index = self.maxentry
+        self.paintFrame()
 
     def key_right(self):
-        # Increment the index only if we are not at the last pixmap
-        if self.index < self.npics - 1:
+        # One step forward; from the last tile of a page wrap to the
+        # first tile of the next page (or page 1 from the last page)
+        if self.index < self.maxentry:
             self.index += 1
         else:
-            # If we are at the last pixmap, go back to the first pixmap of the
-            # first page
-            self.index = 0
-            self.ipage = 1
+            self.ipage = 1 if self.ipage == self.npage else self.ipage + 1
             self.openTest()
-        # Check if we need to change pages
-        if self.index > self.maxentry:
-            self.ipage += 1
-            if self.ipage > self.npage:  # If we exceed the number of pages
-                self.index = 0
-                self.ipage = 1  # Back to first page
-            self.openTest()
-        else:
-            self.paintFrame()
+            self.index = self.minentry
+        self.paintFrame()
 
     def key_up(self):
-        if self.index == 0 and self.ipage == 1:
-            self.ipage = self.npage
-            self.index = self.minentry
-            self.openTest()
-
-        elif self.index >= 5 and not self.ipage == self.npage and self.index == self.minentry:
-            self.index -= 5
+        # One row up; from the top row go to the bottom row of the
+        # previous page (or the last page), keeping the column
+        if self.index - self.GRID_COLS >= self.minentry:
+            self.index -= self.GRID_COLS
         else:
-            if self.ipage == self.npage and self.index == self.minentry:
-                self.ipage = 1
-                self.index = 0
-                self.openTest()
-            else:
-                self.ipage = self.npage
-                self.index = self.npics - 1
-                self.openTest()
+            col = (self.index - self.minentry) % self.GRID_COLS
+            self.ipage = self.npage if self.ipage == 1 else self.ipage - 1
+            self.openTest()
+            rows = (self.maxentry - self.minentry) // self.GRID_COLS
+            self.index = min(
+                self.minentry + rows * self.GRID_COLS + col, self.maxentry)
         self.paintFrame()
 
     def key_down(self):
-        if self.index <= self.maxentry - 5:
-            self.index += 5
+        # One row down; from the bottom row go to the top row of the
+        # next page (or page 1), keeping the column
+        if self.index + self.GRID_COLS <= self.maxentry:
+            self.index += self.GRID_COLS
         else:
-            if self.ipage == self.npage:
-                self.ipage = 1
-                self.index = 0
-                self.openTest()
-            else:
-                self.ipage += 1
-                self.index = self.minentry
-                self.openTest()
+            col = (self.index - self.minentry) % self.GRID_COLS
+            self.ipage = 1 if self.ipage == self.npage else self.ipage + 1
+            self.openTest()
+            self.index = min(self.minentry + col, self.maxentry)
 
         self.paintFrame()
 

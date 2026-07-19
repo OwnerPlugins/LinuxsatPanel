@@ -223,7 +223,7 @@ msgid "No update information available."
 msgstr "Nejsou k dispozici žádné informace o aktualizaci."
 
 msgid "Nothing found for '%s'"
-msgstr ""
+msgstr "Pro '%s' nebylo nic nalezeno"
 
 msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
 msgstr "Jakmile je nakonfigurován, bouquet bude automaticky aktualizován při ručním skenování."

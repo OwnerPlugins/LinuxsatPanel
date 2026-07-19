@@ -350,7 +350,28 @@ class LPSlist(MenuList):
             self.l.setFont(0, gFont("lsat", textfont))
 
 
-def LPListEntry(name, item):
+INSTALLED_COLOR = 0x39B54A
+
+
+def get_installed_packages():
+    """Lowercased names of every installed package (opkg or dpkg)."""
+    pkgs = set()
+    dpkg = exists("/var/lib/dpkg/info")
+    path = "/var/lib/dpkg/info" if dpkg else "/var/lib/opkg/info"
+    for root, dirs, files in walk(path):
+        for name in files:
+            name = name.lower()
+            if dpkg:
+                if name.endswith(".list"):
+                    pkgs.add(name[:-5])
+            else:
+                if name.endswith(".control"):
+                    pkgs.add(name[:-8])
+        break
+    return pkgs
+
+
+def LPListEntry(name, item, installed=False):
     res = [(name, item)]
 
     if not fileExists(pngx):
@@ -377,6 +398,11 @@ def LPListEntry(name, item):
         icon_x_left = 5
         text_x_left = 45
 
+    # Installed addons are shown in green
+    colors = {}
+    if installed:
+        colors = {"color": INSTALLED_COLOR, "color_sel": INSTALLED_COLOR}
+
     if HALIGN == RT_HALIGN_RIGHT:
         res.append(
             MultiContentEntryPixmapAlphaTest(
@@ -393,7 +419,8 @@ def LPListEntry(name, item):
                 size=text_size,
                 font=0,
                 text=name,
-                flags=HALIGN | RT_VALIGN_CENTER))
+                flags=HALIGN | RT_VALIGN_CENTER,
+                **colors))
     else:
         res.append(
             MultiContentEntryPixmapAlphaTest(
@@ -410,13 +437,17 @@ def LPListEntry(name, item):
                 size=text_size,
                 font=0,
                 text=name,
-                flags=HALIGN | RT_VALIGN_CENTER))
+                flags=HALIGN | RT_VALIGN_CENTER,
+                **colors))
 
     return res
 
 
-def LPshowlist(data, list):
-    plist = [LPListEntry(name, index) for index, name in enumerate(data)]
+def LPshowlist(data, list, installed=None):
+    plist = []
+    for index, name in enumerate(data):
+        flag = bool(installed and index < len(installed) and installed[index])
+        plist.append(LPListEntry(name, index, flag))
     list.setList(plist)
 
 
@@ -502,9 +533,10 @@ class AsyncCall:
             pass
 
     def _poll(self):
-        if self._cancelled:
+        if self._cancelled or getattr(self, "_delivered", False):
             return
         if self._done:
+            self._delivered = True
             self._timer.stop()
             self._callback(self._fn_result)
 
@@ -580,6 +612,7 @@ class LPGridScreen(AsyncMixin, Screen):
         self["info"].setText(_("Please Wait..."))
         self["sort"] = Label(_("Sort A-Z"))
         self["key_red"] = Label(_("Exit"))
+        self["key_green"] = Label(_("Search"))
         self["pixmap"] = Pixmap()
         self["actions"] = ActionMap(
             [
@@ -597,6 +630,7 @@ class LPGridScreen(AsyncMixin, Screen):
                 "exit": self.closeRecursive,
                 "back": self.closeNonRecursive,
                 "red": self.closeNonRecursive,
+                "green": self.key_search,
                 "0": self.list_sort,
                 "left": self.key_left,
                 "right": self.key_right,
@@ -621,6 +655,32 @@ class LPGridScreen(AsyncMixin, Screen):
 
     def okbuttonClick(self):
         pass
+
+    def key_search(self):
+        from Screens.VirtualKeyBoard import VirtualKeyBoard
+        self.session.openWithCallback(
+            self.searchCallback,
+            VirtualKeyBoard,
+            title=_("Search addon..."),
+            text="")
+
+    def searchCallback(self, text=None):
+        # Default behavior: jump to the first matching tile of this grid
+        if not text:
+            return
+        text = text.lower()
+        for idx, name in enumerate(self.names):
+            if text in str(name).lower():
+                self.ipage = idx // self.PIXMAPS_PER_PAGE + 1
+                self.openTest()
+                self.index = idx
+                self.paintFrame()
+                return
+        self.session.open(
+            MessageBox,
+            _("Nothing found for '%s'") % text,
+            MessageBox.TYPE_INFO,
+            timeout=5)
 
     def _catalogReady(self, data):
         self.data = data
@@ -1169,53 +1229,62 @@ class LinuxsatPanel(LPGridScreen):
             "about.png")
 
         self.initGrid(menu_list)
-        # self.onLayoutFinish.append(self.start_check_version)
+        self.start_check_version()
+
+    def searchCallback(self, text=None):
+        # Search the whole catalog across every category and show the
+        # matches as a normal installable list
+        if not text:
+            return
+        text = text.lower()
+        self["info"].setText(_("Searching..."))
+
+        def do_search():
+            data = get_catalog()
+            if data is None:
+                return None
+            regex = compile(r'<plugin name="(.*?)".*?</url>', DOTALL)
+            parts = [m.group(0) for m in regex.finditer(data)
+                     if text in m.group(1).lower()]
+            return "\n".join(parts)
+
+        def done(result):
+            self["info"].setText(_("Search"))
+            if result is None:
+                self.session.open(
+                    MessageBox, _("Error: No Data Find."),
+                    MessageBox.TYPE_ERROR)
+            elif not result:
+                self.session.open(
+                    MessageBox,
+                    _("Nothing found for '%s'") % text,
+                    MessageBox.TYPE_INFO,
+                    timeout=5)
+            else:
+                self.session.open(
+                    addInstall, result, _("Search: %s") % text, None)
+
+        self._startAsync(do_search, done)
 
     def start_check_version(self):
-        self.Update = False
-        self.new_version, self.new_changelog, update_available = check_version(
-            __version__, installer_url, AgentRequest
-        )
-        if update_available:
-            self.Update = True
-            print("A new version is available:", self.new_version)
+        self._startAsync(
+            lambda: check_version(__version__, installer_url, AgentRequest),
+            self._versionChecked)
 
-            # Check if current screen is modal before opening the MessageBox
-            if self.session.current_dialog and getattr(
-                    self.session.current_dialog, "isModal", lambda: False)():
-                msg = _(
-                    "New version available\n\nChangelog:\n\nPress the green button to start the update.")
-                msg = msg.replace(
-                    "available",
-                    "available %s" %
-                    self.new_version)
-                msg = msg.replace(
-                    "Changelog:",
-                    "Changelog: %s" %
-                    self.new_changelog)
-                self.session.open(
-                    MessageBox,
-                    msg,
-                    MessageBox.TYPE_INFO,
-                    timeout=5
-                )
-            else:
-                msg = _(
-                    "New version available\n\nChangelog:\n\nBut not downloadable!!!")
-                msg = msg.replace(
-                    "available",
-                    "available %s" %
-                    self.new_version)
-                msg = msg.replace(
-                    "Changelog:",
-                    "Changelog: %s" %
-                    self.new_changelog)
-                self.session.open(
-                    MessageBox,
-                    msg,
-                    MessageBox.TYPE_INFO,
-                    timeout=5
-                )
+    def _versionChecked(self, result):
+        if not result:
+            return
+        new_version, new_changelog, update_available = result
+        if update_available:
+            print("A new version is available:", new_version)
+            msg = _("New version %s available!\n\nChangelog:\n%s\n\nPress INFO and then the GREEN button to update.") % (
+                new_version, new_changelog)
+            self.session.open(
+                MessageBox,
+                msg,
+                MessageBox.TYPE_INFO,
+                timeout=10
+            )
         else:
             print("No new version available.")
 
@@ -2903,8 +2972,24 @@ class addInstall(AsyncMixin, Screen):
 
             self.names.append(name)
             self.urls.append(url)
-        LPshowlist(self.names, self["list"])
+        LPshowlist(self.names, self["list"], self.installedFlags())
         # self.buttons()
+
+    def installedFlags(self):
+        """One flag per url: is that package already installed?"""
+        pkgs = get_installed_packages()
+        flags = []
+        for url in self.urls:
+            fname = url[url.rfind("/") + 1:].lower()
+            flag = False
+            if ".ipk" in fname or ".deb" in fname:
+                plug = fname.split("_")[0]
+                if plug.endswith((".ipk", ".deb")):
+                    plug = plug.rsplit(".", 1)[0]
+                if plug:
+                    flag = any(p.startswith(plug) for p in pkgs)
+            flags.append(flag)
+        return flags
 
     def buttons(self):
         """

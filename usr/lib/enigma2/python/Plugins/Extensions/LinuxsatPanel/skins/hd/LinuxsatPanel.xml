@@ -59,5 +59,7 @@
 	<widget name="pixmap20" position="620,540" size="100,100" zPosition="2" transparent="1" alphatest="on" scale="1" />
 	<!-- buttons -->
 	<widget name="key_red" position="281,660" size="220,30" valign="center" halign="center" zPosition="4" foregroundColor="#b0b0b0" font="lsat;20" transparent="1" shadowColor="#25062748" shadowOffset="-2,-2" />
+	<widget name="key_green" position="511,660" size="220,30" valign="center" halign="center" zPosition="4" foregroundColor="#b0b0b0" font="lsat;20" transparent="1" shadowColor="#25062748" shadowOffset="-2,-2" />
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons/greenk.png" position="550,682" size="140,20" zPosition="4" alphatest="on" />
 	<widget name="pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons/redk.png" position="320,682" size="140,20" zPosition="4" alphatest="on" />
 </screen>

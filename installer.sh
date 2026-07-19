@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='2.9.2'
-changelog="\n--Add WQHD PANEL"
+version='3.0.0'
+changelog="\n--Search all addons with GREEN button\n--Installed addons shown in green\n--No more GUI freezes (async downloads, catalog cache)\n--Safe settings install with automatic backup\n--Update check on panel start\n--Big cleanup and many bugfixes"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

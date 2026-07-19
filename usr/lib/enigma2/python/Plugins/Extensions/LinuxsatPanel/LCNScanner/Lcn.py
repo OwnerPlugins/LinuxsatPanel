@@ -303,7 +303,8 @@ class LCN():
             with open('/etc/enigma2/bouquets.tv', 'w') as f:
                 f.write(ret[0] + "\n")
                 f.write(
-                    '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet\n' % name)
+                    '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet\n' %
+                    name)
                 for line in ret[1:]:
                     f.write(line + "\n")
         except Exception as e:

@@ -648,7 +648,12 @@ class LPGridScreen(AsyncMixin, Screen):
             self["pixmap" + str(i + 1)] = Pixmap()
             i += 1
         self.npics = len(self.names)
-        self.npage = max(1, (self.npics + self.PIXMAPS_PER_PAGE - 1) // self.PIXMAPS_PER_PAGE)
+        self.npage = max(
+            1,
+            (self.npics +
+             self.PIXMAPS_PER_PAGE -
+             1) //
+            self.PIXMAPS_PER_PAGE)
         self.index = 0
         self.maxentry = len(menu_list) - 1
         self.ipage = 1

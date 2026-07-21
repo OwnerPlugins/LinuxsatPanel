@@ -181,7 +181,7 @@ from re import compile, search, DOTALL
 from shutil import copy2
 from sys import version_info
 
-from os import R_OK, access, chmod, makedirs, system, walk
+from os import R_OK, access, chmod, makedirs, system, walk, listdir
 from os.path import exists, join
 
 import six
@@ -2463,6 +2463,18 @@ class ScriptInstaller(LPGridScreen):
                 "serviceapp.png",
                 'opkg update && opkg --force-reinstall --force-overwrite install ffmpeg gstplayer exteplayer3 enigma2-plugin-systemplugins-serviceapp')
 
+        # local script in folder /sh
+        sh_dir = plugin_path + "/sh"
+        if exists(sh_dir):
+            for filename in listdir(sh_dir):
+                if filename.endswith(".sh"):
+                    base_name = filename[:-3]
+                    title = base_name.replace('_', ' ').title()
+                    icon = picfold + "script.png"
+                    script_path = join(sh_dir, filename)
+                    add_menu_item(menu_list, self.titles, self.pics, self.urls,
+                                  title, "script.png", script_path)
+
         self.initGrid(menu_list)
 
     def Lcn(self, answer=None):
@@ -2572,10 +2584,10 @@ class ScriptInstaller(LPGridScreen):
                 "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
-            try:
+            if self.url.startswith("http"):
                 cmd = str(self.url) + " > %s 2>&1" % file_log
-            except TypeError:
-                cmd = str(self.url) + " 2>&1"
+            else:
+                cmd = 'sh "{}" > {} 2>&1'.format(self.url, file_log)
             if keyword_found:
                 self.session.open(
                     lsConsole,

@@ -28,9 +28,7 @@ from Screens.Screen import Screen
 from Tools.Directories import fileExists
 from errno import ENOENT
 import sys
-from gettext import gettext
-
-_ = gettext
+from .. import _
 
 PY3 = sys.version_info[0] >= 3
 DEFAULT_MODULE_NAME = __name__.split(".")[-1]
@@ -180,8 +178,7 @@ class File_Commander(Screen):
         self.skin = _build_skin()
         Screen.__init__(self, session)
         self.file_name = file
-        title = "Lululla File Commander"
-        self.newtitle = 'Console' if title == 'vEditorScreen' else title
+        self.newtitle = "Lululla File Commander"
         self.list = []
         self["filedata"] = MenuList(self.list)
         self["actions"] = ActionMap(["WizardActions", "ColorActions", "DirectionActions"], {

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='3.0.0'
-changelog="\n--Search all addons with GREEN button\n--Installed addons shown in green\n--No more GUI freezes (async downloads, catalog cache)\n--Safe settings install with automatic backup\n--Update check on panel start\n--Big cleanup and many bugfixes"
+version='3.0.1'
+changelog="\n--Bump plugin version to 3.0.1\n--Rework File_Commander: replace static skin with _build_skin() that computes layout from desktop size (HD/FHD/4K scaling)\n--Add getDesktopSize(), clean up imports and fileReadLines error/encoding handling\n--Add translate_utils.py: new Google Translate wrapper with caching, Arabic detection, batch support and disk-persisted translation_cache.json (moved into locale/)\n--Minor locale fixes (.pot/.po and .mo) and translation_cache.json cleanup"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

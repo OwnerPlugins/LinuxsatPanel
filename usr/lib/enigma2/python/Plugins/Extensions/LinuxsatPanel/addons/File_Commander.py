@@ -23,9 +23,9 @@ from __future__ import absolute_import, print_function
 from Components.Label import Label
 from Components.ActionMap import ActionMap
 from Components.MenuList import MenuList
-from enigma import eLabel
+from enigma import getDesktop, eLabel
 from Screens.Screen import Screen
-from Tools.Directories import fileExists  # , fileReadLines
+from Tools.Directories import fileExists
 from errno import ENOENT
 import sys
 from gettext import gettext
@@ -33,7 +33,6 @@ from gettext import gettext
 _ = gettext
 
 PY3 = sys.version_info[0] >= 3
-
 DEFAULT_MODULE_NAME = __name__.split(".")[-1]
 
 pname = "File Commander - Addon"
@@ -52,7 +51,6 @@ def fileReadLines(
         debug=False):
     lines = None
     try:
-        # Python 2 non ha encoding, Python 3 sì
         if PY3:
             with open(filename, "r", encoding="utf-8") as fd:
                 lines = fd.read().splitlines()
@@ -60,13 +58,11 @@ def fileReadLines(
             with open(filename, "r") as fd:
                 lines = fd.read().decode("utf-8").splitlines()
     except (OSError, IOError) as err:
-        if err.errno != ENOENT:  # ENOENT - No such file or directory.
-            print(
-                "[%s] Error %d: Unable to read lines from file '%s'!  (%s)" %
-                (source, err.errno, filename, err.strerror))
+        if err.errno != ENOENT:
+            print("[%s] Error %d: Unable to read lines from file '%s'!  (%s)" %
+                  (source, err.errno, filename, err.strerror))
         lines = default
     except UnicodeDecodeError:
-        # Fallback per file non UTF-8
         try:
             with open(filename, "r") as fd:
                 lines = fd.read().splitlines()
@@ -75,29 +71,97 @@ def fileReadLines(
     return lines
 
 
+def getDesktopSize():
+    s = getDesktop(0).size()
+    return (s.width(), s.height())
+
+
+def _build_skin():
+    # Base FHD (1920x1080) – valori di riferimento
+    base = {
+        "screen_w": 1920, "screen_h": 1080,
+        "head_x": 8, "head_y": 10, "head_w": 1850, "head_h": 45, "head_font": 32,
+        "btn_w": 260, "btn_h": 40, "btn_y": 935, "btn_font": 24,
+        "btn_x_red": 95, "btn_x_green": 395, "btn_x_yellow": 690, "btn_x_blue": 985,
+        "pixmap_y": 975, "pixmap_w": 260, "pixmap_h": 25,
+        "pixmap_x_red": 95, "pixmap_x_green": 395, "pixmap_x_yellow": 690, "pixmap_x_blue": 985,
+        "list_x": 45, "list_y": 115, "list_w": 1830, "list_h": 810,
+        "list_itemHeight": 45, "list_font": 30
+    }
+
+    desktop_w, desktop_h = getDesktopSize()
+
+    if desktop_w >= 3840:
+        scale = 2.0
+    elif desktop_w >= 2560:
+        scale = 1.3333
+    elif desktop_w >= 1920:
+        scale = 1.0
+    else:
+        scale = 0.6667   # HD
+
+    def s(v):
+        return int(round(v * scale))
+
+    params = {
+        "screen_w": s(base["screen_w"]),
+        "screen_h": s(base["screen_h"]),
+        "head_x": s(base["head_x"]),
+        "head_y": s(base["head_y"]),
+        "head_w": s(base["head_w"]),
+        "head_h": s(base["head_h"]),
+        "head_font": s(base["head_font"]),
+        "btn_w": s(base["btn_w"]),
+        "btn_h": s(base["btn_h"]),
+        "btn_y": s(base["btn_y"]),
+        "btn_font": s(base["btn_font"]),
+        "btn_x_red": s(base["btn_x_red"]),
+        "btn_x_green": s(base["btn_x_green"]),
+        "btn_x_yellow": s(base["btn_x_yellow"]),
+        "btn_x_blue": s(base["btn_x_blue"]),
+        "pixmap_y": s(base["pixmap_y"]),
+        "pixmap_w": s(base["pixmap_w"]),
+        "pixmap_h": s(base["pixmap_h"]),
+        "pixmap_x_red": s(base["pixmap_x_red"]),
+        "pixmap_x_green": s(base["pixmap_x_green"]),
+        "pixmap_x_yellow": s(base["pixmap_x_yellow"]),
+        "pixmap_x_blue": s(base["pixmap_x_blue"]),
+        "list_x": s(base["list_x"]),
+        "list_y": s(base["list_y"]),
+        "list_w": s(base["list_w"]),
+        "list_h": s(base["list_h"]),
+        "list_itemHeight": s(base["list_itemHeight"]),
+        "list_font": s(base["list_font"]),
+    }
+
+    # Template XML – usiamo le variabili
+    skin_xml = """
+<screen name="File_Commander" position="center,center" size="{screen_w},{screen_h}" title="Lululla Commander" flags="wfNoBorder">
+    <widget name="list_head" position="{head_x},{head_y}" size="{head_w},{head_h}" font="Regular;{head_font}" foregroundColor="#00fff000" />
+
+    <widget name="key_red" position="{btn_x_red},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
+    <widget name="key_green" position="{btn_x_green},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
+    <widget name="key_yellow" position="{btn_x_yellow},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
+    <widget name="key_blue" position="{btn_x_blue},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
+
+    <ePixmap position="{pixmap_x_red},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
+    <ePixmap position="{pixmap_x_green},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
+    <ePixmap position="{pixmap_x_yellow},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+    <ePixmap position="{pixmap_x_blue},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
+
+    <widget name="filedata" position="{list_x},{list_y}" size="{list_w},{list_h}" itemHeight="{list_itemHeight}" font="Regular;{list_font}" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="#ff005826" scrollbarSliderBorderColor="#ff171a1c" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="8" valign="center" />
+</screen>"""
+
+    return skin_xml.format(**params)
+
+
 class File_Commander(Screen):
 
-    skin = """
-        <screen name="File_Commander" position="40,80" size="1900,900" title="Lululla Commander">
-            <widget name="list_head" position="8,10" size="1850,45" font="Regular;24" foregroundColor="#00fff000" />
-            <widget name="filedata" scrollbarMode="showOnDemand" itemHeight="45" position="9,78" size="1850,725" />
-            <widget name="key_red" position="95,820" zPosition="19" size="260,40" transparent="1" font="Regular;24" halign="center" />
-            <widget name="key_green" position="395,820" zPosition="19" size="260,40" transparent="1" font="Regular;24" halign="center" />
-            <widget name="key_yellow" position="690,820" zPosition="19" size="260,40" transparent="1" font="Regular;24" halign="center" />
-            <widget name="key_blue" position="985,820" zPosition="19" size="260,40" transparent="1" font="Regular;24" halign="center" />
-            <ePixmap position="95,865" size="260,25" zPosition="0" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
-            <ePixmap position="395,865" size="260,25" zPosition="0" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-            <ePixmap position="690,865" size="260,25" zPosition="0" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
-            <ePixmap position="985,870" size="260,25" zPosition="0" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
-        </screen>"""
-
     def __init__(self, session, file):
-        self.skin = File_Commander.skin
+        self.skin = _build_skin()
         Screen.__init__(self, session)
-        # HelpableScreen.__init__(self)
         self.file_name = file
         title = "Lululla File Commander"
-        # Operatore ternario compatibile Python 2
         self.newtitle = 'Console' if title == 'vEditorScreen' else title
         self.list = []
         self["filedata"] = MenuList(self.list)
@@ -108,8 +172,6 @@ class File_Commander(Screen):
             "red": self.exitEditor,
             "yellow": self.del_Line,
             "blue": self.ins_Line,
-            # "chplus": self.posStart,
-            # "chminus": self.posEnd,
         }, -1)
         self["list_head"] = Label(self.file_name)
         self["key_red"] = Label(_("Exit"))

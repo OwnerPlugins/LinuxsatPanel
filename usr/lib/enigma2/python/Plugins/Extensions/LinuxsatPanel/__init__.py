@@ -35,7 +35,7 @@ __author__ = "Lululla"
 __email__ = "ekekaz@gmail.com"
 __copyright__ = 'Copyright (c) 2024 Lululla'
 __license__ = "GPL-v2"
-__version__ = "3.0.0"
+__version__ = "3.0.1"
 
 
 def check_and_install_requests():

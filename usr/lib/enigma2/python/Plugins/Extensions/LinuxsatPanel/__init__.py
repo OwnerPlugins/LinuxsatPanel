@@ -35,7 +35,7 @@ __author__ = "Lululla"
 __email__ = "ekekaz@gmail.com"
 __copyright__ = 'Copyright (c) 2024 Lululla'
 __license__ = "GPL-v2"
-__version__ = "3.0.1"
+__version__ = "3.0.2"
 
 
 def check_and_install_requests():
@@ -75,6 +75,10 @@ PluginLanguageDomain = 'LinuxsatPanel'
 PluginLanguagePath = 'Extensions/LinuxsatPanel/locale'
 plugin_path = dirname(sys.modules[__name__].__file__)
 AgentRequest = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.3'
+# used by translate_utils
+DEBUG = False
+HEADERS = {"User-Agent": AgentRequest}
+SYSTEM_DIR = plugin_path
 infourl = 'https://raw.githubusercontent.com/Belfagor2005/upload/main/fill/info.txt'
 abouturl = 'https://raw.githubusercontent.com/Belfagor2005/upload/main/fill/about.txt'
 xmlurl = 'https://raw.githubusercontent.com/Belfagor2005/upload/main/fill/addons_2024.xml'

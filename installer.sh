@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='3.0.1'
-changelog="\n--Bump plugin version to 3.0.1\n--Rework File_Commander: replace static skin with _build_skin() that computes layout from desktop size (HD/FHD/4K scaling)\n--Add getDesktopSize(), clean up imports and fileReadLines error/encoding handling\n--Add translate_utils.py: new Google Translate wrapper with caching, Arabic detection, batch support and disk-persisted translation_cache.json (moved into locale/)\n--Minor locale fixes (.pot/.po and .mo) and translation_cache.json cleanup"
+version='3.0.2'
+changelog="\n--Hotfix: remote scripts in Script Installer failed to run in 3.0.1 (wget/opkg entries were passed to sh as a filename)\n--Local sh scripts now listed in stable alphabetical order\n--File Commander button labels translated again\n--translate_utils can now be imported (missing package constants added)"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

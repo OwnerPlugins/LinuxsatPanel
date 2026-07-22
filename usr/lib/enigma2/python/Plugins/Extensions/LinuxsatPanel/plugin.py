@@ -2466,11 +2466,10 @@ class ScriptInstaller(LPGridScreen):
         # local script in folder /sh
         sh_dir = plugin_path + "/sh"
         if exists(sh_dir):
-            for filename in listdir(sh_dir):
+            for filename in sorted(listdir(sh_dir)):
                 if filename.endswith(".sh"):
                     base_name = filename[:-3]
                     title = base_name.replace('_', ' ').title()
-                    icon = picfold + "script.png"
                     script_path = join(sh_dir, filename)
                     add_menu_item(menu_list, self.titles, self.pics, self.urls,
                                   title, "script.png", script_path)
@@ -2584,10 +2583,13 @@ class ScriptInstaller(LPGridScreen):
                 "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
-            if self.url.startswith("http"):
-                cmd = str(self.url) + " > %s 2>&1" % file_log
-            else:
+            if self.url.startswith("/"):
+                # local script from the sh/ folder
                 cmd = 'sh "{}" > {} 2>&1'.format(self.url, file_log)
+            else:
+                # remote entries are complete command lines (wget ... | sh,
+                # opkg ...) and must run as-is
+                cmd = str(self.url) + " > %s 2>&1" % file_log
             if keyword_found:
                 self.session.open(
                     lsConsole,

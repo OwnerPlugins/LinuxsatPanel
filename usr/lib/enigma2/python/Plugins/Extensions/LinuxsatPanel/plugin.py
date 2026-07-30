@@ -835,8 +835,6 @@ class LPGridScreen(AsyncMixin, Screen):
 
     def _view_log(self, answer):
         if answer:
-            from enigma import eTimer
-
             def open_fc():
                 from .addons.File_Commander import File_Commander
                 if fileExists(file_log):
@@ -844,7 +842,10 @@ class LPGridScreen(AsyncMixin, Screen):
             # keep a reference or the timer is garbage collected
             # before it fires
             self._fc_timer = eTimer()
-            self._fc_timer.callback.append(open_fc)
+            try:
+                self._fc_timer_conn = self._fc_timer.timeout.connect(open_fc)
+            except BaseException:
+                self._fc_timer.callback.append(open_fc)
             self._fc_timer.start(0, True)
 
 

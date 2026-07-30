@@ -151,21 +151,18 @@ def _build_skin():
         "list_font": s(base["list_font"]),
     }
 
-    # Template XML – usiamo le variabili
+    # Template XML
     skin_xml = """
 <screen name="File_Commander" position="center,center" size="{screen_w},{screen_h}" title="Lululla Commander" flags="wfNoBorder">
     <widget name="list_head" position="{head_x},{head_y}" size="{head_w},{head_h}" font="Regular;{head_font}" foregroundColor="#00fff000" />
-
     <widget name="key_red" position="{btn_x_red},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
     <widget name="key_green" position="{btn_x_green},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
     <widget name="key_yellow" position="{btn_x_yellow},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
     <widget name="key_blue" position="{btn_x_blue},{btn_y}" zPosition="19" size="{btn_w},{btn_h}" transparent="1" font="Regular;{btn_font}" halign="center" />
-
     <ePixmap position="{pixmap_x_red},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
     <ePixmap position="{pixmap_x_green},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
     <ePixmap position="{pixmap_x_yellow},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
     <ePixmap position="{pixmap_x_blue},{pixmap_y}" size="{pixmap_w},{pixmap_h}" zPosition="0" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
-
     <widget name="filedata" position="{list_x},{list_y}" size="{list_w},{list_h}" itemHeight="{list_itemHeight}" font="Regular;{list_font}" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="#ff005826" scrollbarSliderBorderColor="#ff171a1c" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="8" valign="center" />
 </screen>"""
 
@@ -244,7 +241,7 @@ class File_Commander(Screen):
 
     def VirtualKeyBoardCallback(self, callback=None):
         if callback is not None:
-            line_num = self.list[self.selLine][:6]  # Prendi "0001: "
+            line_num = self.list[self.selLine][:6]
             self.list[self.selLine] = line_num + callback
             self.isChanged = True
             self["filedata"].setList(self.list)

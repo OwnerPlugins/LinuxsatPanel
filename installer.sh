@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='3.0.2'
-changelog="\n--Hotfix: remote scripts in Script Installer failed to run in 3.0.1 (wget/opkg entries were passed to sh as a filename)\n--Local sh scripts now listed in stable alphabetical order\n--File Commander button labels translated again\n--translate_utils can now be imported (missing package constants added)"
+version='3.0.3'
+changelog="\n--Hotfix: Fix Console"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

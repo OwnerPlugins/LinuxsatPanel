@@ -113,11 +113,12 @@ class lsConsole(Screen):
     def startRun(self):
         if self.showStartStopText:
             self['text'].setText(_('Execution progress\n\n'))
-        print('[Console] executing in run', self.run,
-              ' the command:', self.cmdlist[self.run])
-        print("[Console] Executing command:", self.cmdlist[self.run])
-        if self.container.execute(self.cmdlist[self.run]):
-            self['text'].setText(self.cmdlist[self.run])
+        cmd = self.cmdlist[self.run]
+        if not cmd.startswith('sh ') and not cmd.startswith('/bin/sh '):
+            cmd = '/bin/sh -c "{}"'.format(cmd.replace('"', '\\"'))
+        print('[Console] executing:', cmd)
+        if self.container.execute(cmd):
+            self['text'].setText(cmd)
             self.runFinished(-1)
 
     def runFinished(self, retval):

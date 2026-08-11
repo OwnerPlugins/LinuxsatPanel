@@ -15,8 +15,8 @@ msgstr ""
 msgid "Adult"
 msgstr "वयस्क"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\n"
-msgstr "सबै कोड @Lululla - 2024.07.20\n द्वारा पुन: लेखिएको थियो"
+msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "सबै कोड @Lululla - 2024.07.20\\\\\\\\n द्वारा पुन: लेखिएको थियो"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "एउटा अनपेक्षित त्रुटि भयो। कृपया पछि पुन: प्रयास गर्नुहोस्।"
@@ -54,8 +54,8 @@ msgstr "छुट्टै रेडियो गुलदस्ता सिर
 msgid "Del Line"
 msgstr "डेल लाइन"
 
-msgid "Designs and Graphics by @oktus\n"
-msgstr "@oktus द्वारा डिजाइन र ग्राफिक्स\n"
+msgid "Designs and Graphics by @oktus\\\\\\\\n"
+msgstr "@oktus द्वारा डिजाइन र ग्राफिक्स\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "गुलदस्तामा डुप्लिकेट वा गैर अनुक्रमित च्यानलहरू थप नगर्नुहोस्।"
@@ -120,7 +120,7 @@ msgstr "HD च्यानलहरू"
 msgid "High Definition"
 msgstr "उच्च परिभाषा"
 
-msgid "If you think it is a useful tool for your box\n"
+msgid "If you think it is a useful tool for your box\\\\\\\\n"
 msgstr "यदि तपाइँ यो तपाइँको बक्स को लागी एक उपयोगी उपकरण हो जस्तो लाग्छ भने"
 
 msgid "Information and Culture"
@@ -258,8 +258,8 @@ msgstr "पूर्वनिर्धारित क्रमबद्ध ग�
 msgid "Sports"
 msgstr "खेलकुद"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\n"
-msgstr "@masterG - @oktus - @pcd\n द्वारा सुझाव गरिएको"
+msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "@masterG - @oktus - @pcd\\\\\\\\n द्वारा सुझाव गरिएको"
 
 msgid "Terrestrial"
 msgstr "स्थलीय"
@@ -285,8 +285,8 @@ msgstr "स्थलीय गुलदस्ता:"
 msgid "Test Channels"
 msgstr "परीक्षण च्यानलहरू"
 
-msgid "The Plugin lives thanks to the donations of each of you.\n"
-msgstr "प्लगइन तपाईंहरू प्रत्येकको दानको लागि धन्यवाद।\n"
+msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
+msgstr "प्लगइन तपाईंहरू प्रत्येकको दानको लागि धन्यवाद।\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "हाल कुनै LCN डाटा भण्डारण गरिएको छैन।"
@@ -315,5 +315,5 @@ msgstr "अपडेट रद्द गरियो!"
 msgid "of"
 msgstr "को"
 
-msgid "please make a donation:\n"
-msgstr "कृपया दान गर्नुहोस्:\n"
+msgid "please make a donation:\\\\\\\\n"
+msgstr "कृपया दान गर्नुहोस्:\\\\\\\\n"

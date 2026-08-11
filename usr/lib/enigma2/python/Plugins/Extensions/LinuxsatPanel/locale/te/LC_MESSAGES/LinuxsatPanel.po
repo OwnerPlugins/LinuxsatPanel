@@ -15,8 +15,8 @@ msgstr ""
 msgid "Adult"
 msgstr "పెద్దలు"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\n"
-msgstr "మొత్తం కోడ్ @Lululla ద్వారా తిరిగి వ్రాయబడింది - 2024.07.20\n"
+msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "మొత్తం కోడ్ @Lululla ద్వారా తిరిగి వ్రాయబడింది - 2024.07.20\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "ఊహించని లోపం సంభవించింది. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
@@ -54,8 +54,8 @@ msgstr "ప్రత్యేక రేడియో గుత్తిని స
 msgid "Del Line"
 msgstr "డెల్ లైన్"
 
-msgid "Designs and Graphics by @oktus\n"
-msgstr "@oktus\n ద్వారా డిజైన్‌లు మరియు గ్రాఫిక్స్"
+msgid "Designs and Graphics by @oktus\\\\\\\\n"
+msgstr "@oktus\\\\\\\\n ద్వారా డిజైన్‌లు మరియు గ్రాఫిక్స్"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "గుత్తికి నకిలీ లేదా సూచిక లేని ఛానెల్‌లను జోడించవద్దు."
@@ -120,8 +120,8 @@ msgstr "HD ఛానెల్‌లు"
 msgid "High Definition"
 msgstr "హై డెఫినిషన్"
 
-msgid "If you think it is a useful tool for your box\n"
-msgstr "ఇది మీ పెట్టెకు ఉపయోగకరమైన సాధనం అని మీరు భావిస్తే\n"
+msgid "If you think it is a useful tool for your box\\\\\\\\n"
+msgstr "ఇది మీ పెట్టెకు ఉపయోగకరమైన సాధనం అని మీరు భావిస్తే\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "సమాచారం మరియు సంస్కృతి"
@@ -258,8 +258,8 @@ msgstr "డిఫాల్ట్‌గా క్రమబద్ధీకరి�
 msgid "Sports"
 msgstr "క్రీడలు"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\n"
-msgstr "వీరిచే సూచించబడినది: @masterG - @oktus - @pcd\n"
+msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "వీరిచే సూచించబడినది: @masterG - @oktus - @pcd\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "భూసంబంధమైన"
@@ -285,8 +285,8 @@ msgstr "భూసంబంధమైన గుత్తి:"
 msgid "Test Channels"
 msgstr "టెస్ట్ ఛానెల్‌లు"
 
-msgid "The Plugin lives thanks to the donations of each of you.\n"
-msgstr "మీలో ప్రతి ఒక్కరి విరాళాల కారణంగా ప్లగిన్ జీవిస్తుంది.\n"
+msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
+msgstr "మీలో ప్రతి ఒక్కరి విరాళాల కారణంగా ప్లగిన్ జీవిస్తుంది.\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "ప్రస్తుతం LCN డేటా నిల్వ లేదు."
@@ -315,5 +315,5 @@ msgstr "నవీకరణ రద్దు చేయబడింది!"
 msgid "of"
 msgstr "యొక్క"
 
-msgid "please make a donation:\n"
-msgstr "దయచేసి విరాళం ఇవ్వండి:\n"
+msgid "please make a donation:\\\\\\\\n"
+msgstr "దయచేసి విరాళం ఇవ్వండి:\\\\\\\\n"

@@ -21,8 +21,8 @@ msgstr "%s"
 msgid "Adult"
 msgstr "Ενηλίκων"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\n"
-msgstr "Όλος ο κώδικας ξαναγράφτηκε από τον @Lululla - 2024.07.20\n"
+msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "Όλος ο κώδικας ξαναγράφτηκε από τον @Lululla - 2024.07.20\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Παρουσιάστηκε ένα απροσδόκητο σφάλμα. Παρακαλώ δοκιμάστε ξανά αργότερα."
@@ -66,8 +66,8 @@ msgstr "Δημιουργήστε ξεχωριστό ραδιοφωνικό μπ�
 msgid "Del Line"
 msgstr "Διαγραφή Γραμμής"
 
-msgid "Designs and Graphics by @oktus\n"
-msgstr "Σχεδιασμοί και γραφικά από τον @oktus\n"
+msgid "Designs and Graphics by @oktus\\\\\\\\n"
+msgstr "Σχεδιασμοί και γραφικά από τον @oktus\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Μην προσθέτετε διπλότυπα ή μη ευρετηριασμένα κανάλια στο μπουκέτο."
@@ -144,8 +144,8 @@ msgstr "Κανάλια HD"
 msgid "High Definition"
 msgstr "Υψηλής ευκρίνειας"
 
-msgid "If you think it is a useful tool for your box\n"
-msgstr "Αν νομίζετε ότι είναι ένα χρήσιμο εργαλείο για τον δέκτη σας\n"
+msgid "If you think it is a useful tool for your box\\\\\\\\n"
+msgstr "Αν νομίζετε ότι είναι ένα χρήσιμο εργαλείο για τον δέκτη σας\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Πληροφόρηση και πολιτισμός"
@@ -317,8 +317,8 @@ msgstr "Προεπιλεγμένη ταξινόμηση"
 msgid "Sports"
 msgstr "Αθλητικά"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\n"
-msgstr "Προτείνεται από: @masterG - @oktus - @pcd\n"
+msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Προτείνεται από: @masterG - @oktus - @pcd\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Επίγεια"
@@ -344,8 +344,8 @@ msgstr "Επίγειο μπουκέτο:"
 msgid "Test Channels"
 msgstr "Δοκιμαστικά κανάλια"
 
-msgid "The Plugin lives thanks to the donations of each of you.\n"
-msgstr "Το πρόσθετο ζει χάρη στις δωρεές του καθενός από εσάς.\n"
+msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
+msgstr "Το πρόσθετο ζει χάρη στις δωρεές του καθενός από εσάς.\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Προς το παρόν δεν υπάρχουν αποθηκευμένα δεδομένα LCN."
@@ -374,5 +374,5 @@ msgstr "Η ενημέρωση ακυρώθηκε!"
 msgid "of"
 msgstr "από"
 
-msgid "please make a donation:\n"
-msgstr "παρακαλώ κάντε μια δωρεά:\n"
+msgid "please make a donation:\\\\\\\\n"
+msgstr "παρακαλώ κάντε μια δωρεά:\\\\\\\\n"

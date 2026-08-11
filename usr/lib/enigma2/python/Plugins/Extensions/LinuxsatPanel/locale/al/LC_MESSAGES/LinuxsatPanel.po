@@ -22,7 +22,7 @@ msgstr ""
 msgid "Adult"
 msgstr ""
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\n"
+msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
 msgstr ""
 
 msgid "An unexpected error occurred. Please try again later."
@@ -67,7 +67,7 @@ msgstr ""
 msgid "Del Line"
 msgstr ""
 
-msgid "Designs and Graphics by @oktus\n"
+msgid "Designs and Graphics by @oktus\\\\\\\\n"
 msgstr ""
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
@@ -142,7 +142,7 @@ msgstr ""
 msgid "High Definition"
 msgstr ""
 
-msgid "If you think it is a useful tool for your box\n"
+msgid "If you think it is a useful tool for your box\\\\\\\\n"
 msgstr ""
 
 msgid "Information and Culture"
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Sports"
 msgstr ""
 
-msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
 msgstr ""
 
 msgid "Terrestrial"
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Test Channels"
 msgstr ""
 
-msgid "The Plugin lives thanks to the donations of each of you.\n"
+msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
 msgstr ""
 
 msgid "There is currently no LCN data stored."
@@ -370,5 +370,5 @@ msgstr ""
 msgid "of"
 msgstr ""
 
-msgid "please make a donation:\n"
+msgid "please make a donation:\\\\\\\\n"
 msgstr ""

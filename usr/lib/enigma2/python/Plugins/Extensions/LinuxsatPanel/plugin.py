@@ -2310,6 +2310,15 @@ class ScriptInstaller(LPGridScreen):
             self.titles,
             self.pics,
             self.urls,
+            "Linuxsat Addons Panel",
+            "Linuxsat.png",
+            'wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/installer.sh -O - | /bin/sh')
+
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
             "Mountpoints",
             "Mountpoints.png",
             'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false" -O - | /bin/sh')

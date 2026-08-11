@@ -110,14 +110,33 @@ class lsConsole(Screen):
     def updateTitle(self):
         self.setTitle(self.newtitle)
 
+    def execScript(self, cmd):
+        """Run any command line reliably.
+
+        eConsoleAppContainer.execute() behaves differently across images
+        (some run the string through a shell, some split it on spaces),
+        so pipes, redirects and quotes are unreliable when passed
+        directly. Writing the command to a real temp script and running
+        that removes every one of those differences - a script file is
+        always interpreted by /bin/sh exactly as written.
+        """
+        script = '/tmp/.lsconsole_%d.sh' % self.run
+        try:
+            with codecs.open(script, 'w', encoding='utf-8') as f:
+                f.write('#!/bin/sh\n')
+                f.write(cmd + '\n')
+            os.chmod(script, 0o755)
+        except (IOError, OSError) as e:
+            print('[Console] cannot write run script:', e)
+            return self.container.execute(cmd)  # last-resort fallback
+        return self.container.execute('/bin/sh ' + script)
+
     def startRun(self):
         if self.showStartStopText:
             self['text'].setText(_('Execution progress\n\n'))
         cmd = self.cmdlist[self.run]
-        if not cmd.startswith('sh ') and not cmd.startswith('/bin/sh '):
-            cmd = '/bin/sh -c "{}"'.format(cmd.replace('"', '\\"'))
         print('[Console] executing:', cmd)
-        if self.container.execute(cmd):
+        if self.execScript(cmd):
             self['text'].setText(cmd)
             self.runFinished(-1)
 
@@ -129,7 +148,7 @@ class lsConsole(Screen):
         self.run += 1
 
         if self.run != len(self.cmdlist):
-            if self.container.execute(self.cmdlist[self.run]):
+            if self.execScript(self.cmdlist[self.run]):
                 self.runFinished(-1)
             return  # Exit early
 

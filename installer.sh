@@ -87,7 +87,7 @@ install_pkg() {
 install_pkg "$Packagerequests"
 
 echo "Downloading LinuxsatPanel..."
-wget --no-check-certificate 'https://github.com/Belfagor2005/LinuxsatPanel/archive/refs/heads/main.tar.gz' -O "$FILEPATH"
+wget 'https://github.com/Belfagor2005/LinuxsatPanel/archive/refs/heads/main.tar.gz' -O "$FILEPATH"
 if [ $? -ne 0 ]; then
     echo "Failed to download LinuxsatPanel package!"
     cleanup

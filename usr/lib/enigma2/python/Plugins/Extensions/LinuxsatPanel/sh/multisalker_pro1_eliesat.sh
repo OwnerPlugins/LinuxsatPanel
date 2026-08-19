@@ -107,7 +107,7 @@ else
     echo "> Downloading $plugin-$version package please wait ..."
     sleep 3s
 
-    wget -O $package --no-check-certificate $url
+    wget -O $package $url
     tar -xzf $package -C /
     extract=$?
     rm -rf $package > /dev/null 2>&1

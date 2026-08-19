@@ -203,7 +203,7 @@ else
 	#Download & install package
 	echo "> Downloading $plugin-$version package  please wait ..."
 	sleep 3
-	wget --show-progress -qO $temp_dir/$targz_file --no-check-certificate $url
+	wget --show-progress -qO $temp_dir/$targz_file $url
 	set -e
 	if [ -e /etc/enigma2/MultiStalkerPro.json ]; then
 		mv -f /etc/enigma2/MultiStalkerPro.json /tmp

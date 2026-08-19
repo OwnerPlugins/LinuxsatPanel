@@ -22,8 +22,9 @@ msgstr "%s"
 msgid "Adult"
 msgstr "Pro dospělé"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Veškerý kód byl přepsán @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "Veškerý kód byl přepsán @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Došlo k neočekávané chybě. Prosím zkuste to znovu později."
@@ -67,8 +68,9 @@ msgstr "Vytvořit samostatný rádiový bouquet"
 msgid "Del Line"
 msgstr "Smazat řádek"
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Design a grafika od @oktus\\\\\\\\n"
+msgstr "Design a grafika od @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Nepřidávejte duplicitní nebo neindexované kanály do bouquetu."
@@ -145,8 +147,9 @@ msgstr "HD kanály"
 msgid "High Definition"
 msgstr "Vysoké rozlišení"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Pokud si myslíte, že je to užitečný nástroj pro váš přijímač\\\\\\\\n"
+msgstr "Pokud si myslíte, že je to užitečný nástroj pro váš přijímač\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Informace a kultura"
@@ -318,8 +321,9 @@ msgstr "Výchozí řazení"
 msgid "Sports"
 msgstr "Sport"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Navrženo: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Navrženo: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Terestrický"
@@ -345,8 +349,9 @@ msgstr "Terestrický bouquet:"
 msgid "Test Channels"
 msgstr "Testovací kanály"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Plugin žije díky darům každého z vás.\\\\\\\\n"
+msgstr "Plugin žije díky darům každého z vás.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "V současné době nejsou uložena žádná LCN data."
@@ -375,5 +380,6 @@ msgstr "Aktualizace zrušena!"
 msgid "of"
 msgstr "z"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "prosím přispějte:\\\\\\\\n"
+msgstr "prosím přispějte:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

@@ -22,8 +22,9 @@ msgstr "%s"
 msgid "Adult"
 msgstr "Felnőtt"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Az összes kódot @Lululla írta újra - 2024.07.20\\\\\\\\n"
+msgstr "Az összes kódot @Lululla írta újra - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Váratlan hiba történt. Kérjük, próbálja újra később."
@@ -67,8 +68,9 @@ msgstr "Külön rádió csokor létrehozása"
 msgid "Del Line"
 msgstr "Sor törlése"
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Tervezés és grafika: @oktus\\\\\\\\n"
+msgstr "Tervezés és grafika: @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Ne adjon hozzá duplikált vagy nem indexelt csatornákat a csokorhoz."
@@ -145,8 +147,9 @@ msgstr "HD csatornák"
 msgid "High Definition"
 msgstr "Nagy felbontás"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Ha úgy gondolja, hogy ez egy hasznos eszköz a vevőjéhez\\\\\\\\n"
+msgstr "Ha úgy gondolja, hogy ez egy hasznos eszköz a vevőjéhez\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Információ és kultúra"
@@ -318,8 +321,9 @@ msgstr "Alapértelmezett rendezés"
 msgid "Sports"
 msgstr "Sport"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Javasolta: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Javasolta: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Földfelszíni"
@@ -345,8 +349,9 @@ msgstr "Földfelszíni csokor:"
 msgid "Test Channels"
 msgstr "Teszt csatornák"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "A bővítmény az Önök adományainak köszönhetően él.\\\\\\\\n"
+msgstr "A bővítmény az Önök adományainak köszönhetően él.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Jelenleg nincs tárolt LCN adat."
@@ -375,5 +380,6 @@ msgstr "Frissítés megszakítva!"
 msgid "of"
 msgstr "/"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "kérjük, adományozzon:\\\\\\\\n"
+msgstr "kérjük, adományozzon:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

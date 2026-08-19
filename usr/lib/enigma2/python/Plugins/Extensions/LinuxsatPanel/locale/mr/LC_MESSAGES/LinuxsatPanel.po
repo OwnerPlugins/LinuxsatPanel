@@ -15,8 +15,8 @@ msgstr ""
 msgid "Adult"
 msgstr "प्रौढ"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "सर्व कोड @Lululla - 2024.07.20\\\\\\\\n ने पुन्हा लिहिले होते"
+msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "सर्व कोड @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n ने पुन्हा लिहिले होते"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "एक अनपेक्षित त्रुटी आली. कृपया नंतर पुन्हा प्रयत्न करा."
@@ -54,8 +54,8 @@ msgstr "स्वतंत्र रेडिओ पुष्पगुच्छ 
 msgid "Del Line"
 msgstr "डेल लाइन"
 
-msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "@oktus द्वारे डिझाइन आणि ग्राफिक्स\\\\\\\\n"
+msgid "Designs and Graphics by @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "@oktus द्वारे डिझाइन आणि ग्राफिक्स\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "गुलदस्त्यात डुप्लिकेट किंवा अनुक्रमित नसलेले चॅनेल जोडू नका."
@@ -120,8 +120,8 @@ msgstr "एचडी चॅनेल"
 msgid "High Definition"
 msgstr "हाय डेफिनेशन"
 
-msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "तुमच्या बॉक्ससाठी हे उपयुक्त साधन आहे असे तुम्हाला वाटत असल्यास\\\\\\\\n"
+msgid "If you think it is a useful tool for your box\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "तुमच्या बॉक्ससाठी हे उपयुक्त साधन आहे असे तुम्हाला वाटत असल्यास\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "माहिती आणि संस्कृती"
@@ -258,8 +258,8 @@ msgstr "डीफॉल्ट क्रमवारी लावा"
 msgid "Sports"
 msgstr "खेळ"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "यांनी सुचविलेले: @masterG - @oktus - @pcd\\\\\\\\n"
+msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "यांनी सुचविलेले: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "पार्थिव"
@@ -285,8 +285,8 @@ msgstr "स्थलीय पुष्पगुच्छ:"
 msgid "Test Channels"
 msgstr "चाचणी चॅनेल"
 
-msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "तुमच्या प्रत्येकाच्या देणगीमुळे प्लगइन जिवंत आहे.\\\\\\\\n"
+msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "तुमच्या प्रत्येकाच्या देणगीमुळे प्लगइन जिवंत आहे.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "सध्या कोणताही LCN डेटा संग्रहित नाही."
@@ -315,5 +315,5 @@ msgstr "अद्यतन रद्द केले!"
 msgid "of"
 msgstr "च्या"
 
-msgid "please make a donation:\\\\\\\\n"
-msgstr "कृपया देणगी द्या:\\\\\\\\n"
+msgid "please make a donation:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "कृपया देणगी द्या:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

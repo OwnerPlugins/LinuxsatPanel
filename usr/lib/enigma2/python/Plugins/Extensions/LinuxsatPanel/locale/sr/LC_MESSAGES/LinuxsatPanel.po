@@ -18,8 +18,9 @@ msgstr "%s"
 msgid "Adult"
 msgstr "За одрасле"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Сав код је поново написао @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "Сав код је поново написао @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Дошло је до неочекиване грешке. Молимо покушајте поново касније."
@@ -63,8 +64,9 @@ msgstr "Направи засебни радио букет"
 msgid "Del Line"
 msgstr "Избриши линију"
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Дизајн и графика од @oktus\\\\\\\\n"
+msgstr "Дизајн и графика од @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Немој додавати дуплиране или неиндексиране канале у букет."
@@ -141,8 +143,9 @@ msgstr "ХД канали"
 msgid "High Definition"
 msgstr "Висока дефиниција"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Ако мислите да је то користан алат за ваш пријемник\\\\\\\\n"
+msgstr "Ако мислите да је то користан алат за ваш пријемник\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Информације и култура"
@@ -314,8 +317,9 @@ msgstr "Подразумевано сортирање"
 msgid "Sports"
 msgstr "Спорт"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Предложено од: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Предложено од: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Земаљски"
@@ -341,8 +345,9 @@ msgstr "Земаљски букет:"
 msgid "Test Channels"
 msgstr "Тестни канали"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Додатак живи захваљујући донацијама сваког од вас.\\\\\\\\n"
+msgstr "Додатак живи захваљујући донацијама сваког од вас.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Тренутно нема сачуваних ЛЦН података."
@@ -371,5 +376,6 @@ msgstr "Ажурирање прекинуто!"
 msgid "of"
 msgstr "од"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "молимо да донирате:\\\\\\\\n"
+msgstr "молимо да донирате:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

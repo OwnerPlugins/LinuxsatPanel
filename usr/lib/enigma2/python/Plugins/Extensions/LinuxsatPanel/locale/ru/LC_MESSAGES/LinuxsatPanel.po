@@ -22,8 +22,9 @@ msgstr "%s"
 msgid "Adult"
 msgstr "Для взрослых"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Весь код был переписан @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "Весь код был переписан @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Произошла непредвиденная ошибка. Пожалуйста, повторите попытку позже."
@@ -67,8 +68,9 @@ msgstr "Создать отдельный радио-букет"
 msgid "Del Line"
 msgstr "Удалить строку"
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Дизайн и графика от @oktus\\\\\\\\n"
+msgstr "Дизайн и графика от @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Не добавлять дублированные или неиндексированные каналы в букет."
@@ -145,8 +147,9 @@ msgstr "HD каналы"
 msgid "High Definition"
 msgstr "Высокое разрешение"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Если вы считаете, что это полезный инструмент для вашего ресивера\\\\\\\\n"
+msgstr "Если вы считаете, что это полезный инструмент для вашего ресивера\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Информация и культура"
@@ -223,7 +226,7 @@ msgid "No update information available."
 msgstr "Нет доступной информации об обновлении."
 
 msgid "Nothing found for '%s'"
-msgstr "По запросу \\\\\\\"%s\\\\\\\" ничего не найдено"
+msgstr "По запросу \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"%s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ничего не найдено"
 
 msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
 msgstr "После настройки букет будет автоматически обновляться при выполнении ручного сканирования."
@@ -318,8 +321,9 @@ msgstr "Сортировка по умолчанию"
 msgid "Sports"
 msgstr "Спорт"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Предложено: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Предложено: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Эфирное"
@@ -345,8 +349,9 @@ msgstr "Эфирный букет:"
 msgid "Test Channels"
 msgstr "Тестовые каналы"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Плагин существует благодаря пожертвованиям каждого из вас.\\\\\\\\n"
+msgstr "Плагин существует благодаря пожертвованиям каждого из вас.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "В настоящее время нет сохраненных данных LCN."
@@ -375,5 +380,6 @@ msgstr "Обновление прервано!"
 msgid "of"
 msgstr "из"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "пожалуйста, сделайте пожертвование:\\\\\\\\n"
+msgstr "пожалуйста, сделайте пожертвование:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

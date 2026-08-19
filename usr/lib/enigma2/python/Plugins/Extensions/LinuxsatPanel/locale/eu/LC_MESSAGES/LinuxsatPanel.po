@@ -15,8 +15,9 @@ msgstr ""
 msgid "Adult"
 msgstr "Heldua"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Kode guztia @Lulullak berridatzi zuen - 2024.07.20\\\\\\\\n"
+msgstr "Kode guztia @Lulullak berridatzi zuen - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Ustekabeko errore bat gertatu da. Mesedez, saiatu berriro geroago."
@@ -60,8 +61,9 @@ msgstr "Sortu irrati sorta bereizia"
 msgid "Del Line"
 msgstr ""
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "@oktus-en diseinuak eta grafikoak\\\\\\\\n"
+msgstr "@oktus-en diseinuak eta grafikoak\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Ez gehitu kanal bikoiztuak edo indexatu gabekoak sortari."
@@ -138,8 +140,9 @@ msgstr "HD kanalak"
 msgid "High Definition"
 msgstr "Definizio handikoa"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Zure kutxarako tresna erabilgarria dela uste baduzu\\\\\\\\n"
+msgstr "Zure kutxarako tresna erabilgarria dela uste baduzu\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Informazioa eta Kultura"
@@ -311,8 +314,9 @@ msgstr "Ordenatu lehenetsia"
 msgid "Sports"
 msgstr "Kirolak"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Honek iradokitua: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Honek iradokitua: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Lurrekoa"
@@ -338,8 +342,9 @@ msgstr "Lurreko sorta:"
 msgid "Test Channels"
 msgstr "Proba kanalak"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Plugin-a zuetako bakoitzaren dohaintzei esker bizi da.\\\\\\\\n"
+msgstr "Plugin-a zuetako bakoitzaren dohaintzei esker bizi da.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Une honetan ez dago LCN daturik gordeta."
@@ -368,5 +373,6 @@ msgstr "Eguneratzea bertan behera utzi da!"
 msgid "of"
 msgstr "de"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "mesedez egin dohaintza:\\\\\\\\n"
+msgstr "mesedez egin dohaintza:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

@@ -18,8 +18,9 @@ msgstr "%s"
 msgid "Adult"
 msgstr "Za odrasle"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Vso kodo je ponovno napisal @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "Vso kodo je ponovno napisal @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Prišlo je do nepričakovane napake. Poskusite znova pozneje."
@@ -63,8 +64,9 @@ msgstr "Ustvari ločen radijski šopek"
 msgid "Del Line"
 msgstr "Izbriši vrstico"
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Oblikovanje in grafika @oktus\\\\\\\\n"
+msgstr "Oblikovanje in grafika @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Ne dodajajte podvojenih ali neindeksiranih kanalov v šopek."
@@ -141,8 +143,9 @@ msgstr "HD kanali"
 msgid "High Definition"
 msgstr "Visoka ločljivost"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Če menite, da je to uporabno orodje za vaš sprejemnik\\\\\\\\n"
+msgstr "Če menite, da je to uporabno orodje za vaš sprejemnik\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Informacije in kultura"
@@ -314,8 +317,9 @@ msgstr "Privzeto razvrščanje"
 msgid "Sports"
 msgstr "Šport"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Predlagano od: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Predlagano od: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Zemeljski"
@@ -341,8 +345,9 @@ msgstr "Zemeljski šopek:"
 msgid "Test Channels"
 msgstr "Testni kanali"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Vtičnik živi zahvaljujoč donacijam vsakega izmed vas.\\\\\\\\n"
+msgstr "Vtičnik živi zahvaljujoč donacijam vsakega izmed vas.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Trenutno ni shranjenih nobenih podatkov LCN."
@@ -371,5 +376,6 @@ msgstr "Posodobitev prekinjena!"
 msgid "of"
 msgstr "od"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "prosim prispevajte:\\\\\\\\n"
+msgstr "prosim prispevajte:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

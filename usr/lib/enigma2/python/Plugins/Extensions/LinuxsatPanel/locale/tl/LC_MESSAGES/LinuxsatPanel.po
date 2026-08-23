@@ -15,8 +15,9 @@ msgstr ""
 msgid "Adult"
 msgstr "Matanda"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Ang lahat ng code ay muling isinulat ni @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "Ang lahat ng code ay muling isinulat ni @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "May naganap na hindi inaasahang error. Pakisubukang muli mamaya."
@@ -60,8 +61,9 @@ msgstr "Gumawa ng hiwalay na palumpon ng radyo"
 msgid "Del Line"
 msgstr ""
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Mga Disenyo at Graphics ni @oktus\\\\\\\\n"
+msgstr "Mga Disenyo at Graphics ni @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Huwag magdagdag ng mga duplicate o hindi naka-index na channel sa bouquet."
@@ -138,8 +140,9 @@ msgstr "Mga HD Channel"
 msgid "High Definition"
 msgstr ""
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Kung sa tingin mo ito ay isang kapaki-pakinabang na tool para sa iyong kahon\\\\\\\\n"
+msgstr "Kung sa tingin mo ito ay isang kapaki-pakinabang na tool para sa iyong kahon\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Impormasyon at Kultura"
@@ -311,8 +314,9 @@ msgstr "Pag-uri-uriin ang Default"
 msgid "Sports"
 msgstr "Palakasan"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Iminungkahi ni: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Iminungkahi ni: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr ""
@@ -338,8 +342,9 @@ msgstr "Terrestrial na palumpon:"
 msgid "Test Channels"
 msgstr "Mga Channel sa Pagsubok"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Buhay ang Plugin salamat sa mga donasyon ng bawat isa sa inyo.\\\\\\\\n"
+msgstr "Buhay ang Plugin salamat sa mga donasyon ng bawat isa sa inyo.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Kasalukuyang walang LCN data na nakaimbak."
@@ -368,5 +373,6 @@ msgstr "Na-abort ang Update!"
 msgid "of"
 msgstr "ng"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "mangyaring magbigay ng donasyon:\\\\\\\\n"
+msgstr "mangyaring magbigay ng donasyon:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

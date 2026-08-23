@@ -15,8 +15,9 @@ msgstr "%S"
 msgid "Adult"
 msgstr "Dewasa"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Semua kode ditulis ulang oleh @Lululla - 20.07.2024\\\\\\\\n"
+msgstr "Semua kode ditulis ulang oleh @Lululla - 20.07.2024\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Terjadi kesalahan yang tidak terduga. Silakan coba lagi nanti."
@@ -60,8 +61,9 @@ msgstr "Buat buket radio terpisah"
 msgid "Del Line"
 msgstr "Jalur Del"
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Desain dan Grafik oleh @oktus\\\\\\\\n"
+msgstr "Desain dan Grafik oleh @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Jangan menambahkan saluran yang diduplikasi atau tidak diindeks ke buket."
@@ -138,8 +140,9 @@ msgstr "Saluran HD"
 msgid "High Definition"
 msgstr "Definisi Tinggi"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Jika menurut Anda ini adalah alat yang berguna untuk kotak Anda\\\\\\\\n"
+msgstr "Jika menurut Anda ini adalah alat yang berguna untuk kotak Anda\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Informasi dan Budaya"
@@ -311,8 +314,9 @@ msgstr "Urutkan Default"
 msgid "Sports"
 msgstr "Olahraga"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Disarankan oleh: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Disarankan oleh: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Terestrial"
@@ -338,8 +342,9 @@ msgstr "Buket terestrial:"
 msgid "Test Channels"
 msgstr "Saluran Uji"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Plugin ini hidup berkat donasi Anda masing-masing.\\\\\\\\n"
+msgstr "Plugin ini hidup berkat donasi Anda masing-masing.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Saat ini tidak ada data LCN yang disimpan."
@@ -368,5 +373,6 @@ msgstr "Pembaruan Dibatalkan!"
 msgid "of"
 msgstr "dari"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "silakan berdonasi:\\\\\\\\n"
+msgstr "silakan berdonasi:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

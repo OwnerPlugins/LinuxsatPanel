@@ -17,8 +17,9 @@ msgstr "%s"
 msgid "Adult"
 msgstr "Adult"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
+msgstr "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "An unexpected error occurred. Please try again later."
@@ -62,8 +63,9 @@ msgstr "Create separate radio bouquet"
 msgid "Del Line"
 msgstr ""
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Designs and Graphics by @oktus\\\\\\\\n"
+msgstr "Designs and Graphics by @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Do not add duplicated or non indexed channels to the bouquet."
@@ -141,8 +143,9 @@ msgstr "HD Channels"
 msgid "High Definition"
 msgstr "High Definition"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "If you think it is a useful tool for your box\\\\\\\\n"
+msgstr "If you think it is a useful tool for your box\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Information and Culture"
@@ -315,8 +318,9 @@ msgstr "Sort Default"
 msgid "Sports"
 msgstr "Sports"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Suggested by: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Terrestrial"
@@ -342,8 +346,9 @@ msgstr "Terrestrial bouquet:"
 msgid "Test Channels"
 msgstr "Test Channels"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
+msgstr "The Plugin lives thanks to the donations of each of you.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "There is currently no LCN data stored."
@@ -372,5 +377,6 @@ msgstr "Update Aborted!"
 msgid "of"
 msgstr "of"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "please make a donation:\\\\\\\\n"
+msgstr "please make a donation:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

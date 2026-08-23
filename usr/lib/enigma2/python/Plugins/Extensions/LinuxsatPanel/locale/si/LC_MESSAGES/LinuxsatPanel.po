@@ -15,8 +15,8 @@ msgstr ""
 msgid "Adult"
 msgstr "වැඩිහිටි"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "සියලුම කේතය @Lululla - 2024.07.20\\\\\\\\n විසින් නැවත ලියා ඇත"
+msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "සියලුම කේතය @Lululla - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n විසින් නැවත ලියා ඇත"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "අනපේක්ෂිත දෝෂයක් සිදු විය. කරුණාකර පසුව නැවත උත්සාහ කරන්න."
@@ -54,8 +54,8 @@ msgstr "වෙනම ගුවන් විදුලි මල් කළඹක�
 msgid "Del Line"
 msgstr "ඩෙල් ලයින්"
 
-msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "@oktus\\\\\\\\n විසින් නිර්මාණ සහ ග්‍රැෆික්ස්"
+msgid "Designs and Graphics by @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "@oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n විසින් නිර්මාණ සහ ග්‍රැෆික්ස්"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "මල් කළඹට අනුපිටපත් හෝ සුචිගත නොකළ නාලිකා එකතු නොකරන්න."
@@ -120,8 +120,8 @@ msgstr "HD නාලිකා"
 msgid "High Definition"
 msgstr "ඉහළ අර්ථ දැක්වීම"
 
-msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "එය ඔබගේ පෙට්ටියට ප්‍රයෝජනවත් මෙවලමක් යැයි ඔබ සිතන්නේ නම්\\\\\\\\n"
+msgid "If you think it is a useful tool for your box\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "එය ඔබගේ පෙට්ටියට ප්‍රයෝජනවත් මෙවලමක් යැයි ඔබ සිතන්නේ නම්\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "තොරතුරු සහ සංස්කෘතිය"
@@ -258,8 +258,8 @@ msgstr "පෙරනිමි ලෙස වර්ග කරන්න"
 msgid "Sports"
 msgstr "ක්රීඩා"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "යෝජිත: @masterG - @oktus - @pcd\\\\\\\\n"
+msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "යෝජිත: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "භෞමික"
@@ -285,8 +285,8 @@ msgstr "භූමිෂ්ඨ මල් කළඹ:"
 msgid "Test Channels"
 msgstr "පරීක්ෂණ නාලිකා"
 
-msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "ඔබ එක් එක් අයගේ පරිත්‍යාගවලට ස්තූතිවන්ත වෙමින් ප්ලගිනය ජීවත් වේ.\\\\\\\\n"
+msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "ඔබ එක් එක් අයගේ පරිත්‍යාගවලට ස්තූතිවන්ත වෙමින් ප්ලගිනය ජීවත් වේ.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "දැනට LCN දත්ත ගබඩා කර නොමැත."
@@ -315,5 +315,5 @@ msgstr "යාවත්කාලීන කිරීම නවත්වන ලද
 msgid "of"
 msgstr "හි"
 
-msgid "please make a donation:\\\\\\\\n"
-msgstr "කරුණාකර පරිත්‍යාගයක් කරන්න:\\\\\\\\n"
+msgid "please make a donation:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
+msgstr "කරුණාකර පරිත්‍යාගයක් කරන්න:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

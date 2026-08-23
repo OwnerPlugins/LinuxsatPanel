@@ -22,8 +22,9 @@ msgstr "%s"
 msgid "Adult"
 msgstr "Erwachsene"
 
+#, fuzzy
 msgid "All code was rewritten by @Lululla - 2024.07.20\\\\\\\\n"
-msgstr "Der gesamte Code wurde von @Lululla neu geschrieben - 2024.07.20\\\\\\\\n"
+msgstr "Der gesamte Code wurde von @Lululla neu geschrieben - 2024.07.20\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
@@ -67,8 +68,9 @@ msgstr "Separates Radiobouquet erstellen"
 msgid "Del Line"
 msgstr "Zeile löschen"
 
+#, fuzzy
 msgid "Designs and Graphics by @oktus\\\\\\\\n"
-msgstr "Designs und Grafiken von @oktus\\\\\\\\n"
+msgstr "Designs und Grafiken von @oktus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Fügen Sie keine duplizierten oder nicht indizierten Kanäle zum Bouquet hinzu."
@@ -145,8 +147,9 @@ msgstr "HD-Kanäle"
 msgid "High Definition"
 msgstr "Hohe Auflösung"
 
+#, fuzzy
 msgid "If you think it is a useful tool for your box\\\\\\\\n"
-msgstr "Wenn Sie denken, dass es ein nützliches Werkzeug für Ihre Box ist\\\\\\\\n"
+msgstr "Wenn Sie denken, dass es ein nützliches Werkzeug für Ihre Box ist\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Information and Culture"
 msgstr "Information und Kultur"
@@ -318,8 +321,9 @@ msgstr "Standardsortierung"
 msgid "Sports"
 msgstr "Sport"
 
+#, fuzzy
 msgid "Suggested by: @masterG - @oktus - @pcd\\\\\\\\n"
-msgstr "Vorgeschlagen von: @masterG - @oktus - @pcd\\\\\\\\n"
+msgstr "Vorgeschlagen von: @masterG - @oktus - @pcd\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Terrestrial"
 msgstr "Terrestrisch"
@@ -345,8 +349,9 @@ msgstr "Terrestrisches Bouquet:"
 msgid "Test Channels"
 msgstr "Testkanäle"
 
+#, fuzzy
 msgid "The Plugin lives thanks to the donations of each of you.\\\\\\\\n"
-msgstr "Das Plugin lebt dank der Spenden eines jeden von Ihnen.\\\\\\\\n"
+msgstr "Das Plugin lebt dank der Spenden eines jeden von Ihnen.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Derzeit sind keine LCN-Daten gespeichert."
@@ -375,5 +380,6 @@ msgstr "Aktualisierung abgebrochen!"
 msgid "of"
 msgstr "von"
 
+#, fuzzy
 msgid "please make a donation:\\\\\\\\n"
-msgstr "bitte spenden Sie:\\\\\\\\n"
+msgstr "bitte spenden Sie:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"

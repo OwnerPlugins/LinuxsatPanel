@@ -11,9 +11,10 @@ Resolutions: HD | FHD | WQHD
 
 
 CREDITS
-Original authors: masterG, oktus, pcd
+Original authors: @masterG, @pcd
 Rewritten by: Lululla (2024-07-20)
-Designs & Graphics: oktus
+Thank's for support: @pQu4k3r
+Designs & Graphics: @oktus
 Support: www.linuxsat-support.com
 
 

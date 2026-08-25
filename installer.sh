@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='3.0.3'
-changelog="\n--Hotfix: Fix Console"
+version='3.0.4'
+changelog="\n--Added Commit History viewer (INFO button -> Commit History)\n--LSinfo now supports 3 modes: info/about/commits\n--Commit list shows date, author, message and hash\n--Updated info.txt with clean formatting (no special chars)\n--Fixed AsyncMixin inheritance for LSinfo\n--Removed decorative ASCII lines for better compatibility\n--Updated README.md to v3.0.4"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

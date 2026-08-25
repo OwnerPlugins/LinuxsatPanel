@@ -1,37 +1,101 @@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WELCOME TO LINUXSAT-SUPPORT PANEL ADDONS
+Version: 2.8.5
+Last update: 2024-12-31
 
-🎉 WELCOME TO 
 
-LINUXSAT-SUPPORT PANEL ADDONS
+ABOUT
+Professional addons manager for Enigma2
+Supports: OE2.0 (ipkg) | OE2.2/2.5/2.6 (dpkg)
+Resolutions: HD | FHD | WQHD
+33+ categories | 40+ community scripts | 100+ plugins
 
-🗓️ 2024.07.20 INIT RECODE PANEL PLUGIN
 
-🙏 Thank you Lululla 
+CREDITS
+Original authors: masterG, oktus, pcd
+Rewritten by: Lululla (2024-07-20)
+Designs & Graphics: oktus
+Support: www.linuxsat-support.com
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-🔗 Support on: linuxsat-support.com
+DISCLAIMER
+I am NOT responsible for any issues you may encounter.
+If needed, you can get help on the forum to resolve issues.
 
-⚠️ I am NOT responsible for any issues you may
-encounter once you install the plugins and skins.
-However, if required, you can get help to resolve the issue.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-🚀 Init version 2.0 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-📋 Changelog:
-🛠️ find all chenge on github repository
+VERSION HISTORY
+All commits and detailed changelog are available via:
 https://github.com/OwnerPlugins/LinuxsatPanel
 
+To view the full commit history:
+Press the INFO button in the main panel
+Select "Commit History" from the menu
 
-```
 
-🆕 20240809 - 2.1 version is online
-📋 Changelog:
-🟡 Yellow (long press): FORCE UPDATE
-ℹ️ Info (long press): FORCE UPDATE
-🟢 Green: UPDATE REQUEST
-➕ Added Skins Team
+KEY FEATURES
+One-click installation of plugins, skins & scripts
+Automatic detection of package manager (opkg/dpkg)
+Free C-line integration (CCcam & Oscam)
+LCN Scanner for terrestrial channel ordering
+Script Installer with 40+ community scripts
+Ciefp specialized installer
+Live console output during installations
+Integrated File Commander for logs
+Automatic update notifications
 
----
+
+CATEGORIES OVERVIEW
+Backup Tools
+Bouquets Tools
+Channel List
+Ciefp Installer
+DvbUsb Drivers
+EPG Tools
+Feeds Image
+Games Tools
+IPTV Tools
+KiddaC
+Lululla Scripts
+Lululla Zone
+Mediaplayer-Youtube
+MultiBoot Tools
+Multimedia Tools
+Panels Addons
+Picons Tools
+Python Library
+Radio Tools
+Script Installer
+Skins Team
+Keys Tools
+Softcams
+Sport Tools
+Streamlink Tools
+Utility Tools
+VPN Tools
+WeatherTools
+WeatherForecast
+Webcam Tools
+Adult (18+)
+Other
+Information
+About
+
+
+CONTROLS
+Arrow keys        Navigate through the grid
+OK                Open selected category/execute action
+RED               Exit to About screen
+GREEN             Search addons
+YELLOW (long)     Force update
+BLUE              Restart Enigma2 GUI
+INFO              Show system information / Commit History
+0 (ZERO)          Toggle A-Z/Default sorting
+
+
+DONATIONS
+The plugin lives thanks to donations from users like you!
+A coffee costs nothing, but means a lot to us.
+https://paypal.com/paypalme/belfagor2005
+
+
+License: GPL v2
+Homepage: www.linuxsat-support.com

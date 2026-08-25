@@ -1,9 +1,9 @@
 Package: enigma2-plugin-extensions-linuxsat-panel
-Version: 3.0.3
+Version: 3.0.4
 Description: addons panel
 Section: extra
 Priority: optional
-Maintainer: master G - Lululla - graph: oktus
+Maintainer: master G - Lululla - pQu4k3r - graph: oktus
 Architecture: all
 OE: 2.0/2.5-2.6
 Homepage: https://www.linuxsat-support.com/thread/158925-linuxsat-panel-support-discussion/

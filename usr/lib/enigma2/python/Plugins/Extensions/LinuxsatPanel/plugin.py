@@ -175,6 +175,7 @@ License: GPL v2
 
 import codecs
 import io
+import time
 from datetime import datetime as dt
 from json import loads
 from re import compile, search, DOTALL
@@ -182,7 +183,7 @@ from shutil import copy2
 from sys import version_info
 
 from os import R_OK, access, chmod, makedirs, system, walk, listdir
-from os.path import exists, join
+from os.path import exists, join, getmtime
 
 import six
 import requests
@@ -3542,25 +3543,31 @@ class LSinfo(AsyncMixin, Screen):
         self["pixmap"] = Pixmap()
         self["pixmap"].hide()
 
-        self["actions"] = ActionMap(["OkCancelActions",
-                                     "DirectionActions",
-                                     "HotkeyActions",
-                                     "InfobarEPGActions",
-                                     "ColorActions",
-                                     "ChannelSelectBaseActions"],
-                                    {"ok": self.close,
-                                     "back": self.close,
-                                     "cancel": self.close,
-                                     "up": self.Up,
-                                     "down": self.Down,
-                                     "left": self.Up,
-                                     "right": self.Down,
-                                     "green": self.update_me if mode == "info" else self.close,
-                                     "yellow_long": self.update_dev if mode == "info" else self.close,
-                                     "info_long": self.update_dev if mode == "info" else self.close,
-                                     "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
-                                     "red": self.close},
-                                    -1)
+        self["actions"] = ActionMap(
+            [
+                "OkCancelActions",
+                "DirectionActions",
+                "HotkeyActions",
+                "InfobarEPGActions",
+                "ColorActions",
+                "ChannelSelectBaseActions"
+            ],
+            {
+                "ok": self.close,
+                "back": self.close,
+                "cancel": self.close,
+                "up": self.Up,
+                "down": self.Down,
+                "left": self.Up,
+                "right": self.Down,
+                "green": self.refresh_cache if mode == "commits" else self.update_me,
+                "yellow_long": self.update_dev if mode == "info" else self.close,
+                "info_long": self.update_dev if mode == "info" else self.close,
+                "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
+                "red": self.close
+            },
+            -1
+        )
 
         self.Update = False
         self.timer = eTimer()
@@ -3575,7 +3582,7 @@ class LSinfo(AsyncMixin, Screen):
             try:
                 self.timerz_conn = self.timerz.timeout.connect(self.check_vers)
             except BaseException:
-                self.timerz.callback.append(self.check_vers)
+                self.timerz.callback.append(self.timerz)
             self.timerz.start(2000, 1)
 
         self.onClose.append(self._stopPoll)
@@ -3926,55 +3933,140 @@ class LSinfo(AsyncMixin, Screen):
             print("Error in openinfo:", e)
             return "Error loading information"
 
-    def _fetch_commits(self):
-        """Fetch all commits from OwnerPlugins/upload API with pagination."""
-        all_commits = []
-        page = 1
-        per_page = 100
-        url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
+    def _get_cache_path(self):
+        """Return path to commits cache file."""
+        return join(plugin_path, "commits_cache.json")
 
-        while True:
+    def _load_commits_from_cache(self):
+        """Load commits from cache file."""
+        cache_path = self._get_cache_path()
+        if exists(cache_path):
             try:
-                params = {"per_page": per_page, "page": page}
-                response = requests.get(url, params=params, timeout=30)
-                response.raise_for_status()
-                data = response.json()
+                with open(cache_path, "r") as f:
+                    return loads(f.read())
+            except:
+                pass
+        return None
 
-                if not data:
-                    break
+    def _save_commits_to_cache(self, commits):
+        """Save commits to cache file."""
+        cache_path = self._get_cache_path()
+        try:
+            with open(cache_path, "w") as f:
+                f.write(str(commits))
+            return True
+        except:
+            return False
 
-                all_commits.extend(data)
+    def _get_cache_age(self):
+        """Return age of cache in seconds."""
+        cache_path = self._get_cache_path()
+        if exists(cache_path):
+            try:
+                mtime = getmtime(cache_path)
+                return time.time() - mtime
+            except:
+                pass
+        return None
 
-                link_header = response.headers.get('Link', '')
-                if 'rel="next"' not in link_header:
-                    break
+    def _fetch_commits(self):
+        """Fetch commits from API or load from cache."""
+        # Try to load from cache first
+        cached = self._load_commits_from_cache()
+        if cached:
+            print("[LSinfo] Loaded commits from cache")
+            return cached
 
-                page += 1
-
-            except Exception as e:
-                print("[LSinfo] Error fetching commits:", e)
+        # If no cache, fetch from API
+        try:
+            print("[LSinfo] No cache found, fetching from API...")
+            url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
+            params = {"per_page": 100, "page": 1}
+            response = requests.get(url, params=params, timeout=30)
+            
+            if response.status_code == 403:
+                print("[LSinfo] Rate limit exceeded")
+                self._rate_limited = True
                 return None
+                
+            response.raise_for_status()
+            data = response.json()
+            
+            if data:
+                self._save_commits_to_cache(data)
+                print("[LSinfo] Fetched and cached %d commits" % len(data))
+                return data
+            return None
+                
+        except Exception as e:
+            print("[LSinfo] Error fetching commits:", e)
+            return None
 
-        return all_commits
+    def refresh_cache(self):
+        """Force refresh commits cache."""
+        if self.mode != "commits":
+            return
+        self["list"].setText(_("Refreshing commits..."))
+        self._startAsync(self._force_fetch_commits, self._display_commits)
+
+    def _force_fetch_commits(self):
+        """Force fetch commits from API."""
+        try:
+            url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
+            params = {"per_page": 100, "page": 1}
+            response = requests.get(url, params=params, timeout=30)
+            
+            if response.status_code == 403:
+                print("[LSinfo] Rate limit exceeded")
+                return None
+                
+            response.raise_for_status()
+            data = response.json()
+            
+            if data:
+                self._save_commits_to_cache(data)
+                print("[LSinfo] Cache refreshed with %d commits" % len(data))
+                return data
+            return None
+                
+        except Exception as e:
+            print("[LSinfo] Error refreshing cache:", e)
+            return None
 
     def _display_commits(self, commits_data):
-        """Display formatted commit list - clean version."""
+        """Display formatted commit list."""
         if self._closed:
             return
 
+        # Check if rate limit error but we have cache
         if commits_data is None:
-            self["list"].setText(
-                _("Error loading commits. Please check your internet connection."))
-            return
+            # Try to load from cache even if fetch failed
+            cached = self._load_commits_from_cache()
+            if cached:
+                # Use cached data but show warning
+                commits_data = cached
+                self._show_rate_limit_warning = True
+            else:
+                if hasattr(self, '_rate_limited') and self._rate_limited:
+                    self["list"].setText(_("GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."))
+                else:
+                    self["list"].setText(_("Error loading commits. Please check your internet connection."))
+                return
 
         if not commits_data:
             self["list"].setText(_("No commits found."))
             return
 
         output_lines = []
-
-        # Header
         output_lines.append("")
+        
+        # Show warning if using cache due to rate limit
+        if hasattr(self, '_show_rate_limit_warning') and self._show_rate_limit_warning:
+            output_lines.append("*** GitHub API rate limit exceeded ***")
+            output_lines.append("*** Showing cached data ***")
+            output_lines.append("")
+            self._show_rate_limit_warning = False
+        
         output_lines.append("COMMIT HISTORY")
         output_lines.append("Repository: OwnerPlugins/upload")
         output_lines.append("Total commits: %d" % len(commits_data))
@@ -3991,7 +4083,7 @@ class LSinfo(AsyncMixin, Screen):
                 try:
                     date_obj = dt.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
                     formatted_date = date_obj.strftime("%Y-%m-%d %H:%M")
-                except BaseException:
+                except:
                     formatted_date = date_str
 
                 num = idx + 1

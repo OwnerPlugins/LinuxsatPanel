@@ -3542,31 +3542,25 @@ class LSinfo(AsyncMixin, Screen):
         self["pixmap"] = Pixmap()
         self["pixmap"].hide()
 
-        self["actions"] = ActionMap(
-            [
-                "OkCancelActions",
-                "DirectionActions",
-                "HotkeyActions",
-                "InfobarEPGActions",
-                "ColorActions",
-                "ChannelSelectBaseActions"
-            ],
-            {
-                "ok": self.close,
-                "back": self.close,
-                "cancel": self.close,
-                "up": self.Up,
-                "down": self.Down,
-                "left": self.Up,
-                "right": self.Down,
-                "green": self.update_me if mode == "info" else self.close,
-                "yellow_long": self.update_dev if mode == "info" else self.close,
-                "info_long": self.update_dev if mode == "info" else self.close,
-                "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
-                "red": self.close
-            },
-            -1
-        )
+        self["actions"] = ActionMap(["OkCancelActions",
+                                     "DirectionActions",
+                                     "HotkeyActions",
+                                     "InfobarEPGActions",
+                                     "ColorActions",
+                                     "ChannelSelectBaseActions"],
+                                    {"ok": self.close,
+                                     "back": self.close,
+                                     "cancel": self.close,
+                                     "up": self.Up,
+                                     "down": self.Down,
+                                     "left": self.Up,
+                                     "right": self.Down,
+                                     "green": self.update_me if mode == "info" else self.close,
+                                     "yellow_long": self.update_dev if mode == "info" else self.close,
+                                     "info_long": self.update_dev if mode == "info" else self.close,
+                                     "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
+                                     "red": self.close},
+                                    -1)
 
         self.Update = False
         self.timer = eTimer()
@@ -3969,7 +3963,8 @@ class LSinfo(AsyncMixin, Screen):
             return
 
         if commits_data is None:
-            self["list"].setText(_("Error loading commits. Please check your internet connection."))
+            self["list"].setText(
+                _("Error loading commits. Please check your internet connection."))
             return
 
         if not commits_data:
@@ -3977,7 +3972,7 @@ class LSinfo(AsyncMixin, Screen):
             return
 
         output_lines = []
-        
+
         # Header
         output_lines.append("")
         output_lines.append("COMMIT HISTORY")
@@ -3996,7 +3991,7 @@ class LSinfo(AsyncMixin, Screen):
                 try:
                     date_obj = dt.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
                     formatted_date = date_obj.strftime("%Y-%m-%d %H:%M")
-                except:
+                except BaseException:
                     formatted_date = date_str
 
                 num = idx + 1

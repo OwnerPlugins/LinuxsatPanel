@@ -3543,31 +3543,25 @@ class LSinfo(AsyncMixin, Screen):
         self["pixmap"] = Pixmap()
         self["pixmap"].hide()
 
-        self["actions"] = ActionMap(
-            [
-                "OkCancelActions",
-                "DirectionActions",
-                "HotkeyActions",
-                "InfobarEPGActions",
-                "ColorActions",
-                "ChannelSelectBaseActions"
-            ],
-            {
-                "ok": self.close,
-                "back": self.close,
-                "cancel": self.close,
-                "up": self.Up,
-                "down": self.Down,
-                "left": self.Up,
-                "right": self.Down,
-                "green": self.refresh_cache if mode == "commits" else self.update_me,
-                "yellow_long": self.update_dev if mode == "info" else self.close,
-                "info_long": self.update_dev if mode == "info" else self.close,
-                "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
-                "red": self.close
-            },
-            -1
-        )
+        self["actions"] = ActionMap(["OkCancelActions",
+                                     "DirectionActions",
+                                     "HotkeyActions",
+                                     "InfobarEPGActions",
+                                     "ColorActions",
+                                     "ChannelSelectBaseActions"],
+                                    {"ok": self.close,
+                                     "back": self.close,
+                                     "cancel": self.close,
+                                     "up": self.Up,
+                                     "down": self.Down,
+                                     "left": self.Up,
+                                     "right": self.Down,
+                                     "green": self.refresh_cache if mode == "commits" else self.update_me,
+                                     "yellow_long": self.update_dev if mode == "info" else self.close,
+                                     "info_long": self.update_dev if mode == "info" else self.close,
+                                     "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
+                                     "red": self.close},
+                                    -1)
 
         self.Update = False
         self.timer = eTimer()
@@ -3944,7 +3938,7 @@ class LSinfo(AsyncMixin, Screen):
             try:
                 with open(cache_path, "r") as f:
                     return loads(f.read())
-            except:
+            except BaseException:
                 pass
         return None
 
@@ -3955,7 +3949,7 @@ class LSinfo(AsyncMixin, Screen):
             with open(cache_path, "w") as f:
                 f.write(str(commits))
             return True
-        except:
+        except BaseException:
             return False
 
     def _get_cache_age(self):
@@ -3965,7 +3959,7 @@ class LSinfo(AsyncMixin, Screen):
             try:
                 mtime = getmtime(cache_path)
                 return time.time() - mtime
-            except:
+            except BaseException:
                 pass
         return None
 
@@ -4048,9 +4042,11 @@ class LSinfo(AsyncMixin, Screen):
                 self._show_rate_limit_warning = True
             else:
                 if hasattr(self, '_rate_limited') and self._rate_limited:
-                    self["list"].setText(_("GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."))
+                    self["list"].setText(
+                        _("GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."))
                 else:
-                    self["list"].setText(_("Error loading commits. Please check your internet connection."))
+                    self["list"].setText(
+                        _("Error loading commits. Please check your internet connection."))
                 return
 
         if not commits_data:
@@ -4061,7 +4057,9 @@ class LSinfo(AsyncMixin, Screen):
         output_lines.append("")
 
         # Show warning if using cache due to rate limit
-        if hasattr(self, '_show_rate_limit_warning') and self._show_rate_limit_warning:
+        if hasattr(
+                self,
+                '_show_rate_limit_warning') and self._show_rate_limit_warning:
             output_lines.append("*** GitHub API rate limit exceeded ***")
             output_lines.append("*** Showing cached data ***")
             output_lines.append("")
@@ -4083,7 +4081,7 @@ class LSinfo(AsyncMixin, Screen):
                 try:
                     date_obj = dt.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
                     formatted_date = date_obj.strftime("%Y-%m-%d %H:%M")
-                except:
+                except BaseException:
                     formatted_date = date_str
 
                 num = idx + 1

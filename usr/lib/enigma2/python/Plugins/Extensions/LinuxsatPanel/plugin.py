@@ -3983,21 +3983,21 @@ class LSinfo(AsyncMixin, Screen):
             url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
             params = {"per_page": 100, "page": 1}
             response = requests.get(url, params=params, timeout=30)
-            
+
             if response.status_code == 403:
                 print("[LSinfo] Rate limit exceeded")
                 self._rate_limited = True
                 return None
-                
+
             response.raise_for_status()
             data = response.json()
-            
+
             if data:
                 self._save_commits_to_cache(data)
                 print("[LSinfo] Fetched and cached %d commits" % len(data))
                 return data
             return None
-                
+
         except Exception as e:
             print("[LSinfo] Error fetching commits:", e)
             return None
@@ -4015,20 +4015,20 @@ class LSinfo(AsyncMixin, Screen):
             url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
             params = {"per_page": 100, "page": 1}
             response = requests.get(url, params=params, timeout=30)
-            
+
             if response.status_code == 403:
                 print("[LSinfo] Rate limit exceeded")
                 return None
-                
+
             response.raise_for_status()
             data = response.json()
-            
+
             if data:
                 self._save_commits_to_cache(data)
                 print("[LSinfo] Cache refreshed with %d commits" % len(data))
                 return data
             return None
-                
+
         except Exception as e:
             print("[LSinfo] Error refreshing cache:", e)
             return None
@@ -4059,14 +4059,14 @@ class LSinfo(AsyncMixin, Screen):
 
         output_lines = []
         output_lines.append("")
-        
+
         # Show warning if using cache due to rate limit
         if hasattr(self, '_show_rate_limit_warning') and self._show_rate_limit_warning:
             output_lines.append("*** GitHub API rate limit exceeded ***")
             output_lines.append("*** Showing cached data ***")
             output_lines.append("")
             self._show_rate_limit_warning = False
-        
+
         output_lines.append("COMMIT HISTORY")
         output_lines.append("Repository: OwnerPlugins/upload")
         output_lines.append("Total commits: %d" % len(commits_data))

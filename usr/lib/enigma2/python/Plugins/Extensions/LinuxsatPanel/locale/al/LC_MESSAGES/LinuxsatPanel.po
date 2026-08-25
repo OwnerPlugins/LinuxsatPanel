@@ -118,6 +118,9 @@ msgstr ""
 msgid "Entertainment"
 msgstr ""
 
+msgid "Error loading commits. Please check your internet connection."
+msgstr ""
+
 msgid "Error: No Data Find."
 msgstr ""
 
@@ -190,6 +193,9 @@ msgstr ""
 msgid "Load Category..."
 msgstr ""
 
+msgid "Loading commits..."
+msgstr ""
+
 msgid "Loading list..."
 msgstr ""
 
@@ -206,6 +212,9 @@ msgid "News"
 msgstr ""
 
 msgid "No channel list in archive! Settings NOT installed."
+msgstr ""
+
+msgid "No commits found."
 msgstr ""
 
 msgid "No corresponding terrestrial services found."
@@ -355,7 +364,7 @@ msgstr ""
 msgid "UK"
 msgstr ""
 
-msgid "Unable to download updates!"
+msgid "Unable to load data!"
 msgstr ""
 
 msgid "Unknown Image!"

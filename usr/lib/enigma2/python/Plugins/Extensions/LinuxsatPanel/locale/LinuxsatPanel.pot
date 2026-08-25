@@ -243,6 +243,9 @@ msgstr ""
 msgid "Rebuild bouquet"
 msgstr ""
 
+msgid "Refreshing commits..."
+msgstr ""
+
 msgid "Region"
 msgstr ""
 

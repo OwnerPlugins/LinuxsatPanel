@@ -4222,8 +4222,6 @@ class startLP(Screen):
             self.scale = AVSwitch().getFramebufferScale()
             self.picload.setPara(
                 [size.width(), size.height(), self.scale[0], self.scale[1], 0, 1, "#00000000"])
-            # _l = self.picload.PictureData.get()
-            # del self.picload
             if has_dpkg:
                 self.picload.startDecode(pixmapx, False)
             else:
@@ -4257,13 +4255,14 @@ class AboutLSS(Screen):
             "Thank you for choosing plugin for management of your Enigma Box.\n\n")
         credit += _("Suggested by: @masterG - @oktus - @pcd\n")
         credit += _("Designs and Graphics by @oktus\n")
+        credit += _("Thank's to @pQu4k3r\n")
         credit += _("Support on: Linuxsat-support.com\n\n")
         credit += _("The Plugin lives thanks to the donations of each of you.\n")
         credit += _("A coffee costs nothing.\n\n")
         credit += _("If you think it is a useful tool for your box\n")
         credit += _("please make a donation:\n")
         credit += "https://paypal.com/paypalme/belfagor2005\n"
-        credit += _("make donation on Linuxsat-support.com\n\n\n\n\n")
+        credit += _("make donation on Linuxsat-support.com\n\n\n")
         credit += _("All code was rewritten by @Lululla - 2024.07.20\n")
         self["Info"] = Label(_(credit))
         self["key_red"] = Label(_("Exit"))

@@ -1295,7 +1295,8 @@ class LinuxsatPanel(LPGridScreen):
                 MessageBox,
                 _("Update cancelled. You can update later from Information -> Green button."),
                 MessageBox.TYPE_INFO,
-                timeout=5)
+                timeout=5
+            )
 
     def _update_finished(self, result=None):
         if result:
@@ -1874,7 +1875,7 @@ class LulullaScript(LPGridScreen):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
             try:
-                cmd = str(self.url)  # + " > %s 2>&1" % file_log
+                cmd = str(self.url)  #  + " > %s 2>&1" % file_log
             except TypeError:
                 cmd = str(self.url) + " 2>&1"
             print("[OKClicked] Command to execute:", cmd)
@@ -2139,13 +2140,7 @@ class CiefpInstaller(LPGridScreen):
     def okClicked(self, answer=False):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
-            keywords = [
-                "google",
-                "cloudfaire",
-                "quad9",
-                "emm",
-                "keys",
-                "source"]
+            keywords = ["google", "cloudfaire", "quad9", "emm", "keys", "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
             cmd = str(self.url)  # senza > %s 2>&1
@@ -2635,13 +2630,7 @@ class ScriptInstaller(LPGridScreen):
     def okClicked(self, answer=False):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
-            keywords = [
-                "google",
-                "cloudfaire",
-                "quad9",
-                "emm",
-                "keys",
-                "source"]
+            keywords = ["google", "cloudfaire", "quad9", "emm", "keys", "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
 
@@ -3576,12 +3565,17 @@ class LSinfo(AsyncMixin, Screen):
         self.mode = mode
         self._closed = False
         self._info_content = None
-
-        self["list"] = ScrollLabel(_("Please Wait..."))
-        self["key_green"] = Label()
         self["pixmap"] = Pixmap()
         self["pixmap"].hide()
-
+        self["list"] = ScrollLabel(_("Please Wait..."))
+        if mode == "info":
+            self["key_green"] = Label(_("Update"))
+            self["pixmap"].show()
+        elif mode == "commits":
+            self["key_green"] = Label(_("Refresh"))
+            self["pixmap"].show()
+        else:
+            self["key_green"] = Label("")
         self["actions"] = ActionMap(
             [
                 "OkCancelActions",
@@ -3599,12 +3593,13 @@ class LSinfo(AsyncMixin, Screen):
                 "down": self.Down,
                 "left": self.Up,
                 "right": self.Down,
-                "green": self.refresh_cache if mode == "commits" else self.update_me,
+                "green": self.refresh_cache if mode == "commits" else self.update_me if mode == "info" else self.close,
                 "yellow_long": self.update_dev if mode == "info" else self.close,
                 "info_long": self.update_dev if mode == "info" else self.close,
                 "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
                 "red": self.close
-            }, -1
+            },
+            -1
         )
 
         self.Update = False

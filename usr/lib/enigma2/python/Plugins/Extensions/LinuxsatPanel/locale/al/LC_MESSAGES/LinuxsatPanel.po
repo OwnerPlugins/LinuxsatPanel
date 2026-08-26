@@ -379,6 +379,15 @@ msgstr ""
 msgid "Update Aborted!"
 msgstr ""
 
+msgid "Update cancelled. You can update later from Information -> Green button."
+msgstr ""
+
+msgid "Update completed! The panel will now reload."
+msgstr ""
+
+msgid "Update failed! Please try again later."
+msgstr ""
+
 msgid "of"
 msgstr ""
 

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/Belfagor2005/LinuxsatPanel">
-    <img src="https://img.shields.io/badge/Version-3.0.4-blue.svg" alt="Version">
+    <img src="https://img.shields.io/badge/Version-3.0.5-blue.svg" alt="Version">
   </a>
 
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -53,6 +53,17 @@
 ---
 
 ## 🗓️ Version History
+
+### v3.0.5 (Current)
+- Added Commit History viewer (INFO button -> Commit History)
+- LSinfo now supports 3 modes: info/about/commits
+- Commit list shows date, author, message and hash
+- Added cache system for commits (saves to commits_cache.json)
+- Auto-refresh cache every 24 hours
+- Rate limit handling with fallback to cached data
+- Updated info.txt with clean formatting (no special chars)
+- Fixed AsyncMixin inheritance for LSinfo
+- Fixed console output for script execution (removed redirections)
 
 ### v3.0.4 (Current)
 - Added Commit History viewer via GitHub API
@@ -111,7 +122,7 @@
 - ✅ Live console output during installations
 - ✅ Integrated File Commander for logs
 - ✅ Automatic update notifications
-- ✅ Commit History viewer (via GitHub API)
+- ✅ Commit History viewer (via GitHub API with cache)
 
 ---
 

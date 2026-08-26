@@ -1264,16 +1264,58 @@ class LinuxsatPanel(LPGridScreen):
         new_version, new_changelog, update_available = result
         if update_available:
             print("A new version is available:", new_version)
-            msg = _("New version %s available!\n\nChangelog:\n%s\n\nPress INFO and then the GREEN button to update.") % (
+
+            msg = _("New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?") % (
                 new_version, new_changelog)
-            self.session.open(
+
+            self.session.openWithCallback(
+                self._update_confirmed,
                 MessageBox,
                 msg,
-                MessageBox.TYPE_INFO,
-                timeout=10
+                MessageBox.TYPE_YESNO
             )
         else:
             print("No new version available.")
+
+    def _update_confirmed(self, answer=False):
+        if answer:
+            self.session.open(
+                lsConsole,
+                "Updating Linuxsat Panel...",
+                cmdlist=[
+                    "wget -q --no-check-certificate " +
+                    b64decoder(installer_url) +
+                    " -O - | /bin/sh"],
+                finishedCallback=self._update_finished,
+                closeOnSuccess=False
+            )
+        else:
+            print("Update cancelled by user.")
+            self.session.open(
+                MessageBox,
+                _("Update cancelled. You can update later from Information -> Green button."),
+                MessageBox.TYPE_INFO,
+                timeout=5
+            )
+
+    def _update_finished(self, result=None):
+        if result:
+            print("Update completed successfully!")
+            self.session.open(
+                MessageBox,
+                _("Update completed! The panel will now reload."),
+                MessageBox.TYPE_INFO,
+                timeout=5
+            )
+            self.refreshPlugins()
+        else:
+            print("Update failed.")
+            self.session.open(
+                MessageBox,
+                _("Update failed! Please try again later."),
+                MessageBox.TYPE_ERROR,
+                timeout=5
+            )
 
     def refreshPlugins(self):
         plugins.clearPluginList()
@@ -1833,7 +1875,7 @@ class LulullaScript(LPGridScreen):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
             try:
-                cmd = str(self.url) + " > %s 2>&1" % file_log
+                cmd = str(self.url)  #  + " > %s 2>&1" % file_log
             except TypeError:
                 cmd = str(self.url) + " 2>&1"
             print("[OKClicked] Command to execute:", cmd)
@@ -2098,19 +2140,10 @@ class CiefpInstaller(LPGridScreen):
     def okClicked(self, answer=False):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
-            keywords = [
-                "google",
-                "cloudfaire",
-                "quad9",
-                "emm",
-                "keys",
-                "source"]
+            keywords = ["google", "cloudfaire", "quad9", "emm", "keys", "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
-            try:
-                cmd = str(self.url) + " > %s 2>&1" % file_log
-            except TypeError:
-                cmd = str(self.url) + " 2>&1"
+            cmd = str(self.url)  # senza > %s 2>&1
             if keyword_found:
                 self.session.open(
                     lsConsole,
@@ -2597,22 +2630,17 @@ class ScriptInstaller(LPGridScreen):
     def okClicked(self, answer=False):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
-            keywords = [
-                "google",
-                "cloudfaire",
-                "quad9",
-                "emm",
-                "keys",
-                "source"]
+            keywords = ["google", "cloudfaire", "quad9", "emm", "keys", "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
+
             if self.url.startswith("/"):
-                # local script from the sh/ folder
-                cmd = 'sh "{}" > {} 2>&1'.format(self.url, file_log)
+                # Local script
+                cmd = 'sh "{}"'.format(self.url)
             else:
-                # remote entries are complete command lines (wget ... | sh,
-                # opkg ...) and must run as-is
-                cmd = str(self.url) + " > %s 2>&1" % file_log
+                # Remote script
+                cmd = str(self.url)
+
             if keyword_found:
                 self.session.open(
                     lsConsole,
@@ -3543,25 +3571,30 @@ class LSinfo(AsyncMixin, Screen):
         self["pixmap"] = Pixmap()
         self["pixmap"].hide()
 
-        self["actions"] = ActionMap(["OkCancelActions",
-                                     "DirectionActions",
-                                     "HotkeyActions",
-                                     "InfobarEPGActions",
-                                     "ColorActions",
-                                     "ChannelSelectBaseActions"],
-                                    {"ok": self.close,
-                                     "back": self.close,
-                                     "cancel": self.close,
-                                     "up": self.Up,
-                                     "down": self.Down,
-                                     "left": self.Up,
-                                     "right": self.Down,
-                                     "green": self.refresh_cache if mode == "commits" else self.update_me,
-                                     "yellow_long": self.update_dev if mode == "info" else self.close,
-                                     "info_long": self.update_dev if mode == "info" else self.close,
-                                     "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
-                                     "red": self.close},
-                                    -1)
+        self["actions"] = ActionMap(
+            [
+                "OkCancelActions",
+                "DirectionActions",
+                "HotkeyActions",
+                "InfobarEPGActions",
+                "ColorActions",
+                "ChannelSelectBaseActions"
+            ],
+            {
+                "ok": self.close,
+                "back": self.close,
+                "cancel": self.close,
+                "up": self.Up,
+                "down": self.Down,
+                "left": self.Up,
+                "right": self.Down,
+                "green": self.refresh_cache if mode == "commits" else self.update_me,
+                "yellow_long": self.update_dev if mode == "info" else self.close,
+                "info_long": self.update_dev if mode == "info" else self.close,
+                "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
+                "red": self.close
+            }, -1
+        )
 
         self.Update = False
         self.timer = eTimer()
@@ -4275,7 +4308,6 @@ def menu(menuid, **kwargs):
 
 
 def Plugins(**kwargs):
-    # initialize_global_settings()  # Initialize the necessary fonts
     add_skin_fonts()
     return [
         PluginDescriptor(

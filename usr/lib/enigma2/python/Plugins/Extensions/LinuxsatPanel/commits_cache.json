@@ -1,0 +1,62 @@
+[
+  {
+    "sha": "bce15c66fc582aa18a9afce1a3a0b50105d72955",
+    "commit": {
+      "author": {
+        "name": "github-actions[bot]",
+        "date": "2026-08-24T20:00:09Z"
+      },
+      "message": "Auto-update OwnerPlugins/scsearch package"
+    }
+  },
+  {
+    "sha": "b38d5c7e09d44ba70cb685c1bf7c4c96e3c3fa61",
+    "commit": {
+      "author": {
+        "name": "github-actions[bot]",
+        "date": "2026-08-24T19:55:38Z"
+      },
+      "message": "Auto-update OwnerPlugins/scsearch package"
+    }
+  },
+  {
+    "sha": "5715595406265613d76da99a57325e70c5a12b70",
+    "commit": {
+      "author": {
+        "name": "Belfagor2005",
+        "date": "2026-08-24T17:43:06Z"
+      },
+      "message": "Update Panelaio to 16.0.0-r2"
+    }
+  },
+  {
+    "sha": "470df9657e78a8ddb803d770d083acd66141c776",
+    "commit": {
+      "author": {
+        "name": "github-actions[bot]",
+        "date": "2026-08-24T16:12:22Z"
+      },
+      "message": "Auto-update OwnerPlugins/scsearch package"
+    }
+  },
+  {
+    "sha": "77d81bb83e4729814d2edd99a6ad1df010287be4",
+    "commit": {
+      "author": {
+        "name": "Belfagor2005",
+        "date": "2026-08-23T17:13:12Z"
+      },
+      "message": "Merge branch 'main' of https://github.com/OwnerPlugins/upload"
+    }
+  },
+  {
+    "sha": "a5698e0ec0c4655285887e97e9ca23b8a33169d5",
+    "commit": {
+      "author": {
+        "name": "Belfagor2005",
+        "date": "2026-08-23T17:13:09Z"
+      },
+      "message": "Update iSetting package catalog"
+    }
+  }
+]

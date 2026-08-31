@@ -102,6 +102,9 @@ msgstr ""
 msgid "Entertainment"
 msgstr ""
 
+msgid "Error loading commits. Please check your internet connection."
+msgstr ""
+
 msgid "Error: No Data Find."
 msgstr ""
 
@@ -174,6 +177,9 @@ msgstr ""
 msgid "Load Category..."
 msgstr ""
 
+msgid "Loading commits..."
+msgstr ""
+
 msgid "Loading list..."
 msgstr ""
 
@@ -190,6 +196,9 @@ msgid "News"
 msgstr ""
 
 msgid "No channel list in archive! Settings NOT installed."
+msgstr ""
+
+msgid "No commits found."
 msgstr ""
 
 msgid "No corresponding terrestrial services found."
@@ -232,6 +241,9 @@ msgid "Rebuild LCN bouquet now?"
 msgstr ""
 
 msgid "Rebuild bouquet"
+msgstr ""
+
+msgid "Refreshing commits..."
 msgstr ""
 
 msgid "Region"
@@ -339,7 +351,7 @@ msgstr ""
 msgid "UK"
 msgstr ""
 
-msgid "Unable to download updates!"
+msgid "Unable to load data!"
 msgstr ""
 
 msgid "Unknown Image!"
@@ -349,6 +361,15 @@ msgid "Update"
 msgstr ""
 
 msgid "Update Aborted!"
+msgstr ""
+
+msgid "Update cancelled. You can update later from Information -> Green button."
+msgstr ""
+
+msgid "Update completed! The panel will now reload."
+msgstr ""
+
+msgid "Update failed! Please try again later."
 msgstr ""
 
 msgid "of"

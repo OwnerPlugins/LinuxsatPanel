@@ -644,16 +644,22 @@ def fix_po_file(po_file):
     return True
 
 
+# STANDARD_LANGUAGES = [
+    # 'af', 'am', 'ar', 'az', 'be', 'bg', 'bn', 'bs', 'ca', 'cs', 'cy', 'da',
+    # 'de', 'el', 'en', 'en_GB', 'eo', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'fy',
+    # 'ga', 'gd', 'gl', 'gu', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'is', 'it',
+    # 'ja', 'ka', 'kk', 'km', 'kn', 'ko', 'ku', 'ky', 'lt', 'lv', 'mk', 'ml',
+    # 'mn', 'mr', 'ms', 'mt', 'my', 'nb', 'ne', 'nl', 'no', 'oc', 'or', 'pa',
+    # 'pl', 'ps', 'pt', 'pt_BR', 'pt_PT', 'ro', 'ru', 'si', 'sk', 'sl', 'sq',
+    # 'sq_AL', 'sr', 'sr_Latn', 'sv', 'sw', 'ta', 'te', 'tg', 'th', 'tk', 'tl',
+    # 'tr', 'tt', 'ug', 'uk', 'ur', 'uz', 'vi', 'yi', 'zh', 'zh_CN', 'zh_HK',
+    # 'zh_SG', 'zh_TW'
+# ]
+
 STANDARD_LANGUAGES = [
-    'af', 'am', 'ar', 'az', 'be', 'bg', 'bn', 'bs', 'ca', 'cs', 'cy', 'da',
-    'de', 'el', 'en', 'en_GB', 'eo', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'fy',
-    'ga', 'gd', 'gl', 'gu', 'he', 'hi', 'hr', 'hu', 'hy', 'id', 'is', 'it',
-    'ja', 'ka', 'kk', 'km', 'kn', 'ko', 'ku', 'ky', 'lt', 'lv', 'mk', 'ml',
-    'mn', 'mr', 'ms', 'mt', 'my', 'nb', 'ne', 'nl', 'no', 'oc', 'or', 'pa',
-    'pl', 'ps', 'pt', 'pt_BR', 'pt_PT', 'ro', 'ru', 'si', 'sk', 'sl', 'sq',
-    'sq_AL', 'sr', 'sr_Latn', 'sv', 'sw', 'ta', 'te', 'tg', 'th', 'tk', 'tl',
-    'tr', 'tt', 'ug', 'uk', 'ur', 'uz', 'vi', 'yi', 'zh', 'zh_CN', 'zh_HK',
-    'zh_SG', 'zh_TW'
+    'de', 'es', 'fr', 'it', 'nl', 'tr', 'cs', 'da', 'hr', 'hu',
+    'no', 'pl', 'pt', 'ro', 'ru', 'sr', 'sk', 'fi', 'sv', 'uk',
+    'ar', 'bg', 'el', 'sq', 'zh'
 ]
 
 

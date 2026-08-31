@@ -175,14 +175,15 @@ License: GPL v2
 
 import codecs
 import io
+import time
 from datetime import datetime as dt
-from json import loads
+from json import loads, dumps
 from re import compile, search, DOTALL
 from shutil import copy2
 from sys import version_info
 
 from os import R_OK, access, chmod, makedirs, system, walk, listdir
-from os.path import exists, join
+from os.path import exists, join, getmtime
 
 import six
 import requests
@@ -831,7 +832,7 @@ class LPGridScreen(AsyncMixin, Screen):
         return
 
     def key_info(self):
-        self.session.open(LSinfo, " Information ")
+        self.session.open(LSinfo, " Commit History ", "commits")
 
     def _view_log(self, answer):
         if answer:
@@ -1197,6 +1198,15 @@ class LinuxsatPanel(LPGridScreen):
             self.urls,
             " Information ",
             "Information.png")
+
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Commit History ",
+            "Information.png")
+
         add_menu_item(
             menu_list,
             self.titles,
@@ -1254,16 +1264,57 @@ class LinuxsatPanel(LPGridScreen):
         new_version, new_changelog, update_available = result
         if update_available:
             print("A new version is available:", new_version)
-            msg = _("New version %s available!\n\nChangelog:\n%s\n\nPress INFO and then the GREEN button to update.") % (
+
+            msg = _("New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?") % (
                 new_version, new_changelog)
-            self.session.open(
+
+            self.session.openWithCallback(
+                self._update_confirmed,
                 MessageBox,
                 msg,
-                MessageBox.TYPE_INFO,
-                timeout=10
+                MessageBox.TYPE_YESNO
             )
         else:
             print("No new version available.")
+
+    def _update_confirmed(self, answer=False):
+        if answer:
+            self.session.open(
+                lsConsole,
+                "Updating Linuxsat Panel...",
+                cmdlist=[
+                    "wget -q " +
+                    b64decoder(installer_url) +
+                    " -O - | /bin/sh"],
+                finishedCallback=self._update_finished,
+                closeOnSuccess=False
+            )
+        else:
+            print("Update cancelled by user.")
+            self.session.open(
+                MessageBox,
+                _("Update cancelled. You can update later from Information -> Green button."),
+                MessageBox.TYPE_INFO,
+                timeout=5)
+
+    def _update_finished(self, result=None):
+        if result:
+            print("Update completed successfully!")
+            self.session.open(
+                MessageBox,
+                _("Update completed! The panel will now reload."),
+                MessageBox.TYPE_INFO,
+                timeout=5
+            )
+            self.refreshPlugins()
+        else:
+            print("Update failed.")
+            self.session.open(
+                MessageBox,
+                _("Update failed! Please try again later."),
+                MessageBox.TYPE_ERROR,
+                timeout=5
+            )
 
     def refreshPlugins(self):
         plugins.clearPluginList()
@@ -1301,10 +1352,13 @@ class LinuxsatPanel(LPGridScreen):
         name = self.names[self.idx]
 
         if name == " Information ":
-            self.session.open(LSinfo, name)
+            self.session.open(LSinfo, name, "info")
 
         elif name == " About ":
-            self.session.open(LSinfo, name)
+            self.session.open(LSinfo, name, "about")
+
+        elif name == "Commit History ":
+            self.session.open(LSinfo, name, "commits")
 
         elif name == "Ciefp ":
             self.session.open(CiefpInstaller, name)
@@ -1820,7 +1874,7 @@ class LulullaScript(LPGridScreen):
         if answer:
             title = (_("Executing %s\nPlease Wait...") % self.namev)
             try:
-                cmd = str(self.url) + " > %s 2>&1" % file_log
+                cmd = str(self.url)  # + " > %s 2>&1" % file_log
             except TypeError:
                 cmd = str(self.url) + " 2>&1"
             print("[OKClicked] Command to execute:", cmd)
@@ -2094,10 +2148,7 @@ class CiefpInstaller(LPGridScreen):
                 "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
-            try:
-                cmd = str(self.url) + " > %s 2>&1" % file_log
-            except TypeError:
-                cmd = str(self.url) + " 2>&1"
+            cmd = str(self.url)  # senza > %s 2>&1
             if keyword_found:
                 self.session.open(
                     lsConsole,
@@ -2593,13 +2644,14 @@ class ScriptInstaller(LPGridScreen):
                 "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
+
             if self.url.startswith("/"):
-                # local script from the sh/ folder
-                cmd = 'sh "{}" > {} 2>&1'.format(self.url, file_log)
+                # Local script
+                cmd = 'sh "{}"'.format(self.url)
             else:
-                # remote entries are complete command lines (wget ... | sh,
-                # opkg ...) and must run as-is
-                cmd = str(self.url) + " > %s 2>&1" % file_log
+                # Remote script
+                cmd = str(self.url)
+
             if keyword_found:
                 self.session.open(
                     lsConsole,
@@ -3502,9 +3554,8 @@ class addInstall(AsyncMixin, Screen):
         self.close()
 
 
-class LSinfo(Screen):
-
-    def __init__(self, session, name):
+class LSinfo(AsyncMixin, Screen):
+    def __init__(self, session, name, mode="info"):
         Screen.__init__(self, session)
 
         try:
@@ -3514,24 +3565,28 @@ class LSinfo(Screen):
                 self.setTitle(_("%s") % descplug + " V." + __version__)
             except BaseException:
                 pass
+
         skin = join(skin_path, "LSinfo.xml")
-
-        '''
-        if has_dpkg:
-            skin = join(skin_path, 'LSinfo-os.xml')  # now i have ctrlSkin for check
-        '''
-
         with codecs.open(skin, "r", encoding="utf-8") as f:
             skin = f.read()
 
         self.skin = ctrlSkin("LSinfo", skin)
 
         self.name = name
-        info = _("Please Wait...")
-        self["list"] = ScrollLabel(info)
-        self["key_green"] = Label()
+        self.mode = mode
+        self._closed = False
+        self._info_content = None
         self["pixmap"] = Pixmap()
         self["pixmap"].hide()
+        self["list"] = ScrollLabel(_("Please Wait..."))
+        if mode == "info":
+            self["key_green"] = Label(_("Update"))
+            self["pixmap"].show()
+        elif mode == "commits":
+            self["key_green"] = Label(_("Refresh"))
+            self["pixmap"].show()
+        else:
+            self["key_green"] = Label("")
         self["actions"] = ActionMap(
             [
                 "OkCancelActions",
@@ -3539,8 +3594,7 @@ class LSinfo(Screen):
                 "HotkeyActions",
                 "InfobarEPGActions",
                 "ColorActions",
-                "ChannelSelectBaseActions"
-            ],
+                "ChannelSelectBaseActions"],
             {
                 "ok": self.close,
                 "back": self.close,
@@ -3549,16 +3603,12 @@ class LSinfo(Screen):
                 "down": self.Down,
                 "left": self.Up,
                 "right": self.Down,
-                # "yellow": self.update_me,
-                "green": self.update_me,
-                "yellow_long": self.update_dev,
-                "info_long": self.update_dev,
-                "infolong": self.update_dev,
-                "showEventInfoPlugin": self.update_dev,
-                "red": self.close
-            },
-            -1
-        )
+                "green": self.refresh_cache if mode == "commits" else self.update_me if mode == "info" else self.close,
+                "yellow_long": self.update_dev if mode == "info" else self.close,
+                "info_long": self.update_dev if mode == "info" else self.close,
+                "showEventInfoPlugin": self.update_dev if mode == "info" else self.close,
+                "red": self.close},
+            -1)
 
         self.Update = False
         self.timer = eTimer()
@@ -3568,14 +3618,27 @@ class LSinfo(Screen):
             self.timer.callback.append(self.startRun)
         self.timer.start(100, 1)
 
-        self.timerz = eTimer()
-        try:
-            self.timerz_conn = self.timerz.timeout.connect(self.check_vers)
-        except BaseException:
-            self.timerz.callback.append(self.check_vers)
-        self.timerz.start(2000, 1)
+        if self.mode == "info":
+            self.timerz = eTimer()
+            try:
+                self.timerz_conn = self.timerz.timeout.connect(self.check_vers)
+            except BaseException:
+                self.timerz.callback.append(self.timerz)
+            self.timerz.start(2000, 1)
 
+        self.onClose.append(self._stopPoll)
         self.onLayoutFinish.append(self.pas)
+
+    def _stopPoll(self):
+        self._closed = True
+        try:
+            self.timer.stop()
+        except BaseException:
+            pass
+        try:
+            self.timerz.stop()
+        except BaseException:
+            pass
 
     def pas(self):
         pass
@@ -3589,7 +3652,7 @@ class LSinfo(Screen):
             req = Request(
                 b64decoder(installer_url), headers={
                     'User-Agent': 'Mozilla/5.0'})
-            page = urlopen(req).read().decode("utf-8")  # Decodifica diretta
+            page = urlopen(req).read().decode("utf-8")
         except Exception as e:
             print("[ERROR] Unable to fetch version info:", str(e))
             return
@@ -3619,7 +3682,6 @@ class LSinfo(Screen):
             self.show_update_message()
 
     def show_update_message(self):
-        """Mostra un MessageBox con le informazioni sull'aggiornamento"""
         if self.Update:
             msg = _(
                 "New version available\n\nChangelog:\n\nPress the green button to start the update.")
@@ -3769,52 +3831,45 @@ class LSinfo(Screen):
 
     def startRun(self):
         try:
-            if self.name == " Information ":
+            if self.mode == "info":
                 print("Running openinfo method...")
                 self.openinfo()
-
-            elif self.name == " About ":
+            elif self.mode == "about":
                 print("Opening LICENSE file...")
-                license_path = join(plugin_path, "LICENSE")
-                try:
-
-                    if not exists(license_path):
-                        print(
-                            "License file does not exist: {}".format(license_path))
-                        self["list"].setText("Error: LICENSE file not found.")
-                        return
-
-                    if not access(license_path, R_OK):
-                        print(
-                            "License file is not readable: {}".format(license_path))
-                        self["list"].setText(
-                            "Error: LICENSE file is not readable.")
-                        return
-
-                    with io.open(license_path, "r", encoding="utf-8") as filer:
-                        info = filer.read()
-                        info = info.replace("\r", "")
-                        info = str(info).strip()
-                        self["list"].setText(info)
-
-                except IOError as e:
-                    print("Error reading LICENSE file: {}".format(e))
-                    self["list"].setText("Error: Could not read LICENSE file.")
-                except Exception as e:
-                    print("Unexpected error: {}".format(e))
-                    self["list"].setText(
-                        "Error: An unexpected error occurred.")
+                self.open_license()
+            elif self.mode == "commits":
+                print("Loading commits...")
+                self["list"].setText(_("Loading commits..."))
+                self._startAsync(self._fetch_commits, self._display_commits)
             else:
-                print("Unknown name value:", self.name)
+                print("Unknown mode:", self.mode)
                 return
         except Exception as e:
             print("Error in startRun: ", e)
-            self["list"].setText(_("Unable to download updates!"))
+            self["list"].setText(_("Unable to load data!"))
+
+    def open_license(self):
+        license_path = join(plugin_path, "LICENSE")
+        try:
+            if not exists(license_path):
+                self["list"].setText("Error: LICENSE file not found.")
+                return
+
+            if not access(license_path, R_OK):
+                self["list"].setText("Error: LICENSE file is not readable.")
+                return
+
+            with io.open(license_path, "r", encoding="utf-8") as filer:
+                info = filer.read()
+                info = info.replace("\r", "")
+                info = str(info).strip()
+                self["list"].setText(info)
+
+        except Exception as e:
+            print("Error reading LICENSE file: {}".format(e))
+            self["list"].setText("Error: Could not read LICENSE file.")
 
     def openinfo(self):
-        # Collect in a background thread: the first stbinfo import runs
-        # network probes and must not freeze the GUI. The screen updates
-        # from an eTimer on the main thread when the data is ready.
         import threading
         self["list"].setText(_("Collecting system information..."))
         self._info_content = None
@@ -3872,11 +3927,9 @@ class LSinfo(Screen):
             )
 
             try:
-                # Python 3
                 with open("/tmp/output.txt", "w", encoding="utf-8") as file:
                     file.write(base_content)
             except TypeError:
-                # Python 2
                 with open("/tmp/output.txt", "w") as file:
                     file.write(base_content.encode("utf-8"))
 
@@ -3884,21 +3937,17 @@ class LSinfo(Screen):
             if fileExists(info_path):
                 try:
                     try:
-                        # Python 3
                         with open(info_path, "r", encoding="utf-8") as info_file:
                             additional_info = info_file.read()
                     except TypeError:
-                        # Python 2
                         with open(info_path, "r") as info_file:
                             additional_info = info_file.read().decode("utf-8")
 
                     try:
-                        # Python 3
                         with open("/tmp/output.txt", "a", encoding="utf-8") as output_file:
                             output_file.write(
                                 "\nAdditional Info:\n{0}".format(additional_info))
                     except TypeError:
-                        # Python 2
                         with open("/tmp/output.txt", "a") as output_file:
                             output_file.write(
                                 "\nAdditional Info:\n{0}".format(
@@ -3910,11 +3959,9 @@ class LSinfo(Screen):
 
             try:
                 try:
-                    # Python 3
                     with open("/tmp/output.txt", "r", encoding="utf-8") as filer:
                         content = filer.read()
                 except TypeError:
-                    # Python 2
                     with open("/tmp/output.txt", "r") as filer:
                         content = filer.read().decode("utf-8")
 
@@ -3926,6 +3973,180 @@ class LSinfo(Screen):
         except Exception as e:
             print("Error in openinfo:", e)
             return "Error loading information"
+
+    def _get_cache_path(self):
+        """Return path to commits cache file."""
+        return join(plugin_path, "commits_cache.json")
+
+    def _load_commits_from_cache(self):
+        """Load commits from cache file."""
+        cache_path = self._get_cache_path()
+        if exists(cache_path):
+            try:
+                with open(cache_path, "r") as f:
+                    return loads(f.read())
+            except BaseException:
+                pass
+        return None
+
+    def _save_commits_to_cache(self, commits):
+        """Save commits to cache file."""
+        cache_path = self._get_cache_path()
+        try:
+            with open(cache_path, "w") as f:
+                f.write(dumps(commits))
+            return True
+        except BaseException:
+            return False
+
+    def _get_cache_age(self):
+        """Return age of cache in seconds."""
+        cache_path = self._get_cache_path()
+        if exists(cache_path):
+            try:
+                mtime = getmtime(cache_path)
+                return time.time() - mtime
+            except BaseException:
+                pass
+        return None
+
+    def _fetch_commits(self):
+        """Fetch commits from API or load from cache."""
+        # Try to load from cache first
+        cached = self._load_commits_from_cache()
+        if cached:
+            print("[LSinfo] Loaded commits from cache")
+            return cached
+
+        # If no cache, fetch from API
+        try:
+            print("[LSinfo] No cache found, fetching from API...")
+            url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
+            params = {"per_page": 100, "page": 1}
+            response = requests.get(url, params=params, timeout=30)
+
+            if response.status_code == 403:
+                print("[LSinfo] Rate limit exceeded")
+                self._rate_limited = True
+                return None
+
+            response.raise_for_status()
+            data = response.json()
+
+            if data:
+                self._save_commits_to_cache(data)
+                print("[LSinfo] Fetched and cached %d commits" % len(data))
+                return data
+            return None
+
+        except Exception as e:
+            print("[LSinfo] Error fetching commits:", e)
+            return None
+
+    def refresh_cache(self):
+        """Force refresh commits cache."""
+        if self.mode != "commits":
+            return
+        self["list"].setText(_("Refreshing commits..."))
+        self._startAsync(self._force_fetch_commits, self._display_commits)
+
+    def _force_fetch_commits(self):
+        """Force fetch commits from API."""
+        try:
+            url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
+            params = {"per_page": 100, "page": 1}
+            response = requests.get(url, params=params, timeout=30)
+
+            if response.status_code == 403:
+                print("[LSinfo] Rate limit exceeded")
+                return None
+
+            response.raise_for_status()
+            data = response.json()
+
+            if data:
+                self._save_commits_to_cache(data)
+                print("[LSinfo] Cache refreshed with %d commits" % len(data))
+                return data
+            return None
+
+        except Exception as e:
+            print("[LSinfo] Error refreshing cache:", e)
+            return None
+
+    def _display_commits(self, commits_data):
+        """Display formatted commit list."""
+        if self._closed:
+            return
+
+        # Check if rate limit error but we have cache
+        if commits_data is None:
+            # Try to load from cache even if fetch failed
+            cached = self._load_commits_from_cache()
+            if cached:
+                # Use cached data but show warning
+                commits_data = cached
+                self._show_rate_limit_warning = True
+            else:
+                if hasattr(self, '_rate_limited') and self._rate_limited:
+                    self["list"].setText(
+                        _("GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."))
+                else:
+                    self["list"].setText(
+                        _("Error loading commits. Please check your internet connection."))
+                return
+
+        if not commits_data:
+            self["list"].setText(_("No commits found."))
+            return
+
+        output_lines = []
+        output_lines.append("")
+
+        # Show warning if using cache due to rate limit
+        if hasattr(
+                self,
+                '_show_rate_limit_warning') and self._show_rate_limit_warning:
+            output_lines.append("*** GitHub API rate limit exceeded ***")
+            output_lines.append("*** Showing cached data ***")
+            output_lines.append("")
+            self._show_rate_limit_warning = False
+
+        output_lines.append("COMMIT HISTORY")
+        output_lines.append("Repository: OwnerPlugins/upload")
+        output_lines.append("Total commits: %d" % len(commits_data))
+        output_lines.append("")
+        output_lines.append("")
+
+        for idx, commit in enumerate(commits_data):
+            try:
+                sha_short = commit['sha'][:7]
+                author_name = commit['commit']['author']['name']
+                date_str = commit['commit']['author']['date']
+                message = commit['commit']['message'].split('\n')[0]
+
+                try:
+                    date_obj = dt.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
+                    formatted_date = date_obj.strftime("%Y-%m-%d %H:%M")
+                except BaseException:
+                    formatted_date = date_str
+
+                num = idx + 1
+
+                output_lines.append("[%d] %s" % (num, formatted_date))
+                output_lines.append("    %s" % author_name)
+                output_lines.append("    %s" % message)
+                output_lines.append("    [%s]" % sha_short)
+                output_lines.append("")
+
+            except Exception as e:
+                print("[LSinfo] Error parsing commit:", e)
+                continue
+
+        output_lines.append("")
+        output_lines.append("End of commit history")
+
+        self["list"].setText("\n".join(output_lines))
 
     def cancel(self):
         self.close()
@@ -4004,8 +4225,6 @@ class startLP(Screen):
             self.scale = AVSwitch().getFramebufferScale()
             self.picload.setPara(
                 [size.width(), size.height(), self.scale[0], self.scale[1], 0, 1, "#00000000"])
-            # _l = self.picload.PictureData.get()
-            # del self.picload
             if has_dpkg:
                 self.picload.startDecode(pixmapx, False)
             else:
@@ -4039,13 +4258,14 @@ class AboutLSS(Screen):
             "Thank you for choosing plugin for management of your Enigma Box.\n\n")
         credit += _("Suggested by: @masterG - @oktus - @pcd\n")
         credit += _("Designs and Graphics by @oktus\n")
+        credit += _("Thank's to @pQu4k3r\n")
         credit += _("Support on: Linuxsat-support.com\n\n")
         credit += _("The Plugin lives thanks to the donations of each of you.\n")
         credit += _("A coffee costs nothing.\n\n")
         credit += _("If you think it is a useful tool for your box\n")
         credit += _("please make a donation:\n")
         credit += "https://paypal.com/paypalme/belfagor2005\n"
-        credit += _("make donation on Linuxsat-support.com\n\n\n\n\n")
+        credit += _("make donation on Linuxsat-support.com\n\n\n")
         credit += _("All code was rewritten by @Lululla - 2024.07.20\n")
         self["Info"] = Label(_(credit))
         self["key_red"] = Label(_("Exit"))
@@ -4101,7 +4321,6 @@ def menu(menuid, **kwargs):
 
 
 def Plugins(**kwargs):
-    # initialize_global_settings()  # Initialize the necessary fonts
     add_skin_fonts()
     return [
         PluginDescriptor(

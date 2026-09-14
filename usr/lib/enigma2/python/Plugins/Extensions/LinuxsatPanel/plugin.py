@@ -177,7 +177,7 @@ import codecs
 import io
 import time
 from datetime import datetime as dt
-from json import loads
+from json import loads, dumps
 from re import compile, search, DOTALL
 from shutil import copy2
 from sys import version_info
@@ -1283,7 +1283,7 @@ class LinuxsatPanel(LPGridScreen):
                 lsConsole,
                 "Updating Linuxsat Panel...",
                 cmdlist=[
-                    "wget -q --no-check-certificate " +
+                    "wget -q " +
                     b64decoder(installer_url) +
                     " -O - | /bin/sh"],
                 finishedCallback=self._update_finished,
@@ -1566,7 +1566,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Acherone Script Command",
             "acherone_script_command.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/acherone-script/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/acherone-script/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1574,7 +1574,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Advanced Screeshots",
             "advanced_screeshots.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/AdvancedScreenshot/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/AdvancedScreenshot/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1582,7 +1582,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Apod",
             "apod.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/apod/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/apod/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1590,7 +1590,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Apsattv",
             "apsat.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/Apsattv/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/Apsattv/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1598,7 +1598,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Archimede M3u Converter",
             "archimede_m3u_converter.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/Archimede-M3UConverter/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/Archimede-M3UConverter/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1606,7 +1606,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Calendar",
             "calendar.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/Calendar/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/Calendar/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1614,7 +1614,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "DDRSS Reader",
             "ddrss.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/DDRSSReader/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/DDRSSReader/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1622,7 +1622,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "EPGImport 99",
             "epgimport_99.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/EPGImport-99/main/installer_source.sh -O - | /bin/bash")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/EPGImport-99/main/installer_source.sh -O - | /bin/bash")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1630,7 +1630,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "EPGImport Source",
             "epgsource.png",
-            "wget -q --no-check-certificate \"https://raw.githubusercontent.com/Belfagor2005/EPGImport-99/main/installer_source.sh?inline=false\" -O - | /bin/sh")
+            "wget -q \"https://raw.githubusercontent.com/Belfagor2005/EPGImport-99/main/installer_source.sh?inline=false\" -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1638,7 +1638,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Filmon",
             "filmon.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/Filmon/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/Filmon/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1646,7 +1646,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "ForecaOne",
             "ForecaOne.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/ForecaOne/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/ForecaOne/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1654,7 +1654,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Freearhey",
             "freearhey.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/freearhey/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/freearhey/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1662,7 +1662,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "HasBahCa",
             "hasbahca.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/HasBahCa/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/HasBahCa/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1670,7 +1670,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Horoscope",
             "horoscope.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/Horoscope/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/Horoscope/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1678,7 +1678,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "mmPicons",
             "mmpicons.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/mmPicons/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/mmPicons/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1686,7 +1686,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Oroscopo Italia",
             "oroscopoitalia.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/oroscopo_radioitalia/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/oroscopo_radioitalia/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1694,7 +1694,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Parsa Tv",
             "parsatv.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/tvParsa/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/tvParsa/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1702,7 +1702,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Radio80",
             "radio80.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/Radio-80-s/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/Radio-80-s/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1710,7 +1710,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Radio Git",
             "radio_git.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RadioGit/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/RadioGit/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1718,7 +1718,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Rai Play",
             "rai_play.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RaiPlay/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/RaiPlay/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1726,7 +1726,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Rsi Live",
             "rsilive.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/rsilive/main/installer.sh -O - | /bin/bash")
+            "wget -q https://raw.githubusercontent.com/OwnerPlugins/rsilive/main/installer.sh -O - | /bin/bash")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1734,7 +1734,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Rss Reader",
             "rss_reader.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/RSSReader/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/RSSReader/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1742,7 +1742,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Scsearch",
             "scsearch.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/scsearch/main/installer.sh -O - | /bin/bash")
+            "wget -q https://raw.githubusercontent.com/OwnerPlugins/scsearch/main/installer.sh -O - | /bin/bash")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1750,7 +1750,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "StreamProxy",
             "streamproxy.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/StreamProxy/main/installer.sh -O - | /bin/bash")
+            "wget -q https://raw.githubusercontent.com/OwnerPlugins/StreamProxy/main/installer.sh -O - | /bin/bash")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1758,7 +1758,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "SlWebcams",
             "slwebcams.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/OwnerPlugins/SLwebcams/main/installer.sh -O - | /bin/bash")
+            "wget -q https://raw.githubusercontent.com/OwnerPlugins/SLwebcams/main/installer.sh -O - | /bin/bash")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1766,7 +1766,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Softcam Manager",
             "softcam_manager.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/tvManager/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/tvManager/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1774,7 +1774,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Stalker Portal Converter",
             "stalker_portal_converter.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/StalkerPortalConverter/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/StalkerPortalConverter/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1782,7 +1782,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Stvcl",
             "stvcl.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/S.T.V.C.L-/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/S.T.V.C.L-/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1790,7 +1790,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "TvDream",
             "tvdream.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/tvDream/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/tvDream/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1798,7 +1798,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "TVGarden",
             "tvgarden.png",
-            "wget -q --no-check-certificate \"https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/installer.sh\" -O - | /bin/sh")
+            "wget -q \"https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/installer.sh\" -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1806,7 +1806,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "TvSettings",
             "tvsettings.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/tvSettings/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/tvSettings/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1814,7 +1814,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "TvToM3u",
             "tvtom3u.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/TvToM3u/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/TvToM3u/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1822,7 +1822,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Vavoo",
             "vavoo.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/vavoo/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/vavoo/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1830,7 +1830,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "WiFi Manager",
             "wifi_manager.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/WiFi-Manager/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/WiFi-Manager/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1838,7 +1838,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "Worldcam",
             "worldcam.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/WorldCam/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/WorldCam/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1846,7 +1846,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "XC Forever",
             "xc.png",
-            "wget -q --no-check-certificate \"https://raw.githubusercontent.com/Belfagor2005/xc_plugin_forever/main/installer.sh?inline=false\" -O - | /bin/sh")
+            "wget -q \"https://raw.githubusercontent.com/Belfagor2005/xc_plugin_forever/main/installer.sh?inline=false\" -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1854,7 +1854,7 @@ class LulullaScript(LPGridScreen):
             self.urls,
             "XXX Plugin",
             "xxx_plugin.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/xxxplugin/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/Belfagor2005/xxxplugin/main/installer.sh -O - | /bin/sh")
 
         self.initGrid(menu_list)
 
@@ -1928,7 +1928,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpBouquetUpdater",
             "ciefp_bu.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpBouquetUpdater/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpBouquetUpdater/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1936,7 +1936,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpChannelManager",
             "ciefp_cman.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpChannelManager/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpChannelManager/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1944,7 +1944,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpE2Converter",
             "ciefp_ec.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpE2Converter/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpE2Converter/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1952,7 +1952,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpKingSat",
             "ciefpkingsat.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpKingSat/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpKingSat/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1960,7 +1960,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpIptvBouquets",
             "ciefp_ib.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpIPTVBouquets/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpIPTVBouquets/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1968,7 +1968,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpMojTvEPG",
             "ciefp_mojtvepg.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpMojTvEPG/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpMojTvEPG/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1976,7 +1976,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpOpenDirectory",
             "ciefp_opdir.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpOpenDirectories/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpOpenDirectories/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1984,7 +1984,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpOscamEditor",
             "ciefp_oe.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpOscamEditor/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpOscamEditor/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1992,7 +1992,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpParabolaCZ",
             "CiefpParabolaCZ.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpParabolaCZ/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpParabolaCZ/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2000,7 +2000,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpRottenTomatoes",
             "ciefprottentomatoes.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpRottenTomatoes/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpRottenTomatoes/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2008,7 +2008,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSatelliteAnalizer",
             "ciefp_satan.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSatelliteAnalyzer/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSatelliteAnalyzer/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2016,7 +2016,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSatelliteXmlEditor",
             "ciefp_xed.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSatelliteXmlEditor/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSatelliteXmlEditor/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2024,7 +2024,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSelectSatellite",
             "ciefp_ss.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSelectSatellite/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSelectSatellite/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2032,7 +2032,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSettingsDownloader",
             "ciefp_sd.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSettingsDownloader/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSettingsDownloader/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2040,7 +2040,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSettingsStreamrelay PY2",
             "ciefp_sr2.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSettingsStreamrelayPY2/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSettingsStreamrelayPY2/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2048,7 +2048,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSettingsStreamrelay PY3",
             "ciefp_sr3.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSettingsStreamrelay/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSettingsStreamrelay/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2056,7 +2056,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSettingsT2miAbertis PLi",
             "ciefp_t2mpli.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSettingsT2miAbertisOpenPLi/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSettingsT2miAbertisOpenPLi/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2064,7 +2064,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpSettingsT2miAbertis",
             "ciefp_t2m.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpSettingsT2miAbertis/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSettingsT2miAbertis/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2072,7 +2072,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefTitloviBrowser",
             "titlovibrowser.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/TitloviBrowser/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/TitloviBrowser/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2080,7 +2080,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpTMDBSearch",
             "ciefp_tmdb.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpTMDBSearch/main/installer.sh  -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTMDBSearch/main/installer.sh  -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2088,7 +2088,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpVibes",
             "ciefp_vibes.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpVibes/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpVibes/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2096,7 +2096,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpWhitelistStreamrelay",
             "ciefp_wls.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpWhitelistStreamrelay/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpWhitelistStreamrelay/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2104,7 +2104,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpsettingsMotor",
             "ciefp_sm.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpsettingsMotor/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpsettingsMotor/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2112,7 +2112,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpsettingsPanel",
             "ciefp_sp.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/CiefpsettingsPanel/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpsettingsPanel/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2120,7 +2120,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "WebCamE2PrenjSF",
             "ciefp_webcam.png",
-            "wget -q --no-check-certificate https://raw.githubusercontent.com/ciefp/WebCamE2PrenjSF/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/WebCamE2PrenjSF/main/installer.sh -O - | /bin/sh")
 
         self.initGrid(menu_list)
 
@@ -2203,7 +2203,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Add Libssl Libcrypto",
             "AddLibssl.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Add_Libssl1_Libcrypto1.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Add_Libssl1_Libcrypto1.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2211,7 +2211,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Add Symlink Libssl",
             "AddSymlink.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Symlink_Creator.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Symlink_Creator.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2219,7 +2219,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Ajpanel AMAJamry",
             "Ajpanel.png",
-            'wget --no-check-certificate "https://raw.githubusercontent.com/biko-73/AjPanel/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget "https://raw.githubusercontent.com/biko-73/AjPanel/main/installer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2227,7 +2227,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Arabic Savior",
             "arabicsav.png",
-            'wget --no-check-certificate "https://raw.githubusercontent.com/fairbird/ArabicSavior/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget "https://raw.githubusercontent.com/fairbird/ArabicSavior/main/installer.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2236,7 +2236,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Biss Feed Autokey",
             "BissFeedAutokey.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Bissfeedautokey.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Bissfeedautokey.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2244,7 +2244,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Chocholousek Picons",
             "ChocholousekPicons.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Chocholousek_picons.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Chocholousek_picons.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2253,7 +2253,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Dns Cloudfaire",
             "DnsCloudfaire.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/DnsCloudflare.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/DnsCloudflare.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2261,7 +2261,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Dns Google",
             "DnsGoogle.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/DnsGoogle.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/DnsGoogle.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2269,7 +2269,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Dns Quad9",
             "DnsQuad9.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/DnsQuad9.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/DnsQuad9.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2278,7 +2278,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "E2player E2-MIRROR",
             "E2iPlayer.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/oe-mirrors/e2iplayer/refs/heads/python3/e2iplayer_install.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/oe-mirrors/e2iplayer/refs/heads/python3/e2iplayer_install.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2286,7 +2286,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "E2player BYKO-73",
             "E2playerBiko-73.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/biko-73/E2IPlayer/main/installer-tar.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/biko-73/E2IPlayer/main/installer-tar.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2294,7 +2294,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "E2player MAXBAMBY",
             "E2playerMAXBAMBY.png",
-            'wget -q --no-check-certificate "https://gitlab.com/maxbambi/e2iplayer/-/raw/master/install-e2iplayer.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://gitlab.com/maxbambi/e2iplayer/-/raw/master/install-e2iplayer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2302,8 +2302,8 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "E2player ZADMARIO",
             "E2playerZADMARIO.png",
-            'wget -q --no-check-certificate "https://gitlab.com/zadmario/e2iplayer/-/raw/master/install-e2iplayer.sh?inline=false" -O - | /bin/sh')
-        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "E2player XXX", "E2playerXXX.png", 'wget -q --no-check-certificate "https://gitlab.com/iptv-host-xxx/iptv-host-xxx/-/raw/master/IPTVPlayer/iptvupdate/custom/xxx.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://gitlab.com/zadmario/e2iplayer/-/raw/master/install-e2iplayer.sh?inline=false" -O - | /bin/sh')
+        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "E2player XXX", "E2playerXXX.png", 'wget -q "https://gitlab.com/iptv-host-xxx/iptv-host-xxx/-/raw/master/IPTVPlayer/iptvupdate/custom/xxx.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2312,7 +2312,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "EPGImport - source",
             "epgsource.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/EPGImport-99/main/installer_source.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/EPGImport-99/main/installer_source.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2321,7 +2321,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "History Zap Selector",
             "HistoryZapSelector.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Historyzapselector_dorik.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Historyzapselector_dorik.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2329,7 +2329,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Ipaudio Pro",
             "ipaudio.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Ipaudiopro_1.4.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Ipaudiopro_1.4.sh?inline=false" -O - | /bin/sh')
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Ipaudio Pro", "ipaudio.png", 'wget https://raw.githubusercontent.com/biko-73/ipaudio/main/ipaudiopro.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
@@ -2339,7 +2339,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Keys Adder",
             "keysadd.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/fairbird/KeyAdder/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/fairbird/KeyAdder/main/installer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2347,7 +2347,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Keys Update",
             "keys.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Keys_Updater.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Keys_Updater.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2355,7 +2355,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Levi45 Manager",
             "Levi45Manager.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/levi-45/Manager/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/levi-45/Manager/main/installer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2363,7 +2363,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Linuxsat Addons Panel",
             "Linuxsat.png",
-            'wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/installer.sh -O - | /bin/sh')
+            'wget -q https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/installer.sh -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2372,9 +2372,9 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Mountpoints",
             "Mountpoints.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false" -O - | /bin/sh')
-        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko Biko", "Multistalker.png", 'wget -q --no-check-certificate  "https://raw.githubusercontent.com/biko-73/Multi-Stalker/main/pro/installer.sh -O - | /bin/sh?inline=false" -O - | /bin/sh; wget -q --no-check-certificate "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
-        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko", "MultistalkerPro.png", 'wget -q --no-check-certificate "https://raw.githubusercontent.com/emilnabil/multi-stalkerpro/refs/heads/main/installer.sh?inline=false" -O - | /bin/sh; wget -q --no-check-certificate "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false" -O - | /bin/sh')
+        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko Biko", "Multistalker.png", 'wget -q  "https://raw.githubusercontent.com/biko-73/Multi-Stalker/main/pro/installer.sh -O - | /bin/sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
+        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko", "MultistalkerPro.png", 'wget -q "https://raw.githubusercontent.com/emilnabil/multi-stalkerpro/refs/heads/main/installer.sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2382,7 +2382,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Multistalker Pro Ziko",
             "MultistalkerPro.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/refs/heads/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/multisalker_pro12_eliesat.sh?inline=false" -O - | /bin/sh;wget -q --no-check-certificate "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/refs/heads/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/multisalker_pro12_eliesat.sh?inline=false" -O - | /bin/sh;wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2390,7 +2390,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "New VirtualKeyboard",
             "NewVirtualKeyboard.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/fairbird/NewVirtualKeyBoard/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/fairbird/NewVirtualKeyBoard/main/installer.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2399,7 +2399,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Oscam Generator LINGSAT",
             "lingsat.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_lyngsat.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_lyngsat.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2407,7 +2407,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Oscam Generator KINGOFSAT",
             "kingofsat.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_kingofsat.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_kingofsat.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2415,7 +2415,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Oscam Generator SATELINATV",
             "satelinatv.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_satelitnatv.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_satelitnatv.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2423,7 +2423,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Oscam Generator TWOJEIP",
             "twojeip.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_twojeip.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Oscam_srvid_generator_twojeip.sh?inline=false" -O - | /bin/sh')
 
         add_menu_item(
             menu_list,
@@ -2432,7 +2432,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Quicksignal Raed",
             "Quicksignal.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/fairbird/RaedQuickSignal/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/fairbird/RaedQuickSignal/main/installer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2440,7 +2440,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "WireGuard Vpn",
             "WireGuard.png",
-            'wget -qO- --no-check-certificate "https://raw.githubusercontent.com/m4dhouse/Wireguard-Vpn/python-3.12/WireGuard.sh" -O -  | /bin/sh')
+            'wget -qO- "https://raw.githubusercontent.com/m4dhouse/Wireguard-Vpn/python-3.12/WireGuard.sh" -O -  | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2448,7 +2448,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "XC Forever",
             "xc.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/xc_plugin_forever/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/xc_plugin_forever/main/installer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2456,7 +2456,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Xstreamity",
             "xstreamity.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/biko-73/xstreamity/main/installer.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/biko-73/xstreamity/main/installer.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2464,9 +2464,9 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Xtraevent",
             "xtraevent.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Xtraevent.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Xtraevent.sh?inline=false" -O - | /bin/sh')
 
-        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "X-Klass", "xklass.png", 'wget -qO- --no-check-certificate "https://gitlab.com/MOHAMED_OS/dz_store/-/raw/main/XKlass/online-setup" | -O - | /bin/sh')
+        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "X-Klass", "xklass.png", 'wget -qO- "https://gitlab.com/MOHAMED_OS/dz_store/-/raw/main/XKlass/online-setup" | -O - | /bin/sh')
 
         # Adding more options without URLs
         if not has_dpkg:
@@ -2497,7 +2497,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Send Emm",
             "SendEmm.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Emm_Sender.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Emm_Sender.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2505,7 +2505,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Subsupport addon",
             "SubSupportAddon.png",
-            'wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Subsupport_addon.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Subsupport_addon.sh?inline=false" -O - | /bin/sh')
         add_menu_item(
             menu_list,
             self.titles,
@@ -2513,7 +2513,7 @@ class ScriptInstaller(LPGridScreen):
             self.urls,
             "Transmission addon",
             "transmission.png",
-            'wget -q --no-check-certificate "https://dreambox4u.com/dreamarabia/Transmission_e2/Transmission_e2.sh?inline=false" -O - | /bin/sh')
+            'wget -q "https://dreambox4u.com/dreamarabia/Transmission_e2/Transmission_e2.sh?inline=false" -O - | /bin/sh')
         if not has_dpkg:
             add_menu_item(
                 menu_list,
@@ -2563,13 +2563,8 @@ class ScriptInstaller(LPGridScreen):
             print("Starting LCN scan...")
             try:
                 lcn_scanner_instance = LCNScanner()
-                LCN = lcn_scanner_instance.lcnScan()
-                print("LCN Scanner returned:", LCN)
-
-                if LCN:
-                    self.session.open(LCN)
-                else:
-                    print("Error: LCN scan did not return a valid screen.")
+                lcn_scanner_instance.lcnScan()
+                print("LCN scan completed.")
             except Exception as e:
                 print("Exception during LCN scan:", e)
 
@@ -3371,13 +3366,8 @@ class addInstall(AsyncMixin, Screen):
             print("Starting LCN scan...")
             try:
                 lcn_scanner_instance = LCNScanner()
-                LCN = lcn_scanner_instance.lcnScan()
-                print("LCN Scanner returned:", LCN)
-
-                if LCN:
-                    self.session.open(LCN)
-                else:
-                    print("Error: LCN scan did not return a valid screen.")
+                lcn_scanner_instance.lcnScan()
+                print("LCN scan completed.")
             except Exception as e:
                 print("Exception during LCN scan:", e)
 
@@ -3813,7 +3803,7 @@ class LSinfo(AsyncMixin, Screen):
                 lsConsole,
                 "Upgrading...",
                 cmdlist=[
-                    "wget -q --no-check-certificate " +
+                    "wget -q " +
                     b64decoder(installer_url) +
                     " -O - | /bin/sh"],
                 finishedCallback=self.myCallback,
@@ -3994,7 +3984,7 @@ class LSinfo(AsyncMixin, Screen):
         cache_path = self._get_cache_path()
         try:
             with open(cache_path, "w") as f:
-                f.write(str(commits))
+                f.write(dumps(commits))
             return True
         except BaseException:
             return False

@@ -257,6 +257,11 @@ class LCNScanner:
                 elif data[self.LCNS_MEDIUM] in ("A", "T"):
                     lcnCache = terrestrialCache
                     serviceLCNs = terrestrialLCNs
+                else:
+                    print(
+                        "[LCNScanner] Warning: Unknown medium '{}' for service '{}', skipping!".format(
+                            data[self.LCNS_MEDIUM], data[self.LCNS_SERVICEREFERENCE]))
+                    continue
 
                 if service in services:
                     if lcn in lcnCache:

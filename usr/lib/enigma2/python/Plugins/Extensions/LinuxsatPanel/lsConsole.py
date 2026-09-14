@@ -15,6 +15,7 @@ from enigma import getDesktop
 import sys
 import codecs
 import os
+import tempfile
 import gettext
 _ = gettext.gettext
 
@@ -106,6 +107,7 @@ class lsConsole(Screen):
             self.container.dataAvail_conn = self.container.dataAvail.connect(
                 self.dataAvail)
         self.onLayoutFinish.append(self.startRun)
+        self._scripts = []
 
     def updateTitle(self):
         self.setTitle(self.newtitle)
@@ -119,17 +121,33 @@ class lsConsole(Screen):
         directly. Writing the command to a real temp script and running
         that removes every one of those differences - a script file is
         always interpreted by /bin/sh exactly as written.
+
+        The file is created with mkstemp (unique name, opened exclusively,
+        0600 by default) rather than a predictable path, to avoid a local
+        symlink/race attack on the shared /tmp directory.
         """
-        script = '/tmp/.lsconsole_%d.sh' % self.run
         try:
-            with codecs.open(script, 'w', encoding='utf-8') as f:
-                f.write('#!/bin/sh\n')
-                f.write(cmd + '\n')
-            os.chmod(script, 0o755)
+            fd, script = tempfile.mkstemp(
+                prefix='.lsconsole_', suffix='.sh', dir='/tmp')
+            content = '#!/bin/sh\n' + cmd + '\n'
+            if not isinstance(content, bytes):
+                content = content.encode('utf-8')
+            with os.fdopen(fd, 'wb') as f:
+                f.write(content)
+            os.chmod(script, 0o700)
         except (IOError, OSError) as e:
             print('[Console] cannot write run script:', e)
             return self.container.execute(cmd)  # last-resort fallback
+        self._scripts.append(script)
         return self.container.execute('/bin/sh ' + script)
+
+    def _cleanupScripts(self):
+        while self._scripts:
+            script = self._scripts.pop()
+            try:
+                os.remove(script)
+            except OSError:
+                pass
 
     def startRun(self):
         if self.showStartStopText:
@@ -204,6 +222,7 @@ class lsConsole(Screen):
                 self.container.appClosed_conn = None
                 self.container.dataAvail_conn = None
             self.container.kill()
+            self._cleanupScripts()
             self.close()
 
     def closeConsole(self):
@@ -214,6 +233,7 @@ class lsConsole(Screen):
             except BaseException:
                 self.container.appClosed_conn = None
                 self.container.dataAvail_conn = None
+            self._cleanupScripts()
             self.close()
         else:
             self.show()

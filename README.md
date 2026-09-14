@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/Belfagor2005/LinuxsatPanel">
-    <img src="https://img.shields.io/badge/Version-3.0.5-blue.svg" alt="Version">
+    <img src="https://img.shields.io/badge/Version-3.0.6-blue.svg" alt="Version">
   </a>
 
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -54,7 +54,16 @@
 
 ## 🗓️ Version History
 
-### v3.0.5 (Current)
+### v3.0.6 (Current)
+- Security: removed --no-check-certificate from every wget install/update call
+- Hardened lsConsole and checkskin temp files against local symlink attacks
+- Fixed LCN scan (Order LCN Bouquet) always logging a false error even on success
+- Fixed possible crash/misfile reading lcndb entries with an unexpected mode
+- Fixed commits cache never actually loading (str repr vs JSON mismatch)
+- Fixed crash risk in RTL/Arabic font loading (add_skin_fonts)
+- Removed unused translate_utils.py and duplicate code
+
+### v3.0.5
 - Added Commit History viewer (INFO button -> Commit History)
 - LSinfo now supports 3 modes: info/about/commits
 - Commit list shows date, author, message and hash

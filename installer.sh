@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='3.0.5'
-changelog="\n--Added Commit History viewer (INFO button -> Commit History)\n--LSinfo now supports 3 modes: info/about/commits\n--Commit list shows date, author, message and hash\n--Added cache system for commits (saves to commits_cache.json)\n--Auto-refresh cache every 24 hours\n--Rate limit handling with fallback to cached data\n--Updated info.txt with clean formatting (no special chars)\n--Fixed AsyncMixin inheritance for LSinfo\n--Fixed console output for script execution (removed redirections)\n--Updated README.md to v3.0.5"
+version='3.0.6'
+changelog="\n--Security: removed --no-check-certificate from every wget install/update call\n--Hardened lsConsole and checkskin temp files against local symlink attacks\n--Fixed LCN scan (Order LCN Bouquet) always logging a false error\n--Fixed possible crash reading lcndb/service data with an unexpected mode\n--Fixed commits cache never actually loading (str repr vs JSON mismatch)\n--Fixed crash risk in RTL/Arabic font loading (add_skin_fonts)\n--Removed unused translate_utils.py and duplicate code\n--Updated README.md to v3.0.6"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz
@@ -87,7 +87,7 @@ install_pkg() {
 install_pkg "$Packagerequests"
 
 echo "Downloading LinuxsatPanel..."
-wget --no-check-certificate 'https://github.com/Belfagor2005/LinuxsatPanel/archive/refs/heads/main.tar.gz' -O "$FILEPATH"
+wget 'https://github.com/Belfagor2005/LinuxsatPanel/archive/refs/heads/main.tar.gz' -O "$FILEPATH"
 if [ $? -ne 0 ]; then
     echo "Failed to download LinuxsatPanel package!"
     cleanup

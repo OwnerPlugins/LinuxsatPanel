@@ -184,7 +184,7 @@ class lsConsole(Screen):
             self.callback(not self.errorOcurred)
 
         if self.finishedCallback:
-            self.finishedCallback()
+            self.finishedCallback(not self.errorOcurred)
 
         if self.errorOcurred or not self.closeOnSuccess:
             self['text'].appendText('\nPress OK or Exit to abort!')

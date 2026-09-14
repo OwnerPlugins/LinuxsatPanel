@@ -193,6 +193,9 @@ class LCN():
             refstr = '%s ORDER BY name' % (self.service_types_tv)
         elif serviceType == "RADIO":
             refstr = '%s ORDER BY name' % (self.service_types_radio)
+        else:
+            print("Unknown serviceType '%s', skipping." % serviceType)
+            return
         ref = eServiceReference(refstr)
         serviceHandler = eServiceCenter.getInstance()
         servicelist = serviceHandler.list(ref)

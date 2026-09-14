@@ -2563,13 +2563,8 @@ class ScriptInstaller(LPGridScreen):
             print("Starting LCN scan...")
             try:
                 lcn_scanner_instance = LCNScanner()
-                LCN = lcn_scanner_instance.lcnScan()
-                print("LCN Scanner returned:", LCN)
-
-                if LCN:
-                    self.session.open(LCN)
-                else:
-                    print("Error: LCN scan did not return a valid screen.")
+                lcn_scanner_instance.lcnScan()
+                print("LCN scan completed.")
             except Exception as e:
                 print("Exception during LCN scan:", e)
 
@@ -3371,13 +3366,8 @@ class addInstall(AsyncMixin, Screen):
             print("Starting LCN scan...")
             try:
                 lcn_scanner_instance = LCNScanner()
-                LCN = lcn_scanner_instance.lcnScan()
-                print("LCN Scanner returned:", LCN)
-
-                if LCN:
-                    self.session.open(LCN)
-                else:
-                    print("Error: LCN scan did not return a valid screen.")
+                lcn_scanner_instance.lcnScan()
+                print("LCN scan completed.")
             except Exception as e:
                 print("Exception during LCN scan:", e)
 

@@ -45,16 +45,21 @@ user_skin_file = tmplog + 'merged_' + cur_skin + '.xml'
 user_log = tmplog + 'my_debug.log'
 
 
+def _safe_open(path, mode):
+    """Open a fixed, predictable /tmp path for write/append without
+    following a symlink another local user may have planted there."""
+    flags = os.O_CREAT | os.O_WRONLY | os.O_NOFOLLOW
+    flags |= os.O_APPEND if 'a' in mode else os.O_TRUNC
+    fd = os.open(path, flags, 0o600)
+    if PY3:
+        return os.fdopen(fd, mode, encoding="utf-8")
+    return os.fdopen(fd, mode)
+
+
 # Funzione di logging compatibile con Python 2 e 3
 try:
-    if PY3:
-        # Python 3: usa encoding
-        with open(user_log, "w", encoding="utf-8") as log_file:
-            log_file.write("Log Initialized\n")
-    else:
-        # Python 2: no encoding parameter
-        with open(user_log, "w") as log_file:
-            log_file.write("Log Initialized\n")
+    with _safe_open(user_log, "w") as log_file:
+        log_file.write("Log Initialized\n")
 except Exception as e:
     print("Error initializing log: %s" % str(e))
 
@@ -63,12 +68,11 @@ def checklogskin(data):
     try:
         print(colorstart + str(data) + colorend)  # stampa sul terminale
         if PY3:
-            # Python 3
-            with open(user_log, "a", encoding="utf-8") as log_file:
+            with _safe_open(user_log, "a") as log_file:
                 log_file.write("\n:> " + str(data))
         else:
             # Python 2
-            with open(user_log, "a") as log_file:
+            with _safe_open(user_log, "a") as log_file:
                 log_file.write("\n:> " + str(data).encode('utf-8'))
     except Exception as e:
         print("Error logging data: %s" % str(e))
@@ -202,11 +206,11 @@ def check_module_skin():
         if user_skin:
             user_skin = "<skin>\n" + user_skin + "</skin>\n"
             if PY3:
-                with open(user_skin_file, "w", encoding="utf-8") as myFile:
+                with _safe_open(user_skin_file, "w") as myFile:
                     checklogskin("write myFile %s" % user_skin_file)
                     myFile.write(user_skin)
             else:
-                with open(user_skin_file, "w") as myFile:
+                with _safe_open(user_skin_file, "w") as myFile:
                     checklogskin("write myFile %s" % user_skin_file)
                     myFile.write(user_skin.encode('utf-8'))
 

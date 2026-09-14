@@ -61,16 +61,6 @@ def newOE():
     return boo
 
 
-patterns_to_remove = [
-    r'scrollbarWidth="[^"]*"',
-    r'scrollbarSliderBorderWidth="[^"]*"',
-    r'textoffsets\s*="[^"]*"',
-    r'secondfont\s*="[^"]*"',
-    r'scrollbarBorderWidth="[^"]*"',
-    r'scrollbarForegroundColor="[^"]*"',
-    r'scrollbarBorderColor="[^"]*"'
-]
-
 # scrollbarMode="
 patterns_to_remove = [
     r'scrollbarWidth="[^"]*"',

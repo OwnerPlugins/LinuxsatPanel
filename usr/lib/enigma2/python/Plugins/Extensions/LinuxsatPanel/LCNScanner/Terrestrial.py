@@ -184,8 +184,8 @@ class TerrestrialBouquet:
             active_sections = [max((x for x in list(sections.keys()) if int(
                 x) <= key)) for key in list(lcnindex.keys())] if sections else []
             if not self.config.skipduplicates.value:
-                duplicates = sorted([(k, v) for k, v in self.services.items(
-                ) if v.get("duplicate") and v.get("type") in allowed_service_types], key=lambda x: x[1]["name"].lower())
+                duplicates = sorted([(k, v) for k, v in self.services.items() if v.get(
+                    "duplicate") and v.get("type") in allowed_service_types], key=lambda x: x[1]["name"].lower())
             else:
                 duplicates = []
             if duplicates:

@@ -92,9 +92,10 @@ class TerrestrialBouquet:
         terrestrials = {}
         query = "1:7:%s:0:0:0:0:0:0:0:%s ORDER BY name" % (1 if mode == MODE_TV else 2, " || ".join(
             ["(type == %s)" % i for i in self.getAllowedTypes(mode)]))
-        if (servicelist := ServiceReference.list(
-                ServiceReference(query))) is not None:
-            while (service := servicelist.getNext()) and service.valid():
+        servicelist = ServiceReference.list(ServiceReference(query))
+        if servicelist is not None:
+            service = servicelist.getNext()
+            while service and service.valid():
                 if service.getUnsignedData(4) >> 16 == 0xeeee or service.getUnsignedData(
                         4) >> 16 == 61166:  # filter (only terrestrial)
                     stype, sid, tsid, onid, ns = [
@@ -102,6 +103,7 @@ class TerrestrialBouquet:
                     name = ServiceReference.getServiceName(service)
                     terrestrials["%08x:%04x:%04x:%04x" % (ns, onid, tsid, sid)] = {
                         "name": name, "namespace": ns, "onid": onid, "tsid": tsid, "sid": sid, "type": stype}
+                service = servicelist.getNext()
         return terrestrials
 
     def getAllowedTypes(self, mode):
@@ -110,7 +112,8 @@ class TerrestrialBouquet:
 
     def readLcnDb(self):
         LCNs = {}
-        if LCNData := eDVBDB.getInstance().getLcnDBData():
+        LCNData = eDVBDB.getInstance().getLcnDBData()
+        if LCNData:
             for service in LCNData:
                 ns, onid, tsid, sid, lcn, signal = service
                 # filter (only terrestrial)
@@ -130,14 +133,15 @@ class TerrestrialBouquet:
             return _("Terrestrial Bouquet plugin is not enabled.")
         msg = _("Try running a manual scan of terrestrial frequencies with network scan enabled. If this fails maybe there is no lcn data available in your area.")
         self.services.clear()
-        if not (LCNs := self.readLcnDb()):
+        LCNs = self.readLcnDb()
+        if not LCNs:
             return (_("There is currently no LCN data stored.")) + " " + msg
         for mode in (MODE_TV, MODE_RADIO):
             terrestrials = self.getTerrestrials(mode)
             for k in terrestrials:
                 if k in LCNs:
-                    terrestrials[k] |= LCNs[k]
-            self.services |= terrestrials
+                    terrestrials[k].update(LCNs[k])
+            self.services.update(terrestrials)
         self.services = {
             k: v for k, v in sorted(
                 list(
@@ -179,10 +183,15 @@ class TerrestrialBouquet:
                 "sections", {})
             active_sections = [max((x for x in list(sections.keys()) if int(
                 x) <= key)) for key in list(lcnindex.keys())] if sections else []
-            if not self.config.skipduplicates.value and (duplicates := sorted([(k, v) for k, v in self.services.items(
-            ) if v.get("duplicate") and v.get("type") in allowed_service_types], key=lambda x: x[1]["name"].lower())):
-                duplicate_range = {
-                    "lower": highestLCN + 1, "upper": 65535} | providers[self.config.providers.value].get("duplicates", {})
+            if not self.config.skipduplicates.value:
+                duplicates = sorted([(k, v) for k, v in self.services.items(
+                ) if v.get("duplicate") and v.get("type") in allowed_service_types], key=lambda x: x[1]["name"].lower())
+            else:
+                duplicates = []
+            if duplicates:
+                duplicate_range = {"lower": highestLCN + 1, "upper": 65535}
+                duplicate_range.update(
+                    providers[self.config.providers.value].get("duplicates", {}))
                 for i in range(
                         duplicate_range["lower"],
                         duplicate_range["upper"] + 1):
@@ -306,7 +315,8 @@ class PluginSetup(Setup, TerrestrialBouquet):
     def startrebuild(self):
         if self.config.enabled.value:
             self.saveAll()
-            if msg := self.rebuild():
+            msg = self.rebuild()
+            if msg:
                 mb = self.session.open(MessageBox, msg, MessageBox.TYPE_ERROR)
                 mb.setTitle(_("Terrestrial Bouquet Error"))
             else:

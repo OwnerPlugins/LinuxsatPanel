@@ -608,8 +608,8 @@ def fix_po_file(po_file):
 
             if prefix == 'msgid':
                 if content == '':
-                    if not any(l.startswith('msgid ""')
-                               for l in new_lines if l.startswith('msgid')):
+                    if not any(line_.startswith('msgid ""')
+                               for line_ in new_lines if line_.startswith('msgid')):
                         new_lines.append(new_line)
                 else:
                     if content in seen_msgids:

@@ -562,7 +562,9 @@ class AsyncMixin:
 
 # The addon catalog is fetched once and shared for the whole session;
 # a category click hits the cache and is instant
+import threading
 _catalog_cache = {"data": None, "time": 0}
+_catalog_lock = threading.Lock()
 CATALOG_TTL = 300
 
 
@@ -573,11 +575,18 @@ def get_catalog(force=False):
     if not force and _catalog_cache["data"] is not None and \
             now - _catalog_cache["time"] < CATALOG_TTL:
         return _catalog_cache["data"]
-    data = checkGZIP(xmlurl)
-    if data:
-        _catalog_cache["data"] = data
-        _catalog_cache["time"] = now
-    return _catalog_cache["data"]
+    with _catalog_lock:
+        # Re-check: another thread may have refreshed the cache while we
+        # were waiting for the lock.
+        now = time.time()
+        if not force and _catalog_cache["data"] is not None and \
+                now - _catalog_cache["time"] < CATALOG_TTL:
+            return _catalog_cache["data"]
+        data = checkGZIP(xmlurl)
+        if data:
+            _catalog_cache["data"] = data
+            _catalog_cache["time"] = now
+        return _catalog_cache["data"]
 
 
 class LPGridScreen(AsyncMixin, Screen):

@@ -170,6 +170,10 @@ class TerrestrialBouquet:
                 self.AUDIO_ALLOWED_TYPES or self.getAllowedTypes(mode)
             lcnindex = {v["lcn"]: k for k, v in self.services.items() if not v.get(
                 "duplicate") and v.get("lcn") and v.get("type") in allowed_service_types}
+            if not lcnindex:
+                # No eligible services for this mode (e.g. a region with
+                # only radio, or only tv, LCN data) - nothing to build.
+                continue
             highestLCN = max(list(lcnindex.keys()))
             sections = providers[self.config.providers.value].get(
                 "sections", {})

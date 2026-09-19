@@ -173,6 +173,7 @@ License: GPL v2
 ###########################################################
 """
 
+import threading
 import codecs
 import io
 import time
@@ -562,7 +563,6 @@ class AsyncMixin:
 
 # The addon catalog is fetched once and shared for the whole session;
 # a category click hits the cache and is instant
-import threading
 _catalog_cache = {"data": None, "time": 0}
 _catalog_lock = threading.Lock()
 CATALOG_TTL = 300

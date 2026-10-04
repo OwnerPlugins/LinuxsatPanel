@@ -2524,10 +2524,10 @@ class ScriptInstaller(LPGridScreen):
             "Mountpoints",
             "Mountpoints.png",
             'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false" -O - | /bin/sh')
-        
+
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko Biko", "Multistalker.png", 'wget -q  "https://raw.githubusercontent.com/biko-73/Multi-Stalker/main/pro/installer.sh -O - | /bin/sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko", "MultistalkerPro.png", 'wget -q "https://raw.githubusercontent.com/emilnabil/multi-stalkerpro/refs/heads/main/installer.sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" | /bin/sh')
-        
+
         add_menu_item(
             menu_list,
             self.titles,

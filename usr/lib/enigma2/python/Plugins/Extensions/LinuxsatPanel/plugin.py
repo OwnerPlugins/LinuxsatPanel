@@ -1991,7 +1991,7 @@ class CiefpInstaller(LPGridScreen):
             self.pics,
             self.urls,
             "CiefpParabolaCZ",
-            "CiefpParabolaCZ.png",
+            "ciefpparabolacz.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpParabolaCZ/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
@@ -2080,7 +2080,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "CiefpTMDBSearch",
             "ciefp_tmdb.png",
-            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTMDBSearch/main/installer.sh  -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTMDBSearch/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
             self.titles,
@@ -2121,7 +2121,158 @@ class CiefpInstaller(LPGridScreen):
             "WebCamE2PrenjSF",
             "ciefp_webcam.png",
             "wget -q https://raw.githubusercontent.com/ciefp/WebCamE2PrenjSF/main/installer.sh -O - | /bin/sh")
-
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpScreenGrab",
+            "ciefp_screengrab.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpScreenGrab/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpEPGshare",
+            "ciefp_epgshare.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpEPGshare/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpTvProgramSBB",
+            "ciefp_tvprogramsbb.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTvProgramSBB/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpTvProgramSK",
+            "ciefp_tvprogramsk.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTvProgramSK/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpTvProgramA1HR",
+            "ciefp_tvprograma1hr.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTvProgramA1HR/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpTvTodayDE",
+            "ciefp_tvtodayde.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTvTodayDE/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpTvProgram",
+            "ciefp_tvprogram.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpTvProgram/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpOpenSubtitles",
+            "ciefp_opensubtitles.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpOpenSubtitles/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpSRTplayer",
+            "ciefp_srtplayer.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSRTplayer/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpEasySetup",
+            "ciefp_easysetup.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpEasySetup/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpPicturePlayer",
+            "ciefp_pictureplayer.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpPicturePlayer/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpVideoPlayer",
+            "ciefp_videoplayer.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpVideoPlayer/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpYouTube",
+            "ciefp_youtube.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpYouTube/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpE2editor",
+            "ciefp_e2editor.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpE2editor/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpBootlogo",
+            "ciefp_bootlogo.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpBootlogo/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpPiconManager",
+            "ciefp_piconmanager.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpPiconManager/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpSignalInfo",
+            "ciefp_signalinfo.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpSignalInfo/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpEPGinfo",
+            "ciefp_epginfo.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpEPGinfo/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpPlugins",
+            "ciefp_plugins.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpPlugins/main/installer.sh -O - | /bin/sh")
         self.initGrid(menu_list)
 
     def okbuttonClick(self):
@@ -2148,7 +2299,7 @@ class CiefpInstaller(LPGridScreen):
                 "source"]
             lower_namev = self.namev.lower()
             keyword_found = any(keyword in lower_namev for keyword in keywords)
-            cmd = str(self.url)  # senza > %s 2>&1
+            cmd = str(self.url)
             if keyword_found:
                 self.session.open(
                     lsConsole,
@@ -2373,8 +2524,10 @@ class ScriptInstaller(LPGridScreen):
             "Mountpoints",
             "Mountpoints.png",
             'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false" -O - | /bin/sh')
+        
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko Biko", "Multistalker.png", 'wget -q  "https://raw.githubusercontent.com/biko-73/Multi-Stalker/main/pro/installer.sh -O - | /bin/sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko", "MultistalkerPro.png", 'wget -q "https://raw.githubusercontent.com/emilnabil/multi-stalkerpro/refs/heads/main/installer.sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" | /bin/sh')
+        
         add_menu_item(
             menu_list,
             self.titles,
@@ -2465,8 +2618,6 @@ class ScriptInstaller(LPGridScreen):
             "Xtraevent",
             "xtraevent.png",
             'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Xtraevent.sh?inline=false" -O - | /bin/sh')
-
-        # add_menu_item(menu_list, self.titles, self.pics, self.urls, "X-Klass", "xklass.png", 'wget -qO- "https://gitlab.com/MOHAMED_OS/dz_store/-/raw/main/XKlass/online-setup" | -O - | /bin/sh')
 
         # Adding more options without URLs
         if not has_dpkg:

@@ -173,7 +173,6 @@ License: GPL v2
 ###########################################################
 """
 
-import threading
 import codecs
 import io
 import time
@@ -564,7 +563,6 @@ class AsyncMixin:
 # The addon catalog is fetched once and shared for the whole session;
 # a category click hits the cache and is instant
 _catalog_cache = {"data": None, "time": 0}
-_catalog_lock = threading.Lock()
 CATALOG_TTL = 300
 
 
@@ -575,18 +573,11 @@ def get_catalog(force=False):
     if not force and _catalog_cache["data"] is not None and \
             now - _catalog_cache["time"] < CATALOG_TTL:
         return _catalog_cache["data"]
-    with _catalog_lock:
-        # Re-check: another thread may have refreshed the cache while we
-        # were waiting for the lock.
-        now = time.time()
-        if not force and _catalog_cache["data"] is not None and \
-                now - _catalog_cache["time"] < CATALOG_TTL:
-            return _catalog_cache["data"]
-        data = checkGZIP(xmlurl)
-        if data:
-            _catalog_cache["data"] = data
-            _catalog_cache["time"] = now
-        return _catalog_cache["data"]
+    data = checkGZIP(xmlurl)
+    if data:
+        _catalog_cache["data"] = data
+        _catalog_cache["time"] = now
+    return _catalog_cache["data"]
 
 
 class LPGridScreen(AsyncMixin, Screen):
@@ -1214,7 +1205,7 @@ class LinuxsatPanel(LPGridScreen):
             self.pics,
             self.urls,
             "Commit History ",
-            "Information.png")
+            "Github.png")
 
         add_menu_item(
             menu_list,
@@ -1953,7 +1944,7 @@ class CiefpInstaller(LPGridScreen):
             self.urls,
             "ciefpdishpointer",
             "ciefp_cman.png",
-            "wget -q https://raw.githubusercontent.com/ciefp/CiefpDishPointer/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpDishPointer/main/installer.sh -O - | /bin/sh")        
         add_menu_item(
             menu_list,
             self.titles,
@@ -2541,10 +2532,10 @@ class ScriptInstaller(LPGridScreen):
             "Mountpoints",
             "Mountpoints.png",
             'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false" -O - | /bin/sh')
-
+        
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko Biko", "Multistalker.png", 'wget -q  "https://raw.githubusercontent.com/biko-73/Multi-Stalker/main/pro/installer.sh -O - | /bin/sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko", "MultistalkerPro.png", 'wget -q "https://raw.githubusercontent.com/emilnabil/multi-stalkerpro/refs/heads/main/installer.sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" | /bin/sh')
-
+        
         add_menu_item(
             menu_list,
             self.titles,

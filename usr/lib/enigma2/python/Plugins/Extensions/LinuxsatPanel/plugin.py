@@ -1942,9 +1942,17 @@ class CiefpInstaller(LPGridScreen):
             self.titles,
             self.pics,
             self.urls,
+            "CiefpChannelHistory",
+            "ciefp_channelhistory.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpChannelHistory/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
             "ciefpdishpointer",
             "ciefp_cman.png",
-            "wget -q https://raw.githubusercontent.com/ciefp/CiefpDishPointer/main/installer.sh -O - | /bin/sh")
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpDishPointer/main/installer.sh -O - | /bin/sh")        
         add_menu_item(
             menu_list,
             self.titles,
@@ -1966,7 +1974,7 @@ class CiefpInstaller(LPGridScreen):
             self.titles,
             self.pics,
             self.urls,
-            "CiefpIptvBouquets",
+            "CiefpIPTVBouquets",
             "ciefp_ib.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpIPTVBouquets/main/installer.sh -O - | /bin/sh")
         add_menu_item(
@@ -1982,7 +1990,7 @@ class CiefpInstaller(LPGridScreen):
             self.titles,
             self.pics,
             self.urls,
-            "CiefpOpenDirectory",
+            "CiefpOpenDirectories",
             "ciefp_opdir.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpOpenDirectories/main/installer.sh -O - | /bin/sh")
         add_menu_item(
@@ -2014,7 +2022,7 @@ class CiefpInstaller(LPGridScreen):
             self.titles,
             self.pics,
             self.urls,
-            "CiefpSatelliteAnalizer",
+            "CiefpSatelliteAnalyzer",
             "ciefp_satan.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpSatelliteAnalyzer/main/installer.sh -O - | /bin/sh")
         add_menu_item(
@@ -2281,6 +2289,14 @@ class CiefpInstaller(LPGridScreen):
             "CiefpPlugins",
             "ciefp_plugins.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpPlugins/main/installer.sh -O - | /bin/sh")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CiefpXfiles",
+            "ciefp_xfiles.png",
+            "wget -q https://raw.githubusercontent.com/ciefp/CiefpXfiles/main/installer.sh -O - | /bin/sh")
         self.initGrid(menu_list)
 
     def okbuttonClick(self):
@@ -2532,10 +2548,10 @@ class ScriptInstaller(LPGridScreen):
             "Mountpoints",
             "Mountpoints.png",
             'wget -q "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false" -O - | /bin/sh')
-
+        
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko Biko", "Multistalker.png", 'wget -q  "https://raw.githubusercontent.com/biko-73/Multi-Stalker/main/pro/installer.sh -O - | /bin/sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" -O - | /bin/sh')
         # add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multistalker Pro Ziko", "MultistalkerPro.png", 'wget -q "https://raw.githubusercontent.com/emilnabil/multi-stalkerpro/refs/heads/main/installer.sh?inline=false" -O - | /bin/sh; wget -q "https://gitlab.com/hmeng80/extensions/-/raw/main/multistalker/portal/Portal_multistalker.sh?inline=false" | /bin/sh')
-
+        
         add_menu_item(
             menu_list,
             self.titles,

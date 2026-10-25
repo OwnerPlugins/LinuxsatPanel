@@ -1943,7 +1943,7 @@ class CiefpInstaller(LPGridScreen):
             self.pics,
             self.urls,
             "CiefpChannelHistory",
-            "ciefp_channelhistory.png",
+            "ciefpchannelhistory.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpChannelHistory/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
@@ -1967,7 +1967,7 @@ class CiefpInstaller(LPGridScreen):
             self.pics,
             self.urls,
             "CiefpKingSat",
-            "ciefpkingsat.png",
+            "CiefpKingSat.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpKingSat/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
@@ -2087,7 +2087,7 @@ class CiefpInstaller(LPGridScreen):
             self.pics,
             self.urls,
             "CiefTitloviBrowser",
-            "titlovibrowser.png",
+            "TitloviBrowser.png",
             "wget -q https://raw.githubusercontent.com/ciefp/TitloviBrowser/main/installer.sh -O - | /bin/sh")
         add_menu_item(
             menu_list,
@@ -2295,7 +2295,7 @@ class CiefpInstaller(LPGridScreen):
             self.pics,
             self.urls,
             "CiefpXfiles",
-            "ciefp_xfiles.png",
+            "CiefpXfiles.png",
             "wget -q https://raw.githubusercontent.com/ciefp/CiefpXfiles/main/installer.sh -O - | /bin/sh")
         self.initGrid(menu_list)
 
@@ -4466,7 +4466,6 @@ def menustart():
     except BaseException:
         import traceback
         traceback.print_exc()
-        pass
 
 
 def main(session, **kwargs):
@@ -4477,7 +4476,6 @@ def main(session, **kwargs):
     except BaseException:
         import traceback
         traceback.print_exc()
-        pass
 
 
 def menu(menuid, **kwargs):

@@ -245,7 +245,8 @@ class ListSortUtility:
     def list_sort(names, titles, pics, urls):
         combined_data = zip(names, titles, pics, urls)
         sorted_data = sorted(combined_data, key=lambda x: x[0])
-        sorted_list, sorted_titles, sorted_pics, sorted_urls = zip(*sorted_data)
+        sorted_list, sorted_titles, sorted_pics, sorted_urls = zip(
+            *sorted_data)
         return sorted_list, sorted_titles, sorted_pics, sorted_urls
 
 
@@ -597,82 +598,352 @@ class LinuxsatPanel(LPGridScreen):
         self.urls = []
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Backup Tools ", "Backup.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Bouquets Tools ", "Bouquets.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Backup Tools ",
+                "Backup.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Bouquets Tools ",
+                "Bouquets.png")
 
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Channel List ", "Channel-list.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Ciefp ", "ciefp.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Channel List ",
+            "Channel-list.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Ciefp ",
+            "ciefp.png")
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "DvbUsb Tuners Drivers", "usb-tuner-drivers.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Epg Tools ", "plugin-epg.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Feeds Image OE2.0 ", "Feeds2.0.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "DvbUsb Tuners Drivers",
+                "usb-tuner-drivers.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Epg Tools ",
+                "plugin-epg.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Feeds Image OE2.0 ",
+                "Feeds2.0.png")
         else:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Feeds Image OE2.2/2.5/2.6 ", "Feeds2.2.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Feeds Image OE2.2/2.5/2.6 ",
+                "Feeds2.2.png")
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Games Tools ", "Game.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Iptv Tools ", "iptv-streaming.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "KiddaC OE2.0 ", "KiddaC1.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Games Tools ",
+                "Game.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Iptv Tools ",
+                "iptv-streaming.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "KiddaC OE2.0 ",
+                "KiddaC1.png")
         else:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Games Tools OE2.2/2.5/2.6 ", "Game.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "KiddaC OE2.2/2.5/2.6 ", "KiddaC2.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Games Tools OE2.2/2.5/2.6 ",
+                "Game.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "KiddaC OE2.2/2.5/2.6 ",
+                "KiddaC2.png")
 
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "LulullaScript ", "lululla_script.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "LulullaScript ",
+            "lululla_script.png")
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Lululla Zone OE2.0 ", "oe2.0.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Lululla Zone OE2.0 ",
+                "oe2.0.png")
         else:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Lululla Zone OE2.2/2.5/2.6 ", "oe2.5-2.6.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Plugins OE2.2/2.5/2.6 ", "OE2.2-Plugins.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Lululla Zone OE2.2/2.5/2.6 ",
+                "oe2.5-2.6.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Plugins OE2.2/2.5/2.6 ",
+                "OE2.2-Plugins.png")
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Mediaplayer-Youtube ", "mediayou.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "MultiBoot Tools ", "multiboot.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Multimedia Tools ", "Multimedia.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Panels Addons ", "Panels.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Picons Tools ", "picons.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Python Library ", "Library.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Radio Tools", "Radio.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Mediaplayer-Youtube ",
+                "mediayou.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "MultiBoot Tools ",
+                "multiboot.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Multimedia Tools ",
+                "Multimedia.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Panels Addons ",
+                "Panels.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Picons Tools ",
+                "picons.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Python Library ",
+                "Library.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Radio Tools",
+                "Radio.png")
 
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Script Installer ", "script.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Script Installer ",
+            "script.png")
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins | TEAM ", "skinsteam.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Skins | TEAM ",
+                "skinsteam.png")
         else:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins Fhd-Hd OE2.2/2.5/2.6 ", "OE2.2-Skins.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Skins Fhd-Hd OE2.2/2.5/2.6 ",
+                "OE2.2-Skins.png")
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Keys Tools OE2.0 ", "key-updater.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Keys Tools OE2.0 ",
+                "key-updater.png")
         else:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Keys Tools OE2.2/2.5/2.6 ", "key-updater1.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Keys Tools OE2.2/2.5/2.6 ",
+                "key-updater1.png")
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Softcams OE2.0 ", "SOE20.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Softcams OE2.0 ",
+                "SOE20.png")
         else:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Softcams OE2.2/2.5/2.6 ", "SOE22.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Softcams OE2.2/2.5/2.6 ",
+                "SOE22.png")
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Sport Tools ", "sport.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Streamlink Tools ", "streamlink.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Utility Tools ", "utility.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Vpn Tools ", "vpn.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "WeatherTools ", "weather.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "WeatherForecast ", "weather-forecast.png")
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Webcam Tools ", "webcam.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Sport Tools ",
+                "sport.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Streamlink Tools ",
+                "streamlink.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Utility Tools ",
+                "utility.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Vpn Tools ",
+                "vpn.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "WeatherTools ",
+                "weather.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "WeatherForecast ",
+                "weather-forecast.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Webcam Tools ",
+                "webcam.png")
 
         if not config.ParentalControl.configured.value:
             if not has_dpkg:
-                add_menu_item(menu_list, self.titles, self.pics, self.urls, "Adult OE2.0 ", "18+deb.png")
+                add_menu_item(
+                    menu_list,
+                    self.titles,
+                    self.pics,
+                    self.urls,
+                    "Adult OE2.0 ",
+                    "18+deb.png")
             else:
-                add_menu_item(menu_list, self.titles, self.pics, self.urls, "Adult OE2.2/2.5/2.6 ", "18+.png")
+                add_menu_item(
+                    menu_list,
+                    self.titles,
+                    self.pics,
+                    self.urls,
+                    "Adult OE2.2/2.5/2.6 ",
+                    "18+.png")
 
         if not has_dpkg:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Other OE2.0 ", "Other.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Other OE2.0 ",
+                "Other.png")
         else:
-            add_menu_item(menu_list, self.titles, self.pics, self.urls, "Other OE2.2/2.5/2.6 ", "Other1.png")
+            add_menu_item(
+                menu_list,
+                self.titles,
+                self.pics,
+                self.urls,
+                "Other OE2.2/2.5/2.6 ",
+                "Other1.png")
 
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, " Information ", "Information.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Commit History ", "Github.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, " About ", "about.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            " Information ",
+            "Information.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Commit History ",
+            "Github.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            " About ",
+            "about.png")
 
         self.initGrid(menu_list)
         self.start_check_version()
@@ -733,7 +1004,9 @@ class LinuxsatPanel(LPGridScreen):
                 lsConsole,
                 "Updating Linuxsat Panel...",
                 cmdlist=[
-                    "wget -q " + b64decoder(installer_url) + " -O - | /bin/sh"],
+                    "wget -q " +
+                    b64decoder(installer_url) +
+                    " -O - | /bin/sh"],
                 finishedCallback=self._update_finished,
                 closeOnSuccess=False)
         else:
@@ -741,7 +1014,8 @@ class LinuxsatPanel(LPGridScreen):
             self.session.open(
                 MessageBox,
                 _("Update cancelled. You can update later from Information -> Green button."),
-                MessageBox.TYPE_INFO, timeout=5)
+                MessageBox.TYPE_INFO,
+                timeout=5)
 
     def _update_finished(self, result=None):
         if result:
@@ -825,16 +1099,76 @@ class LSskin(LPGridScreen):
         self.pics = []
         self.urls = []
 
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins All ", "otherskins.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins | HD ", "SkinHD.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins Egami ", "egami.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins HDF ", "hdf.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins OpenBh ", "openbh.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins OPEN ATV ", "openatv.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins OpenPLi ", "openpli.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins OpenSpa ", "openspa.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins VTi ", "vti.png")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "Skins Oe Based ", "oebased.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins All ",
+            "otherskins.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins | HD ",
+            "SkinHD.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins Egami ",
+            "egami.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins HDF ",
+            "hdf.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins OpenBh ",
+            "openbh.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins OPEN ATV ",
+            "openatv.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins OpenPLi ",
+            "openpli.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins OpenSpa ",
+            "openspa.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins VTi ",
+            "vti.png")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "Skins Oe Based ",
+            "oebased.png")
 
         self.initGrid(menu_list)
 
@@ -856,18 +1190,54 @@ class LSChannel(LPGridScreen):
         self.pics = []
         self.urls = []
 
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "CIEFP ", "ciefp.png",
-                      "https://github.com/ciefp/ciefpsettings-enigma2-zipped")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "CYRUS ", "cyrus.png",
-                      "https://www.cyrussettings.com/Set_29_11_2011/Dreambox-IpBox/Config.xml")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "MANUTEK ", "manutek.png",
-                      "https://www.manutek.it/isetting/index.php")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "MORPHEUS ", "morpheus883.png",
-                      "https://github.com/morpheus883/enigma2-zipped")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "VHANNIBAL NET ", "vhannibal1.png",
-                      "https://www.vhannibal.net/asd.php")
-        add_menu_item(menu_list, self.titles, self.pics, self.urls, "VHANNIBAL TEK ", "vhannibal2.png",
-                      "https://sat.alfa-tech.net/upload/settings/vhannibal/")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CIEFP ",
+            "ciefp.png",
+            "https://github.com/ciefp/ciefpsettings-enigma2-zipped")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "CYRUS ",
+            "cyrus.png",
+            "https://www.cyrussettings.com/Set_29_11_2011/Dreambox-IpBox/Config.xml")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "MANUTEK ",
+            "manutek.png",
+            "https://www.manutek.it/isetting/index.php")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "MORPHEUS ",
+            "morpheus883.png",
+            "https://github.com/morpheus883/enigma2-zipped")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "VHANNIBAL NET ",
+            "vhannibal1.png",
+            "https://www.vhannibal.net/asd.php")
+        add_menu_item(
+            menu_list,
+            self.titles,
+            self.pics,
+            self.urls,
+            "VHANNIBAL TEK ",
+            "vhannibal2.png",
+            "https://sat.alfa-tech.net/upload/settings/vhannibal/")
 
         self.initGrid(menu_list)
 
@@ -1144,7 +1514,8 @@ class ScriptInstaller(LPGridScreen):
         if config_type == "CCcam":
             dest = "/etc/CCcam.cfg"
             src = plugin_path + "/sh/CCcam.cfg"
-            not_found_msg = _("File not found /etc/CCcam.cfg!\nRestart please...")
+            not_found_msg = _(
+                "File not found /etc/CCcam.cfg!\nRestart please...")
             write_format = "\nC: {} {} {} {}\n"
         elif config_type == "Oscam":
             dest_dir = "/etc/tuxbox/config"
@@ -1152,7 +1523,8 @@ class ScriptInstaller(LPGridScreen):
                 makedirs(dest_dir)
             dest = join(dest_dir, "oscam.server")
             src = plugin_path + "/sh/oscam.server"
-            not_found_msg = _("File not found /etc/tuxbox/config/oscam.server!\nRestart please...")
+            not_found_msg = _(
+                "File not found /etc/tuxbox/config/oscam.server!\nRestart please...")
             write_format = (
                 "\n[reader]\n"
                 "label = Server_{}\n"
@@ -1190,12 +1562,10 @@ class ScriptInstaller(LPGridScreen):
 
             if "bosscccam" in data:
                 regex_patterns = [
-                    r"<strong>c:\s*([\w.-]+)\s+(\d+)\s+([\w\d]+)\s+([\w.-]+)</strong>",
-                ]
+                    r"<strong>c:\s*([\w.-]+)\s+(\d+)\s+([\w\d]+)\s+([\w.-]+)</strong>", ]
             elif "cccambird" in data:
                 regex_patterns = [
-                    r'">C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)\s*</th></tr>',
-                ]
+                    r'">C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)\s*</th></tr>', ]
             elif "cccamia" in data:
                 regex_patterns = [
                     r'>?C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)\s*',
@@ -1206,8 +1576,7 @@ class ScriptInstaller(LPGridScreen):
                 ]
             elif "iptv-15days" in data:
                 regex_patterns = [
-                    r'">C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)\s*</th></tr>',
-                ]
+                    r'">C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)\s*</th></tr>', ]
             else:
                 regex_patterns = [
                     r'">C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)\s*</h3>',
@@ -1241,10 +1610,12 @@ class ScriptInstaller(LPGridScreen):
                         with open(dest, "a") as cfgdok:
                             cfgdok.write(write_format.format(
                                 host, host, port, user, pasw))
-                        msg = _("Server added\n\nServer:\nPort:\nUser:\nPassword:\n")
+                        msg = _(
+                            "Server added\n\nServer:\nPort:\nUser:\nPassword:\n")
                         text = msg
-                        text = text.replace("Server added",
-                                            "Server %s added to %s" % (host, dest))
+                        text = text.replace(
+                            "Server added", "Server %s added to %s" %
+                            (host, dest))
                         text = text.replace("Server:", "Server: %s" % host)
                         text = text.replace("Port:", "Port: %s" % port)
                         text = text.replace("User:", "User: %s" % user)
@@ -1257,9 +1628,8 @@ class ScriptInstaller(LPGridScreen):
                     break
         except Exception as e:
             self.session.open(
-                MessageBox,
-                _("Server error.\n\nTry again, you might get lucky!\n%s") % str(e),
-                type=MessageBox.TYPE_INFO, timeout=8)
+                MessageBox, _("Server error.\n\nTry again, you might get lucky!\n%s") %
+                str(e), type=MessageBox.TYPE_INFO, timeout=8)
 
 
 class addInstall(AsyncMixin, Screen):
@@ -1389,11 +1759,13 @@ class addInstall(AsyncMixin, Screen):
                     MessageBox, _("Unknown Image!"),
                     MessageBox.TYPE_INFO, timeout=5)
                 return
-            self.iname = self.plug.split("_")[0] if "_" in self.plug else self.plug
+            self.iname = self.plug.split(
+                "_")[0] if "_" in self.plug else self.plug
         elif ".zip" in self.plug or ".tar" in self.plug or ".gz" in self.plug or ".bz2" in self.plug:
             self.iname = self.plug
 
-        path = "/var/lib/dpkg/info" if exists("/var/lib/dpkg/info") else "/var/lib/opkg/info"
+        path = "/var/lib/dpkg/info" if exists(
+            "/var/lib/dpkg/info") else "/var/lib/opkg/info"
         resp = "Is NOT installed.\n"
         self.plug_name = self.plug.split("_")[0].lower()
 
@@ -1401,8 +1773,14 @@ class addInstall(AsyncMixin, Screen):
             if files is not None:
                 for name in files:
                     name = name.lower()
-                    if name.endswith((".postinst", ".preinst", ".prerm",
-                                      ".postrm", ".md5sums", ".conffiles", "~")):
+                    if name.endswith(
+                        (".postinst",
+                         ".preinst",
+                         ".prerm",
+                         ".postrm",
+                         ".md5sums",
+                         ".conffiles",
+                         "~")):
                         continue
                     if exists("/var/lib/dpkg/info"):
                         if name.endswith(".list"):
@@ -1561,7 +1939,13 @@ class addInstall(AsyncMixin, Screen):
                 regex = r'href="/isetting/.*?file=(.+?).zip">'
                 match = compile(regex).findall(r)
                 for url in match:
-                    name = url.replace("NemoxyzRLS_Manutek_", "").replace("_", " ").replace("%20", " ")
+                    name = url.replace(
+                        "NemoxyzRLS_Manutek_",
+                        "").replace(
+                        "_",
+                        " ").replace(
+                        "%20",
+                        " ")
                     url = "https://www.manutek.it/isetting/enigma2/" + url + ".zip"
                     self.downloading = True
                     item = decode_html(name) + "###" + str(url)
@@ -1590,7 +1974,13 @@ class addInstall(AsyncMixin, Screen):
                         name = name.decode("utf-8", errors="replace")
                     name = decode_html(match[1])
                     date = match[2]
-                    name = str(name).replace("&#127381;", "").replace("%20", " ").replace("..", "").strip() + " " + date
+                    name = str(name).replace(
+                        "&#127381;",
+                        "").replace(
+                        "%20",
+                        " ").replace(
+                        "..",
+                        "").strip() + " " + date
                     url = "https://www.vhannibal.net/" + url
                     self.downloading = True
                     item = name + "###" + str(url)
@@ -1602,7 +1992,9 @@ class addInstall(AsyncMixin, Screen):
                 for url, date in match:
                     if ".php" in url.lower():
                         continue
-                    name = decode_html(url).replace("&#127381;", "").replace("%20", " ") + " " + date
+                    name = decode_html(url).replace(
+                        "&#127381;", "").replace(
+                        "%20", " ") + " " + date
                     url = "https://sat.alfa-tech.net/upload/settings/vhannibal/Vhannibal" + url + ".zip"
                     self.downloading = True
                     item = name + "###" + str(url)
@@ -1640,7 +2032,8 @@ class addInstall(AsyncMixin, Screen):
 
     def okRun(self):
         self.session.openWithCallback(
-            self.okRun1, MessageBox,
+            self.okRun1,
+            MessageBox,
             _("I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"),
             MessageBox.TYPE_YESNO)
 
@@ -1874,7 +2267,9 @@ class LSinfo(AsyncMixin, Screen):
         remote_changelog = ''
         page = ''
         try:
-            req = Request(b64decoder(installer_url), headers={'User-Agent': 'Mozilla/5.0'})
+            req = Request(
+                b64decoder(installer_url), headers={
+                    'User-Agent': 'Mozilla/5.0'})
             page = urlopen(req).read().decode("utf-8")
         except Exception as e:
             print("[ERROR] Unable to fetch version info:", str(e))
@@ -1884,10 +2279,12 @@ class LSinfo(AsyncMixin, Screen):
             for line in page.split("\n"):
                 line = line.strip()
                 if line.startswith("version"):
-                    remote_version = line.split("=")[-1].strip().strip("'").strip('"')
+                    remote_version = line.split(
+                        "=")[-1].strip().strip("'").strip('"')
                 elif line.startswith("changelog"):
                     try:
-                        remote_changelog = line.split("=")[-1].strip().strip("'").strip('"')
+                        remote_changelog = line.split(
+                            "=")[-1].strip().strip("'").strip('"')
                     except BaseException:
                         remote_changelog = ""
                     break
@@ -1904,26 +2301,40 @@ class LSinfo(AsyncMixin, Screen):
 
     def show_update_message(self):
         if self.Update:
-            msg = _("New version available\n\nChangelog:\n\nPress the green button to start the update.")
+            msg = _(
+                "New version available\n\nChangelog:\n\nPress the green button to start the update.")
             text = msg
             text = text.replace("New version available",
                                 "New version %s available" % self.new_version)
             text = text.replace("Changelog:",
                                 "Changelog: %s" % self.new_changelog)
-            self.session.open(MessageBox, text, MessageBox.TYPE_INFO, timeout=10)
+            self.session.open(
+                MessageBox,
+                text,
+                MessageBox.TYPE_INFO,
+                timeout=10)
         else:
             msg = _("New version available\n\nChangelog:")
             text = "%s %s\n\n%s" % (msg, self.new_version, self.new_changelog)
-            self.session.open(MessageBox, text, MessageBox.TYPE_INFO, timeout=10)
+            self.session.open(
+                MessageBox,
+                text,
+                MessageBox.TYPE_INFO,
+                timeout=10)
             self["key_green"].setText(_("Update"))
             self["pixmap"].show()
 
     def update_me(self):
         if self.Update:
-            msg = _("New version is available.\n\nChangelog:\n\nDo you want to install it now?")
-            message = "%s %s\n\n%s" % (msg, self.new_version, self.new_changelog)
+            msg = _(
+                "New version is available.\n\nChangelog:\n\nDo you want to install it now?")
+            message = "%s %s\n\n%s" % (
+                msg, self.new_version, self.new_changelog)
             self.session.openWithCallback(
-                self.install_update, MessageBox, message, MessageBox.TYPE_YESNO)
+                self.install_update,
+                MessageBox,
+                message,
+                MessageBox.TYPE_YESNO)
         else:
             self.session.open(
                 MessageBox,
@@ -1960,7 +2371,8 @@ class LSinfo(AsyncMixin, Screen):
                     MessageBox.TYPE_INFO)
                 return
             try:
-                strp_remote_date = dt.strptime(remote_date, "%Y-%m-%dT%H:%M:%SZ")
+                strp_remote_date = dt.strptime(
+                    remote_date, "%Y-%m-%dT%H:%M:%SZ")
                 formatted_date = strp_remote_date.strftime("%Y-%m-%d")
             except ValueError as e:
                 print("Error parsing date:", e)
@@ -1983,8 +2395,12 @@ class LSinfo(AsyncMixin, Screen):
     def install_update(self, answer=False):
         if answer:
             self.session.open(
-                lsConsole, "Upgrading...",
-                cmdlist=["wget -q " + b64decoder(installer_url) + " -O - | /bin/sh"],
+                lsConsole,
+                "Upgrading...",
+                cmdlist=[
+                    "wget -q " +
+                    b64decoder(installer_url) +
+                    " -O - | /bin/sh"],
                 finishedCallback=self.myCallback,
                 closeOnSuccess=False)
         else:
@@ -2046,7 +2462,8 @@ class LSinfo(AsyncMixin, Screen):
 
         self.info_poll = eTimer()
         try:
-            self.info_poll_conn = self.info_poll.timeout.connect(self._checkInfoReady)
+            self.info_poll_conn = self.info_poll.timeout.connect(
+                self._checkInfoReady)
         except BaseException:
             self.info_poll.callback.append(self._checkInfoReady)
         self.info_poll.start(250, False)
@@ -2072,7 +2489,8 @@ class LSinfo(AsyncMixin, Screen):
             header += "All code was rewritten by @Lululla - 2024.07.20\n"
             header += "Designs and Graphics by @oktus\n"
             header += "Support on: Linuxsat-support.com\n\n"
-            stbinfo_str = str(stbinfo.to_string()) if stbinfo else "No info available"
+            stbinfo_str = str(
+                stbinfo.to_string()) if stbinfo else "No info available"
             base_content = "{0} V.{1}\n{2}STB info:\n{3}\n".format(
                 descplug, __version__, header, stbinfo_str)
 
@@ -2094,11 +2512,13 @@ class LSinfo(AsyncMixin, Screen):
                             additional_info = info_file.read().decode("utf-8")
                     try:
                         with open("/tmp/output.txt", "a", encoding="utf-8") as output_file:
-                            output_file.write("\nAdditional Info:\n{0}".format(additional_info))
+                            output_file.write(
+                                "\nAdditional Info:\n{0}".format(additional_info))
                     except TypeError:
                         with open("/tmp/output.txt", "a") as output_file:
                             output_file.write(
-                                "\nAdditional Info:\n{0}".format(additional_info.encode("utf-8")))
+                                "\nAdditional Info:\n{0}".format(
+                                    additional_info.encode("utf-8")))
                 except Exception as e:
                     print("Error appending info.txt: {0}".format(str(e)))
 
@@ -2208,7 +2628,9 @@ class LSinfo(AsyncMixin, Screen):
             self["list"].setText(_("No commits found."))
             return
         output_lines = [""]
-        if hasattr(self, '_show_rate_limit_warning') and self._show_rate_limit_warning:
+        if hasattr(
+                self,
+                '_show_rate_limit_warning') and self._show_rate_limit_warning:
             output_lines.append("*** GitHub API rate limit exceeded ***")
             output_lines.append("*** Showing cached data ***")
             output_lines.append("")
@@ -2271,7 +2693,9 @@ class startLP(Screen):
         with codecs.open(skin, "r", encoding="utf-8") as f:
             self.skin = f.read()
         self["poster"] = Pixmap()
-        self["version"] = Label("Wait Please... Linuxsat Panel V." + __version__)
+        self["version"] = Label(
+            "Wait Please... Linuxsat Panel V." +
+            __version__)
         self["actions"] = ActionMap(
             ["OkCancelActions"], {"ok": self.clsgo, "cancel": self.clsgo}, -1)
         self.onLayoutFinish.append(self.loadDefaultImage)
@@ -2297,7 +2721,8 @@ class startLP(Screen):
         self.timer.start(100, True)
         self.delayedTimer = eTimer()
         try:
-            self.delayedTimer_conn = self.delayedTimer.timeout.connect(self.clsgo)
+            self.delayedTimer_conn = self.delayedTimer.timeout.connect(
+                self.clsgo)
         except BaseException:
             self.delayedTimer.callback.append(self.clsgo)
         self.delayedTimer.start(1000, True)
@@ -2341,7 +2766,8 @@ class AboutLSS(Screen):
         with codecs.open(skin, "r", encoding="utf-8") as f:
             skin = f.read()
         self.skin = ctrlSkin("AboutLSS", skin)
-        credit = _("Thank you for choosing plugin for management of your Enigma Box.\n\n")
+        credit = _(
+            "Thank you for choosing plugin for management of your Enigma Box.\n\n")
         credit += _("Suggested by: @masterG - @oktus - @pcd\n")
         credit += _("Designs and Graphics by @oktus\n")
         credit += _("Thank's to @pQu4k3r\n")

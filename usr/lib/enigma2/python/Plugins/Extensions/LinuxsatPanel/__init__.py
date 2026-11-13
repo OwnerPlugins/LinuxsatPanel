@@ -13,45 +13,114 @@ from os import popen, environ, statvfs, system
 import gettext
 import sys
 
-# ═════════════════════════════════════════════════════════════════════
-#
-#  UTILITY SKIN
-#  Version: 5.4
-#  Created by Lululla (https://github.com/Belfagor2005)
-#  License: CC BY-NC-SA 4.0
-#  https://creativecommons.org/licenses/by-nc-sa/4.0
-#
-#  Last Modified: "19:10 - 20251110"
-#
-#  Credits:
-#
-# 👨‍💻 Original Developers: Lululla
-# ✍️ (2024-07-20)
-#
-# ⚖️ License: GNU General Public License (v2 or later)
-#    You must NOT remove credits and must share modified code.
-# ═════════════════════════════════════════════════════════════════════
 __author__ = "Lululla"
 __email__ = "ekekaz@gmail.com"
 __copyright__ = 'Copyright (c) 2024 Lululla'
 __license__ = "GPL-v2"
-__version__ = "3.0.6"
+__version__ = "3.0.7"
 
 
+# ─── JSON scripts config ─────────────────────────────────────────────
+# URL remoto (produzione). Per test locale il loader fa fallback al
+# file locale se il remoto non risponde (404 = non ancora pubblicato).
+SCRIPTS_JSON_URL = (
+    "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/"
+    "main/data/scripts.json"
+)
+# Fallback locale: data/scripts.json dentro il plugin.
+SCRIPTS_JSON_LOCAL = "Extensions/LinuxsatPanel/data/scripts.json"
+
+_scripts_cfg = {
+    "data": None,
+    "time": 0,
+    "remote_tried": False,
+    "remote_failed": False,
+}
+SCRIPTS_CFG_TTL = 3600  # secondi di cache per il remoto (1h)
+
+
+def get_scripts_config(force=False):
+    """Ritorna il dict del file remoto con fallback locale.
+    - Prova remoto (una volta per sessione, a meno di force=True).
+    - Se remoto fallisce, carica data/scripts.json locale (sempre fresco).
+    - Se anche locale manca, usa cache in memoria.
+    """
+    import time
+    import json as _json
+
+    now = time.time()
+    try:
+        local_path = resolveFilename(SCOPE_PLUGINS, SCRIPTS_JSON_LOCAL)
+    except Exception:
+        local_path = join(dirname(__file__), "data", "scripts.json")
+
+    # 1) Cache in memoria del remoto (TTL)
+    if not force and _scripts_cfg["data"] is not None:
+        if now - _scripts_cfg["time"] < SCRIPTS_CFG_TTL:
+            return _scripts_cfg["data"]
+
+    # 2) Tentativo remoto (una volta per sessione)
+    if force or not _scripts_cfg["remote_tried"]:
+        _scripts_cfg["remote_tried"] = True
+        try:
+            req = Request(SCRIPTS_JSON_URL, headers={
+                "User-Agent": AgentRequest,
+                "Cache-Control": "no-cache",
+            })
+            with urlopen(req, timeout=10) as resp:
+                if resp.getcode() == 200:
+                    data = _json.loads(resp.read().decode("utf-8"))
+                    _scripts_cfg["data"] = data
+                    _scripts_cfg["time"] = now
+                    print("[scripts.json] loaded from remote")
+                    return data
+                else:
+                    print("[scripts.json] remote HTTP %d" % resp.getcode())
+        except Exception as e:
+            print("[scripts.json] remote failed:", e)
+        _scripts_cfg["remote_failed"] = True
+
+    # 3) Fallback locale (sempre fresco)
+    if exists(local_path):
+        try:
+            with open(local_path, "r", encoding="utf-8") as f:
+                data = _json.load(f)
+            print("[scripts.json] loaded from local:", local_path)
+            return data
+        except Exception as e:
+            print("[scripts.json] local failed:", e)
+
+    # 4) Ultima spiaggia: cache in memoria anche scaduta
+    if _scripts_cfg["data"] is not None:
+        print("[scripts.json] using stale cache")
+        return _scripts_cfg["data"]
+
+    print("[scripts.json] no config available")
+    return None
+
+
+# ─── Requests auto-install (idempotente) ────────────────────────────
 def check_and_install_requests():
     try:
-        import requests  # noqa: F401  (availability probe)
+        import requests  # noqa: F401
         return
     except ImportError:
         pass
 
-    python_version = sys.version_info[0]
+    marker = "/tmp/.ls_requests_checked"
+    if exists(marker):
+        return
+    try:
+        with open(marker, "w") as f:
+            f.write("1")
+    except OSError:
+        pass
 
+    python_version = sys.version_info[0]
     if exists("/usr/bin/apt-get"):
         pkg_manager_cmd = "apt-get -y install "
     else:
         pkg_manager_cmd = "opkg install "
-
     package_name = "python-requests" if python_version == 2 else "python3-requests"
     system(pkg_manager_cmd + package_name)
 
@@ -59,6 +128,7 @@ def check_and_install_requests():
 check_and_install_requests()
 
 
+# ─── URL decoding ───────────────────────────────────────────────────
 PY3 = sys.version_info[0] >= 3
 if PY3:
     from urllib.request import urlopen
@@ -107,13 +177,9 @@ def setup_timer(callback_method):
     from enigma import eTimer
     timer = eTimer()
     try:
-        # Let's try to use Py3 (DreamOS) with timeout.connect()
         timer.timeout.connect(callback_method)
     except BaseException:
-        # In case of failure, we use Py2 (OpenPLi) with callback.append()
         timer.callback.append(callback_method)
-    # Restituiamo il timer senza avviarlo, così puoi decidere tu quando
-    # chiamare start()
     return timer
 
 
@@ -267,7 +333,6 @@ except BaseException:
     pass
 
 
-# KiddaC code
 def convert_size(size_bytes):
     import math
     if size_bytes == 0:
@@ -279,7 +344,6 @@ def convert_size(size_bytes):
     return "%s %s" % (s, size_name[i])
 
 
-# KiddaC code
 def freespace():
     try:
         stat = statvfs('/')
@@ -295,14 +359,12 @@ def freespace():
         return _("Free Space:") + " -?- " + _("of") + " -?-"
 
 
-# Use the feature to get the text and update the interface
 def fetch_url(url, retries=3, initial_timeout=5):
     import sys
     import socket
     if sys.version_info[0] == 3:
         from urllib.request import (urlopen)
         from urllib.error import URLError
-        # unicode = str
         PY3 = True
     else:
         from urllib2 import (urlopen)
@@ -317,14 +379,14 @@ def fetch_url(url, retries=3, initial_timeout=5):
             labeltext = ""
             for line in lines:
                 if PY3:
-                    line = line.decode()  # Decode bytes to str in Python 3
+                    line = line.decode()
                 labeltext += str(line)
             return labeltext
         except socket.timeout:
             print(
                 "Attempt failed: The connection timed out after %s seconds." %
                 timeout)
-            timeout *= 2  # Double the timeout for the next attempt
+            timeout *= 2
         except URLError as e:
             print("URL Error:", e)
             break
@@ -338,7 +400,6 @@ def checkGZIP(url):
     url = url
     from io import BytesIO
     import gzip
-    import requests
     import sys
     if sys.version_info[0] == 3:
         from urllib.request import (urlopen, Request)
@@ -363,10 +424,8 @@ def checkGZIP(url):
             else:
                 return response.read()
 
-    except requests.exceptions.RequestException as e:
-        print("Request error:", e)
     except Exception as e:
-        print("Unexpected error:", e)
+        print("Request error:", e)
     return None
 
 
@@ -413,10 +472,7 @@ def make_request(url, max_retries=3, base_delay=1):
         try:
             req = Request(url)
             req.add_header('User-Agent', AgentRequest)
-            # start_time = time.time()
             response = urlopen(req, None, 30)
-            # elapsed_time = time.time() - start_time
-            # print('elapsed_time:', elapsed_time)
             if response.getcode() == 200:
                 content = response.read()
                 if not content:
@@ -431,7 +487,6 @@ def make_request(url, max_retries=3, base_delay=1):
         except URLError as e:
             if isinstance(e.reason, socket.timeout):
                 delay = base_delay * (2 ** attempt)
-                # print("Timeout occurred. Retrying in seconds...", str(delay))
                 time.sleep(delay)
             else:
                 print("URLError occurred:", str(e))
@@ -440,7 +495,6 @@ def make_request(url, max_retries=3, base_delay=1):
     return None
 
 
-# language set arabic
 global lngx
 global HALIGN
 HALIGN = RT_HALIGN_LEFT
@@ -450,13 +504,11 @@ locl = (
     "ss", "sy", "tn", "ye"
 )
 
-
 FNTPath = join(plugin_path, "fonts")
 lngx = 'en'
 
 
 def detect_system_language():
-    """Rileva la lingua di sistema con fallback a lngx"""
     try:
         from Components.config import config
         lang = config.osd.language.value
@@ -494,8 +546,6 @@ def initialize_global_settings():
     current_language = detect_system_language()
     HALIGN = configure_text_alignment(current_language)
     load_custom_fonts(HALIGN)
-
-# initialize_global_settings()
 
 
 def add_skin_fonts():

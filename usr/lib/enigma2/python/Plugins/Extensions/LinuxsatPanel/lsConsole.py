@@ -234,7 +234,7 @@ class lsConsole(Screen):
                 self.container.appClosed_conn = None
                 self.container.dataAvail_conn = None
             self._cleanupScripts()
-            self.close()
+            self.close(not self.errorOcurred)
         else:
             self.show()
 

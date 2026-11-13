@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version='3.0.6'
-changelog="\n--Security: removed --no-check-certificate from every wget install/update call\n--Hardened lsConsole and checkskin temp files against local symlink attacks\n--Fixed LCN scan (Order LCN Bouquet) always logging a false error\n--Fixed possible crash reading lcndb/service data with an unexpected mode\n--Fixed commits cache never actually loading (str repr vs JSON mismatch)\n--Fixed crash risk in RTL/Arabic font loading (add_skin_fonts)\n--Removed unused translate_utils.py and duplicate code\n--Updated README.md to v3.0.6"
+version="3.0.7"
+changelog="\n--New: JSON-driven script catalog (data/scripts.json) - update addon list without plugin rebuild\n--New: keep_open flag per script (replaces keyword matching)\n--New: background preload of scripts.json - no UI freeze\n--Fixed broken 'view log?' popup after script execution\n--Fixed 'Remove' in addInstall using opkg on DreamOS (now dpkg -r)\n--Fixed 2 case-sensitive icon refs in scripts.json (ciefpkingsat, titlovibrowser)\n--Fixed memory leak in splash screen (ePicLoad released)\n--Fixed startLP logo path (icons/pageLogo.png -> icons2/Logo.png)\n--Fixed checkGZIP crash when requests not installed\n--Removed dead LcnXX/_onLCNScanFinished methods and _view_log/file_log\n--Removed 26 orphan PNGs from LSicons2 (~600 KB)\n--Cleanup: ruff lint, .po regenerated (12-24MB -> ~20KB per file)\n--Updated README.md to v3.0.7"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

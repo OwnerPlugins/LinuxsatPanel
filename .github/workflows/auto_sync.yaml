@@ -1,0 +1,32 @@
+name: Auto-Sync Ciefp & Clean Icons
+
+on:
+  # Esegui ogni domenica a mezzanotte (puoi cambiare la frequenza)
+  schedule:
+    - cron: '0 0 * * 0'
+  # Permette di lanciarlo manualmente dal sito di GitHub
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Permesso per fare commit nel repository
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run Auto-Sync & Clean
+        run: python sync_ciefp.py
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-sync: Aggiornati plugin Ciefp e pulite icone orfane"
+          file_pattern: "data/scripts.json LSicons2/*.png"

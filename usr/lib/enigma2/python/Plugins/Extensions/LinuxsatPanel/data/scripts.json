@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "updated": "2025-11-14",
-  "min_plugin_version": "3.0.7",
+  "min_plugin_version": "3.0.8",
   "categories": {
     "LulullaScript": [
       {"name": "Acherone Script Command", "icon": "acherone_script_command.png", "cmd": "wget -q https://raw.githubusercontent.com/Belfagor2005/acherone-script/main/installer.sh -O - | /bin/sh"},

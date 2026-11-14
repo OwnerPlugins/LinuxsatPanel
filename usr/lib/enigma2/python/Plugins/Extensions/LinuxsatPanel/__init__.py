@@ -24,8 +24,8 @@ __version__ = "3.0.7"
 # URL remoto (produzione). Per test locale il loader fa fallback al
 # file locale se il remoto non risponde (404 = non ancora pubblicato).
 SCRIPTS_JSON_URL = (
-    "https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/"
-    "main/data/scripts.json"
+    "https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/"
+    "main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/data/scripts.json?v=3.0.8"
 )
 # Fallback locale: data/scripts.json dentro il plugin.
 SCRIPTS_JSON_LOCAL = "Extensions/LinuxsatPanel/data/scripts.json"
@@ -40,13 +40,9 @@ SCRIPTS_CFG_TTL = 3600  # secondi di cache per il remoto (1h)
 
 
 def get_scripts_config(force=False):
-    """Ritorna il dict del file remoto con fallback locale.
-    - Prova remoto (una volta per sessione, a meno di force=True).
-    - Se remoto fallisce, carica data/scripts.json locale (sempre fresco).
-    - Se anche locale manca, usa cache in memoria.
-    """
     import time
     import json as _json
+    from os import makedirs
 
     now = time.time()
     try:
@@ -54,12 +50,12 @@ def get_scripts_config(force=False):
     except Exception:
         local_path = join(dirname(__file__), "data", "scripts.json")
 
-    # 1) Cache in memoria del remoto (TTL)
+    # 1) Cache in memoria (solo se NON stiamo forzando)
     if not force and _scripts_cfg["data"] is not None:
         if now - _scripts_cfg["time"] < SCRIPTS_CFG_TTL:
             return _scripts_cfg["data"]
 
-    # 2) Tentativo remoto (una volta per sessione)
+    # 2) Tentativo remoto (o forzato)
     if force or not _scripts_cfg["remote_tried"]:
         _scripts_cfg["remote_tried"] = True
         try:
@@ -69,10 +65,22 @@ def get_scripts_config(force=False):
             })
             with urlopen(req, timeout=10) as resp:
                 if resp.getcode() == 200:
-                    data = _json.loads(resp.read().decode("utf-8"))
+                    raw_data = resp.read().decode("utf-8")
+                    data = _json.loads(raw_data)
                     _scripts_cfg["data"] = data
                     _scripts_cfg["time"] = now
                     print("[scripts.json] loaded from remote")
+                    
+                    # --- AGGIUNTA FONDAMENTALE: Salva sul box! ---
+                    try:
+                        makedirs(dirname(local_path), exist_ok=True)
+                        with open(local_path, "w", encoding="utf-8") as f:
+                            f.write(raw_data)
+                        print("[scripts.json] file locale aggiornato dal remoto")
+                    except Exception as e:
+                        print("[scripts.json] errore salvataggio locale:", e)
+                    # ---------------------------------------------
+                    
                     return data
                 else:
                     print("[scripts.json] remote HTTP %d" % resp.getcode())
@@ -80,7 +88,7 @@ def get_scripts_config(force=False):
             print("[scripts.json] remote failed:", e)
         _scripts_cfg["remote_failed"] = True
 
-    # 3) Fallback locale (sempre fresco)
+    # 3) Fallback locale
     if exists(local_path):
         try:
             with open(local_path, "r", encoding="utf-8") as f:
@@ -90,12 +98,11 @@ def get_scripts_config(force=False):
         except Exception as e:
             print("[scripts.json] local failed:", e)
 
-    # 4) Ultima spiaggia: cache in memoria anche scaduta
+    # 4) Ultima spiaggia
     if _scripts_cfg["data"] is not None:
         print("[scripts.json] using stale cache")
         return _scripts_cfg["data"]
 
-    print("[scripts.json] no config available")
     return None
 
 
@@ -145,9 +152,9 @@ PluginLanguageDomain = 'LinuxsatPanel'
 PluginLanguagePath = 'Extensions/LinuxsatPanel/locale'
 plugin_path = dirname(sys.modules[__name__].__file__)
 AgentRequest = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.3'
-infourl = 'https://raw.githubusercontent.com/Belfagor2005/upload/main/fill/info.txt'
-abouturl = 'https://raw.githubusercontent.com/Belfagor2005/upload/main/fill/about.txt'
-xmlurl = 'https://raw.githubusercontent.com/Belfagor2005/upload/main/fill/addons_2024.xml'
+infourl = 'https://raw.githubusercontent.com/OwnerPlugins/upload/main/fill/info.txt'
+abouturl = 'https://raw.githubusercontent.com/OwnerPlugins/upload/main/fill/about.txt'
+xmlurl = 'https://raw.githubusercontent.com/OwnerPlugins/upload/main/fill/addons_2024.xml'
 installer_url = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0JlbGZhZ29yMjAwNS9MaW51eHNhdFBhbmVsL21haW4vaW5zdGFsbGVyLnNo'
 developer_url = 'aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9CZWxmYWdvcjIwMDUvTGludXhzYXRQYW5lbA=='
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.7"
-changelog="\n--New: JSON-driven script catalog (data/scripts.json) - update addon list without plugin rebuild\n--New: keep_open flag per script (replaces keyword matching)\n--New: background preload of scripts.json - no UI freeze\n--Fixed broken 'view log?' popup after script execution\n--Fixed 'Remove' in addInstall using opkg on DreamOS (now dpkg -r)\n--Fixed 2 case-sensitive icon refs in scripts.json (ciefpkingsat, titlovibrowser)\n--Fixed memory leak in splash screen (ePicLoad released)\n--Fixed startLP logo path (icons/pageLogo.png -> icons2/Logo.png)\n--Fixed checkGZIP crash when requests not installed\n--Removed dead LcnXX/_onLCNScanFinished methods and _view_log/file_log\n--Removed 26 orphan PNGs from LSicons2 (~600 KB)\n--Cleanup: ruff lint, .po regenerated (12-24MB -> ~20KB per file)\n--Updated README.md to v3.0.7"
+version="3.0.8"
+changelog="\n--New: JSON-based script configuration (data/scripts.json) - add or edit scripts without updating the plugin\n--New: Background sync of missing icons from GitHub (1 by 1, no UI freeze)\n--New: Live UI update - icons appear automatically as soon as they are downloaded\n--New: Preload of scripts.json on plugin startup for instant loading\n--New: GitHub Actions bot for auto-syncing Ciefp scripts and icons\n--Fixed: Removed broken 'view log?' popup after script execution\n--Fixed: 'Remove' function now correctly uses 'dpkg -r' on DreamOS/OE2.2+\n--Fixed: Memory leak in splash screen (ePicLoad)\n--Fixed: checkGZIP crash when requests module is missing\n--Cleanup: Regenerated .po translation files and removed 50+ orphan PNGs\n--Updated README.md to v3.0.8"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz

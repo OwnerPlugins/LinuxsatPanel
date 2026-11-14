@@ -5,3 +5,8 @@ usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/plugin~.py
 __pycache__/
 *.pyc
 *.pyo
+usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/clean_orphan_icons.py
+usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/clean_po.py
+usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/diagnose_po.py
+usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/ruff.toml
+usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/check_po.py

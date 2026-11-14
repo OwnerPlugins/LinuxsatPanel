@@ -366,10 +366,10 @@ def sync_icons_background():
     if _sync_icons_lock:
         return
     _sync_icons_lock = True
-
+    
     import threading
     import time
-
+    
     def run_sync():
         global _sync_icons_lock
         try:
@@ -380,7 +380,7 @@ def sync_icons_background():
                 print("[Icon Sync] Nessun JSON caricato. Salto.")
                 _sync_icons_lock = False
                 return
-
+            
             # 2. Raccogli i nomi di tutte le icone necessarie
             needed_icons = set()
             for cat, items in cfg.get("categories", {}).items():
@@ -388,22 +388,37 @@ def sync_icons_background():
                     icon = it.get("icon")
                     if icon:
                         needed_icons.add(icon)
-
-            print(
-                "[Icon Sync] Icone totali richieste dal JSON:",
-                len(needed_icons))
-
+            
+            # --- AGGIUNTA: Icone del menu principale ---
+            BASE_ICONS = [
+                "ciefp.png", "Backup.png", "Bouquets.png", "Channel-list.png",
+                "Game.png", "KiddaC1.png", "KiddaC2.png", "lululla_script.png",
+                "oe2.0.png", "oe2.5-2.6.png", "OE2.2-Plugins.png", "OE2.2-Skins.png",
+                "Feeds2.0.png", "Feeds2.2.png", "SOE20.png", "SOE22.png",
+                "skinsteam.png", "otherskins.png", "SkinHD.png", "egami.png",
+                "hdf.png", "openbh.png", "openatv.png", "openpli.png", "openspa.png",
+                "vti.png", "oebased.png", "iptv-streaming.png", "mediayou.png",
+                "multiboot.png", "Multimedia.png", "Panels.png", "picons.png",
+                "Library.png", "Radio.png", "key-updater.png", "key-updater1.png",
+                "sport.png", "streamlink.png", "utility.png", "vpn.png",
+                "weather.png", "weather-forecast.png", "webcam.png",
+                "18+.png", "18+deb.png", "Other.png", "Other1.png",
+                "Information.png", "Github.png", "about.png", "usb-tuner-drivers.png", "plugin-epg.png"
+            ]
+            for base_icon in BASE_ICONS:
+                needed_icons.add(base_icon)
+            # -------------------------------------------
+            
+            print("[Icon Sync] Icone totali richieste (incluse quelle base):", len(needed_icons))
+            
             # 3. Base URL
             base_url = "https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LSicons2/"
-
+            
             # 4. Controlla e scarica
             downloaded = 0
             for icon in needed_icons:
                 if not fileExists(join(picfold, icon)):
-                    print(
-                        "[Icon Sync] Manca l'icona:",
-                        icon,
-                        "- Download in corso...")
+                    print("[Icon Sync] Manca l'icona:", icon, "- Download in corso...")
                     try:
                         r = requests.get(base_url + icon, timeout=10)
                         if r.status_code == 200:
@@ -412,23 +427,17 @@ def sync_icons_background():
                             print("[Icon Sync] OK! Scaricata:", icon)
                             downloaded += 1
                         else:
-                            print("[Icon Sync] Errore HTTP",
-                                  r.status_code, "per", icon)
+                            print("[Icon Sync] Errore HTTP", r.status_code, "per", icon)
                     except Exception as e:
                         print("[Icon Sync] Errore download", icon, ":", e)
-
-                    # Aspetta 1 secondo tra un download e l'altro
-                    time.sleep(1)
-
+                    
+                    time.sleep(1) # Aspetta 1 secondo
+            
             if downloaded == 0:
-                print(
-                    "[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
+                print("[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
             else:
-                print(
-                    "[Icon Sync] Sincronizzazione completata. Scaricate",
-                    downloaded,
-                    "nuove icone.")
-
+                print("[Icon Sync] Sincronizzazione completata. Scaricate", downloaded, "nuove icone.")
+                    
         except Exception as e:
             print("[Icon Sync] Errore globale:", e)
         finally:

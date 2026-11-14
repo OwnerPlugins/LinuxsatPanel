@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/Belfagor2005/LinuxsatPanel">
-    <img src="https://img.shields.io/badge/Version-3.0.7-blue.svg" alt="Version">
+    <img src="https://img.shields.io/badge/Version-3.0.8-blue.svg" alt="Version">
   </a>
 
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -54,6 +54,11 @@
 ---
 
 ## 🗓️ Version History
+
+### v3.0.8 (Current)
+
+**Fixes**
+- ✅ Removed broken link icon.
 
 ### v3.0.7 (Current)
 

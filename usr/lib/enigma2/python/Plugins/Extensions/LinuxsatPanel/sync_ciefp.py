@@ -20,31 +20,35 @@ KEEP_ALWAYS = {
     "lululla_script.png", "oe2.0.png", "oe2.5-2.6.png",
     "OE2.2-Plugins.png", "OE2.2-Skins.png",
     "Feeds2.0.png", "Feeds2.2.png", "SOE20.png", "SOE22.png",
-    "skinsteam.png", "otherskins.png", "SkinHD.png", "egami.png", 
-    "hdf.png", "openbh.png", "openatv.png", "openpli.png", "openspa.png", 
-    "vti.png", "oebased.png", "iptv-streaming.png", "mediayou.png", 
-    "multiboot.png", "Multimedia.png", "Panels.png", "picons.png", 
+    "skinsteam.png", "otherskins.png", "SkinHD.png", "egami.png",
+    "hdf.png", "openbh.png", "openatv.png", "openpli.png", "openspa.png",
+    "vti.png", "oebased.png", "iptv-streaming.png", "mediayou.png",
+    "multiboot.png", "Multimedia.png", "Panels.png", "picons.png",
     "Library.png", "Radio.png", "key-updater.png", "key-updater1.png",
-    "sport.png", "streamlink.png", "utility.png", "vpn.png", 
+    "sport.png", "streamlink.png", "utility.png", "vpn.png",
     "weather.png", "weather-forecast.png", "webcam.png",
     "18+.png", "18+deb.png", "Other.png", "Other1.png",
     "cyrus.png", "manutek.png", "morpheus883.png",
-    "vhannibal1.png", "vhannibal2.png", "LcnSearch.png", 
+    "vhannibal1.png", "vhannibal2.png", "LcnSearch.png",
     "CheckSkin.png", "cccamfreee.png", "oscamfree.png",
     "usb-tuner-drivers.png", "plugin-epg.png",
 }
+
 
 def fetch(url):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return r.read()
 
+
 def parse_plugin_list(text):
     m = re.search(r"PLUGIN_LIST\s*=\s*\[(.*?)\]", text, re.DOTALL)
     if not m:
         raise RuntimeError("PLUGIN_LIST non trovato in plugin.py")
     block = m.group(1)
-    tuple_re = re.compile(r'\(\s*"([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"\s*\)', re.DOTALL)
+    tuple_re = re.compile(
+        r'\(\s*"([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"\s*\)',
+        re.DOTALL)
     items = []
     for match in tuple_re.finditer(block):
         name, icon_path, cmd, pkg1, pkg2 = match.groups()
@@ -56,11 +60,12 @@ def parse_plugin_list(text):
         })
     return items
 
+
 def download_icon(icon_file):
     dest = os.path.join(ICONS_DIR, icon_file)
     if os.path.exists(dest):
         return icon_file
-        
+
     url = ICONS_BASE + icon_file
     try:
         data = fetch(url)
@@ -70,6 +75,7 @@ def download_icon(icon_file):
     except Exception as e:
         print("  [ERR]  " + icon_file + ": " + str(e))
     return icon_file
+
 
 def collect_referenced():
     refs = set(KEEP_ALWAYS)
@@ -90,9 +96,11 @@ def collect_referenced():
             for fn in files:
                 if fn.endswith(".xml"):
                     with open(os.path.join(root, fn), "r", encoding="utf-8", errors="replace") as f:
-                        for m in re.finditer(r'/LSicons2/([A-Za-z0-9_\-\.+]+\.png)', f.read()):
+                        for m in re.finditer(
+                                r'/LSicons2/([A-Za-z0-9_\-\.+]+\.png)', f.read()):
                             refs.add(m.group(1))
     return refs
+
 
 def main():
     print("1) Scarico plugin.py di Ciefp...")
@@ -104,7 +112,8 @@ def main():
         return 1
 
     if len(items) < 20:
-        print("   ERRORE: trovati solo " + str(len(items)) + " plugin. Formato cambiato?")
+        print("   ERRORE: trovati solo " +
+              str(len(items)) + " plugin. Formato cambiato?")
         return 1
 
     print("   trovati " + str(len(items)) + " plugin")
@@ -120,13 +129,14 @@ def main():
         })
 
     print("3) Aggiorno data/scripts.json...")
-    
-    # Se il JSON non esiste, non lo creiamo da zero qui. 
-    # Assumiamo che tu lo abbia già pushato con LulullaScript e Script Installer.
+
+    # Se il JSON non esiste, non lo creiamo da zero qui.
+    # Assumiamo che tu lo abbia già pushato con LulullaScript e Script
+    # Installer.
     if not os.path.exists(SCRIPTS_JSON):
         print("   ERRORE: data/scripts.json non trovato. Assicurati di averlo pushato.")
         return 1
-        
+
     try:
         with open(SCRIPTS_JSON, "r", encoding="utf-8") as f:
             cfg = json.load(f)
@@ -137,7 +147,7 @@ def main():
     if cfg.get("categories", {}).get("Ciefp") != new_entries:
         cfg.setdefault("categories", {})["Ciefp"] = new_entries
         cfg["updated"] = "auto-sync"
-        
+
         with open(SCRIPTS_JSON, "w", encoding="utf-8") as f:
             json.dump(cfg, f, indent=2, ensure_ascii=False)
             f.write("\n")
@@ -150,7 +160,7 @@ def main():
     if len(refs) < 50:
         print("   ERRORE: troppi pochi riferimenti trovati. Salto la pulizia.")
         return 1
-        
+
     deleted = 0
     for fn in os.listdir(ICONS_DIR):
         if fn.lower().endswith(".png") and fn not in refs:
@@ -163,6 +173,7 @@ def main():
         print("   Nessuna icona orfana da cancellare.")
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

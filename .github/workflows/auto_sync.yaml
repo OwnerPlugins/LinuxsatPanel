@@ -28,5 +28,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Auto-sync: Aggiornati plugin Ciefp e pulite icone"
-          # Specifichiamo i percorsi completi perché il commit avviene dalla root
           file_pattern: "usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/data/scripts.json usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LSicons2/*.png"

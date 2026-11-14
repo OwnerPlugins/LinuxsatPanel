@@ -70,7 +70,7 @@ def get_scripts_config(force=False):
                     _scripts_cfg["data"] = data
                     _scripts_cfg["time"] = now
                     print("[scripts.json] loaded from remote")
-                    
+
                     # --- AGGIUNTA FONDAMENTALE: Salva sul box! ---
                     try:
                         makedirs(dirname(local_path), exist_ok=True)
@@ -80,7 +80,7 @@ def get_scripts_config(force=False):
                     except Exception as e:
                         print("[scripts.json] errore salvataggio locale:", e)
                     # ---------------------------------------------
-                    
+
                     return data
                 else:
                     print("[scripts.json] remote HTTP %d" % resp.getcode())

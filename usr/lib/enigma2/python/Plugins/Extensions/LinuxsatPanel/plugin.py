@@ -357,6 +357,7 @@ def get_catalog(force=False):
 
 _sync_icons_lock = False
 
+
 def sync_icons_background():
     """
     Scarica in background le icone mancanti, una alla volta.
@@ -365,10 +366,10 @@ def sync_icons_background():
     if _sync_icons_lock:
         return
     _sync_icons_lock = True
-    
+
     import threading
     import time
-    
+
     def run_sync():
         global _sync_icons_lock
         try:
@@ -379,7 +380,7 @@ def sync_icons_background():
                 print("[Icon Sync] Nessun JSON caricato. Salto.")
                 _sync_icons_lock = False
                 return
-            
+
             # 2. Raccogli i nomi di tutte le icone necessarie
             needed_icons = set()
             for cat, items in cfg.get("categories", {}).items():
@@ -387,17 +388,22 @@ def sync_icons_background():
                     icon = it.get("icon")
                     if icon:
                         needed_icons.add(icon)
-            
-            print("[Icon Sync] Icone totali richieste dal JSON:", len(needed_icons))
-            
+
+            print(
+                "[Icon Sync] Icone totali richieste dal JSON:",
+                len(needed_icons))
+
             # 3. Base URL
             base_url = "https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LSicons2/"
-            
+
             # 4. Controlla e scarica
             downloaded = 0
             for icon in needed_icons:
                 if not fileExists(join(picfold, icon)):
-                    print("[Icon Sync] Manca l'icona:", icon, "- Download in corso...")
+                    print(
+                        "[Icon Sync] Manca l'icona:",
+                        icon,
+                        "- Download in corso...")
                     try:
                         r = requests.get(base_url + icon, timeout=10)
                         if r.status_code == 200:
@@ -406,18 +412,23 @@ def sync_icons_background():
                             print("[Icon Sync] OK! Scaricata:", icon)
                             downloaded += 1
                         else:
-                            print("[Icon Sync] Errore HTTP", r.status_code, "per", icon)
+                            print("[Icon Sync] Errore HTTP",
+                                  r.status_code, "per", icon)
                     except Exception as e:
                         print("[Icon Sync] Errore download", icon, ":", e)
-                    
+
                     # Aspetta 1 secondo tra un download e l'altro
                     time.sleep(1)
-            
+
             if downloaded == 0:
-                print("[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
+                print(
+                    "[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
             else:
-                print("[Icon Sync] Sincronizzazione completata. Scaricate", downloaded, "nuove icone.")
-                    
+                print(
+                    "[Icon Sync] Sincronizzazione completata. Scaricate",
+                    downloaded,
+                    "nuove icone.")
+
         except Exception as e:
             print("[Icon Sync] Errore globale:", e)
         finally:
@@ -1023,7 +1034,6 @@ class LinuxsatPanel(LPGridScreen):
         self.start_check_version()
         # Avvia il download delle icone mancanti in background
         sync_icons_background()
-
 
     def searchCallback(self, text=None):
         if not text:

@@ -66,7 +66,13 @@ def lcn_from_enigma():
     for row in data or []:
         try:
             ns, onid, tsid, sid, lcn, signal = row[:6]
-            out.append((int(ns), int(onid), int(tsid), int(sid), int(lcn), int(signal)))
+            out.append(
+                (int(ns),
+                 int(onid),
+                    int(tsid),
+                    int(sid),
+                    int(lcn),
+                    int(signal)))
         except (TypeError, ValueError):
             continue
     return out or None
@@ -138,8 +144,8 @@ def lcn_from_builder_json(path=None, base=10):
 def read_lcns():
     mem = lcn_from_enigma() or []
     fil = lcn_from_file()
-    log("LCN rows: enigma2=%d lcndb=%d (%s)" % (
-        len(mem), len(fil), "found" if os.path.exists(os.path.join(E2DIR, "lcndb")) else "missing"))
+    log("LCN rows: enigma2=%d lcndb=%d (%s)" % (len(mem), len(fil),
+        "found" if os.path.exists(os.path.join(E2DIR, "lcndb")) else "missing"))
     if mem:
         log("first enigma2 rows: %s" % (mem[:3],))
     seen, data = set(), []
@@ -259,7 +265,12 @@ def read_rules(path, name="Default"):
         for r in rules.findall("rule"):
             kind = r.get("type")
             text = (r.text or "").strip()
-            if kind == "marker" and r.get("mode", "TV") in ("TV", "All", "Both"):
+            if kind == "marker" and r.get(
+                    "mode",
+                    "TV") in (
+                    "TV",
+                    "All",
+                    "Both"):
                 try:
                     markers[int(r.get("position"))] = text
                 except (TypeError, ValueError):
@@ -342,7 +353,9 @@ def register(fname, radio, e2dir=E2DIR):
         with io.open(idx, encoding="utf-8", errors="ignore") as f:
             lines = [l.rstrip("\r\n") for l in f if l.strip()]
     if not lines or not lines[0].startswith("#NAME"):
-        lines.insert(0, "#NAME User - bouquets (%s)" % ("Radio" if radio else "TV"))
+        lines.insert(
+            0, "#NAME User - bouquets (%s)" %
+            ("Radio" if radio else "TV"))
     lines = [l for l in lines if ('"%s"' % fname) not in l]
     lines.insert(1, entry)
     write_file(idx, lines)
@@ -370,7 +383,8 @@ def build(rules_path, e2dir=E2DIR, spacers=True, lcns=None):
         for base in (10, 16):
             cand = [d for d in lcn_from_builder_json(jpath, base) if d[4] > 0]
             hit = sum(1 for d in cand if (d[1], d[2], d[3]) in services)
-            log("lcnsettingbuilder.json (base %d): %d entries, %d match" % (base, len(cand), hit))
+            log("lcnsettingbuilder.json (base %d): %d entries, %d match" %
+                (base, len(cand), hit))
             if hit > best_hit:
                 best_set, best_hit = cand, hit
         lcns = best_set
@@ -406,8 +420,8 @@ def build(rules_path, e2dir=E2DIR, spacers=True, lcns=None):
 
     if not tv and not radio:
         stats["reason"] = "nomatch"
-        log("LCN entries do not match any service (sample LCN %s / service %s)" % (
-            lcns[:2], list(services)[:2]))
+        log("LCN entries do not match any service (sample LCN %s / service %s)" %
+            (lcns[:2], list(services)[:2]))
         return stats
     if tv:
         entries, moved = assign_numbers(tv, overflow)
@@ -418,8 +432,16 @@ def build(rules_path, e2dir=E2DIR, spacers=True, lcns=None):
         stats["moved"] += moved
     if radio:
         entries, moved = assign_numbers(radio, overflow)
-        write_file(os.path.join(e2dir, BOUQUET_RADIO),
-                   bouquet_lines(BOUQUET_NAME + " Radio", entries, {}, spacers))
+        write_file(
+            os.path.join(
+                e2dir,
+                BOUQUET_RADIO),
+            bouquet_lines(
+                BOUQUET_NAME +
+                " Radio",
+                entries,
+                {},
+                spacers))
         register(BOUQUET_RADIO, True, e2dir)
         stats["radio"] = len(entries)
         stats["moved"] += moved
@@ -443,7 +465,9 @@ def reload_enigma():
             from urllib.request import urlopen
         except ImportError:
             from urllib2 import urlopen
-        urlopen("http://127.0.0.1/web/servicelistreload?mode=0", timeout=10).read()
+        urlopen(
+            "http://127.0.0.1/web/servicelistreload?mode=0",
+            timeout=10).read()
         return True
     except Exception as e:
         log("reload not done (%s): restart Enigma2 to see the bouquet" % e)
@@ -465,5 +489,6 @@ def run_now():
 
 
 if __name__ == "__main__":
-    # telnet/ssh:  python /usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LCNScanner/lcnsort.py
+    # telnet/ssh:  python
+    # /usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LCNScanner/lcnsort.py
     run_now()

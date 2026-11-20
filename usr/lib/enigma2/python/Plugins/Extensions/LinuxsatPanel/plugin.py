@@ -153,7 +153,6 @@ else:
     pngx = plugin_path + "/icons/link.png"
 
 
-
 def orderTerrestrialLcn(session):
     """Order the DTT bouquet by LCN (no channel list install needed)."""
     try:
@@ -171,16 +170,26 @@ def orderTerrestrialLcn(session):
     else:
         reason = stats.get("reason")
         if reason == "nolcn":
-            msg = _("No LCN data stored for terrestrial channels (%d DTT channels found).\n"
-                    "Run a terrestrial scan with network search enabled, then try again.") % stats.get("services", 0)
+            msg = _(
+                "No LCN data stored for terrestrial channels (%d DTT channels found).\n"
+                "Run a terrestrial scan with network search enabled, then try again.") % stats.get(
+                "services",
+                0)
         elif reason == "noservices":
             msg = _("No terrestrial (DTT) channels in the channel list.\n"
                     "Scan the terrestrial channels first.")
         else:
-            msg = _("LCN data (%d) does not match the terrestrial channels (%d).\n"
-                    "Run a new terrestrial scan.") % (stats.get("lcns", 0), stats.get("services", 0))
+            msg = _(
+                "LCN data (%d) does not match the terrestrial channels (%d).\n"
+                "Run a new terrestrial scan.") % (stats.get(
+                    "lcns",
+                    0),
+                stats.get(
+                    "services",
+                    0))
         session.open(MessageBox, msg + "\n\nLog: /tmp/linuxsatpanel_lcn.log",
                      MessageBox.TYPE_WARNING, timeout=15)
+
 
 class LPSlist(MenuList):
     def __init__(self, list):
@@ -407,10 +416,10 @@ def sync_icons_background():
     if _sync_icons_lock:
         return
     _sync_icons_lock = True
-    
+
     import threading
     import time
-    
+
     def run_sync():
         global _sync_icons_lock
         try:
@@ -421,7 +430,7 @@ def sync_icons_background():
                 print("[Icon Sync] Nessun JSON caricato. Salto.")
                 _sync_icons_lock = False
                 return
-            
+
             # 2. Raccogli i nomi di tutte le icone necessarie
             needed_icons = set()
             for cat, items in cfg.get("categories", {}).items():
@@ -429,38 +438,85 @@ def sync_icons_background():
                     icon = it.get("icon")
                     if icon:
                         needed_icons.add(icon)
-            
+
             # --- AGGIUNTA: Icone del menu principale ---
             BASE_ICONS = [
-                "ciefp.png", "Backup.png", "Bouquets.png", "Channel-list.png",
-                "Game.png", "KiddaC1.png", "KiddaC2.png", "lululla_script.png",
-                "oe2.0.png", "oe2.5-2.6.png", "OE2.2-Plugins.png", "OE2.2-Skins.png",
-                "Feeds2.0.png", "Feeds2.2.png", "SOE20.png", "SOE22.png",
-                "skinsteam.png", "otherskins.png", "SkinHD.png", "egami.png",
-                "hdf.png", "openbh.png", "openatv.png", "openpli.png", "openspa.png",
-                "vti.png", "oebased.png", "iptv-streaming.png", "mediayou.png",
-                "multiboot.png", "Multimedia.png", "Panels.png", "picons.png",
-                "Library.png", "Radio.png", "key-updater.png", "key-updater1.png",
-                "sport.png", "streamlink.png", "utility.png", "vpn.png",
-                "weather.png", "weather-forecast.png", "webcam.png",
-                "18+.png", "18+deb.png", "Other.png", "Other1.png",
-                "Information.png", "Github.png", "about.png", "usb-tuner-drivers.png", "plugin-epg.png",
-                "gioppygio.png", "manutek.png", "morpheus883.png", "vhannibal1.png"
-            ]
+                "ciefp.png",
+                "Backup.png",
+                "Bouquets.png",
+                "Channel-list.png",
+                "Game.png",
+                "KiddaC1.png",
+                "KiddaC2.png",
+                "lululla_script.png",
+                "oe2.0.png",
+                "oe2.5-2.6.png",
+                "OE2.2-Plugins.png",
+                "OE2.2-Skins.png",
+                "Feeds2.0.png",
+                "Feeds2.2.png",
+                "SOE20.png",
+                "SOE22.png",
+                "skinsteam.png",
+                "otherskins.png",
+                "SkinHD.png",
+                "egami.png",
+                "hdf.png",
+                "openbh.png",
+                "openatv.png",
+                "openpli.png",
+                "openspa.png",
+                "vti.png",
+                "oebased.png",
+                "iptv-streaming.png",
+                "mediayou.png",
+                "multiboot.png",
+                "Multimedia.png",
+                "Panels.png",
+                "picons.png",
+                "Library.png",
+                "Radio.png",
+                "key-updater.png",
+                "key-updater1.png",
+                "sport.png",
+                "streamlink.png",
+                "utility.png",
+                "vpn.png",
+                "weather.png",
+                "weather-forecast.png",
+                "webcam.png",
+                "18+.png",
+                "18+deb.png",
+                "Other.png",
+                "Other1.png",
+                "Information.png",
+                "Github.png",
+                "about.png",
+                "usb-tuner-drivers.png",
+                "plugin-epg.png",
+                "gioppygio.png",
+                "manutek.png",
+                "morpheus883.png",
+                "vhannibal1.png"]
             for base_icon in BASE_ICONS:
                 needed_icons.add(base_icon)
             # -------------------------------------------
-            
-            print("[Icon Sync] Icone totali richieste (incluse quelle base):", len(needed_icons))
-            
+
+            print(
+                "[Icon Sync] Icone totali richieste (incluse quelle base):",
+                len(needed_icons))
+
             # 3. Base URL
             base_url = "https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LSicons2/"
-            
+
             # 4. Controlla e scarica
             downloaded = 0
             for icon in needed_icons:
                 if not fileExists(join(picfold, icon)):
-                    print("[Icon Sync] Manca l'icona:", icon, "- Download in corso...")
+                    print(
+                        "[Icon Sync] Manca l'icona:",
+                        icon,
+                        "- Download in corso...")
                     try:
                         r = requests.get(base_url + icon, timeout=10)
                         if r.status_code == 200:
@@ -469,17 +525,22 @@ def sync_icons_background():
                             print("[Icon Sync] OK! Scaricata:", icon)
                             downloaded += 1
                         else:
-                            print("[Icon Sync] Errore HTTP", r.status_code, "per", icon)
+                            print("[Icon Sync] Errore HTTP",
+                                  r.status_code, "per", icon)
                     except Exception as e:
                         print("[Icon Sync] Errore download", icon, ":", e)
-                    
-                    time.sleep(1) # Aspetta 1 secondo
-            
+
+                    time.sleep(1)  # Aspetta 1 secondo
+
             if downloaded == 0:
-                print("[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
+                print(
+                    "[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
             else:
-                print("[Icon Sync] Sincronizzazione completata. Scaricate", downloaded, "nuove icone.")
-                    
+                print(
+                    "[Icon Sync] Sincronizzazione completata. Scaricate",
+                    downloaded,
+                    "nuove icone.")
+
         except Exception as e:
             print("[Icon Sync] Errore globale:", e)
         finally:
@@ -2153,7 +2214,8 @@ class addInstall(AsyncMixin, Screen):
         name = url = date = ""
         try:
             if "ciefp" in self.name.lower():
-                # GitHub API: [{"name": "ciefp-E2-...zip", "download_url": ...}]
+                # GitHub API: [{"name": "ciefp-E2-...zip", "download_url":
+                # ...}]
                 try:
                     files = loads(r)
                 except ValueError:
@@ -2171,7 +2233,8 @@ class addInstall(AsyncMixin, Screen):
                     items.append(name + "###" + str(url))
 
             if "gioppygio" in self.name.lower():
-                # links: https://gioppygio.it/settings/e2/GioppyGio_E2_<type>_<sats>_<date>.zip
+                # links:
+                # https://gioppygio.it/settings/e2/GioppyGio_E2_<type>_<sats>_<date>.zip
                 regex = r'(https?://(?:www\.)?gioppygio\.it/settings/e2/[^"&\s<>]+?\.zip)'
                 for url in compile(regex).findall(r):
                     fname = url.rsplit("/", 1)[-1][:-4]
@@ -2570,14 +2633,15 @@ class LSCommits(LSListScreen):
 
     def buildList(self):
         self.commit_rows = [c for c in self.all_commits
-                      if not (self.hide_auto and lsfind.is_automatic(c))]
+                            if not (self.hide_auto and lsfind.is_automatic(c))]
         entries = []
         for idx, c in enumerate(self.commit_rows):
             try:
                 info = c["commit"]
                 msg = (info.get("message") or "").split("\n")[0]
-                date = dt.strptime(info["author"]["date"],
-                                   "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m %H:%M")
+                date = dt.strptime(
+                    info["author"]["date"],
+                    "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m %H:%M")
             except Exception:
                 msg, date = "?", ""
             if c.get("sha") in self.fresh:
@@ -2649,7 +2713,8 @@ class LSCommits(LSListScreen):
                 self.session.open(
                     MessageBox,
                     _("Unable to read this commit from GitHub.\nPlease try again later."),
-                    MessageBox.TYPE_ERROR, timeout=6)
+                    MessageBox.TYPE_ERROR,
+                    timeout=6)
             elif not pkgs:
                 self.session.open(
                     MessageBox,

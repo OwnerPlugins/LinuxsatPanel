@@ -16,7 +16,7 @@ from re import compile, search, DOTALL
 from shutil import copy2
 from sys import version_info
 
-from os import R_OK, access, chmod, makedirs, system, walk, listdir
+from os import R_OK, access, chmod, makedirs, system, walk
 from os.path import exists, join
 
 import six
@@ -153,6 +153,35 @@ else:
     pngx = plugin_path + "/icons/link.png"
 
 
+
+def orderTerrestrialLcn(session):
+    """Order the DTT bouquet by LCN (no channel list install needed)."""
+    try:
+        from .LCNScanner import lcnsort
+        stats = lcnsort.run_now()
+    except Exception as e:
+        print("[LCN] error:", e)
+        session.open(MessageBox, _("LCN ordering failed:\n%s") % e,
+                     MessageBox.TYPE_ERROR, timeout=8)
+        return
+    if stats.get("tv") or stats.get("radio"):
+        msg = _("Terrestrial bouquet ordered by LCN.\n\nTV: %d  Radio: %d\nDuplicates moved to 1000+: %d") % (
+            stats.get("tv", 0), stats.get("radio", 0), stats.get("moved", 0))
+        session.open(MessageBox, msg, MessageBox.TYPE_INFO, timeout=8)
+    else:
+        reason = stats.get("reason")
+        if reason == "nolcn":
+            msg = _("No LCN data stored for terrestrial channels (%d DTT channels found).\n"
+                    "Run a terrestrial scan with network search enabled, then try again.") % stats.get("services", 0)
+        elif reason == "noservices":
+            msg = _("No terrestrial (DTT) channels in the channel list.\n"
+                    "Scan the terrestrial channels first.")
+        else:
+            msg = _("LCN data (%d) does not match the terrestrial channels (%d).\n"
+                    "Run a new terrestrial scan.") % (stats.get("lcns", 0), stats.get("services", 0))
+        session.open(MessageBox, msg + "\n\nLog: /tmp/linuxsatpanel_lcn.log",
+                     MessageBox.TYPE_WARNING, timeout=15)
+
 class LPSlist(MenuList):
     def __init__(self, list):
         MenuList.__init__(self, list, True, eListboxPythonMultiContent)
@@ -281,8 +310,16 @@ def get_positions(resolution):
 def add_menu_item(menu_list, titles, pics, urls, title, pic_name, url=""):
     menu_list.append(title)
     titles.append(title.strip())
-    pics.append(picfold + pic_name)
+    pics.append(icon_path(pic_name))
     urls.append(url)
+
+
+def icon_path(pic_name):
+    """Icon in LSicons2, or the generic script icon if the png is missing."""
+    path = picfold + (pic_name or "script.png")
+    if not exists(path):
+        path = picfold + "script.png"
+    return path
 
 
 class AsyncCall:
@@ -370,10 +407,10 @@ def sync_icons_background():
     if _sync_icons_lock:
         return
     _sync_icons_lock = True
-
+    
     import threading
     import time
-
+    
     def run_sync():
         global _sync_icons_lock
         try:
@@ -384,7 +421,7 @@ def sync_icons_background():
                 print("[Icon Sync] Nessun JSON caricato. Salto.")
                 _sync_icons_lock = False
                 return
-
+            
             # 2. Raccogli i nomi di tutte le icone necessarie
             needed_icons = set()
             for cat, items in cfg.get("categories", {}).items():
@@ -392,85 +429,38 @@ def sync_icons_background():
                     icon = it.get("icon")
                     if icon:
                         needed_icons.add(icon)
-
+            
             # --- AGGIUNTA: Icone del menu principale ---
             BASE_ICONS = [
-                "ciefp.png",
-                "Backup.png",
-                "Bouquets.png",
-                "Channel-list.png",
-                "Game.png",
-                "KiddaC1.png",
-                "KiddaC2.png",
-                "lululla_script.png",
-                "oe2.0.png",
-                "oe2.5-2.6.png",
-                "OE2.2-Plugins.png",
-                "OE2.2-Skins.png",
-                "Feeds2.0.png",
-                "Feeds2.2.png",
-                "SOE20.png",
-                "SOE22.png",
-                "skinsteam.png",
-                "otherskins.png",
-                "SkinHD.png",
-                "egami.png",
-                "hdf.png",
-                "openbh.png",
-                "openatv.png",
-                "openpli.png",
-                "openspa.png",
-                "vti.png",
-                "oebased.png",
-                "iptv-streaming.png",
-                "mediayou.png",
-                "multiboot.png",
-                "Multimedia.png",
-                "Panels.png",
-                "picons.png",
-                "Library.png",
-                "Radio.png",
-                "key-updater.png",
-                "key-updater1.png",
-                "sport.png",
-                "streamlink.png",
-                "utility.png",
-                "vpn.png",
-                "weather.png",
-                "weather-forecast.png",
-                "webcam.png",
-                "18+.png",
-                "18+deb.png",
-                "Other.png",
-                "Other1.png",
-                "Information.png",
-                "Github.png",
-                "about.png",
-                "usb-tuner-drivers.png",
-                "plugin-epg.png",
-                "gioppygio.png",
-                "manutek.png",
-                "morpheus883.png",
-                "vhannibal1.png"]
+                "ciefp.png", "Backup.png", "Bouquets.png", "Channel-list.png",
+                "Game.png", "KiddaC1.png", "KiddaC2.png", "lululla_script.png",
+                "oe2.0.png", "oe2.5-2.6.png", "OE2.2-Plugins.png", "OE2.2-Skins.png",
+                "Feeds2.0.png", "Feeds2.2.png", "SOE20.png", "SOE22.png",
+                "skinsteam.png", "otherskins.png", "SkinHD.png", "egami.png",
+                "hdf.png", "openbh.png", "openatv.png", "openpli.png", "openspa.png",
+                "vti.png", "oebased.png", "iptv-streaming.png", "mediayou.png",
+                "multiboot.png", "Multimedia.png", "Panels.png", "picons.png",
+                "Library.png", "Radio.png", "key-updater.png", "key-updater1.png",
+                "sport.png", "streamlink.png", "utility.png", "vpn.png",
+                "weather.png", "weather-forecast.png", "webcam.png",
+                "18+.png", "18+deb.png", "Other.png", "Other1.png",
+                "Information.png", "Github.png", "about.png", "usb-tuner-drivers.png", "plugin-epg.png",
+                "gioppygio.png", "manutek.png", "morpheus883.png", "vhannibal1.png"
+            ]
             for base_icon in BASE_ICONS:
                 needed_icons.add(base_icon)
             # -------------------------------------------
-
-            print(
-                "[Icon Sync] Icone totali richieste (incluse quelle base):",
-                len(needed_icons))
-
+            
+            print("[Icon Sync] Icone totali richieste (incluse quelle base):", len(needed_icons))
+            
             # 3. Base URL
             base_url = "https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LSicons2/"
-
+            
             # 4. Controlla e scarica
             downloaded = 0
             for icon in needed_icons:
                 if not fileExists(join(picfold, icon)):
-                    print(
-                        "[Icon Sync] Manca l'icona:",
-                        icon,
-                        "- Download in corso...")
+                    print("[Icon Sync] Manca l'icona:", icon, "- Download in corso...")
                     try:
                         r = requests.get(base_url + icon, timeout=10)
                         if r.status_code == 200:
@@ -479,22 +469,17 @@ def sync_icons_background():
                             print("[Icon Sync] OK! Scaricata:", icon)
                             downloaded += 1
                         else:
-                            print("[Icon Sync] Errore HTTP",
-                                  r.status_code, "per", icon)
+                            print("[Icon Sync] Errore HTTP", r.status_code, "per", icon)
                     except Exception as e:
                         print("[Icon Sync] Errore download", icon, ":", e)
-
-                    time.sleep(1)  # Aspetta 1 secondo
-
+                    
+                    time.sleep(1) # Aspetta 1 secondo
+            
             if downloaded == 0:
-                print(
-                    "[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
+                print("[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
             else:
-                print(
-                    "[Icon Sync] Sincronizzazione completata. Scaricate",
-                    downloaded,
-                    "nuove icone.")
-
+                print("[Icon Sync] Sincronizzazione completata. Scaricate", downloaded, "nuove icone.")
+                    
         except Exception as e:
             print("[Icon Sync] Errore globale:", e)
         finally:
@@ -1643,20 +1628,19 @@ class ScriptInstaller(LPGridScreen):
             elif action:
                 menu_list.append(name_it)
                 self.titles.append(name_it)
-                self.pics.append(picfold + icon)
+                self.pics.append(icon_path(icon))
                 self.urls.append("")
                 self.actions_by_name[name_it] = action
 
-        sh_dir = plugin_path + "/sh"
-        if exists(sh_dir):
-            for filename in sorted(listdir(sh_dir)):
-                if filename.endswith(".sh"):
-                    base_name = filename[:-3]
-                    title = base_name.replace('_', ' ').title()
-                    script_path = join(sh_dir, filename)
-                    add_menu_item(
-                        menu_list, self.titles, self.pics, self.urls,
-                        title, "script.png", script_path)
+        # Only the entries of scripts.json: the files in sh/ are helpers
+        # (Fcl.sh, CCcam.cfg...) or are already listed there with an icon.
+        # Alphabetical order, whatever the order in the json.
+        rows = sorted(zip(menu_list, self.titles, self.pics, self.urls),
+                      key=lambda r: r[1].lower())
+        menu_list = [r[0] for r in rows]
+        self.titles = [r[1] for r in rows]
+        self.pics = [r[2] for r in rows]
+        self.urls = [r[3] for r in rows]
 
         if not menu_list:
             self.session.open(
@@ -1673,17 +1657,12 @@ class ScriptInstaller(LPGridScreen):
         if answer is None:
             self.session.openWithCallback(
                 self.Lcn, MessageBox,
-                _("Do you want to Order LCN Bouquet?"),
+                _("Order the terrestrial (DTT) bouquet by LCN now?"),
                 MessageBox.TYPE_YESNO)
             return
         if not answer:
             return
-        print("Starting LCN scan...")
-        try:
-            from .LCNScanner.Terrestrial import PluginSetup
-            self.session.open(PluginSetup)
-        except Exception as e:
-            print("Exception during LCN scan:", e)
+        orderTerrestrialLcn(self.session)
 
     def Checkskin(self, answer=None):
         if answer is None:
@@ -2174,8 +2153,7 @@ class addInstall(AsyncMixin, Screen):
         name = url = date = ""
         try:
             if "ciefp" in self.name.lower():
-                # GitHub API: [{"name": "ciefp-E2-...zip", "download_url":
-                # ...}]
+                # GitHub API: [{"name": "ciefp-E2-...zip", "download_url": ...}]
                 try:
                     files = loads(r)
                 except ValueError:
@@ -2193,8 +2171,7 @@ class addInstall(AsyncMixin, Screen):
                     items.append(name + "###" + str(url))
 
             if "gioppygio" in self.name.lower():
-                # links:
-                # https://gioppygio.it/settings/e2/GioppyGio_E2_<type>_<sats>_<date>.zip
+                # links: https://gioppygio.it/settings/e2/GioppyGio_E2_<type>_<sats>_<date>.zip
                 regex = r'(https?://(?:www\.)?gioppygio\.it/settings/e2/[^"&\s<>]+?\.zip)'
                 for url in compile(regex).findall(r):
                     fname = url.rsplit("/", 1)[-1][:-4]
@@ -2274,15 +2251,10 @@ class addInstall(AsyncMixin, Screen):
         if answer is None:
             self.session.openWithCallback(
                 self.Lcn, MessageBox,
-                _("Do you want to Order LCN Bouquet?"),
+                _("Order the terrestrial (DTT) bouquet by LCN now?"),
                 MessageBox.TYPE_YESNO)
         elif answer:
-            print("Starting LCN scan...")
-            try:
-                from .LCNScanner.Terrestrial import PluginSetup
-                self.session.open(PluginSetup)
-            except Exception as e:
-                print("Exception during LCN scan:", e)
+            orderTerrestrialLcn(self.session)
 
     def okRun(self):
         self.session.openWithCallback(
@@ -2598,15 +2570,14 @@ class LSCommits(LSListScreen):
 
     def buildList(self):
         self.commit_rows = [c for c in self.all_commits
-                            if not (self.hide_auto and lsfind.is_automatic(c))]
+                      if not (self.hide_auto and lsfind.is_automatic(c))]
         entries = []
         for idx, c in enumerate(self.commit_rows):
             try:
                 info = c["commit"]
                 msg = (info.get("message") or "").split("\n")[0]
-                date = dt.strptime(
-                    info["author"]["date"],
-                    "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m %H:%M")
+                date = dt.strptime(info["author"]["date"],
+                                   "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m %H:%M")
             except Exception:
                 msg, date = "?", ""
             if c.get("sha") in self.fresh:
@@ -2678,8 +2649,7 @@ class LSCommits(LSListScreen):
                 self.session.open(
                     MessageBox,
                     _("Unable to read this commit from GitHub.\nPlease try again later."),
-                    MessageBox.TYPE_ERROR,
-                    timeout=6)
+                    MessageBox.TYPE_ERROR, timeout=6)
             elif not pkgs:
                 self.session.open(
                     MessageBox,

@@ -46,7 +46,7 @@ TerChArch = plugin_path + '/temp/TerrestrialChannelListArchive'
 IptvChArch = plugin_path + '/temp'
 e2etc = '/etc/enigma2'
 ee2ldb = '/etc/enigma2/lamedb'
-dbfile = '/var/etc/enigma2/lcndb'
+dbfile = '/etc/enigma2/lcndb'   # was /var/etc/enigma2/lcndb (wrong path)
 
 
 def ReloadBouquets(x):
@@ -591,7 +591,7 @@ def terrestrial_rest():
                 plugin_path +
                 "/temp/TerrestrialChannelListArchive /etc/enigma2/userbouquet.terrestrial.tv")
         os.system('cp -rf /etc/enigma2/bouquets.tv /etc/enigma2/backup_bouquets.tv')
-        with open('/etc/enigma2/bouquets.tv', 'r+') as f:
+        with open('/etc/enigma2/bouquets.tv', 'r') as f:
             bouquetTvString = '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.terrestrial.tv" ORDER BY bouquet\n'
             if bouquetTvString not in f:
                 new_bouquet = open('/etc/enigma2/new_bouquets.tv', 'w')
@@ -608,8 +608,8 @@ def terrestrial_rest():
                     'cp -rf /etc/enigma2/bouquets.tv /etc/enigma2/backup_bouquets.tv')
                 os.system(
                     'mv -f /etc/enigma2/new_bouquets.tv /etc/enigma2/bouquets.tv')
-        if os.path.exists(dbfile):
-            lcnstart()
+        # always: the LCN data may come from Enigma2 memory even without lcndb
+        lcnstart()
 
 
 def copy_files_to_enigma2():
@@ -631,7 +631,16 @@ def copy_files_to_enigma2():
 
 
 def lcnstart():
+    """Order the terrestrial bouquet by LCN (after a settings install)."""
     print(' lcnstart ')
+    try:
+        from . import lcnsort
+        stats = lcnsort.build(rules)
+        if stats.get("tv"):
+            return
+    except Exception as e:
+        print("[LCN] lcnsort error:", e)
+    # fallback: old builder (lcndb v1 only)
     if os.path.exists(dbfile):
         '''
         # lcn = LCN()

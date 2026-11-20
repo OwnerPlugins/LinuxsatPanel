@@ -1,0 +1,510 @@
+# fa translations
+# Copyright (C) 2026 Lululla Team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: fa <ekekaz@gmail.com>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "(cached)"
+msgstr "(در حافظه پنهان)"
+
+msgid "[Checkskin] This operation checks if the skin has its components (is not sure)..\nDo you really want to continue?"
+msgstr "[Checkskin] این عملیات بررسی می‌کند که آیا پوست اجزای خود را دارد (مطمئن نیست).\nآیا واقعاً می‌خواهید ادامه دهید؟"
+
+msgid "%s"
+msgstr "%s"
+
+msgid "A coffee costs nothing.\n\n"
+msgstr "یک قهوه هیچ هزینه ای ندارد.\n\n"
+
+msgid "Adult"
+msgstr "بالغ"
+
+msgid "All code was rewritten by @Lululla - 2024.07.20\n"
+msgstr "همه کدها توسط @Lululla بازنویسی شد - 2024.07.20\n"
+
+msgid "An unexpected error occurred. Please try again later."
+msgstr "یک خطای غیرمنتظره رخ داد. لطفاً بعداً دوباره امتحان کنید."
+
+msgid "Australia"
+msgstr "استرالیا"
+
+msgid "BBC Interactive"
+msgstr "بی بی سی تعاملی"
+
+msgid "Build/rebuild terrestrial bouquet now based on the last scan."
+msgstr "اکنون بر اساس آخرین اسکن دسته گل زمینی بسازید/بازسازی کنید."
+
+msgid "Cancel execution?"
+msgstr "لغو اجرا؟"
+
+msgid "Category:"
+msgstr "دسته:"
+
+msgid "Check Connection!"
+msgstr "اتصال را بررسی کنید!"
+
+msgid "Children"
+msgstr "بچه ها"
+
+msgid "Clear recent searches"
+msgstr "جستجوهای اخیر را پاک کنید"
+
+msgid "Collecting system information..."
+msgstr "جمع آوری اطلاعات سیستم ..."
+
+msgid "Commit History"
+msgstr "تاریخچه را متعهد شوید"
+
+msgid "Congrats! You already have the latest version..."
+msgstr "تبریک میگم شما در حال حاضر آخرین نسخه را دارید ..."
+
+msgid "Corrupted archive! Settings NOT installed."
+msgstr "آرشیو خراب! تنظیمات نصب نشده است."
+
+msgid "Create an ordered bouquet of terrestrial services based on LCN data from your local transmitter."
+msgstr "یک دسته سفارش داده شده از خدمات زمینی بر اساس داده های LCN از فرستنده محلی خود ایجاد کنید."
+
+msgid "Create separate radio bouquet"
+msgstr "دسته گل رادیویی جداگانه ایجاد کنید"
+
+msgid "Del Line"
+msgstr "دل لاین"
+
+msgid "Designs and Graphics by @oktus\n"
+msgstr "طراحی و گرافیک توسط @oktus\n"
+
+msgid "Do not add duplicated or non indexed channels to the bouquet."
+msgstr "کانال های تکراری یا غیر ایندکس شده را به دسته گل اضافه نکنید."
+
+msgid "Do you want add Cline?"
+msgstr "آیا می خواهید Cline را اضافه کنید؟"
+
+msgid "Do you want to install update (%s) now?"
+msgstr "آیا می خواهید به روز رسانی (%s) را اکنون نصب کنید؟"
+
+msgid "Do you want to Order LCN Bouquet?"
+msgstr "آیا می خواهید دسته گل LCN را سفارش دهید؟"
+
+msgid "Do you want to remove?"
+msgstr "آیا می خواهید حذف کنید؟"
+
+msgid "Do you want to restart Gui Interface?"
+msgstr "آیا می خواهید رابط Gui را مجددا راه اندازی کنید؟"
+
+msgid "Download failed!"
+msgstr "دانلود نشد!"
+
+msgid "Download failed! Settings NOT installed."
+msgstr "دانلود نشد! تنظیمات نصب نشده است."
+
+msgid "Download page get failed ..."
+msgstr "صفحه دانلود با شکست مواجه شد..."
+
+msgid "Downloading %s ..."
+msgstr "در حال دانلود %s..."
+
+msgid "Duplicates"
+msgstr "موارد تکراری"
+
+msgid "Edit Line"
+msgstr "ویرایش خط"
+
+msgid "Enable creating a terrestrial bouquet based on LCN (logocal channel number) data."
+msgstr "ایجاد یک دسته گل زمینی بر اساس داده های LCN (شماره کانال منطقی) را فعال کنید."
+
+msgid "Enable terrestrial bouquet"
+msgstr "دسته گل زمینی را فعال کنید"
+
+msgid "Enable terrestrial LCN:"
+msgstr "فعال کردن LCN زمینی:"
+
+msgid "Entertainment"
+msgstr "سرگرمی"
+
+msgid "Error loading commits. Please check your internet connection."
+msgstr "خطا در بارگیری تعهدات. لطفا اتصال اینترنت خود را بررسی کنید."
+
+msgid "Error: No Data Find."
+msgstr "خطا: داده پیدا نشد."
+
+msgid "Europe7"
+msgstr "اروپا 7"
+
+msgid "Executing %s\nPlease Wait..."
+msgstr "در حال اجرای %s\nلطفاً صبر کنید..."
+
+msgid "Execution progress\n\n"
+msgstr "پیشرفت اجرا\n\n"
+
+msgid "Exit"
+msgstr "خارج شوید"
+
+msgid "Failed to fetch update information. Please check your internet connection."
+msgstr "اطلاعات به‌روزرسانی دریافت نشد. لطفا اتصال اینترنت خود را بررسی کنید."
+
+msgid "Failed to parse update information. Please try again later."
+msgstr "اطلاعات به روز رسانی تجزیه نشد. لطفاً بعداً دوباره امتحان کنید."
+
+msgid "File not found /etc/CCcam.cfg!\nRestart please..."
+msgstr "فایل یافت نشد /etc/CCcam.cfg!\nلطفاً راه اندازی مجدد کنید..."
+
+msgid "File not found /etc/tuxbox/config/oscam.server!\nRestart please..."
+msgstr "فایل یافت نشد /etc/tuxbox/config/oscam.server!\nلطفا راه اندازی مجدد کنید..."
+
+msgid "Free Space:"
+msgstr "فضای آزاد:"
+
+msgid "GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."
+msgstr "از محدودیت نرخ API GitHub فراتر رفت.\n\nهیچ فایل حافظه پنهان یافت نشد.\n\nلطفاً بعداً دوباره امتحان کنید."
+
+msgid "GitHub API rate limit exceeded.\nPlease try again later."
+msgstr "از محدودیت نرخ API GitHub فراتر رفت.\nلطفاً بعداً دوباره امتحان کنید."
+
+msgid "HD Channels"
+msgstr "کانال های HD"
+
+msgid "Hide automatic"
+msgstr "مخفی کردن خودکار"
+
+msgid "High Definition"
+msgstr "کیفیت بالا"
+
+msgid "I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"
+msgstr "من مسئول هیچ مشکلی نیستم که بعد از نصب افزونه‌ها و پوسته‌ها ممکن است\nبا آن مواجه شوید.\nاما، در صورت لزوم، می‌توانید برای حل این مشکل راهنمایی دریافت کنید.\n\n\nآیا می‌خواهید نصب کنید؟"
+
+msgid "If you think it is a useful tool for your box\n"
+msgstr "اگر فکر می کنید ابزار مفیدی برای box\n شماست\n"
+
+msgid "Information and Culture"
+msgstr "اطلاعات و فرهنگ"
+
+msgid "Ins Line"
+msgstr "اینس لاین"
+
+msgid "Install"
+msgstr "نصب کنید"
+
+msgid "Install failed! Previous settings restored."
+msgstr "نصب نشد! تنظیمات قبلی بازیابی شد."
+
+msgid "Install failed! Settings NOT installed."
+msgstr "نصب نشد! تنظیمات نصب نشده است."
+
+msgid "Installing %s\nPlease Wait..."
+msgstr "در حال نصب %s\nلطفاً صبر کنید..."
+
+msgid "Installing settings..."
+msgstr "در حال نصب تنظیمات..."
+
+msgid "Internet: Connected"
+msgstr "اینترنت: متصل"
+
+msgid "Internet: No Connection"
+msgstr "اینترنت: بدون اتصال"
+
+msgid "Internet: Unknown"
+msgstr "اینترنت: نامعلوم"
+
+msgid "Invalid date format in update information."
+msgstr "قالب تاریخ در اطلاعات به‌روزرسانی نامعتبر است."
+
+msgid "Italy"
+msgstr "ایتالیا"
+
+msgid "LCN Duplicates"
+msgstr "LCN تکراری"
+
+msgid "LCN rules:"
+msgstr "قوانین LCN:"
+
+msgid "Linuxsat Panel"
+msgstr "پنل Linuxsat"
+
+msgid "Load Category..."
+msgstr "بارگیری دسته..."
+
+msgid "Loading commits..."
+msgstr "در حال بارگیری تعهدات..."
+
+msgid "Loading list..."
+msgstr "در حال بارگیری لیست..."
+
+msgid "Loading..."
+msgstr "در حال بارگیری..."
+
+msgid "Local Broadcasters"
+msgstr "پخش کننده های محلی"
+
+msgid "make donation on Linuxsat-support.com\n\n\n"
+msgstr "در Linuxsat-support.com\n\n\n کمک مالی کنید\n"
+
+msgid "Music"
+msgstr "موسیقی"
+
+msgid "New search"
+msgstr "جستجوی جدید"
+
+msgid "New search..."
+msgstr "جستجوی جدید..."
+
+msgid "New since last visit: %d"
+msgstr "جدید از آخرین بازدید: %d"
+
+msgid "New updates: %d"
+msgstr "به روز رسانی های جدید: %d"
+
+msgid "New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?"
+msgstr "نسخه جدید %s موجود است!\n\nتغییر:\n%s\n\nآیا می‌خواهید اکنون به‌روزرسانی کنید؟"
+
+msgid "New version available\n\nChangelog:"
+msgstr "نسخه جدید در دسترس است\n\nتغییر:"
+
+msgid "New version available\n\nChangelog:\n\nPress the green button to start the update."
+msgstr "نسخه جدید در دسترس است\n\nChangelog:\n\nدکمه سبز را فشار دهید تا به‌روزرسانی شروع شود."
+
+msgid "New version is available.\n\nChangelog:\n\nDo you want to install it now?"
+msgstr "نسخه جدید در دسترس است.\n\nتغییر:\n\nآیا می‌خواهید اکنون آن را نصب کنید؟"
+
+msgid "News"
+msgstr "اخبار"
+
+msgid "No channel list in archive! Settings NOT installed."
+msgstr "لیست کانال در آرشیو وجود ندارد! تنظیمات نصب نشده است."
+
+msgid "No commits found."
+msgstr "هیچ تعهدی پیدا نشد"
+
+msgid "No corresponding terrestrial services found."
+msgstr "هیچ سرویس زمینی مربوطه یافت نشد."
+
+msgid "No entry in lcn db. Please do a service scan."
+msgstr "ورود به lcn db ممنوع است. لطفا یک سرویس اسکن انجام دهید."
+
+msgid "No news"
+msgstr "خبری نیست"
+
+msgid "No update information available."
+msgstr "اطلاعات به روز رسانی در دسترس نیست."
+
+msgid "Nothing found for '%s'"
+msgstr "چیزی برای '%s' یافت نشد"
+
+msgid "Notifications"
+msgstr "اطلاعیه ها"
+
+msgid "of"
+msgstr "از"
+
+msgid "OK = install"
+msgstr "خوب = نصب کنید"
+
+msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
+msgstr "پس از پیکربندی دسته گل هنگام انجام اسکن دستی به طور خودکار به روز می شود."
+
+msgid "please make a donation:\n"
+msgstr "لطفا کمک مالی کنید:\n"
+
+msgid "Please make certain network search is enabled when scanning."
+msgstr "لطفاً مطمئن شوید که جستجوی شبکه هنگام اسکن فعال باشد."
+
+msgid "Please Wait..."
+msgstr "لطفا صبر کنید..."
+
+msgid "Premium"
+msgstr "حق بیمه"
+
+msgid "Promo H264"
+msgstr "تبلیغات H264"
+
+msgid "Put radio services in a separate bouquet, not the main tv bouquet. This is required when the provider duplicates channel numbers for tv and radio."
+msgstr "خدمات رادیویی را در یک دسته گل جداگانه قرار دهید، نه دسته گل اصلی تلویزیون. زمانی که ارائه دهنده شماره کانال را برای تلویزیون و رادیو کپی می کند، این مورد ضروری است."
+
+msgid "Radio"
+msgstr "رادیو"
+
+msgid "Rebuild"
+msgstr "بازسازی کنید"
+
+msgid "Rebuild bouquet"
+msgstr "دسته گل را بازسازی کنید"
+
+msgid "Rebuild LCN bouquet now?"
+msgstr "اکنون دسته گل LCN را بازسازی کنید؟"
+
+msgid "Refresh"
+msgstr "تازه کردن"
+
+msgid "Refreshing commits..."
+msgstr "تعهدات تازه ..."
+
+msgid "Region"
+msgstr "منطقه"
+
+msgid "Regional Broadcasters"
+msgstr "صدا و سیمای منطقه"
+
+msgid "Regional Radio"
+msgstr "رادیو منطقه ای"
+
+msgid "Reload"
+msgstr "بارگذاری مجدد"
+
+msgid "Remove"
+msgstr "حذف کنید"
+
+msgid "Removing %s"
+msgstr "در حال حذف %s"
+
+msgid "Restart enigma"
+msgstr "انیگما را دوباره راه اندازی کنید"
+
+msgid "Save"
+msgstr "ذخیره کنید"
+
+msgid "Script"
+msgstr "اسکریپت"
+
+msgid "scripts.json not found or invalid!\nCheck your connection or the local file."
+msgstr "scripts.json یافت نشد یا نامعتبر است!\nاتصال یا فایل محلی خود را بررسی کنید."
+
+msgid "SD Provisionals"
+msgstr "SD های موقت"
+
+msgid "Search"
+msgstr "جستجو کنید"
+
+msgid "Search addon..."
+msgstr "جستجوی افزونه..."
+
+msgid "Search: %s"
+msgstr "جستجو: %s"
+
+msgid "Searching..."
+msgstr "در حال جستجو..."
+
+msgid "Select your region."
+msgstr "منطقه خود را انتخاب کنید"
+
+msgid "Semi-Generalists"
+msgstr "نیمه ژنرالیست ها"
+
+msgid "Server added\n\nServer:\nPort:\nUser:\nPassword:\n"
+msgstr "سرور اضافه شد\n\nسرور:\nپورت:\nکاربر:\nرمز عبور:\n"
+
+msgid "Server error.\n\nTry again, you might get lucky!\n%s"
+msgstr "خطای سرور.\n\nدوباره امتحان کنید، ممکن است خوش شانس باشید!\n%s"
+
+msgid "Settings Not Installed ..."
+msgstr "تنظیمات نصب نشده..."
+
+msgid "Show automatic"
+msgstr "نمایش خودکار"
+
+msgid "Skin check completed.\nLog: /tmp/my_debug.log"
+msgstr "بررسی پوست انجام شد.\nLog: /tmp/my_debug.log"
+
+msgid "Skip duplicates"
+msgstr "از موارد تکراری بگذرید"
+
+msgid "Sky Channels"
+msgstr "کانال های آسمان"
+
+msgid "Sort A-Z"
+msgstr "مرتب سازی A-Z"
+
+msgid "Sort Default"
+msgstr "مرتب سازی پیش فرض"
+
+msgid "Sports"
+msgstr "ورزش"
+
+msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgstr "پیشنهاد شده توسط: @masterG - @oktus - @pcd\n"
+
+msgid "Support on: Linuxsat-support.com\n\n"
+msgstr "پشتیبانی در: Linuxsat-support.com\n\n"
+
+msgid "Terrestrial"
+msgstr "زمینی"
+
+msgid "Terrestrial Bouquet"
+msgstr "دسته گل زمینی"
+
+msgid "Terrestrial Bouquet Error"
+msgstr "خطای دسته گل زمینی"
+
+msgid "Terrestrial Bouquet plugin is not enabled."
+msgstr "افزونه Terestrial Bouquet فعال نیست."
+
+msgid "Terrestrial Bouquet setup"
+msgstr "راه اندازی دسته گل زمینی"
+
+msgid "Terrestrial bouquet successfully rebuilt."
+msgstr "دسته گل زمینی با موفقیت بازسازی شد."
+
+msgid "Terrestrial bouquet:"
+msgstr "دسته گل زمینی:"
+
+msgid "Test Channels"
+msgstr "کانال های تست"
+
+msgid "Thank you for choosing plugin for management of your Enigma Box.\n\n"
+msgstr "از اینکه افزونه را برای مدیریت Enigma Box خود انتخاب کردید متشکریم.\n\n"
+
+msgid "Thank's to @pQu4k3r\n"
+msgstr "با تشکر از @pQu4k3r\n"
+
+msgid "The Plugin lives thanks to the donations of each of you.\n"
+msgstr "این افزونه به لطف کمک های مالی هر یک از شما زنده می ماند.\n"
+
+msgid "There is currently no LCN data stored."
+msgstr "در حال حاضر هیچ داده LCN ذخیره نشده است."
+
+msgid "These Panel may contain Adult content\n\nare you sure you want to continue?"
+msgstr "این پانل ممکن است حاوی محتوای بزرگسالان باشد\n\nآیا مطمئن هستید که می‌خواهید ادامه دهید؟"
+
+msgid "This commit has no package for your receiver."
+msgstr "این commit هیچ بسته ای برای گیرنده شما ندارد."
+
+msgid "This plugin depends on LCN data being broadcast by your local tansmitter."
+msgstr "این افزونه به داده های LCN بستگی دارد که توسط tansmitter محلی شما پخش می شود."
+
+msgid "Try running a manual scan of terrestrial frequencies with network scan enabled. If this fails maybe there is no lcn data available in your area."
+msgstr "سعی کنید یک اسکن دستی فرکانس های زمینی را با فعال بودن اسکن شبکه اجرا کنید. اگر این کار انجام نشد، شاید هیچ داده lcn در منطقه شما موجود نباشد."
+
+msgid "UK"
+msgstr "انگلستان"
+
+msgid "Unable to load data!"
+msgstr "داده ها بارگیری نمی شوند!"
+
+msgid "Unable to read this commit from GitHub.\nPlease try again later."
+msgstr "خواندن این commit از GitHub ممکن نیست.\nلطفاً بعداً دوباره امتحان کنید."
+
+msgid "Unknown Image!"
+msgstr "تصویر ناشناخته!"
+
+msgid "Update"
+msgstr "به روز رسانی"
+
+msgid "Update Aborted!"
+msgstr "به روز رسانی لغو شد!"
+
+msgid "Update cancelled. You can update later from Information -> Green button."
+msgstr "به روز رسانی لغو شد. می توانید بعداً از اطلاعات -> دکمه سبز به روز رسانی کنید."
+
+msgid "Update completed! The panel will now reload."
+msgstr "به روز رسانی تکمیل شد! اکنون پانل دوباره بارگیری می شود."
+
+msgid "Update failed! Please try again later."
+msgstr "به روز رسانی انجام نشد! لطفاً بعداً دوباره امتحان کنید."
+

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 ###########################################################
-#  Linuxsat Panel v2.8.5 - Professional Addons Manager    #
+#  Linuxsat Panel v3.0.9 - Professional Addons Manager    #
 #  Created by: masterG, oktus, pcd                        #
 #  Rewritten by: Lululla (2024-07-20)                     #
 ###########################################################
@@ -11,7 +11,7 @@
 import codecs
 import io
 from datetime import datetime as dt
-from json import loads, dumps
+from json import loads
 from re import compile, search, DOTALL
 from shutil import copy2
 from sys import version_info
@@ -76,6 +76,8 @@ from . import (
 )
 from .addons.NewOeSk import ctrlSkin
 from .lsConsole import lsConsole
+from . import notify as lsnotify
+from . import lsfind
 from .LCNScanner.Lcn import (
     ReloadBouquets,
     copy_files_to_enigma2,
@@ -338,6 +340,8 @@ class AsyncMixin:
             call.cancel()
 
 
+NOTIFY_INTERVAL = 15 * 60 * 1000  # ms between checks while the panel is open
+
 _catalog_cache = {"data": None, "time": 0}
 CATALOG_TTL = 300
 
@@ -366,10 +370,10 @@ def sync_icons_background():
     if _sync_icons_lock:
         return
     _sync_icons_lock = True
-
+    
     import threading
     import time
-
+    
     def run_sync():
         global _sync_icons_lock
         try:
@@ -380,7 +384,7 @@ def sync_icons_background():
                 print("[Icon Sync] Nessun JSON caricato. Salto.")
                 _sync_icons_lock = False
                 return
-
+            
             # 2. Raccogli i nomi di tutte le icone necessarie
             needed_icons = set()
             for cat, items in cfg.get("categories", {}).items():
@@ -388,81 +392,38 @@ def sync_icons_background():
                     icon = it.get("icon")
                     if icon:
                         needed_icons.add(icon)
-
+            
             # --- AGGIUNTA: Icone del menu principale ---
             BASE_ICONS = [
-                "ciefp.png",
-                "Backup.png",
-                "Bouquets.png",
-                "Channel-list.png",
-                "Game.png",
-                "KiddaC1.png",
-                "KiddaC2.png",
-                "lululla_script.png",
-                "oe2.0.png",
-                "oe2.5-2.6.png",
-                "OE2.2-Plugins.png",
-                "OE2.2-Skins.png",
-                "Feeds2.0.png",
-                "Feeds2.2.png",
-                "SOE20.png",
-                "SOE22.png",
-                "skinsteam.png",
-                "otherskins.png",
-                "SkinHD.png",
-                "egami.png",
-                "hdf.png",
-                "openbh.png",
-                "openatv.png",
-                "openpli.png",
-                "openspa.png",
-                "vti.png",
-                "oebased.png",
-                "iptv-streaming.png",
-                "mediayou.png",
-                "multiboot.png",
-                "Multimedia.png",
-                "Panels.png",
-                "picons.png",
-                "Library.png",
-                "Radio.png",
-                "key-updater.png",
-                "key-updater1.png",
-                "sport.png",
-                "streamlink.png",
-                "utility.png",
-                "vpn.png",
-                "weather.png",
-                "weather-forecast.png",
-                "webcam.png",
-                "18+.png",
-                "18+deb.png",
-                "Other.png",
-                "Other1.png",
-                "Information.png",
-                "Github.png",
-                "about.png",
-                "usb-tuner-drivers.png",
-                "plugin-epg.png"]
+                "ciefp.png", "Backup.png", "Bouquets.png", "Channel-list.png",
+                "Game.png", "KiddaC1.png", "KiddaC2.png", "lululla_script.png",
+                "oe2.0.png", "oe2.5-2.6.png", "OE2.2-Plugins.png", "OE2.2-Skins.png",
+                "Feeds2.0.png", "Feeds2.2.png", "SOE20.png", "SOE22.png",
+                "skinsteam.png", "otherskins.png", "SkinHD.png", "egami.png",
+                "hdf.png", "openbh.png", "openatv.png", "openpli.png", "openspa.png",
+                "vti.png", "oebased.png", "iptv-streaming.png", "mediayou.png",
+                "multiboot.png", "Multimedia.png", "Panels.png", "picons.png",
+                "Library.png", "Radio.png", "key-updater.png", "key-updater1.png",
+                "sport.png", "streamlink.png", "utility.png", "vpn.png",
+                "weather.png", "weather-forecast.png", "webcam.png",
+                "18+.png", "18+deb.png", "Other.png", "Other1.png",
+                "Information.png", "Github.png", "about.png", "usb-tuner-drivers.png", "plugin-epg.png",
+                "gioppygio.png", "manutek.png", "morpheus883.png", "vhannibal1.png"
+            ]
             for base_icon in BASE_ICONS:
                 needed_icons.add(base_icon)
             # -------------------------------------------
-
-            print(
-                "[Icon Sync] Icone totali richieste (incluse quelle base):",
-                len(needed_icons))
-
+            
+            print("[Icon Sync] Icone totali richieste (incluse quelle base):", len(needed_icons))
+            
             # 3. Base URL
             base_url = "https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/LSicons2/"
-
+            
             # 4. Controlla e scarica
             downloaded = 0
             for icon in needed_icons:
                 if not fileExists(join(picfold, icon)):
-                    print(
-                        "[Icon Sync] Manca l'icona:",
-                        icon,
-                        "- Download in corso...")
+                    print("[Icon Sync] Manca l'icona:", icon, "- Download in corso...")
                     try:
                         r = requests.get(base_url + icon, timeout=10)
                         if r.status_code == 200:
@@ -471,22 +432,17 @@ def sync_icons_background():
                             print("[Icon Sync] OK! Scaricata:", icon)
                             downloaded += 1
                         else:
-                            print("[Icon Sync] Errore HTTP",
-                                  r.status_code, "per", icon)
+                            print("[Icon Sync] Errore HTTP", r.status_code, "per", icon)
                     except Exception as e:
                         print("[Icon Sync] Errore download", icon, ":", e)
-
-                    time.sleep(1)  # Aspetta 1 secondo
-
+                    
+                    time.sleep(1) # Aspetta 1 secondo
+            
             if downloaded == 0:
-                print(
-                    "[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
+                print("[Icon Sync] Tutte le icone sono già presenti in locale. Nessun download necessario.")
             else:
-                print(
-                    "[Icon Sync] Sincronizzazione completata. Scaricate",
-                    downloaded,
-                    "nuove icone.")
-
+                print("[Icon Sync] Sincronizzazione completata. Scaricate", downloaded, "nuove icone.")
+                    
         except Exception as e:
             print("[Icon Sync] Errore globale:", e)
         finally:
@@ -530,7 +486,17 @@ class LPGridScreen(AsyncMixin, Screen):
         self["sort"] = Label(_("Sort A-Z"))
         self["key_red"] = Label(_("Exit"))
         self["key_green"] = Label(_("Search"))
+        self["key_yellow"] = Label(_("Notifications"))
         self["pixmap"] = Pixmap()
+        # ── top bar: search pill + notification bell ──
+        self["search_bg"] = Pixmap()
+        self["search_bg_sel"] = Pixmap()
+        self["search_text"] = Label(_("Search addon..."))
+        self["bell"] = Pixmap()
+        self["bell_sel"] = Pixmap()
+        self["badge"] = Pixmap()
+        self["badge_num"] = Label("")
+        self.bar_focus = None   # None | "search" | "bell"
         self["actions"] = ActionMap(
             [
                 "OkCancelActions",
@@ -539,20 +505,24 @@ class LPGridScreen(AsyncMixin, Screen):
                 "NumberActions",
                 "ColorActions",
                 "EPGSelectActions",
-                "InfoActions"
+                "InfoActions",
+                "ChannelSelectBaseActions"
             ],
             {
-                "ok": self.okbuttonClick,
-                "cancel": self.closeNonRecursive,
+                "ok": self.key_ok,
+                "cancel": self.key_cancel,
                 "exit": self.closeRecursive,
-                "back": self.closeNonRecursive,
+                "back": self.key_cancel,
                 "red": self.closeNonRecursive,
                 "green": self.key_search,
+                "yellow": self.key_notify,
                 "0": self.list_sort,
                 "left": self.key_left,
                 "right": self.key_right,
                 "up": self.key_up,
                 "down": self.key_down,
+                "nextBouquet": self.key_page_next,
+                "prevBouquet": self.key_page_prev,
                 "info": self.key_info,
                 "menu": self.closeRecursive
             },
@@ -571,34 +541,142 @@ class LPGridScreen(AsyncMixin, Screen):
         self.maxentry = len(menu_list) - 1
         self.ipage = 1
         self.onLayoutFinish.append(self.openTest)
+        self.onLayoutFinish.append(self._initBar)
+        self.onShown.append(self.refreshBadge)
 
     def okbuttonClick(self):
         pass
 
+    # ── top bar ─────────────────────────────────────────────────────
+    def _initBar(self):
+        self["search_bg_sel"].hide()
+        self["bell_sel"].hide()
+        self.refreshBadge()
+
+    def refreshBadge(self):
+        try:
+            self.setBadge(lsnotify.unread_count())
+        except Exception as e:
+            print("[Notify] badge error:", e)
+            self.setBadge(0)
+
+    def setBadge(self, count):
+        if count and count > 0:
+            self["badge_num"].setText(str(count) if count < 100 else "99+")
+            self["badge"].show()
+            self["badge_num"].show()
+        else:
+            self["badge_num"].setText("")
+            self["badge"].hide()
+            self["badge_num"].hide()
+
+    def setBarFocus(self, focus):
+        self.bar_focus = focus
+        if focus == "search":
+            self["search_bg_sel"].show()
+        else:
+            self["search_bg_sel"].hide()
+        if focus == "bell":
+            self["bell_sel"].show()
+        else:
+            self["bell_sel"].hide()
+        if focus:
+            self["frame"].hide()
+            if focus == "search":
+                self["info"].setText(_("Search addon..."))
+            else:
+                n = lsnotify.unread_count()
+                self["info"].setText(
+                    (_("New updates: %d") % n) if n else _("No news"))
+        else:
+            self["frame"].show()
+            self.paintFrame()
+
+    def key_ok(self):
+        if self.bar_focus == "search":
+            self.key_search()
+        elif self.bar_focus == "bell":
+            self.key_notify()
+        else:
+            self.okbuttonClick()
+
+    def key_cancel(self):
+        if self.bar_focus:
+            self.setBarFocus(None)
+        else:
+            self.closeNonRecursive()
+
+    def key_notify(self):
+        # the bell is just a notification: it opens the Commit History,
+        # which downloads the new commits by itself
+        self.session.openWithCallback(self._notifyClosed, LSCommits)
+
+    def _notifyClosed(self, *args):
+        self.refreshBadge()
+
+    def key_page_next(self):
+        if self.bar_focus:
+            self.setBarFocus(None)
+        self.ipage = 1 if self.ipage == self.npage else self.ipage + 1
+        self.openTest()
+
+    def key_page_prev(self):
+        if self.bar_focus:
+            self.setBarFocus(None)
+        self.ipage = self.npage if self.ipage == 1 else self.ipage - 1
+        self.openTest()
+
     def key_search(self):
+        history = lsnotify.get_pref("search_history", []) or []
+        if not history:
+            self._openKeyboard()
+            return
+        from Screens.ChoiceBox import ChoiceBox
+        choices = [(_("New search..."), None)]
+        choices += [(h, h) for h in history]
+        choices.append((_("Clear recent searches"), "__clear__"))
+        self.session.openWithCallback(
+            self._historyChosen, ChoiceBox,
+            title=_("Search addon..."), list=choices)
+
+    def _historyChosen(self, choice):
+        if choice is None:
+            return
+        value = choice[1]
+        if value is None:
+            self._openKeyboard()
+        elif value == "__clear__":
+            lsnotify.set_pref("search_history", [])
+        else:
+            self._searchEntered(value)
+
+    def _openKeyboard(self):
         from Screens.VirtualKeyBoard import VirtualKeyBoard
         self.session.openWithCallback(
-            self.searchCallback,
+            self._searchEntered,
             VirtualKeyBoard,
             title=_("Search addon..."),
             text="")
 
-    def searchCallback(self, text=None):
+    def _searchEntered(self, text=None):
+        text = (text or "").strip()
         if not text:
             return
-        text = text.lower()
-        for idx, name in enumerate(self.names):
-            if text in str(name).lower():
-                self.ipage = idx // self.PIXMAPS_PER_PAGE + 1
-                self.openTest()
-                self.index = idx
-                self.paintFrame()
-                return
-        self.session.open(
-            MessageBox,
-            _("Nothing found for '%s'") % text,
-            MessageBox.TYPE_INFO,
-            timeout=5)
+        self["search_text"].setText(text)
+        if self.bar_focus:
+            self.setBarFocus(None)
+        lsnotify.set_pref("search_history", lsfind.add_history(
+            lsnotify.get_pref("search_history", []), text))
+        self.searchCallback(text)
+
+    def searchCallback(self, text=None):
+        """One search for everything: catalog + LulullaScript/Ciefp/Scripts."""
+        if text:
+            self.session.openWithCallback(self._searchClosed, LSSearch, text)
+
+    def _searchClosed(self, *args):
+        # back from the results: empty the search bar again
+        self["search_text"].setText(_("Search addon..."))
 
     def _catalogReady(self, data):
         self.data = data
@@ -659,7 +737,13 @@ class LPGridScreen(AsyncMixin, Screen):
         self.index = self.minentry
         self.paintFrame()
 
+    def _toggleBar(self):
+        self.setBarFocus("bell" if self.bar_focus == "search" else "search")
+
     def key_left(self):
+        if self.bar_focus:
+            self._toggleBar()
+            return
         if self.index > self.minentry:
             self.index -= 1
         else:
@@ -669,6 +753,9 @@ class LPGridScreen(AsyncMixin, Screen):
         self.paintFrame()
 
     def key_right(self):
+        if self.bar_focus:
+            self._toggleBar()
+            return
         if self.index < self.maxentry:
             self.index += 1
         else:
@@ -678,18 +765,19 @@ class LPGridScreen(AsyncMixin, Screen):
         self.paintFrame()
 
     def key_up(self):
+        if self.bar_focus:
+            return
         if self.index - self.GRID_COLS >= self.minentry:
             self.index -= self.GRID_COLS
+            self.paintFrame()
         else:
-            col = (self.index - self.minentry) % self.GRID_COLS
-            self.ipage = self.npage if self.ipage == 1 else self.ipage - 1
-            self.openTest()
-            rows = (self.maxentry - self.minentry) // self.GRID_COLS
-            self.index = min(
-                self.minentry + rows * self.GRID_COLS + col, self.maxentry)
-        self.paintFrame()
+            # first row: go up into the top bar (pages: CH+/CH- or left/right)
+            self.setBarFocus("search")
 
     def key_down(self):
+        if self.bar_focus:
+            self.setBarFocus(None)
+            return
         if self.index + self.GRID_COLS <= self.maxentry:
             self.index += self.GRID_COLS
         else:
@@ -727,7 +815,7 @@ class LPGridScreen(AsyncMixin, Screen):
         return
 
     def key_info(self):
-        self.session.open(LSinfo, " Commit History ", "commits")
+        self.session.openWithCallback(self._notifyClosed, LSCommits)
 
 
 class LinuxsatPanel(LPGridScreen):
@@ -735,6 +823,14 @@ class LinuxsatPanel(LPGridScreen):
         LPGridScreen.__init__(self, session)
         self.data = None
         self._startAsync(get_catalog, self._catalogReady)
+        self._notifyFirst = True
+        self._notifyTimer = eTimer()
+        try:
+            self._notifyTimer_conn = self._notifyTimer.timeout.connect(
+                self.checkNews)
+        except BaseException:
+            self._notifyTimer.callback.append(self.checkNews)
+        self.onClose.append(self._notifyTimer.stop)
         menu_list = []
         self.titles = []
         self.pics = []
@@ -1089,41 +1185,26 @@ class LinuxsatPanel(LPGridScreen):
             "about.png")
 
         self.initGrid(menu_list)
+        self.checkNews()
         self.start_check_version()
         # Avvia il download delle icone mancanti in background
         sync_icons_background()
 
-    def searchCallback(self, text=None):
-        if not text:
-            return
-        text = text.lower()
-        self["info"].setText(_("Searching..."))
+    # ── news listener: at start-up and every NOTIFY_INTERVAL ─────────
+    def checkNews(self):
+        self._notifyTimer.stop()
+        self._startAsync(lsnotify.check, self._newsChecked)
 
-        def do_search():
-            data = get_catalog()
-            if data is None:
-                return None
-            regex = compile(r'<plugin name="(.*?)".*?</url>', DOTALL)
-            parts = [m.group(0) for m in regex.finditer(data)
-                     if text in m.group(1).lower()]
-            return "\n".join(parts)
-
-        def done(result):
-            self["info"].setText(_("Search"))
-            if result is None:
-                self.session.open(
-                    MessageBox, _("Error: No Data Find."),
-                    MessageBox.TYPE_ERROR)
-            elif not result:
-                self.session.open(
-                    MessageBox,
-                    _("Nothing found for '%s'") % text,
-                    MessageBox.TYPE_INFO, timeout=5)
-            else:
-                self.session.open(
-                    addInstall, result, _("Search: %s") % text, None)
-
-        self._startAsync(do_search, done)
+    def _newsChecked(self, unread):
+        if unread is not None:
+            self.setBadge(unread)
+            first = self._notifyFirst
+            self._notifyFirst = False
+            # news at start-up: move the cursor onto the bell, OK opens them
+            if first and unread > 0 and not self.bar_focus \
+                    and self.ipage == 1 and self.index == 0:
+                self.setBarFocus("bell")
+        self._notifyTimer.start(NOTIFY_INTERVAL, True)
 
     def start_check_version(self):
         self._startAsync(
@@ -1217,7 +1298,7 @@ class LinuxsatPanel(LPGridScreen):
         elif name == " About ":
             self.session.open(LSinfo, name, "about")
         elif name == "Commit History ":
-            self.session.open(LSinfo, name, "commits")
+            self.session.openWithCallback(self._notifyClosed, LSCommits)
         elif name == "Ciefp ":
             self.session.open(CiefpInstaller, name)
         elif name == "LulullaScript ":
@@ -1342,15 +1423,15 @@ class LSChannel(LPGridScreen):
             self.urls,
             "CIEFP ",
             "ciefp.png",
-            "https://github.com/ciefp/ciefpsettings-enigma2-zipped")
+            "https://api.github.com/repos/ciefp/ciefpsettings-enigma2-zipped/contents")
         add_menu_item(
             menu_list,
             self.titles,
             self.pics,
             self.urls,
-            "CYRUS ",
-            "cyrus.png",
-            "https://www.cyrussettings.com/Set_29_11_2011/Dreambox-IpBox/Config.xml")
+            "GIOPPYGIO ",
+            "gioppygio.png",
+            "https://gioppygio.it/enigma2-1.html")
         add_menu_item(
             menu_list,
             self.titles,
@@ -1375,14 +1456,6 @@ class LSChannel(LPGridScreen):
             "VHANNIBAL NET ",
             "vhannibal1.png",
             "https://www.vhannibal.net/asd.php")
-        add_menu_item(
-            menu_list,
-            self.titles,
-            self.pics,
-            self.urls,
-            "VHANNIBAL TEK ",
-            "vhannibal2.png",
-            "https://sat.alfa-tech.net/upload/settings/vhannibal/")
 
         self.initGrid(menu_list)
 
@@ -2049,36 +2122,32 @@ class addInstall(AsyncMixin, Screen):
         name = url = date = ""
         try:
             if "ciefp" in self.name.lower():
-                n1 = r.find('title="README.txt', 0)
-                n2 = r.find('href="#readme">', n1)
-                r = r[n1:n2]
-                regex = r'title="ciefp-E2-(.*?).zip".*?href="(.*?)"'
-                match = compile(regex).findall(r)
-                for name, url in match:
-                    if url.find(".zip") != -1:
-                        url = url.replace("blob", "raw")
-                        url = "https://github.com" + url
-                        name = decode_html(name)
-                        self.downloading = True
-                    item = name + "###" + str(url)
-                    items.append(item)
+                # GitHub API: [{"name": "ciefp-E2-...zip", "download_url": ...}]
+                try:
+                    files = loads(r)
+                except ValueError:
+                    files = []
+                for f in files if isinstance(files, list) else []:
+                    fname = f.get("name") or ""
+                    url = f.get("download_url") or ""
+                    if not (fname.lower().endswith(".zip") and url):
+                        continue
+                    name = fname[:-4]
+                    if name.startswith("ciefp-E2-"):
+                        name = name[len("ciefp-E2-"):]
+                    name = "Ciefp " + name.replace("-", " ")
+                    self.downloading = True
+                    items.append(name + "###" + str(url))
 
-            if "cyrus" in self.name.lower():
-                n1 = r.find('name="Sat">', 0)
-                n2 = r.find("/ruleset>", n1)
-                r = r[n1:n2]
-                regex = r'Name="(.*?)".*?Link="(.*?)".*?Date="(.*?)"><'
-                match = compile(regex).findall(r)
-                for name, url, date in match:
-                    if url.find(".zip") != -1:
-                        if "ddt" in name.lower():
-                            continue
-                        if "Sat" in name.lower():
-                            continue
-                        name = decode_html(name) + " " + date
-                        self.downloading = True
-                    item = name + "###" + str(url)
-                    items.append(item)
+            if "gioppygio" in self.name.lower():
+                # links: https://gioppygio.it/settings/e2/GioppyGio_E2_<type>_<sats>_<date>.zip
+                regex = r'(https?://(?:www\.)?gioppygio\.it/settings/e2/[^"&\s<>]+?\.zip)'
+                for url in compile(regex).findall(r):
+                    fname = url.rsplit("/", 1)[-1][:-4]
+                    name = fname.replace("GioppyGio_E2_", "GioppyGio ")
+                    name = name.replace("_", " ")
+                    self.downloading = True
+                    items.append(name + "###" + str(url))
 
             if "manutek" in self.name.lower():
                 regex = r'href="/isetting/.*?file=(.+?).zip">'
@@ -2127,20 +2196,6 @@ class addInstall(AsyncMixin, Screen):
                         "..",
                         "").strip() + " " + date
                     url = "https://www.vhannibal.net/" + url
-                    self.downloading = True
-                    item = name + "###" + str(url)
-                    items.append(item)
-
-            if "vhannibal tek" in self.name.lower():
-                regex = r'<a href="Vhannibal(.*?).zip".*?right">(.*?) </td'
-                match = compile(regex).findall(r)
-                for url, date in match:
-                    if ".php" in url.lower():
-                        continue
-                    name = decode_html(url).replace(
-                        "&#127381;", "").replace(
-                        "%20", " ") + " " + date
-                    url = "https://sat.alfa-tech.net/upload/settings/vhannibal/Vhannibal" + url + ".zip"
                     self.downloading = True
                     item = name + "###" + str(url)
                     items.append(item)
@@ -2326,6 +2381,344 @@ class addInstall(AsyncMixin, Screen):
         self.close()
 
 
+COLOR_NEW = 0xFEC51B
+COLOR_AUTO = 0x9A9A9A
+COLOR_TEXT = 0xFFFFFF
+COLOR_SEL_TEXT = 0xFFFFFF
+COLOR_SEL_BACK = 0x1F4E79
+
+
+def is_adult_ok():
+    try:
+        return not config.ParentalControl.configured.value
+    except Exception:
+        return True
+
+
+def ColorEntry(text, index, color):
+    res = [(text, index)]
+    if isWQHD():
+        size = (1310, 50)
+    elif isFHD():
+        size = (985, 50)
+    else:
+        size = (665, 35)
+    # selected row: own background bar + white text, so it is always visible
+    # whatever the colour of the row (new / automatic / installed)
+    res.append(MultiContentEntryText(
+        pos=(0, 0), size=(size[0] + 10, size[1]), font=0, text=" " + text,
+        flags=HALIGN | RT_VALIGN_CENTER,
+        color=color, color_sel=COLOR_SEL_TEXT,
+        backcolor_sel=COLOR_SEL_BACK))
+    return res
+
+
+class LSListScreen(AsyncMixin, Screen):
+    """Base for the list screens (commits, search results). Skin: LSList.xml"""
+
+    def __init__(self, session):
+        Screen.__init__(self, session)
+        try:
+            Screen.setTitle(self, _("%s") % descplug + " V." + __version__)
+        except BaseException:
+            try:
+                self.setTitle(_("%s") % descplug + " V." + __version__)
+            except BaseException:
+                pass
+        with codecs.open(join(skin_path, "LSList.xml"), "r",
+                         encoding="utf-8") as f:
+            self.skin = f.read()
+        self["list"] = LPSlist([])
+        self["info"] = Label(_("Please Wait..."))
+        self["fspace"] = Label("")
+        self["key_red"] = Label(_("Exit"))
+        self["key_green"] = Label("")
+        self["key_yellow"] = Label("")
+        self["key_blue"] = Label("")
+        self["actions"] = ActionMap(
+            ["OkCancelActions", "ColorActions", "DirectionActions"],
+            {
+                "ok": self.key_ok,
+                "cancel": self.close,
+                "red": self.close,
+                "green": self.key_green,
+                "yellow": self.key_yellow,
+                "blue": self.key_blue,
+                "up": self.key_up,
+                "down": self.key_down,
+                "left": self.key_pageup,
+                "right": self.key_pagedown,
+            },
+            -1)
+
+    def selIndex(self):
+        idx = self["list"].getSelectionIndex()
+        return idx if idx is not None else 0
+
+    def key_up(self):
+        self["list"].up()
+        self.updateDetails()
+
+    def key_down(self):
+        self["list"].down()
+        self.updateDetails()
+
+    def key_pageup(self):
+        self["list"].pageUp()
+        self.updateDetails()
+
+    def key_pagedown(self):
+        self["list"].pageDown()
+        self.updateDetails()
+
+    def updateDetails(self):
+        pass
+
+    def key_ok(self):
+        pass
+
+    def key_green(self):
+        self.key_ok()
+
+    def key_yellow(self):
+        pass
+
+    def key_blue(self):
+        pass
+
+    def runScript(self, name, cmd):
+        self._script = (name, cmd)
+        self.session.openWithCallback(
+            self._scriptConfirmed, MessageBox, _(WARNING_MSG) % name,
+            MessageBox.TYPE_YESNO, default=True)
+
+    def _scriptConfirmed(self, answer=False):
+        if answer and getattr(self, "_script", None):
+            name, cmd = self._script
+            self.session.open(
+                lsConsole, _("Executing %s\nPlease Wait...") % name,
+                cmdlist=[str(cmd)], closeOnSuccess=False)
+
+
+class LSCommits(LSListScreen):
+    """
+    Commit history as a list. New commits are highlighted; OK on a commit
+    downloads its file list and offers to install the packages it touched.
+    """
+
+    def __init__(self, session):
+        LSListScreen.__init__(self, session)
+        self.all_commits = []
+        self.commit_rows = []
+        self.fresh = set()
+        self.hide_auto = bool(lsnotify.get_pref("hide_auto", False))
+        self["key_green"] = Label(_("Refresh"))
+        self["key_blue"] = Label(_("Install"))
+        self.setYellowLabel()
+        self.onLayoutFinish.append(self.load)
+
+    def setYellowLabel(self):
+        self["key_yellow"].setText(
+            _("Show automatic") if self.hide_auto else _("Hide automatic"))
+
+    def load(self, force=False):
+        self["info"].setText(
+            _("Refreshing commits...") if force else _("Loading commits..."))
+        self._startAsync(
+            lambda: lsnotify.fetch_commits(force=force), self._loaded)
+
+    def _loaded(self, result):
+        commits, status = result if result else (None, "error")
+        if not commits:
+            self["info"].setText(
+                _("GitHub API rate limit exceeded.\nPlease try again later.")
+                if status == "ratelimit" else
+                _("Error loading commits. Please check your internet connection."))
+            return
+        self.all_commits = commits
+        if not self.fresh:
+            self.fresh = lsnotify.new_shas(commits)
+        lsnotify.mark_seen(commits)
+        self.fetch_status = status
+        self.buildList()
+
+    def buildList(self):
+        self.commit_rows = [c for c in self.all_commits
+                      if not (self.hide_auto and lsfind.is_automatic(c))]
+        entries = []
+        for idx, c in enumerate(self.commit_rows):
+            try:
+                info = c["commit"]
+                msg = (info.get("message") or "").split("\n")[0]
+                date = dt.strptime(info["author"]["date"],
+                                   "%Y-%m-%dT%H:%M:%SZ").strftime("%d/%m %H:%M")
+            except Exception:
+                msg, date = "?", ""
+            if c.get("sha") in self.fresh:
+                color, prefix = COLOR_NEW, "* "
+            elif lsfind.is_automatic(c):
+                color, prefix = COLOR_AUTO, ""
+            else:
+                color, prefix = COLOR_TEXT, ""
+            entries.append(ColorEntry(
+                "%s%s  %s" % (prefix, date, msg), idx, color))
+        self["list"].setList(entries)
+        text = _("Commit History") + " (%d)" % len(self.commit_rows)
+        if self.fresh:
+            text += "  -  " + _("New since last visit: %d") % len(self.fresh)
+        if getattr(self, "fetch_status", "") == "ratelimit":
+            text += "  " + _("(cached)")
+        self["info"].setText(text)
+        self.updateDetails()
+
+    def current(self):
+        if not self.commit_rows:
+            return None
+        idx = self.selIndex()
+        return self.commit_rows[idx] if idx < len(self.commit_rows) else None
+
+    def updateDetails(self):
+        c = self.current()
+        if c is None:
+            self["fspace"].setText("")
+            return
+        try:
+            author = c["commit"]["author"]["name"]
+        except Exception:
+            author = "?"
+        self["fspace"].setText("%s  [%s]  -  %s" % (
+            author, c.get("sha", "")[:7], _("OK = install")))
+
+    def key_green(self):
+        self.load(force=True)
+
+    def key_blue(self):
+        self.key_ok()
+
+    def key_yellow(self):
+        self.hide_auto = not self.hide_auto
+        lsnotify.set_pref("hide_auto", self.hide_auto)
+        self.setYellowLabel()
+        self.buildList()
+
+    def key_ok(self):
+        c = self.current()
+        if c is None:
+            return
+        sha = c.get("sha")
+        title = (c["commit"].get("message") or "").split("\n")[0][:60]
+        if len(title.strip(" .")) < 3:
+            title = "Commit %s" % sha[:7]
+        self["fspace"].setText(_("Loading..."))
+
+        def work():
+            files = lsnotify.get_commit_files(sha)
+            if files is None:
+                return None
+            return lsfind.commit_packages(files, get_catalog(), has_dpkg)
+
+        def done(pkgs):
+            self.updateDetails()
+            if pkgs is None:
+                self.session.open(
+                    MessageBox,
+                    _("Unable to read this commit from GitHub.\nPlease try again later."),
+                    MessageBox.TYPE_ERROR, timeout=6)
+            elif not pkgs:
+                self.session.open(
+                    MessageBox,
+                    _("This commit has no package for your receiver."),
+                    MessageBox.TYPE_INFO, timeout=5)
+            else:
+                self.session.open(
+                    addInstall, lsfind.xml_snippet(pkgs), title, None)
+
+        self._startAsync(work, done)
+
+
+class LSSearch(LSListScreen):
+    """Results of the unified search (catalog + scripts.json)."""
+
+    def __init__(self, session, query):
+        LSListScreen.__init__(self, session)
+        self.query = query
+        self.results = []
+        self["key_green"] = Label(_("Install"))
+        self["key_yellow"] = Label(_("New search"))
+        self.onLayoutFinish.append(self.search)
+
+    def search(self):
+        self["info"].setText(_("Searching..."))
+        self["list"].setList([])
+        q = self.query
+
+        def work():
+            return lsfind.search_all(
+                q, get_catalog(), get_scripts_config(), has_dpkg,
+                is_adult_ok())
+
+        self._startAsync(work, self._done)
+
+    def _done(self, results):
+        self.results = results or []
+        pkgs = get_installed_packages()
+        entries = []
+        for idx, r in enumerate(self.results):
+            color = COLOR_TEXT
+            if r["kind"] == "pkg":
+                base = r["url"].rsplit("/", 1)[-1].split("_")[0].lower()
+                if base and any(p.startswith(base) for p in pkgs):
+                    color = INSTALLED_COLOR
+                text = r["name"]
+            else:
+                color = COLOR_NEW
+                text = "[%s] %s" % (_("Script"), r["name"])
+            entries.append(ColorEntry(text, idx, color))
+        self["list"].setList(entries)
+        if self.results:
+            self["info"].setText(
+                _("Search: %s") % self.query + "  (%d)" % len(self.results))
+        else:
+            self["info"].setText(_("Nothing found for '%s'") % self.query)
+        self.updateDetails()
+
+    def current(self):
+        if not self.results:
+            return None
+        idx = self.selIndex()
+        return self.results[idx] if idx < len(self.results) else None
+
+    def updateDetails(self):
+        r = self.current()
+        self["fspace"].setText(
+            (_("Category:") + " " + r["cat"].strip()) if r else "")
+
+    def key_ok(self):
+        r = self.current()
+        if r is None:
+            return
+        if r["kind"] == "pkg":
+            self.session.open(
+                addInstall, lsfind.xml_snippet([(r["name"], r["url"])]),
+                r["cat"].strip(), None)
+        else:
+            self.runScript(r["name"], r["cmd"])
+
+    def key_yellow(self):
+        from Screens.VirtualKeyBoard import VirtualKeyBoard
+        self.session.openWithCallback(
+            self._newQuery, VirtualKeyBoard,
+            title=_("Search addon..."), text=self.query)
+
+    def _newQuery(self, text=None):
+        text = (text or "").strip()
+        if text:
+            self.query = text
+            lsnotify.set_pref("search_history", lsfind.add_history(
+                lsnotify.get_pref("search_history", []), text))
+            self.search()
+
+
 class LSinfo(AsyncMixin, Screen):
     def __init__(self, session, name, mode="info"):
         Screen.__init__(self, session)
@@ -2387,7 +2780,7 @@ class LSinfo(AsyncMixin, Screen):
             try:
                 self.timerz_conn = self.timerz.timeout.connect(self.check_vers)
             except BaseException:
-                self.timerz.callback.append(self.timerz)
+                self.timerz.callback.append(self.check_vers)
             self.timerz.start(2000, 1)
 
         self.onClose.append(self._stopPoll)
@@ -2682,96 +3075,36 @@ class LSinfo(AsyncMixin, Screen):
             print("Error in openinfo:", e)
             return "Error loading information"
 
-    def _get_cache_path(self):
-        return join(plugin_path, "commits_cache.json")
-
-    def _load_commits_from_cache(self):
-        cache_path = self._get_cache_path()
-        if exists(cache_path):
-            try:
-                with open(cache_path, "r") as f:
-                    return loads(f.read())
-            except BaseException:
-                pass
-        return None
-
-    def _save_commits_to_cache(self, commits):
-        cache_path = self._get_cache_path()
-        try:
-            with open(cache_path, "w") as f:
-                f.write(dumps(commits))
-            return True
-        except BaseException:
-            return False
-
-    def _fetch_commits(self):
-        cached = self._load_commits_from_cache()
-        if cached:
-            print("[LSinfo] Loaded commits from cache")
-            return cached
-        try:
-            url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
-            params = {"per_page": 100, "page": 1}
-            response = requests.get(url, params=params, timeout=30)
-            if response.status_code == 403:
-                print("[LSinfo] Rate limit exceeded")
-                self._rate_limited = True
-                return None
-            response.raise_for_status()
-            data = response.json()
-            if data:
-                self._save_commits_to_cache(data)
-                print("[LSinfo] Fetched and cached %d commits" % len(data))
-                return data
-            return None
-        except Exception as e:
-            print("[LSinfo] Error fetching commits:", e)
-            return None
+    def _fetch_commits(self, force=False):
+        """Always ask GitHub (conditional request, cheap when unchanged)."""
+        commits, status = lsnotify.fetch_commits(force=force)
+        self._rate_limited = (status == "ratelimit")
+        self._show_rate_limit_warning = status in ("ratelimit", "error")
+        print("[LSinfo] commits:", status)
+        return commits
 
     def refresh_cache(self):
         if self.mode != "commits":
             return
         self["list"].setText(_("Refreshing commits..."))
-        self._startAsync(self._force_fetch_commits, self._display_commits)
-
-    def _force_fetch_commits(self):
-        try:
-            url = "https://api.github.com/repos/OwnerPlugins/upload/commits"
-            params = {"per_page": 100, "page": 1}
-            response = requests.get(url, params=params, timeout=30)
-            if response.status_code == 403:
-                print("[LSinfo] Rate limit exceeded")
-                return None
-            response.raise_for_status()
-            data = response.json()
-            if data:
-                self._save_commits_to_cache(data)
-                print("[LSinfo] Cache refreshed with %d commits" % len(data))
-                return data
-            return None
-        except Exception as e:
-            print("[LSinfo] Error refreshing cache:", e)
-            return None
+        self._startAsync(
+            lambda: self._fetch_commits(force=True), self._display_commits)
 
     def _display_commits(self, commits_data):
         if self._closed:
             return
         if commits_data is None:
-            cached = self._load_commits_from_cache()
-            if cached:
-                commits_data = cached
-                self._show_rate_limit_warning = True
+            if getattr(self, "_rate_limited", False):
+                self["list"].setText(
+                    _("GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."))
             else:
-                if hasattr(self, '_rate_limited') and self._rate_limited:
-                    self["list"].setText(
-                        _("GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."))
-                else:
-                    self["list"].setText(
-                        _("Error loading commits. Please check your internet connection."))
-                return
+                self["list"].setText(
+                    _("Error loading commits. Please check your internet connection."))
+            return
         if not commits_data:
             self["list"].setText(_("No commits found."))
             return
+        fresh = lsnotify.new_shas(commits_data)
         output_lines = [""]
         if hasattr(
                 self,
@@ -2783,6 +3116,8 @@ class LSinfo(AsyncMixin, Screen):
         output_lines.append("COMMIT HISTORY")
         output_lines.append("Repository: OwnerPlugins/upload")
         output_lines.append("Total commits: %d" % len(commits_data))
+        if fresh:
+            output_lines.append(_("New since last visit: %d") % len(fresh))
         output_lines.append("")
         output_lines.append("")
         for idx, commit in enumerate(commits_data):
@@ -2796,7 +3131,9 @@ class LSinfo(AsyncMixin, Screen):
                     formatted_date = date_obj.strftime("%Y-%m-%d %H:%M")
                 except BaseException:
                     formatted_date = date_str
-                output_lines.append("[%d] %s" % (idx + 1, formatted_date))
+                mark = "  >> NEW <<" if commit.get('sha') in fresh else ""
+                output_lines.append(
+                    "[%d] %s%s" % (idx + 1, formatted_date, mark))
                 output_lines.append("    %s" % author_name)
                 output_lines.append("    %s" % message)
                 output_lines.append("    [%s]" % sha_short)
@@ -2807,6 +3144,7 @@ class LSinfo(AsyncMixin, Screen):
         output_lines.append("")
         output_lines.append("End of commit history")
         self["list"].setText("\n".join(output_lines))
+        lsnotify.mark_seen(commits_data)
 
     def cancel(self):
         self.close()

@@ -1,12 +1,34 @@
-#, fuzzy
+# LinuxsatPanel translations
+# Copyright (C) 2026 Lululla Team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "(cached)"
+msgstr ""
+
+msgid "[Checkskin] This operation checks if the skin has its components (is not sure)..\nDo you really want to continue?"
+msgstr ""
 
 msgid "%s"
+msgstr ""
+
+msgid "A coffee costs nothing.\n\n"
 msgstr ""
 
 msgid "Adult"
 msgstr ""
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\\n"
+msgid "All code was rewritten by @Lululla - 2024.07.20\n"
 msgstr ""
 
 msgid "An unexpected error occurred. Please try again later."
@@ -33,7 +55,13 @@ msgstr ""
 msgid "Children"
 msgstr ""
 
+msgid "Clear recent searches"
+msgstr ""
+
 msgid "Collecting system information..."
+msgstr ""
+
+msgid "Commit History"
 msgstr ""
 
 msgid "Congrats! You already have the latest version..."
@@ -51,7 +79,7 @@ msgstr ""
 msgid "Del Line"
 msgstr ""
 
-msgid "Designs and Graphics by @oktus\\n"
+msgid "Designs and Graphics by @oktus\n"
 msgstr ""
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
@@ -60,10 +88,10 @@ msgstr ""
 msgid "Do you want add Cline?"
 msgstr ""
 
-msgid "Do you want to Order LCN Bouquet?"
+msgid "Do you want to install update (%s) now?"
 msgstr ""
 
-msgid "Do you want to install update (%s) now?"
+msgid "Do you want to Order LCN Bouquet?"
 msgstr ""
 
 msgid "Do you want to remove?"
@@ -93,10 +121,10 @@ msgstr ""
 msgid "Enable creating a terrestrial bouquet based on LCN (logocal channel number) data."
 msgstr ""
 
-msgid "Enable terrestrial LCN:"
+msgid "Enable terrestrial bouquet"
 msgstr ""
 
-msgid "Enable terrestrial bouquet"
+msgid "Enable terrestrial LCN:"
 msgstr ""
 
 msgid "Entertainment"
@@ -111,6 +139,12 @@ msgstr ""
 msgid "Europe7"
 msgstr ""
 
+msgid "Executing %s\nPlease Wait..."
+msgstr ""
+
+msgid "Execution progress\n\n"
+msgstr ""
+
 msgid "Exit"
 msgstr ""
 
@@ -120,16 +154,34 @@ msgstr ""
 msgid "Failed to parse update information. Please try again later."
 msgstr ""
 
+msgid "File not found /etc/CCcam.cfg!\nRestart please..."
+msgstr ""
+
+msgid "File not found /etc/tuxbox/config/oscam.server!\nRestart please..."
+msgstr ""
+
 msgid "Free Space:"
+msgstr ""
+
+msgid "GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."
+msgstr ""
+
+msgid "GitHub API rate limit exceeded.\nPlease try again later."
 msgstr ""
 
 msgid "HD Channels"
 msgstr ""
 
+msgid "Hide automatic"
+msgstr ""
+
 msgid "High Definition"
 msgstr ""
 
-msgid "If you think it is a useful tool for your box\\n"
+msgid "I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"
+msgstr ""
+
+msgid "If you think it is a useful tool for your box\n"
 msgstr ""
 
 msgid "Information and Culture"
@@ -145,6 +197,9 @@ msgid "Install failed! Previous settings restored."
 msgstr ""
 
 msgid "Install failed! Settings NOT installed."
+msgstr ""
+
+msgid "Installing %s\nPlease Wait..."
 msgstr ""
 
 msgid "Installing settings..."
@@ -189,7 +244,34 @@ msgstr ""
 msgid "Local Broadcasters"
 msgstr ""
 
+msgid "make donation on Linuxsat-support.com\n\n\n"
+msgstr ""
+
 msgid "Music"
+msgstr ""
+
+msgid "New search"
+msgstr ""
+
+msgid "New search..."
+msgstr ""
+
+msgid "New since last visit: %d"
+msgstr ""
+
+msgid "New updates: %d"
+msgstr ""
+
+msgid "New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?"
+msgstr ""
+
+msgid "New version available\n\nChangelog:"
+msgstr ""
+
+msgid "New version available\n\nChangelog:\n\nPress the green button to start the update."
+msgstr ""
+
+msgid "New version is available.\n\nChangelog:\n\nDo you want to install it now?"
 msgstr ""
 
 msgid "News"
@@ -207,19 +289,34 @@ msgstr ""
 msgid "No entry in lcn db. Please do a service scan."
 msgstr ""
 
+msgid "No news"
+msgstr ""
+
 msgid "No update information available."
 msgstr ""
 
 msgid "Nothing found for '%s'"
 msgstr ""
 
+msgid "Notifications"
+msgstr ""
+
+msgid "of"
+msgstr ""
+
+msgid "OK = install"
+msgstr ""
+
 msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
 msgstr ""
 
-msgid "Please Wait..."
+msgid "please make a donation:\n"
 msgstr ""
 
 msgid "Please make certain network search is enabled when scanning."
+msgstr ""
+
+msgid "Please Wait..."
 msgstr ""
 
 msgid "Premium"
@@ -237,10 +334,13 @@ msgstr ""
 msgid "Rebuild"
 msgstr ""
 
+msgid "Rebuild bouquet"
+msgstr ""
+
 msgid "Rebuild LCN bouquet now?"
 msgstr ""
 
-msgid "Rebuild bouquet"
+msgid "Refresh"
 msgstr ""
 
 msgid "Refreshing commits..."
@@ -267,10 +367,16 @@ msgstr ""
 msgid "Restart enigma"
 msgstr ""
 
-msgid "SD Provisionals"
+msgid "Save"
 msgstr ""
 
-msgid "Save"
+msgid "Script"
+msgstr ""
+
+msgid "scripts.json not found or invalid!\nCheck your connection or the local file."
+msgstr ""
+
+msgid "SD Provisionals"
 msgstr ""
 
 msgid "Search"
@@ -291,7 +397,19 @@ msgstr ""
 msgid "Semi-Generalists"
 msgstr ""
 
+msgid "Server added\n\nServer:\nPort:\nUser:\nPassword:\n"
+msgstr ""
+
+msgid "Server error.\n\nTry again, you might get lucky!\n%s"
+msgstr ""
+
 msgid "Settings Not Installed ..."
+msgstr ""
+
+msgid "Show automatic"
+msgstr ""
+
+msgid "Skin check completed.\nLog: /tmp/my_debug.log"
 msgstr ""
 
 msgid "Skip duplicates"
@@ -309,7 +427,10 @@ msgstr ""
 msgid "Sports"
 msgstr ""
 
-msgid "Suggested by: @masterG - @oktus - @pcd\\n"
+msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgstr ""
+
+msgid "Support on: Linuxsat-support.com\n\n"
 msgstr ""
 
 msgid "Terrestrial"
@@ -336,10 +457,22 @@ msgstr ""
 msgid "Test Channels"
 msgstr ""
 
-msgid "The Plugin lives thanks to the donations of each of you.\\n"
+msgid "Thank you for choosing plugin for management of your Enigma Box.\n\n"
+msgstr ""
+
+msgid "Thank's to @pQu4k3r\n"
+msgstr ""
+
+msgid "The Plugin lives thanks to the donations of each of you.\n"
 msgstr ""
 
 msgid "There is currently no LCN data stored."
+msgstr ""
+
+msgid "These Panel may contain Adult content\n\nare you sure you want to continue?"
+msgstr ""
+
+msgid "This commit has no package for your receiver."
 msgstr ""
 
 msgid "This plugin depends on LCN data being broadcast by your local tansmitter."
@@ -352,6 +485,9 @@ msgid "UK"
 msgstr ""
 
 msgid "Unable to load data!"
+msgstr ""
+
+msgid "Unable to read this commit from GitHub.\nPlease try again later."
 msgstr ""
 
 msgid "Unknown Image!"
@@ -372,8 +508,3 @@ msgstr ""
 msgid "Update failed! Please try again later."
 msgstr ""
 
-msgid "of"
-msgstr ""
-
-msgid "please make a donation:\\n"
-msgstr ""

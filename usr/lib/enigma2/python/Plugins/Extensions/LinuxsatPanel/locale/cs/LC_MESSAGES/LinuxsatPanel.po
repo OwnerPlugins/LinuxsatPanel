@@ -1,16 +1,35 @@
-﻿msgid ""
+# cs translations
+# Copyright (C) 2026 Lululla Team
+#
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: cs <ekekaz@gmail.com>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "(cached)"
+msgstr "(v mezipaměti)"
+
+msgid "[Checkskin] This operation checks if the skin has its components (is not sure)..\nDo you really want to continue?"
+msgstr "[Checkskin] Tato operace zkontroluje, zda má vzhled své komponenty (nejsem si jistý)..\nOpravdu chcete pokračovat?"
 
 msgid "%s"
 msgstr "%s"
 
+msgid "A coffee costs nothing.\n\n"
+msgstr "Káva nestojí nic.\n\n"
+
 msgid "Adult"
 msgstr "Pro dospělé"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\\n"
-msgstr ""
+msgid "All code was rewritten by @Lululla - 2024.07.20\n"
+msgstr "Veškerý kód byl přepsán @Lululla - 2024.07.20\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Došlo k neočekávané chybě. Prosím zkuste to znovu později."
@@ -36,8 +55,14 @@ msgstr "Zkontrolujte připojení!"
 msgid "Children"
 msgstr "Dětské"
 
+msgid "Clear recent searches"
+msgstr "Vymazat poslední vyhledávání"
+
 msgid "Collecting system information..."
 msgstr "Shromažďují se informace o systému..."
+
+msgid "Commit History"
+msgstr "Zavázat historii"
 
 msgid "Congrats! You already have the latest version..."
 msgstr "Gratuluji! Už máte nejnovější verzi..."
@@ -54,8 +79,8 @@ msgstr "Vytvořit samostatný rádiový bouquet"
 msgid "Del Line"
 msgstr "Smazat řádek"
 
-msgid "Designs and Graphics by @oktus\\n"
-msgstr ""
+msgid "Designs and Graphics by @oktus\n"
+msgstr "Designy a grafika @oktus\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Nepřidávejte duplicitní nebo neindexované kanály do bouquetu."
@@ -63,11 +88,11 @@ msgstr "Nepřidávejte duplicitní nebo neindexované kanály do bouquetu."
 msgid "Do you want add Cline?"
 msgstr "Chcete přidat Cline?"
 
-msgid "Do you want to Order LCN Bouquet?"
-msgstr "Chcete seřadit LCN bouquet?"
-
 msgid "Do you want to install update (%s) now?"
 msgstr "Chcete nainstalovat aktualizaci (%s) nyní?"
+
+msgid "Do you want to Order LCN Bouquet?"
+msgstr "Chcete seřadit LCN bouquet?"
 
 msgid "Do you want to remove?"
 msgstr "Chcete odstranit?"
@@ -76,16 +101,16 @@ msgid "Do you want to restart Gui Interface?"
 msgstr "Chcete restartovat grafické rozhraní?"
 
 msgid "Download failed!"
-msgstr ""
+msgstr "Stahování se nezdařilo!"
 
 msgid "Download failed! Settings NOT installed."
-msgstr ""
+msgstr "Stahování se nezdařilo! Nastavení NENÍ nainstalováno."
 
 msgid "Download page get failed ..."
 msgstr "Stahování stránky se nezdařilo..."
 
 msgid "Downloading %s ..."
-msgstr ""
+msgstr "Stahování %s..."
 
 msgid "Duplicates"
 msgstr "Duplicity"
@@ -96,23 +121,29 @@ msgstr "Upravit řádek"
 msgid "Enable creating a terrestrial bouquet based on LCN (logocal channel number) data."
 msgstr "Povolit vytváření terestrického bouquetu na základě LCN (logické číslo kanálu) dat."
 
-msgid "Enable terrestrial LCN:"
-msgstr "Povolit terestrické LCN:"
-
 msgid "Enable terrestrial bouquet"
 msgstr "Povolit terestrický bouquet"
+
+msgid "Enable terrestrial LCN:"
+msgstr "Povolit terestrické LCN:"
 
 msgid "Entertainment"
 msgstr "Zábava"
 
 msgid "Error loading commits. Please check your internet connection."
-msgstr ""
+msgstr "Chyba při načítání potvrzení. Zkontrolujte prosím své internetové připojení."
 
 msgid "Error: No Data Find."
 msgstr "Chyba: Nebyla nalezena žádná data."
 
 msgid "Europe7"
 msgstr "Evropa7"
+
+msgid "Executing %s\nPlease Wait..."
+msgstr "Probíhá %s\nPočkejte prosím..."
+
+msgid "Execution progress\n\n"
+msgstr "Průběh provádění\n\n"
 
 msgid "Exit"
 msgstr "Konec"
@@ -123,17 +154,35 @@ msgstr "Nepodařilo se získat informace o aktualizaci. Zkontrolujte prosím sv�
 msgid "Failed to parse update information. Please try again later."
 msgstr "Nepodařilo se analyzovat informace o aktualizaci. Prosím zkuste to znovu později."
 
+msgid "File not found /etc/CCcam.cfg!\nRestart please..."
+msgstr "Soubor nenalezen /etc/CCcam.cfg!\nRestartujte prosím..."
+
+msgid "File not found /etc/tuxbox/config/oscam.server!\nRestart please..."
+msgstr "Soubor nenalezen /etc/tuxbox/config/oscam.server!\nRestartujte prosím..."
+
 msgid "Free Space:"
 msgstr "Volné místo:"
+
+msgid "GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."
+msgstr "Byl překročen limit rychlosti rozhraní GitHub API.\n\nNebyl nalezen žádný soubor mezipaměti.\n\nZkuste to prosím znovu později."
+
+msgid "GitHub API rate limit exceeded.\nPlease try again later."
+msgstr "Byl překročen limit rychlosti rozhraní GitHub API.\nZkuste to prosím znovu později."
 
 msgid "HD Channels"
 msgstr "HD kanály"
 
+msgid "Hide automatic"
+msgstr "Skrýt automatické"
+
 msgid "High Definition"
 msgstr "Vysoké rozlišení"
 
-msgid "If you think it is a useful tool for your box\\n"
-msgstr ""
+msgid "I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"
+msgstr "NEODPOVÍDÁM za žádné problémy, se kterými se \n můžete setkat po instalaci pluginů a vzhledů.\nV případě potřeby však můžete získat pomoc s vyřešením problému.\n\n\nChcete nainstalovat?"
+
+msgid "If you think it is a useful tool for your box\n"
+msgstr "Pokud si myslíte, že je to užitečný nástroj pro váš box\n"
 
 msgid "Information and Culture"
 msgstr "Informace a kultura"
@@ -148,7 +197,10 @@ msgid "Install failed! Previous settings restored."
 msgstr "Instalace se nezdařila! Předchozí nastavení byla obnovena."
 
 msgid "Install failed! Settings NOT installed."
-msgstr ""
+msgstr "Instalace se nezdařila! Nastavení NENÍ nainstalováno."
+
+msgid "Installing %s\nPlease Wait..."
+msgstr "Instalace %s\nPočkejte prosím..."
 
 msgid "Installing settings..."
 msgstr "Instalace nastavení..."
@@ -181,19 +233,46 @@ msgid "Load Category..."
 msgstr "Načíst kategorii..."
 
 msgid "Loading commits..."
-msgstr ""
+msgstr "Načítání potvrzení..."
 
 msgid "Loading list..."
 msgstr "Načítání seznamu..."
 
 msgid "Loading..."
-msgstr ""
+msgstr "Načítání..."
 
 msgid "Local Broadcasters"
 msgstr "Místní vysílatelé"
 
+msgid "make donation on Linuxsat-support.com\n\n\n"
+msgstr "přispět na Linuxsat-support.com\n\n\n"
+
 msgid "Music"
 msgstr "Hudba"
+
+msgid "New search"
+msgstr "Nové hledání"
+
+msgid "New search..."
+msgstr "Nové hledání..."
+
+msgid "New since last visit: %d"
+msgstr "Nové od poslední návštěvy: %d"
+
+msgid "New updates: %d"
+msgstr "Nové aktualizace: %d"
+
+msgid "New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?"
+msgstr "K dispozici nová verze %s!\n\nChangelog:\n%s\n\nChcete provést aktualizaci nyní?"
+
+msgid "New version available\n\nChangelog:"
+msgstr "K dispozici nová verze\n\nChangelog:"
+
+msgid "New version available\n\nChangelog:\n\nPress the green button to start the update."
+msgstr "K dispozici je nová verze\n\nChangelog:\n\nStiskněte zelené tlačítko pro spuštění aktualizace."
+
+msgid "New version is available.\n\nChangelog:\n\nDo you want to install it now?"
+msgstr "K dispozici je nová verze.\n\nChangelog:\n\nChcete ji nyní nainstalovat?"
 
 msgid "News"
 msgstr "Zprávy"
@@ -210,20 +289,35 @@ msgstr "Nebyly nalezeny žádné odpovídající terestrické služby."
 msgid "No entry in lcn db. Please do a service scan."
 msgstr "Žádný záznam v LCN databázi. Prosím proveďte skenování služeb."
 
+msgid "No news"
+msgstr "Žádné novinky"
+
 msgid "No update information available."
 msgstr "Nejsou k dispozici žádné informace o aktualizaci."
 
 msgid "Nothing found for '%s'"
 msgstr "Pro '%s' nebylo nic nalezeno"
 
+msgid "Notifications"
+msgstr "Oznámení"
+
+msgid "of"
+msgstr "z"
+
+msgid "OK = install"
+msgstr "OK = nainstalovat"
+
 msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
 msgstr "Jakmile je nakonfigurován, bouquet bude automaticky aktualizován při ručním skenování."
 
-msgid "Please Wait..."
-msgstr "Prosím čekejte..."
+msgid "please make a donation:\n"
+msgstr "prosím přispějte: \n"
 
 msgid "Please make certain network search is enabled when scanning."
 msgstr "Prosím ujistěte se, že je při skenování povoleno vyhledávání sítě."
+
+msgid "Please Wait..."
+msgstr "Prosím čekejte..."
 
 msgid "Premium"
 msgstr "Prémiové"
@@ -240,14 +334,17 @@ msgstr "Rádio"
 msgid "Rebuild"
 msgstr "Přestavět"
 
-msgid "Rebuild LCN bouquet now?"
-msgstr "Přestavět LCN bouquet nyní?"
-
 msgid "Rebuild bouquet"
 msgstr "Přestavět bouquet"
 
+msgid "Rebuild LCN bouquet now?"
+msgstr "Přestavět LCN bouquet nyní?"
+
+msgid "Refresh"
+msgstr "Obnovit"
+
 msgid "Refreshing commits..."
-msgstr ""
+msgstr "Obnovování závazků..."
 
 msgid "Region"
 msgstr "Region"
@@ -270,11 +367,17 @@ msgstr "Odebírání %s"
 msgid "Restart enigma"
 msgstr "Restartovat Enigmu"
 
-msgid "SD Provisionals"
-msgstr "SD provizorní"
-
 msgid "Save"
 msgstr "Uložit"
+
+msgid "Script"
+msgstr "Skript"
+
+msgid "scripts.json not found or invalid!\nCheck your connection or the local file."
+msgstr "scripts.json nebyl nalezen nebo je neplatný!\nZkontrolujte připojení nebo místní soubor."
+
+msgid "SD Provisionals"
+msgstr "SD provizorní"
 
 msgid "Search"
 msgstr "Vyhledávání"
@@ -294,8 +397,20 @@ msgstr "Vyberte svůj region."
 msgid "Semi-Generalists"
 msgstr "Poloviční generalisté"
 
+msgid "Server added\n\nServer:\nPort:\nUser:\nPassword:\n"
+msgstr "Server přidán\n\nServer:\nPort:\nUživatel:\nHeslo:\n"
+
+msgid "Server error.\n\nTry again, you might get lucky!\n%s"
+msgstr "Chyba serveru.\n\nZkuste to znovu, možná budete mít štěstí!\n%s"
+
 msgid "Settings Not Installed ..."
 msgstr "Nastavení není nainstalováno..."
+
+msgid "Show automatic"
+msgstr "Zobrazit automatické"
+
+msgid "Skin check completed.\nLog: /tmp/my_debug.log"
+msgstr "Kontrola vzhledu dokončena.\nLog: /tmp/my_debug.log"
 
 msgid "Skip duplicates"
 msgstr "Přeskočit duplicity"
@@ -312,8 +427,11 @@ msgstr "Výchozí řazení"
 msgid "Sports"
 msgstr "Sport"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\\n"
-msgstr ""
+msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgstr "Navrhl: @masterG - @oktus - @pcd\n"
+
+msgid "Support on: Linuxsat-support.com\n\n"
+msgstr "Podpora na: Linuxsat-support.com\n\n"
 
 msgid "Terrestrial"
 msgstr "Terestrický"
@@ -339,11 +457,23 @@ msgstr "Terestrický bouquet:"
 msgid "Test Channels"
 msgstr "Testovací kanály"
 
-msgid "The Plugin lives thanks to the donations of each of you.\\n"
-msgstr ""
+msgid "Thank you for choosing plugin for management of your Enigma Box.\n\n"
+msgstr "Děkujeme, že jste si vybrali plugin pro správu vašeho Enigma Box.\n\n"
+
+msgid "Thank's to @pQu4k3r\n"
+msgstr "Děkujeme @pQu4k3r\n"
+
+msgid "The Plugin lives thanks to the donations of each of you.\n"
+msgstr "Plugin žije díky darům každého z vás.\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "V současné době nejsou uložena žádná LCN data."
+
+msgid "These Panel may contain Adult content\n\nare you sure you want to continue?"
+msgstr "Tyto panely mohou obsahovat obsah pro dospělé\n\nopravdu chcete pokračovat?"
+
+msgid "This commit has no package for your receiver."
+msgstr "Tento závazek nemá žádný balíček pro vašeho přijímače."
 
 msgid "This plugin depends on LCN data being broadcast by your local tansmitter."
 msgstr "Tento plugin závisí na LCN datech vysílaných vaším místním vysílačem."
@@ -355,7 +485,10 @@ msgid "UK"
 msgstr "Velká Británie"
 
 msgid "Unable to load data!"
-msgstr ""
+msgstr "Nelze načíst data!"
+
+msgid "Unable to read this commit from GitHub.\nPlease try again later."
+msgstr "Toto potvrzení z GitHubu nelze přečíst.\nZkuste to prosím znovu později."
 
 msgid "Unknown Image!"
 msgstr "Neznámý obraz!"
@@ -367,17 +500,11 @@ msgid "Update Aborted!"
 msgstr "Aktualizace zrušena!"
 
 msgid "Update cancelled. You can update later from Information -> Green button."
-msgstr ""
+msgstr "Aktualizace zrušena. Aktualizaci můžete provést později pomocí tlačítka Informace -> Zelené tlačítko."
 
 msgid "Update completed! The panel will now reload."
-msgstr ""
+msgstr "Aktualizace dokončena! Panel se nyní znovu načte."
 
 msgid "Update failed! Please try again later."
-msgstr ""
-
-msgid "of"
-msgstr "z"
-
-msgid "please make a donation:\\n"
-msgstr ""
+msgstr "Aktualizace se nezdařila! Zkuste to znovu později."
 

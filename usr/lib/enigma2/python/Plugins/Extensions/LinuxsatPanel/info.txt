@@ -1,6 +1,6 @@
 WELCOME TO LINUXSAT-SUPPORT PANEL ADDONS
-Version: 2.8.5
-Last update: 2024-12-31
+Version: 3.0.9
+Last update: 2026-11-20
 
 
 ABOUT
@@ -42,6 +42,9 @@ Ciefp specialized installer
 Live console output during installations
 Integrated File Commander for logs
 Automatic update notifications
+Notification bell: new addons/updates from GitHub, checked at startup
+Clickable Commit History: OK installs the packages of a commit
+One search for everything: catalog + scripts, with recent searches
 
 
 CATEGORIES OVERVIEW
@@ -85,8 +88,10 @@ CONTROLS
 Arrow keys        Navigate through the grid
 OK                Open selected category/execute action
 RED               Exit to About screen
+UP (first row)    Go to the top bar (search / bell)
 GREEN             Search addons
-YELLOW (long)     Force update
+YELLOW            Notifications / Commit History
+CH+ / CH-         Next / previous page
 BLUE              Restart Enigma2 GUI
 INFO              Show system information / Commit History
 0 (ZERO)          Toggle A-Z/Default sorting

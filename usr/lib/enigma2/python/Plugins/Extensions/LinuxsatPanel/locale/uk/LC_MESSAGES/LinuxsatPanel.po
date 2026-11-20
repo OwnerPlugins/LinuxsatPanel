@@ -1,0 +1,510 @@
+# uk translations
+# Copyright (C) 2026 Lululla Team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: uk <ekekaz@gmail.com>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "(cached)"
+msgstr "(кешований)"
+
+msgid "[Checkskin] This operation checks if the skin has its components (is not sure)..\nDo you really want to continue?"
+msgstr "[Checkskin] Ця операція перевіряє наявність компонентів шкіри (не впевнений).\nВи справді бажаєте продовжити?"
+
+msgid "%s"
+msgstr "%s"
+
+msgid "A coffee costs nothing.\n\n"
+msgstr "Кава не коштує нічого.\n\n"
+
+msgid "Adult"
+msgstr "Дорослий"
+
+msgid "All code was rewritten by @Lululla - 2024.07.20\n"
+msgstr "Весь код було переписано @Lululla - 2024.07.20\n"
+
+msgid "An unexpected error occurred. Please try again later."
+msgstr "Сталася неочікувана помилка. Спробуйте пізніше."
+
+msgid "Australia"
+msgstr "Австралія"
+
+msgid "BBC Interactive"
+msgstr "BBC Interactive"
+
+msgid "Build/rebuild terrestrial bouquet now based on the last scan."
+msgstr "Тепер створюйте/відновлюйте наземний букет на основі останнього сканування."
+
+msgid "Cancel execution?"
+msgstr "Скасувати виконання?"
+
+msgid "Category:"
+msgstr "Категорія:"
+
+msgid "Check Connection!"
+msgstr "Перевірте підключення!"
+
+msgid "Children"
+msgstr "діти"
+
+msgid "Clear recent searches"
+msgstr "Очистити останні пошуки"
+
+msgid "Collecting system information..."
+msgstr "Збір системної інформації..."
+
+msgid "Commit History"
+msgstr "Історія фіксації"
+
+msgid "Congrats! You already have the latest version..."
+msgstr "Вітаю! У вас вже є остання версія..."
+
+msgid "Corrupted archive! Settings NOT installed."
+msgstr "Пошкоджений архів! Налаштування НЕ встановлено."
+
+msgid "Create an ordered bouquet of terrestrial services based on LCN data from your local transmitter."
+msgstr "Створіть упорядкований пакет наземних послуг на основі даних LCN від вашого місцевого передавача."
+
+msgid "Create separate radio bouquet"
+msgstr "Створіть окремий радіобукет"
+
+msgid "Del Line"
+msgstr "Дель Лайн"
+
+msgid "Designs and Graphics by @oktus\n"
+msgstr "Дизайн і графіка від @oktus\n"
+
+msgid "Do not add duplicated or non indexed channels to the bouquet."
+msgstr "Не додавайте в букет дубльовані або неіндексовані канали."
+
+msgid "Do you want add Cline?"
+msgstr "Ви хочете додати Cline?"
+
+msgid "Do you want to install update (%s) now?"
+msgstr "Установити оновлення (%s) зараз?"
+
+msgid "Do you want to Order LCN Bouquet?"
+msgstr "Бажаєте замовити букет LCN?"
+
+msgid "Do you want to remove?"
+msgstr "Ви хочете видалити?"
+
+msgid "Do you want to restart Gui Interface?"
+msgstr "Бажаєте перезапустити інтерфейс Gui?"
+
+msgid "Download failed!"
+msgstr "Помилка завантаження!"
+
+msgid "Download failed! Settings NOT installed."
+msgstr "Помилка завантаження! Налаштування НЕ встановлено."
+
+msgid "Download page get failed ..."
+msgstr "Помилка завантаження сторінки..."
+
+msgid "Downloading %s ..."
+msgstr "Завантаження %s..."
+
+msgid "Duplicates"
+msgstr "Дублікати"
+
+msgid "Edit Line"
+msgstr "Редагувати рядок"
+
+msgid "Enable creating a terrestrial bouquet based on LCN (logocal channel number) data."
+msgstr "Увімкнути створення ефірного букету на основі даних LCN (номер логічного каналу)."
+
+msgid "Enable terrestrial bouquet"
+msgstr "Увімкнути наземний букет"
+
+msgid "Enable terrestrial LCN:"
+msgstr "Увімкнути наземний LCN:"
+
+msgid "Entertainment"
+msgstr "Розваги"
+
+msgid "Error loading commits. Please check your internet connection."
+msgstr "Помилка завантаження комітів. Перевірте підключення до Інтернету."
+
+msgid "Error: No Data Find."
+msgstr "Помилка: Немає даних."
+
+msgid "Europe7"
+msgstr "Європа7"
+
+msgid "Executing %s\nPlease Wait..."
+msgstr "Виконання %s\nЗачекайте..."
+
+msgid "Execution progress\n\n"
+msgstr "Хід виконання\n\n"
+
+msgid "Exit"
+msgstr "Вихід"
+
+msgid "Failed to fetch update information. Please check your internet connection."
+msgstr "Не вдалося отримати інформацію про оновлення. Перевірте підключення до Інтернету."
+
+msgid "Failed to parse update information. Please try again later."
+msgstr "Не вдалося проаналізувати інформацію про оновлення. Спробуйте пізніше."
+
+msgid "File not found /etc/CCcam.cfg!\nRestart please..."
+msgstr "Файл не знайдено /etc/CCcam.cfg!\nПерезапустіть, будь ласка..."
+
+msgid "File not found /etc/tuxbox/config/oscam.server!\nRestart please..."
+msgstr "Файл не знайдено /etc/tuxbox/config/oscam.server!\nПерезапустіть, будь ласка..."
+
+msgid "Free Space:"
+msgstr "Вільний простір:"
+
+msgid "GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."
+msgstr "Перевищено ліміт швидкості GitHub API.\n\nФайл кешу не знайдено.\n\nСпробуйте пізніше."
+
+msgid "GitHub API rate limit exceeded.\nPlease try again later."
+msgstr "Перевищено ліміт швидкості GitHub API.\nСпробуйте пізніше."
+
+msgid "HD Channels"
+msgstr "HD канали"
+
+msgid "Hide automatic"
+msgstr "Сховати автоматично"
+
+msgid "High Definition"
+msgstr "Висока чіткість"
+
+msgid "I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"
+msgstr "Я НЕ несу відповідальності за будь-які проблеми, з якими ви можете \nзіткнутися після встановлення плагінів і оболонок.\nОднак, якщо потрібно, ви можете отримати допомогу щодо вирішення проблеми.\n\n\nВи хочете встановити?"
+
+msgid "If you think it is a useful tool for your box\n"
+msgstr "Якщо ви вважаєте, що це корисний інструмент для вашого ящика \n"
+
+msgid "Information and Culture"
+msgstr "Інформація та культура"
+
+msgid "Ins Line"
+msgstr "Лінія Ins"
+
+msgid "Install"
+msgstr "встановити"
+
+msgid "Install failed! Previous settings restored."
+msgstr "Помилка встановлення! Попередні налаштування відновлені."
+
+msgid "Install failed! Settings NOT installed."
+msgstr "Помилка встановлення! Налаштування НЕ встановлено."
+
+msgid "Installing %s\nPlease Wait..."
+msgstr "Встановлення %s\nЗачекайте..."
+
+msgid "Installing settings..."
+msgstr "Встановлення налаштувань..."
+
+msgid "Internet: Connected"
+msgstr "Інтернет: підключено"
+
+msgid "Internet: No Connection"
+msgstr "Інтернет: немає підключення"
+
+msgid "Internet: Unknown"
+msgstr "Інтернет: невідомо"
+
+msgid "Invalid date format in update information."
+msgstr "Недійсний формат дати в інформації про оновлення."
+
+msgid "Italy"
+msgstr "Італія"
+
+msgid "LCN Duplicates"
+msgstr "Дублікати LCN"
+
+msgid "LCN rules:"
+msgstr "Правила LCN:"
+
+msgid "Linuxsat Panel"
+msgstr "Панель Linuxsat"
+
+msgid "Load Category..."
+msgstr "Завантажити категорію..."
+
+msgid "Loading commits..."
+msgstr "Завантаження комітів..."
+
+msgid "Loading list..."
+msgstr "Завантаження списку..."
+
+msgid "Loading..."
+msgstr "Завантаження..."
+
+msgid "Local Broadcasters"
+msgstr "Місцеві мовники"
+
+msgid "make donation on Linuxsat-support.com\n\n\n"
+msgstr "зробити пожертву на Linuxsat-support.com\n\n\n"
+
+msgid "Music"
+msgstr "музика"
+
+msgid "New search"
+msgstr "Новий пошук"
+
+msgid "New search..."
+msgstr "Новий пошук..."
+
+msgid "New since last visit: %d"
+msgstr "Нове з останнього відвідування: %d"
+
+msgid "New updates: %d"
+msgstr "Нові оновлення: %d"
+
+msgid "New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?"
+msgstr "Доступна нова версія %s!\n\nЖурнал змін:\n%s\n\nОновити зараз?"
+
+msgid "New version available\n\nChangelog:"
+msgstr "Доступна нова версія\n\nЖурнал змін:"
+
+msgid "New version available\n\nChangelog:\n\nPress the green button to start the update."
+msgstr "Доступна нова версія\n\nЖурнал змін:\n\nНатисніть зелену кнопку, щоб почати оновлення."
+
+msgid "New version is available.\n\nChangelog:\n\nDo you want to install it now?"
+msgstr "Доступна нова версія.\n\nЖурнал змін:\n\nУстановити зараз?"
+
+msgid "News"
+msgstr "Новини"
+
+msgid "No channel list in archive! Settings NOT installed."
+msgstr "Немає списку каналів в архіві! Налаштування НЕ встановлено."
+
+msgid "No commits found."
+msgstr "Комітів не знайдено."
+
+msgid "No corresponding terrestrial services found."
+msgstr "Відповідних наземних служб не знайдено."
+
+msgid "No entry in lcn db. Please do a service scan."
+msgstr "Немає запису в базі даних lcn. Будь ласка, зробіть сервісне сканування."
+
+msgid "No news"
+msgstr "Жодних новин"
+
+msgid "No update information available."
+msgstr "Інформація про оновлення недоступна."
+
+msgid "Nothing found for '%s'"
+msgstr "Нічого не знайдено для \"%s\""
+
+msgid "Notifications"
+msgstr "Сповіщення"
+
+msgid "of"
+msgstr "з"
+
+msgid "OK = install"
+msgstr "OK = встановити"
+
+msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
+msgstr "Після налаштування букет оновлюватиметься автоматично під час сканування вручну."
+
+msgid "please make a donation:\n"
+msgstr "будь ласка, зробіть пожертву: \n"
+
+msgid "Please make certain network search is enabled when scanning."
+msgstr "Увімкніть пошук мережі під час сканування."
+
+msgid "Please Wait..."
+msgstr "Будь ласка, зачекайте..."
+
+msgid "Premium"
+msgstr "Преміум"
+
+msgid "Promo H264"
+msgstr "Акція H264"
+
+msgid "Put radio services in a separate bouquet, not the main tv bouquet. This is required when the provider duplicates channel numbers for tv and radio."
+msgstr "Викладайте радіопослуги в окремий пакет, а не в основний телевізійний пакет. Це потрібно, коли провайдер дублює номери каналів для телебачення та радіо."
+
+msgid "Radio"
+msgstr "радіо"
+
+msgid "Rebuild"
+msgstr "Перебудувати"
+
+msgid "Rebuild bouquet"
+msgstr "Відновити букет"
+
+msgid "Rebuild LCN bouquet now?"
+msgstr "Відновити букет LCN зараз?"
+
+msgid "Refresh"
+msgstr "Оновити"
+
+msgid "Refreshing commits..."
+msgstr "Оновлення комітів..."
+
+msgid "Region"
+msgstr "Регіон"
+
+msgid "Regional Broadcasters"
+msgstr "Регіональні мовники"
+
+msgid "Regional Radio"
+msgstr "Обласне радіо"
+
+msgid "Reload"
+msgstr "Перезавантажити"
+
+msgid "Remove"
+msgstr "видалити"
+
+msgid "Removing %s"
+msgstr "Видалення %s"
+
+msgid "Restart enigma"
+msgstr "Перезапустіть enigma"
+
+msgid "Save"
+msgstr "зберегти"
+
+msgid "Script"
+msgstr "Сценарій"
+
+msgid "scripts.json not found or invalid!\nCheck your connection or the local file."
+msgstr "scripts.json не знайдено або недійсний!\nПеревірте підключення або локальний файл."
+
+msgid "SD Provisionals"
+msgstr "Тимчасові SD"
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Search addon..."
+msgstr "Пошуковий додаток..."
+
+msgid "Search: %s"
+msgstr "Пошук: %s"
+
+msgid "Searching..."
+msgstr "Пошук..."
+
+msgid "Select your region."
+msgstr "Виберіть свій регіон."
+
+msgid "Semi-Generalists"
+msgstr "Напівзагальні спеціалісти"
+
+msgid "Server added\n\nServer:\nPort:\nUser:\nPassword:\n"
+msgstr "Сервер додано\n\nСервер:\nПорт:\nКористувач:\nПароль:\n"
+
+msgid "Server error.\n\nTry again, you might get lucky!\n%s"
+msgstr "Помилка сервера.\n\nСпробуйте ще раз, може вам пощастить!\n%s"
+
+msgid "Settings Not Installed ..."
+msgstr "Налаштування не встановлено..."
+
+msgid "Show automatic"
+msgstr "Показати автоматично"
+
+msgid "Skin check completed.\nLog: /tmp/my_debug.log"
+msgstr "Перевірку оболонки завершено.\nЖурнал: /tmp/my_debug.log"
+
+msgid "Skip duplicates"
+msgstr "Пропустити дублікати"
+
+msgid "Sky Channels"
+msgstr "Sky Channels"
+
+msgid "Sort A-Z"
+msgstr "Сортувати від А до Я"
+
+msgid "Sort Default"
+msgstr "Сортувати за замовчуванням"
+
+msgid "Sports"
+msgstr "спорт"
+
+msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgstr "Запропоновано: @masterG - @oktus - @pcd\n"
+
+msgid "Support on: Linuxsat-support.com\n\n"
+msgstr "Підтримка на: Linuxsat-support.com\n\n"
+
+msgid "Terrestrial"
+msgstr "Наземний"
+
+msgid "Terrestrial Bouquet"
+msgstr "Земний букет"
+
+msgid "Terrestrial Bouquet Error"
+msgstr "Помилка земного букета"
+
+msgid "Terrestrial Bouquet plugin is not enabled."
+msgstr "Плагін Terrestrial Bouquet не ввімкнено."
+
+msgid "Terrestrial Bouquet setup"
+msgstr "Наземний букет"
+
+msgid "Terrestrial bouquet successfully rebuilt."
+msgstr "Наземний букет вдало відбудований."
+
+msgid "Terrestrial bouquet:"
+msgstr "Наземний букет:"
+
+msgid "Test Channels"
+msgstr "Тестові канали"
+
+msgid "Thank you for choosing plugin for management of your Enigma Box.\n\n"
+msgstr "Дякуємо, що вибрали плагін для керування вашим Enigma Box.\n\n"
+
+msgid "Thank's to @pQu4k3r\n"
+msgstr "Дякую @pQu4k3r\n"
+
+msgid "The Plugin lives thanks to the donations of each of you.\n"
+msgstr "Плагін живе завдяки пожертвам кожного з вас.\n"
+
+msgid "There is currently no LCN data stored."
+msgstr "Наразі дані LCN не зберігаються."
+
+msgid "These Panel may contain Adult content\n\nare you sure you want to continue?"
+msgstr "Ці панелі можуть містити вміст для дорослих\n\nВи впевнені, що бажаєте продовжити?"
+
+msgid "This commit has no package for your receiver."
+msgstr "У цьому коміті немає пакета для вашого отримувача."
+
+msgid "This plugin depends on LCN data being broadcast by your local tansmitter."
+msgstr "Цей плагін залежить від даних LCN, які передає ваш місцевий tansmitter."
+
+msgid "Try running a manual scan of terrestrial frequencies with network scan enabled. If this fails maybe there is no lcn data available in your area."
+msgstr "Спробуйте запустити ручне сканування наземних частот із увімкненим скануванням мережі. Якщо це не вдається, можливо, у вашому регіоні немає даних lcn."
+
+msgid "UK"
+msgstr "Великобританія"
+
+msgid "Unable to load data!"
+msgstr "Не вдалося завантажити дані!"
+
+msgid "Unable to read this commit from GitHub.\nPlease try again later."
+msgstr "Не вдалося прочитати цей комміт із GitHub.\nСпробуйте пізніше."
+
+msgid "Unknown Image!"
+msgstr "Невідоме зображення!"
+
+msgid "Update"
+msgstr "оновлення"
+
+msgid "Update Aborted!"
+msgstr "Оновлення скасовано!"
+
+msgid "Update cancelled. You can update later from Information -> Green button."
+msgstr "Оновлення скасовано. Ви можете оновити пізніше з Інформація -> Зелена кнопка."
+
+msgid "Update completed! The panel will now reload."
+msgstr "Оновлення завершено! Тепер панель перезавантажиться."
+
+msgid "Update failed! Please try again later."
+msgstr "Помилка оновлення! Спробуйте пізніше."
+

@@ -4,10 +4,18 @@
 	<!-- <widget source="session.CurrentService" render="lsPicsmap" pixmaps="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/xmas/d0.png,/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/xmas/d1.png" pixdelay="590" control="1" position="1216,425" size="600,56" zPosition="5" transparent="1" alphatest="on" /> -->
 	<!-- <ePixmap zPosition="10" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/xmas/hat.png" position="1782,441" size="90,70" alphatest="blend" /> -->
 	<eLabel position="0,0" zPosition="-10" size="1920,1080" backgroundColor="black" />
-    <widget name="info" position="1110,180" zPosition="4" size="550,84" font="lsat; 38" foregroundColor="#0049bbff" backgroundColor="#40000000" transparent="1" halign="left" valign="center" />
+    <widget name="info" position="1110,250" zPosition="4" size="560,84" font="lsat; 38" foregroundColor="#0049bbff" backgroundColor="#40000000" transparent="1" halign="left" valign="center" />
     <widget name="sort" position="1224,986" zPosition="4" size="675,84" font="lsat; 42" foregroundColor="#0049bbff" backgroundColor="#40000000" transparent="1" halign="left" valign="center" />
 	<eLabel name="" position="1179,1002" size="52,52" backgroundColor="background" halign="center" valign="center" transparent="0" cornerRadius="26" font="lsat; 42" zPosition="1" text="0" foregroundColor="#0049bbff" />
 
+	<!-- top bar: search + notifications -->
+	<widget name="search_bg" position="1110,174" size="548,60" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/searchbar.png" zPosition="5" transparent="1" alphatest="blend" />
+	<widget name="search_bg_sel" position="1110,174" size="548,60" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/searchbar_sel.png" zPosition="6" transparent="1" alphatest="blend" />
+	<widget name="search_text" position="1185,174" size="460,60" font="lsat;30" foregroundColor="#aaaab2" backgroundColor="#26282e" transparent="1" halign="left" valign="center" noWrap="1" zPosition="7" />
+	<widget name="bell" position="1746,165" size="72,72" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/bell.png" zPosition="5" transparent="1" alphatest="blend" />
+	<widget name="bell_sel" position="1746,165" size="72,72" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/bell_sel.png" zPosition="6" transparent="1" alphatest="blend" />
+	<widget name="badge" position="1786,160" size="33,33" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/badge.png" zPosition="8" transparent="1" alphatest="blend" />
+	<widget name="badge_num" position="1786,160" size="33,33" font="lbsat;22" foregroundColor="#ffffff" backgroundColor="#e12828" transparent="1" halign="center" valign="center" zPosition="9" />
 	<!-- minitv -->
 	<widget source="session.VideoPicture" render="Pig" position="1219,474" size="610,345" zPosition="1" backgroundColor="#ff000000" />
 	<!-- clock -->
@@ -60,8 +68,10 @@
     <widget source="label20" render="Label" position="910,1005" size="210,60" font="lsat;30" halign="center" zPosition="2" transparent="1" noWrap="1" foregroundColor="white" />
     <widget name="pixmap20" position="940,835" size="150,150" zPosition="2" transparent="1" alphatest="on" scale="1" />
 	<!-- buttons -->
-	<widget name="key_red" position="520,990" size="300,40" valign="center" halign="left" zPosition="4" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="-2,-2" />
-	<widget name="key_green" position="830,990" size="300,40" valign="center" halign="left" zPosition="4" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="-2,-2" />
-	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/greenk.png" position="821,1022" size="200,30" zPosition="4" alphatest="on" />
-	<widget name="pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/redk.png" position="511,1022" size="200,30" zPosition="4" alphatest="on" />
+	<widget name="key_red" position="210,990" size="300,40" valign="center" halign="left" zPosition="4" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="-2,-2" />
+	<widget name="key_green" position="520,990" size="300,40" valign="center" halign="left" zPosition="4" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="-2,-2" />
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/greenk.png" position="511,1022" size="200,30" zPosition="4" alphatest="on" />
+	<widget name="pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/redk.png" position="201,1022" size="200,30" zPosition="4" alphatest="on" />
+	<widget name="key_yellow" position="830,990" size="300,40" valign="center" halign="left" zPosition="4" foregroundColor="#b0b0b0" font="lsat;30" transparent="1" shadowColor="#25062748" shadowOffset="-2,-2" />
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/icons2/yellowk.png" position="821,1022" size="200,27" zPosition="4" alphatest="blend" />
 </screen>

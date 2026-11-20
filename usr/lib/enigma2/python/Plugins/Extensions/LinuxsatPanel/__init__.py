@@ -17,7 +17,7 @@ __author__ = "Lululla"
 __email__ = "ekekaz@gmail.com"
 __copyright__ = 'Copyright (c) 2024 Lululla'
 __license__ = "GPL-v2"
-__version__ = "3.0.8"
+__version__ = "3.0.9"
 
 
 # ─── JSON scripts config ─────────────────────────────────────────────
@@ -25,7 +25,7 @@ __version__ = "3.0.8"
 # file locale se il remoto non risponde (404 = non ancora pubblicato).
 SCRIPTS_JSON_URL = (
     "https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/"
-    "main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/data/scripts.json?v=3.0.8"
+    "main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/data/scripts.json?v=3.0.9"
 )
 # Fallback locale: data/scripts.json dentro il plugin.
 SCRIPTS_JSON_LOCAL = "Extensions/LinuxsatPanel/data/scripts.json"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.8"
-changelog="\n--New: JSON-based script configuration (data/scripts.json) - add or edit scripts without updating the plugin\n--New: Background sync of missing icons from GitHub (1 by 1, no UI freeze)\n--New: Live UI update - icons appear automatically as soon as they are downloaded\n--New: Preload of scripts.json on plugin startup for instant loading\n--New: GitHub Actions bot for auto-syncing Ciefp scripts and icons\n--Fixed: Removed broken 'view log?' popup after script execution\n--Fixed: 'Remove' function now correctly uses 'dpkg -r' on DreamOS/OE2.2+\n--Fixed: Memory leak in splash screen (ePicLoad)\n--Fixed: checkGZIP crash when requests module is missing\n--Cleanup: Regenerated .po translation files and removed 50+ orphan PNGs\n--Updated README.md to v3.0.8"
+version="3.0.9"
+changelog="\n--New: Top bar with addon search and notification bell\n--New: Bell badge shows new addons/updates from GitHub, checked at startup and every 15 min\n--New: Clickable Commit History - OK installs the packages of a commit\n--New: Hide/show automatic commits (bots and merges)\n--New: One search for catalog, LulullaScript, Ciefp and Script Installer, with recent searches\n--New: YELLOW key opens notifications, CH+/CH- change page\n--New: GioppyGio settings in Channel List\n--Fixed: Ciefp settings list (GitHub page changed, now read via GitHub API)\n--Fixed: Update check timer in Information screen\n--Removed: Cyrus and Vhannibal Tek settings (sources no longer working)"
 
 TMPPATH=/tmp/LinuxsatPanel-install
 FILEPATH=/tmp/LinuxsatPanel-main.tar.gz
@@ -121,6 +121,16 @@ else
     cleanup
     exit 1
 fi
+
+# developer tools and caches are not needed on the receiver
+for f in check_po.py clean_po.py diagnose_po.py clean_orphan_icons.py sync_ciefp.py \
+         translate_utils.py update_translations.py translation_cache.json \
+         commits_cache.json messages.mo ruff.toml plugin.pyc; do
+    rm -f "$PLUGINPATH/$f"
+done
+rm -f "$PLUGINPATH"/skins/*/LSNotify.xml
+rm -rf "$PLUGINPATH/temp"
+find "$PLUGINPATH/locale" -name "*.po" -delete 2>/dev/null
 
 sync
 

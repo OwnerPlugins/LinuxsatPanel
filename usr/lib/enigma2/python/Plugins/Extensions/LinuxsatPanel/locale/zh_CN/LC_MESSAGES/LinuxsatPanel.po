@@ -1,0 +1,510 @@
+# zh_CN translations
+# Copyright (C) 2026 Lululla Team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: zh_CN <ekekaz@gmail.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "(cached)"
+msgstr "（缓存）"
+
+msgid "[Checkskin] This operation checks if the skin has its components (is not sure)..\nDo you really want to continue?"
+msgstr "[Checkskin] 此操作检查皮肤是否有其组件（不确定）..\n您真的要继续吗？"
+
+msgid "%s"
+msgstr "%s"
+
+msgid "A coffee costs nothing.\n\n"
+msgstr "一杯咖啡不花钱。\n\n"
+
+msgid "Adult"
+msgstr "成人"
+
+msgid "All code was rewritten by @Lululla - 2024.07.20\n"
+msgstr "所有代码均由 @Lululla 重写 - 2024.07.20\n"
+
+msgid "An unexpected error occurred. Please try again later."
+msgstr "发生意外错误。请稍后重试。"
+
+msgid "Australia"
+msgstr "澳大利亚"
+
+msgid "BBC Interactive"
+msgstr "英国广播公司互动"
+
+msgid "Build/rebuild terrestrial bouquet now based on the last scan."
+msgstr "现在根据上次扫描构建/重建陆地花束。"
+
+msgid "Cancel execution?"
+msgstr "取消执行？"
+
+msgid "Category:"
+msgstr "类别："
+
+msgid "Check Connection!"
+msgstr "检查连接！"
+
+msgid "Children"
+msgstr "孩子们"
+
+msgid "Clear recent searches"
+msgstr "清除最近的搜索"
+
+msgid "Collecting system information..."
+msgstr "正在收集系统信息..."
+
+msgid "Commit History"
+msgstr "提交历史记录"
+
+msgid "Congrats! You already have the latest version..."
+msgstr "恭喜！您已经拥有最新版本..."
+
+msgid "Corrupted archive! Settings NOT installed."
+msgstr "存档损坏！未安装设置。"
+
+msgid "Create an ordered bouquet of terrestrial services based on LCN data from your local transmitter."
+msgstr "根据本地发射机的 LCN 数据创建一系列有序的地面服务。"
+
+msgid "Create separate radio bouquet"
+msgstr "创建单独的单选花束"
+
+msgid "Del Line"
+msgstr "德尔线"
+
+msgid "Designs and Graphics by @oktus\n"
+msgstr "设计和图形@oktus\n"
+
+msgid "Do not add duplicated or non indexed channels to the bouquet."
+msgstr "请勿将重复或未索引的通道添加到集合中。"
+
+msgid "Do you want add Cline?"
+msgstr "你想添加克莱恩吗？"
+
+msgid "Do you want to install update (%s) now?"
+msgstr "您想立即安装更新 (%s) 吗？"
+
+msgid "Do you want to Order LCN Bouquet?"
+msgstr "您想订购 LCN 花束吗？"
+
+msgid "Do you want to remove?"
+msgstr "您想删除吗？"
+
+msgid "Do you want to restart Gui Interface?"
+msgstr "是否要重新启动 GUI 界面？"
+
+msgid "Download failed!"
+msgstr "下载失败！"
+
+msgid "Download failed! Settings NOT installed."
+msgstr "下载失败！未安装设置。"
+
+msgid "Download page get failed ..."
+msgstr "下载页面失败..."
+
+msgid "Downloading %s ..."
+msgstr "正在下载%s..."
+
+msgid "Duplicates"
+msgstr "重复项"
+
+msgid "Edit Line"
+msgstr "编辑行"
+
+msgid "Enable creating a terrestrial bouquet based on LCN (logocal channel number) data."
+msgstr "启用基于 LCN（逻辑频道号）数据创建地面花束。"
+
+msgid "Enable terrestrial bouquet"
+msgstr "启用陆地花束"
+
+msgid "Enable terrestrial LCN:"
+msgstr "启用地面 LCN："
+
+msgid "Entertainment"
+msgstr "娱乐"
+
+msgid "Error loading commits. Please check your internet connection."
+msgstr "加载提交时出错。请检查您的互联网连接。"
+
+msgid "Error: No Data Find."
+msgstr "错误：找不到数据。"
+
+msgid "Europe7"
+msgstr "欧洲7"
+
+msgid "Executing %s\nPlease Wait..."
+msgstr "正在执行 %s\n请稍候..."
+
+msgid "Execution progress\n\n"
+msgstr "执行进度\n\n"
+
+msgid "Exit"
+msgstr "出口"
+
+msgid "Failed to fetch update information. Please check your internet connection."
+msgstr "获取更新信息失败。请检查您的互联网连接。"
+
+msgid "Failed to parse update information. Please try again later."
+msgstr "Failed to parse update information.请稍后重试。"
+
+msgid "File not found /etc/CCcam.cfg!\nRestart please..."
+msgstr "未找到文件 /etc/CCcam.cfg！\n请重新启动..."
+
+msgid "File not found /etc/tuxbox/config/oscam.server!\nRestart please..."
+msgstr "未找到文件 /etc/tuxbox/config/oscam.server！\n请重新启动..."
+
+msgid "Free Space:"
+msgstr "可用空间："
+
+msgid "GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."
+msgstr "超出 GitHub API 速率限制。\n\n未找到缓存文件。\n\n请稍后重试。"
+
+msgid "GitHub API rate limit exceeded.\nPlease try again later."
+msgstr "超出 GitHub API 速率限制。\n请稍后重试。"
+
+msgid "HD Channels"
+msgstr "高清频道"
+
+msgid "Hide automatic"
+msgstr "隐藏自动"
+
+msgid "High Definition"
+msgstr "高清"
+
+msgid "I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"
+msgstr "对于您安装插件和皮肤后可能遇到的任何问题，我不负任何责任。\n\n但是，如果需要，您可以获得解决问题的帮助。\n\n\n您要安装吗？"
+
+msgid "If you think it is a useful tool for your box\n"
+msgstr "如果您认为它对您的盒子有用\n"
+
+msgid "Information and Culture"
+msgstr "信息与文化"
+
+msgid "Ins Line"
+msgstr "INS线"
+
+msgid "Install"
+msgstr "安装"
+
+msgid "Install failed! Previous settings restored."
+msgstr "安装失败！恢复之前的设置。"
+
+msgid "Install failed! Settings NOT installed."
+msgstr "安装失败！未安装设置。"
+
+msgid "Installing %s\nPlease Wait..."
+msgstr "正在安装 %s\n请稍候..."
+
+msgid "Installing settings..."
+msgstr "正在安装设置..."
+
+msgid "Internet: Connected"
+msgstr "互联网：已连接"
+
+msgid "Internet: No Connection"
+msgstr "互联网：无连接"
+
+msgid "Internet: Unknown"
+msgstr "互联网：未知"
+
+msgid "Invalid date format in update information."
+msgstr "更新信息中的日期格式无效。"
+
+msgid "Italy"
+msgstr "意大利"
+
+msgid "LCN Duplicates"
+msgstr "LCN 重复项"
+
+msgid "LCN rules:"
+msgstr "LCN规则："
+
+msgid "Linuxsat Panel"
+msgstr "Linux卫星面板"
+
+msgid "Load Category..."
+msgstr "加载类别..."
+
+msgid "Loading commits..."
+msgstr "正在加载提交..."
+
+msgid "Loading list..."
+msgstr "正在加载列表..."
+
+msgid "Loading..."
+msgstr "加载中..."
+
+msgid "Local Broadcasters"
+msgstr "当地广播公司"
+
+msgid "make donation on Linuxsat-support.com\n\n\n"
+msgstr "在 Linuxsat-support.com 上捐款\n\n\n"
+
+msgid "Music"
+msgstr "音乐"
+
+msgid "New search"
+msgstr "新搜索"
+
+msgid "New search..."
+msgstr "新搜索..."
+
+msgid "New since last visit: %d"
+msgstr "自上次访问以来的新内容：%d"
+
+msgid "New updates: %d"
+msgstr "新更新：%d"
+
+msgid "New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?"
+msgstr "新版本 %s 可用！\n\n更改日志：\n%s\n\n您想立即更新吗？"
+
+msgid "New version available\n\nChangelog:"
+msgstr "新版本可用\n\n更改日志："
+
+msgid "New version available\n\nChangelog:\n\nPress the green button to start the update."
+msgstr "新版本可用\n\n更新日志：\n\n按绿色按钮开始更新。"
+
+msgid "New version is available.\n\nChangelog:\n\nDo you want to install it now?"
+msgstr "新版本可用。\n\n更改日志：\n\n您想立即安装吗？"
+
+msgid "News"
+msgstr "消息"
+
+msgid "No channel list in archive! Settings NOT installed."
+msgstr "存档中没有频道列表！未安装设置。"
+
+msgid "No commits found."
+msgstr "没有找到提交。"
+
+msgid "No corresponding terrestrial services found."
+msgstr "未找到相应的地面服务。"
+
+msgid "No entry in lcn db. Please do a service scan."
+msgstr "lcn 数据库中没有条目。请进行服务扫描。"
+
+msgid "No news"
+msgstr "没有消息"
+
+msgid "No update information available."
+msgstr "无可用更新信息。"
+
+msgid "Nothing found for '%s'"
+msgstr "没有找到“%s”的内容"
+
+msgid "Notifications"
+msgstr "通知"
+
+msgid "of"
+msgstr "的"
+
+msgid "OK = install"
+msgstr "确定=安装"
+
+msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
+msgstr "配置完成后，花束将在手动扫描时自动更新。"
+
+msgid "please make a donation:\n"
+msgstr "请捐款：\n"
+
+msgid "Please make certain network search is enabled when scanning."
+msgstr "扫描时请确保网络搜索已启用。"
+
+msgid "Please Wait..."
+msgstr "请稍等..."
+
+msgid "Premium"
+msgstr "优质的"
+
+msgid "Promo H264"
+msgstr "H264促销"
+
+msgid "Put radio services in a separate bouquet, not the main tv bouquet. This is required when the provider duplicates channel numbers for tv and radio."
+msgstr "将广播服务放在单独的花束中，而不是主要的电视花束中。当提供商复制电视和广播的频道号码时，这是必需的。"
+
+msgid "Radio"
+msgstr "收音机"
+
+msgid "Rebuild"
+msgstr "重建"
+
+msgid "Rebuild bouquet"
+msgstr "重建花束"
+
+msgid "Rebuild LCN bouquet now?"
+msgstr "现在重建 LCN 花束吗？"
+
+msgid "Refresh"
+msgstr "刷新"
+
+msgid "Refreshing commits..."
+msgstr "正在刷新提交..."
+
+msgid "Region"
+msgstr "地区"
+
+msgid "Regional Broadcasters"
+msgstr "地区广播公司"
+
+msgid "Regional Radio"
+msgstr "地区广播电台"
+
+msgid "Reload"
+msgstr "重新加载"
+
+msgid "Remove"
+msgstr "消除"
+
+msgid "Removing %s"
+msgstr "正在删除 %s"
+
+msgid "Restart enigma"
+msgstr "重启之谜"
+
+msgid "Save"
+msgstr "节省"
+
+msgid "Script"
+msgstr "脚本"
+
+msgid "scripts.json not found or invalid!\nCheck your connection or the local file."
+msgstr "scripts.json 未找到或无效！\n检查您的连接或本地文件。"
+
+msgid "SD Provisionals"
+msgstr "临时 SD"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Search addon..."
+msgstr "搜索插件..."
+
+msgid "Search: %s"
+msgstr "搜索：%s"
+
+msgid "Searching..."
+msgstr "正在寻找..."
+
+msgid "Select your region."
+msgstr "选择您所在的地区。"
+
+msgid "Semi-Generalists"
+msgstr "半通才"
+
+msgid "Server added\n\nServer:\nPort:\nUser:\nPassword:\n"
+msgstr "服务器已添加\n\n服务器：\n端口：\n用户：\n密码：\n"
+
+msgid "Server error.\n\nTry again, you might get lucky!\n%s"
+msgstr "服务器错误。\n\n再试一次，您可能会幸运！\n%s"
+
+msgid "Settings Not Installed ..."
+msgstr "设置未安装..."
+
+msgid "Show automatic"
+msgstr "显示自动"
+
+msgid "Skin check completed.\nLog: /tmp/my_debug.log"
+msgstr "皮肤检查完成。\n日志：/tmp/my_debug.log"
+
+msgid "Skip duplicates"
+msgstr "跳过重复项"
+
+msgid "Sky Channels"
+msgstr "天空频道"
+
+msgid "Sort A-Z"
+msgstr "从 A-Z 排序"
+
+msgid "Sort Default"
+msgstr "默认排序"
+
+msgid "Sports"
+msgstr "运动的"
+
+msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgstr "建议者：@masterG - @oktus - @pcd\n"
+
+msgid "Support on: Linuxsat-support.com\n\n"
+msgstr "支持：Linuxsat-support.com\n\n"
+
+msgid "Terrestrial"
+msgstr "陆地的"
+
+msgid "Terrestrial Bouquet"
+msgstr "陆地花束"
+
+msgid "Terrestrial Bouquet Error"
+msgstr "陆地花束错误"
+
+msgid "Terrestrial Bouquet plugin is not enabled."
+msgstr "陆地花束插件未启用。"
+
+msgid "Terrestrial Bouquet setup"
+msgstr "陆地花束设置"
+
+msgid "Terrestrial bouquet successfully rebuilt."
+msgstr "陆地花束重建成功。"
+
+msgid "Terrestrial bouquet:"
+msgstr "陆地花束："
+
+msgid "Test Channels"
+msgstr "测试通道"
+
+msgid "Thank you for choosing plugin for management of your Enigma Box.\n\n"
+msgstr "感谢您选择插件来管理您的 Enigma Box。\n\n"
+
+msgid "Thank's to @pQu4k3r\n"
+msgstr "感谢@pQu4k3r\n"
+
+msgid "The Plugin lives thanks to the donations of each of you.\n"
+msgstr "该插件的存在得益于你们每个人的捐赠。\n"
+
+msgid "There is currently no LCN data stored."
+msgstr "目前没有存储 LCN 数据。"
+
+msgid "These Panel may contain Adult content\n\nare you sure you want to continue?"
+msgstr "这些面板可能包含成人内容\n\n您确定要继续吗？"
+
+msgid "This commit has no package for your receiver."
+msgstr "此提交没有适合您的接收者的包。"
+
+msgid "This plugin depends on LCN data being broadcast by your local tansmitter."
+msgstr "该插件依赖于本地发送器广播的 LCN 数据。"
+
+msgid "Try running a manual scan of terrestrial frequencies with network scan enabled. If this fails maybe there is no lcn data available in your area."
+msgstr "尝试在启用网络扫描的情况下运行手动地面频率扫描。如果失败，可能您所在的地区没有可用的 lcn 数据。"
+
+msgid "UK"
+msgstr "英国"
+
+msgid "Unable to load data!"
+msgstr "无法加载数据！"
+
+msgid "Unable to read this commit from GitHub.\nPlease try again later."
+msgstr "无法从 GitHub 读取此提交。\n请稍后重试。"
+
+msgid "Unknown Image!"
+msgstr "Unknown Image!"
+
+msgid "Update"
+msgstr "Update"
+
+msgid "Update Aborted!"
+msgstr "Update Aborted!"
+
+msgid "Update cancelled. You can update later from Information -> Green button."
+msgstr "Update cancelled. You can update later from Information -> Green button."
+
+msgid "Update completed! The panel will now reload."
+msgstr "Update completed! The panel will now reload."
+
+msgid "Update failed! Please try again later."
+msgstr "Update failed! Please try again later."
+

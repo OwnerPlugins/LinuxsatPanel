@@ -1,16 +1,35 @@
-﻿msgid ""
+# it translations
+# Copyright (C) 2026 Lululla Team
+#
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: it <ekekaz@gmail.com>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "(cached)"
+msgstr "(memorizzato nella cache)"
+
+msgid "[Checkskin] This operation checks if the skin has its components (is not sure)..\nDo you really want to continue?"
+msgstr "[Checkskin] Questa operazione controlla se la skin ha i suoi componenti (non è sicuro)..\nVuoi davvero continuare?"
 
 msgid "%s"
 msgstr "%s"
 
+msgid "A coffee costs nothing.\n\n"
+msgstr "Un caffè non costa nulla.\n\n"
+
 msgid "Adult"
 msgstr "Adulti"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\\n"
-msgstr ""
+msgid "All code was rewritten by @Lululla - 2024.07.20\n"
+msgstr "Tutto il codice è stato riscritto da @Lululla - 2024.07.20\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "Si è verificato un errore imprevisto. Riprova più tardi."
@@ -36,8 +55,14 @@ msgstr "Controlla Connessione!"
 msgid "Children"
 msgstr "Bambini"
 
+msgid "Clear recent searches"
+msgstr "Cancella le ricerche recenti"
+
 msgid "Collecting system information..."
 msgstr "Raccolta informazioni di sistema..."
+
+msgid "Commit History"
+msgstr "Impegna la storia"
 
 msgid "Congrats! You already have the latest version..."
 msgstr "Congratulazioni! Hai già l'ultima versione..."
@@ -54,8 +79,8 @@ msgstr "Crea un bouquet radio separato"
 msgid "Del Line"
 msgstr "Elimina Linea"
 
-msgid "Designs and Graphics by @oktus\\n"
-msgstr ""
+msgid "Designs and Graphics by @oktus\n"
+msgstr "Disegni e grafica di @oktus\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "Non aggiungere al bouquet canali duplicati o non indicizzati."
@@ -63,11 +88,11 @@ msgstr "Non aggiungere al bouquet canali duplicati o non indicizzati."
 msgid "Do you want add Cline?"
 msgstr "Vuoi aggiungere Cline?"
 
-msgid "Do you want to Order LCN Bouquet?"
-msgstr "Vuoi ordinare il bouquet LCN?"
-
 msgid "Do you want to install update (%s) now?"
 msgstr "Vuoi installare l'aggiornamento (%s) adesso?"
+
+msgid "Do you want to Order LCN Bouquet?"
+msgstr "Vuoi ordinare il bouquet LCN?"
 
 msgid "Do you want to remove?"
 msgstr "Vuoi rimuovere?"
@@ -76,16 +101,16 @@ msgid "Do you want to restart Gui Interface?"
 msgstr "Vuoi riavviare l'Interfaccia Grafica?"
 
 msgid "Download failed!"
-msgstr ""
+msgstr "Download non riuscito!"
 
 msgid "Download failed! Settings NOT installed."
-msgstr ""
+msgstr "Download non riuscito! Impostazioni NON installate."
 
 msgid "Download page get failed ..."
 msgstr "Pagina di download non riuscita..."
 
 msgid "Downloading %s ..."
-msgstr ""
+msgstr "Download di %s..."
 
 msgid "Duplicates"
 msgstr "Duplicati"
@@ -96,23 +121,29 @@ msgstr "Modifica Linea"
 msgid "Enable creating a terrestrial bouquet based on LCN (logocal channel number) data."
 msgstr "Abilita la creazione di un bouquet terrestre basato sui dati LCN (numero canale logico)."
 
-msgid "Enable terrestrial LCN:"
-msgstr "Abilita LCN terrestre:"
-
 msgid "Enable terrestrial bouquet"
 msgstr "Abilita bouquet terrestre"
+
+msgid "Enable terrestrial LCN:"
+msgstr "Abilita LCN terrestre:"
 
 msgid "Entertainment"
 msgstr "Intrattenimento"
 
 msgid "Error loading commits. Please check your internet connection."
-msgstr ""
+msgstr "Errore durante il caricamento dei commit. Controlla la tua connessione Internet."
 
 msgid "Error: No Data Find."
 msgstr "Errore: Nessun dato trovato."
 
 msgid "Europe7"
 msgstr "Europa7"
+
+msgid "Executing %s\nPlease Wait..."
+msgstr "Esecuzione di %s\nAttendere..."
+
+msgid "Execution progress\n\n"
+msgstr "Avanzamento dell'esecuzione\n\n"
 
 msgid "Exit"
 msgstr "Esci"
@@ -123,17 +154,35 @@ msgstr "Impossibile recuperare le informazioni di aggiornamento. Controlla la tu
 msgid "Failed to parse update information. Please try again later."
 msgstr "Impossibile analizzare le informazioni di aggiornamento. Riprova più tardi."
 
+msgid "File not found /etc/CCcam.cfg!\nRestart please..."
+msgstr "File non trovato /etc/CCcam.cfg!\nRiavvia per favore..."
+
+msgid "File not found /etc/tuxbox/config/oscam.server!\nRestart please..."
+msgstr "File non trovato /etc/tuxbox/config/oscam.server!\nRiavvia per favore..."
+
 msgid "Free Space:"
 msgstr "Spazio libero:"
+
+msgid "GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."
+msgstr "Limite di velocità dell'API GitHub superato.\n\nNessun file di cache trovato.\n\nRiprova più tardi."
+
+msgid "GitHub API rate limit exceeded.\nPlease try again later."
+msgstr "Limite di velocità dell'API GitHub superato.\nRiprova più tardi."
 
 msgid "HD Channels"
 msgstr "Canali HD"
 
+msgid "Hide automatic"
+msgstr "Nascondi automatico"
+
 msgid "High Definition"
 msgstr "Alta Definizione"
 
-msgid "If you think it is a useful tool for your box\\n"
-msgstr ""
+msgid "I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"
+msgstr "NON sono responsabile per eventuali problemi che potresti \n riscontrare dopo aver installato i plug-in e gli skin.\nTuttavia, se necessario, puoi ottenere aiuto per risolvere il problema.\n\n\nVuoi installare?"
+
+msgid "If you think it is a useful tool for your box\n"
+msgstr "Se pensi che sia uno strumento utile per il tuo box\n"
 
 msgid "Information and Culture"
 msgstr "Informazione e Cultura"
@@ -148,7 +197,10 @@ msgid "Install failed! Previous settings restored."
 msgstr "Installazione non riuscita! Impostazioni precedenti ripristinate."
 
 msgid "Install failed! Settings NOT installed."
-msgstr ""
+msgstr "Installazione non riuscita! Impostazioni NON installate."
+
+msgid "Installing %s\nPlease Wait..."
+msgstr "Installazione di %s\nAttendere..."
 
 msgid "Installing settings..."
 msgstr "Installazione delle impostazioni..."
@@ -181,19 +233,46 @@ msgid "Load Category..."
 msgstr "Carica categoria..."
 
 msgid "Loading commits..."
-msgstr ""
+msgstr "Caricamento commit..."
 
 msgid "Loading list..."
 msgstr "Caricamento elenco..."
 
 msgid "Loading..."
-msgstr ""
+msgstr "Caricamento..."
 
 msgid "Local Broadcasters"
 msgstr "Emittenti locali"
 
+msgid "make donation on Linuxsat-support.com\n\n\n"
+msgstr "fai una donazione su Linuxsat-support.com\n\n\n"
+
 msgid "Music"
 msgstr "Musica"
+
+msgid "New search"
+msgstr "Nuova ricerca"
+
+msgid "New search..."
+msgstr "Nuova ricerca..."
+
+msgid "New since last visit: %d"
+msgstr "Novità dall'ultima visita: %d"
+
+msgid "New updates: %d"
+msgstr "Nuovi aggiornamenti: %d"
+
+msgid "New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?"
+msgstr "Nuova versione %s disponibile!\n\nChangelog:\n%s\n\nVuoi aggiornare adesso?"
+
+msgid "New version available\n\nChangelog:"
+msgstr "Nuova versione disponibile\n\nRegistro modifiche:"
+
+msgid "New version available\n\nChangelog:\n\nPress the green button to start the update."
+msgstr "Nuova versione disponibile\n\nChangelog:\n\nPremi il pulsante verde per avviare l'aggiornamento."
+
+msgid "New version is available.\n\nChangelog:\n\nDo you want to install it now?"
+msgstr "La nuova versione è disponibile.\n\nChangelog:\n\nVuoi installarla adesso?"
 
 msgid "News"
 msgstr "Notizie"
@@ -210,20 +289,35 @@ msgstr "Nessun servizio terrestre corrispondente trovato."
 msgid "No entry in lcn db. Please do a service scan."
 msgstr "Nessuna voce nel database LCN. Eseguire una scansione dei servizi."
 
+msgid "No news"
+msgstr "Nessuna notizia"
+
 msgid "No update information available."
 msgstr "Nessuna informazione di aggiornamento disponibile."
 
 msgid "Nothing found for '%s'"
 msgstr "Non è stato trovato nulla per '%s'"
 
+msgid "Notifications"
+msgstr "Notifiche"
+
+msgid "of"
+msgstr "di"
+
+msgid "OK = install"
+msgstr "OK = installa"
+
 msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
 msgstr "Una volta configurato, il bouquet verrà aggiornato automaticamente quando si esegue una scansione manuale."
 
-msgid "Please Wait..."
-msgstr "Attendere prego..."
+msgid "please make a donation:\n"
+msgstr "per favore fai una donazione:\n"
 
 msgid "Please make certain network search is enabled when scanning."
 msgstr "Assicurarsi che la ricerca di rete sia abilitata durante la scansione."
+
+msgid "Please Wait..."
+msgstr "Attendere prego..."
 
 msgid "Premium"
 msgstr "Premium"
@@ -240,14 +334,17 @@ msgstr "Radio"
 msgid "Rebuild"
 msgstr "Ricostruisci"
 
-msgid "Rebuild LCN bouquet now?"
-msgstr "Ricostruire il bouquet LCN adesso?"
-
 msgid "Rebuild bouquet"
 msgstr "Ricostruisci bouquet"
 
+msgid "Rebuild LCN bouquet now?"
+msgstr "Ricostruire il bouquet LCN adesso?"
+
+msgid "Refresh"
+msgstr "Aggiorna"
+
 msgid "Refreshing commits..."
-msgstr ""
+msgstr "Aggiornamento dei commit..."
 
 msgid "Region"
 msgstr "Regione"
@@ -270,11 +367,17 @@ msgstr "Rimozione %s"
 msgid "Restart enigma"
 msgstr "Riavvia Enigma"
 
-msgid "SD Provisionals"
-msgstr "Provvisori SD"
-
 msgid "Save"
 msgstr "Salva"
+
+msgid "Script"
+msgstr "Copione"
+
+msgid "scripts.json not found or invalid!\nCheck your connection or the local file."
+msgstr "scripts.json non trovato o non valido!\nControlla la connessione o il file locale."
+
+msgid "SD Provisionals"
+msgstr "Provvisori SD"
 
 msgid "Search"
 msgstr "Ricerca"
@@ -294,8 +397,20 @@ msgstr "Seleziona la tua regione."
 msgid "Semi-Generalists"
 msgstr "Semi-generalisti"
 
+msgid "Server added\n\nServer:\nPort:\nUser:\nPassword:\n"
+msgstr "Server aggiunto\n\nServer:\nPorta:\nUtente:\nPassword:\n"
+
+msgid "Server error.\n\nTry again, you might get lucky!\n%s"
+msgstr "Errore del server.\n\nRiprova, potresti essere fortunato!\n%s"
+
 msgid "Settings Not Installed ..."
 msgstr "Impostazioni non installate..."
+
+msgid "Show automatic"
+msgstr "Mostra automatico"
+
+msgid "Skin check completed.\nLog: /tmp/my_debug.log"
+msgstr "Controllo skin completato.\nLog: /tmp/my_debug.log"
 
 msgid "Skip duplicates"
 msgstr "Salta duplicati"
@@ -312,8 +427,11 @@ msgstr "Ordine predefinito"
 msgid "Sports"
 msgstr "Sport"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\\n"
-msgstr ""
+msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgstr "Consigliato da: @masterG - @oktus - @pcd\n"
+
+msgid "Support on: Linuxsat-support.com\n\n"
+msgstr "Supporto su: Linuxsat-support.com\n\n"
 
 msgid "Terrestrial"
 msgstr "Terrestre"
@@ -339,11 +457,23 @@ msgstr "Bouquet terrestre:"
 msgid "Test Channels"
 msgstr "Canali di test"
 
-msgid "The Plugin lives thanks to the donations of each of you.\\n"
-msgstr ""
+msgid "Thank you for choosing plugin for management of your Enigma Box.\n\n"
+msgstr "Grazie per aver scelto il plugin per la gestione della tua Enigma Box.\n\n"
+
+msgid "Thank's to @pQu4k3r\n"
+msgstr "Grazie a @pQu4k3r\n"
+
+msgid "The Plugin lives thanks to the donations of each of you.\n"
+msgstr "Il Plugin vive grazie alle donazioni di ognuno di voi.\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "Al momento non ci sono dati LCN memorizzati."
+
+msgid "These Panel may contain Adult content\n\nare you sure you want to continue?"
+msgstr "Questo pannello potrebbe contenere contenuti per adulti\n\nsei sicuro di voler continuare?"
+
+msgid "This commit has no package for your receiver."
+msgstr "Questo commit non ha alcun pacchetto per il tuo ricevitore."
 
 msgid "This plugin depends on LCN data being broadcast by your local tansmitter."
 msgstr "Questo plugin dipende dai dati LCN trasmessi dal tuo trasmettitore locale."
@@ -355,7 +485,10 @@ msgid "UK"
 msgstr "Regno Unito"
 
 msgid "Unable to load data!"
-msgstr ""
+msgstr "Impossibile caricare i dati!"
+
+msgid "Unable to read this commit from GitHub.\nPlease try again later."
+msgstr "Impossibile leggere questo commit da GitHub.\nRiprova più tardi."
 
 msgid "Unknown Image!"
 msgstr "Immagine sconosciuta!"
@@ -367,17 +500,11 @@ msgid "Update Aborted!"
 msgstr "Aggiornamento annullato!"
 
 msgid "Update cancelled. You can update later from Information -> Green button."
-msgstr ""
+msgstr "Aggiornamento annullato. Puoi aggiornare in seguito da Informazioni -> Tasto verde."
 
 msgid "Update completed! The panel will now reload."
-msgstr ""
+msgstr "Aggiornamento completato! Il pannello verrà ora ricaricato."
 
 msgid "Update failed! Please try again later."
-msgstr ""
-
-msgid "of"
-msgstr "di"
-
-msgid "please make a donation:\\n"
-msgstr ""
+msgstr "Aggiornamento non riuscito! Per favore riprova più tardi."
 

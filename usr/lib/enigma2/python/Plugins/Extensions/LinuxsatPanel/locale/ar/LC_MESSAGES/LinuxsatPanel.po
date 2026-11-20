@@ -1,16 +1,35 @@
-﻿msgid ""
+# ar translations
+# Copyright (C) 2026 Lululla Team
+#
+msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: ar <ekekaz@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "(cached)"
+msgstr "(مخبأة)"
+
+msgid "[Checkskin] This operation checks if the skin has its components (is not sure)..\nDo you really want to continue?"
+msgstr "[فحص الجلد] تتحقق هذه العملية مما إذا كان الجلد يحتوي على مكوناته (غير متأكد)..\nهل تريد الاستمرار حقًا؟"
 
 msgid "%s"
 msgstr "%s"
 
+msgid "A coffee costs nothing.\n\n"
+msgstr "القهوة لا تكلف شيئًا.\n\n"
+
 msgid "Adult"
 msgstr "للبالغين"
 
-msgid "All code was rewritten by @Lululla - 2024.07.20\\n"
-msgstr ""
+msgid "All code was rewritten by @Lululla - 2024.07.20\n"
+msgstr "تمت إعادة كتابة التعليمات البرمجية بالكامل بواسطة @Lululla - 2024.07.20\n"
 
 msgid "An unexpected error occurred. Please try again later."
 msgstr "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى لاحقًا."
@@ -36,8 +55,14 @@ msgstr "تحقق من الاتصال!"
 msgid "Children"
 msgstr "أطفال"
 
+msgid "Clear recent searches"
+msgstr "مسح عمليات البحث الأخيرة"
+
 msgid "Collecting system information..."
 msgstr "جمع معلومات النظام..."
+
+msgid "Commit History"
+msgstr "ارتكاب التاريخ"
 
 msgid "Congrats! You already have the latest version..."
 msgstr "تهانينا! لديك بالفعل أحدث إصدار..."
@@ -54,8 +79,8 @@ msgstr "إنشاء باقة راديو منفصلة"
 msgid "Del Line"
 msgstr "حذف سطر"
 
-msgid "Designs and Graphics by @oktus\\n"
-msgstr ""
+msgid "Designs and Graphics by @oktus\n"
+msgstr "التصاميم والرسومات بواسطة @oktus\n"
 
 msgid "Do not add duplicated or non indexed channels to the bouquet."
 msgstr "لا تقم بإضافة قنوات مكررة أو غير مفهرسة إلى الباقة."
@@ -63,11 +88,11 @@ msgstr "لا تقم بإضافة قنوات مكررة أو غير مفهرسة 
 msgid "Do you want add Cline?"
 msgstr "هل تريد إضافة Cline؟"
 
-msgid "Do you want to Order LCN Bouquet?"
-msgstr "هل تريد ترتيب باقة LCN؟"
-
 msgid "Do you want to install update (%s) now?"
 msgstr "هل تريد تثبيت التحديث (%s) الآن؟"
+
+msgid "Do you want to Order LCN Bouquet?"
+msgstr "هل تريد ترتيب باقة LCN؟"
 
 msgid "Do you want to remove?"
 msgstr "هل تريد الإزالة؟"
@@ -76,16 +101,16 @@ msgid "Do you want to restart Gui Interface?"
 msgstr "هل تريد إعادة تشغيل واجهة المستخدم الرسومية؟"
 
 msgid "Download failed!"
-msgstr ""
+msgstr "فشل التنزيل!"
 
 msgid "Download failed! Settings NOT installed."
-msgstr ""
+msgstr "فشل التنزيل! الإعدادات غير مثبتة."
 
 msgid "Download page get failed ..."
 msgstr "فشل في تحميل الصفحة ..."
 
 msgid "Downloading %s ..."
-msgstr ""
+msgstr "جارٍ تنزيل %s..."
 
 msgid "Duplicates"
 msgstr "مكررات"
@@ -96,23 +121,29 @@ msgstr "تعديل سطر"
 msgid "Enable creating a terrestrial bouquet based on LCN (logocal channel number) data."
 msgstr "تمكين إنشاء باقة أرضية بناءً على بيانات LCN (رقم القناة المنطقي)."
 
-msgid "Enable terrestrial LCN:"
-msgstr "تمكين LCN الأرضي:"
-
 msgid "Enable terrestrial bouquet"
 msgstr "تمكين الباقة الأرضية"
+
+msgid "Enable terrestrial LCN:"
+msgstr "تمكين LCN الأرضي:"
 
 msgid "Entertainment"
 msgstr "ترفيه"
 
 msgid "Error loading commits. Please check your internet connection."
-msgstr ""
+msgstr "حدث خطأ أثناء تحميل الالتزامات. يرجى التحقق من اتصالك بالإنترنت."
 
 msgid "Error: No Data Find."
 msgstr "خطأ: لم يتم العثور على بيانات."
 
 msgid "Europe7"
 msgstr "أوروبا7"
+
+msgid "Executing %s\nPlease Wait..."
+msgstr "جارٍ تنفيذ %s\nالرجاء الانتظار..."
+
+msgid "Execution progress\n\n"
+msgstr "تقدم التنفيذ\n\n"
 
 msgid "Exit"
 msgstr "خروج"
@@ -123,17 +154,35 @@ msgstr "فشل في جلب معلومات التحديث. يرجى التحقق 
 msgid "Failed to parse update information. Please try again later."
 msgstr "فشل في تحليل معلومات التحديث. يرجى المحاولة مرة أخرى لاحقًا."
 
+msgid "File not found /etc/CCcam.cfg!\nRestart please..."
+msgstr "لم يتم العثور على الملف /etc/CCcam.cfg!\nأعد التشغيل من فضلك..."
+
+msgid "File not found /etc/tuxbox/config/oscam.server!\nRestart please..."
+msgstr "لم يتم العثور على الملف /etc/tuxbox/config/oscam.server!\nيرجى إعادة التشغيل..."
+
 msgid "Free Space:"
 msgstr "مساحة خالية:"
+
+msgid "GitHub API rate limit exceeded.\n\nNo cache file found.\n\nPlease try again later."
+msgstr "تم تجاوز الحد الأقصى لمعدل واجهة برمجة تطبيقات GitHub.\n\nلم يتم العثور على ملف ذاكرة تخزين مؤقت.\n\nيرجى المحاولة مرة أخرى لاحقًا."
+
+msgid "GitHub API rate limit exceeded.\nPlease try again later."
+msgstr "تم تجاوز الحد الأقصى لمعدل واجهة برمجة تطبيقات GitHub.\nيُرجى إعادة المحاولة لاحقًا."
 
 msgid "HD Channels"
 msgstr "قنوات HD"
 
+msgid "Hide automatic"
+msgstr "إخفاء تلقائي"
+
 msgid "High Definition"
 msgstr "عالية الدقة"
 
-msgid "If you think it is a useful tool for your box\\n"
-msgstr ""
+msgid "I am NOT responsible for any issues you may\nencounter once you install the plugins and skins.\nHowever, if required, you can get help to resolve the issue.\n\n\nDo you want to install?"
+msgstr "أنا لست مسؤولاً عن أية مشكلات قد تواجهها \n بمجرد تثبيت المكونات الإضافية والواجهات.\nومع ذلك، إذا لزم الأمر، يمكنك الحصول على مساعدة لحل المشكلة.\n\n\nهل تريد التثبيت؟"
+
+msgid "If you think it is a useful tool for your box\n"
+msgstr "إذا كنت تعتقد أنها أداة مفيدة لصندوقك\n"
 
 msgid "Information and Culture"
 msgstr "معلومات وثقافة"
@@ -148,7 +197,10 @@ msgid "Install failed! Previous settings restored."
 msgstr "فشل التثبيت! تمت استعادة الإعدادات السابقة."
 
 msgid "Install failed! Settings NOT installed."
-msgstr ""
+msgstr "فشل التثبيت! الإعدادات غير مثبتة."
+
+msgid "Installing %s\nPlease Wait..."
+msgstr "جارٍ تثبيت %s\nالرجاء الانتظار..."
 
 msgid "Installing settings..."
 msgstr "جارٍ تثبيت الإعدادات..."
@@ -181,19 +233,46 @@ msgid "Load Category..."
 msgstr "تحميل الفئة..."
 
 msgid "Loading commits..."
-msgstr ""
+msgstr "جارٍ تحميل الالتزامات..."
 
 msgid "Loading list..."
 msgstr "جارٍ تحميل القائمة..."
 
 msgid "Loading..."
-msgstr ""
+msgstr "تحميل..."
 
 msgid "Local Broadcasters"
 msgstr "المذيعون المحليون"
 
+msgid "make donation on Linuxsat-support.com\n\n\n"
+msgstr "قم بالتبرع على Linuxsat-support.com\n\n\n"
+
 msgid "Music"
 msgstr "موسيقى"
+
+msgid "New search"
+msgstr "بحث جديد"
+
+msgid "New search..."
+msgstr "بحث جديد..."
+
+msgid "New since last visit: %d"
+msgstr "جديد منذ آخر زيارة: %d"
+
+msgid "New updates: %d"
+msgstr "التحديثات الجديدة: %d"
+
+msgid "New version %s available!\n\nChangelog:\n%s\n\nDo you want to update now?"
+msgstr "الإصدار الجديد %s متاح!\n\nسجل التغيير:\n%s\n\nهل تريد التحديث الآن؟"
+
+msgid "New version available\n\nChangelog:"
+msgstr "الإصدار الجديد متاح\n\nسجل التغيير:"
+
+msgid "New version available\n\nChangelog:\n\nPress the green button to start the update."
+msgstr "الإصدار الجديد متاح\n\nسجل التغيير:\n\nاضغط على الزر الأخضر لبدء التحديث."
+
+msgid "New version is available.\n\nChangelog:\n\nDo you want to install it now?"
+msgstr "الإصدار الجديد متاح.\n\nسجل التغيير:\n\nهل تريد تثبيته الآن؟"
 
 msgid "News"
 msgstr "أخبار"
@@ -210,20 +289,35 @@ msgstr "لم يتم العثور على خدمات أرضية مقابلة."
 msgid "No entry in lcn db. Please do a service scan."
 msgstr "لا يوجد إدخال في قاعدة بيانات LCN. يرجى إجراء فحص الخدمة."
 
+msgid "No news"
+msgstr "لا أخبار"
+
 msgid "No update information available."
 msgstr "لا تتوفر معلومات تحديث."
 
 msgid "Nothing found for '%s'"
 msgstr "لم يتم العثور على أي شيء لـ '%s'"
 
+msgid "Notifications"
+msgstr "إشعارات"
+
+msgid "of"
+msgstr "من"
+
+msgid "OK = install"
+msgstr "موافق = تثبيت"
+
 msgid "Once configured the bouquet will be updated automatically when doing a manual scan."
 msgstr "بمجرد التكوين، سيتم تحديث الباقة تلقائيًا عند إجراء فحص يدوي."
 
-msgid "Please Wait..."
-msgstr "يرجى الانتظار..."
+msgid "please make a donation:\n"
+msgstr "يرجى التبرع:\n"
 
 msgid "Please make certain network search is enabled when scanning."
 msgstr "يرجى التأكد من تمكين البحث في الشبكة عند المسح."
+
+msgid "Please Wait..."
+msgstr "يرجى الانتظار..."
 
 msgid "Premium"
 msgstr "مميز"
@@ -240,14 +334,17 @@ msgstr "راديو"
 msgid "Rebuild"
 msgstr "إعادة بناء"
 
-msgid "Rebuild LCN bouquet now?"
-msgstr "إعادة بناء باقة LCN الآن؟"
-
 msgid "Rebuild bouquet"
 msgstr "إعادة بناء الباقة"
 
+msgid "Rebuild LCN bouquet now?"
+msgstr "إعادة بناء باقة LCN الآن؟"
+
+msgid "Refresh"
+msgstr "ينعش"
+
 msgid "Refreshing commits..."
-msgstr ""
+msgstr "تجديد الالتزامات..."
 
 msgid "Region"
 msgstr "المنطقة"
@@ -270,11 +367,17 @@ msgstr "جاري إزالة %s"
 msgid "Restart enigma"
 msgstr "إعادة تشغيل Enigma"
 
-msgid "SD Provisionals"
-msgstr "مؤقتة SD"
-
 msgid "Save"
 msgstr "حفظ"
+
+msgid "Script"
+msgstr "البرنامج النصي"
+
+msgid "scripts.json not found or invalid!\nCheck your connection or the local file."
+msgstr "لم يتم العثور على scripts.json أو أنه غير صالح!\nتحقق من اتصالك أو الملف المحلي."
+
+msgid "SD Provisionals"
+msgstr "مؤقتة SD"
 
 msgid "Search"
 msgstr "يبحث"
@@ -294,8 +397,20 @@ msgstr "اختر منطقتك."
 msgid "Semi-Generalists"
 msgstr "شبه عامة"
 
+msgid "Server added\n\nServer:\nPort:\nUser:\nPassword:\n"
+msgstr "تمت إضافة الخادم\n\nالخادم:\nالمنفذ:\nالمستخدم:\nكلمة المرور:\n"
+
+msgid "Server error.\n\nTry again, you might get lucky!\n%s"
+msgstr "خطأ في الخادم.\n\nحاول مرة أخرى، قد تكون محظوظًا!\n%s"
+
 msgid "Settings Not Installed ..."
 msgstr "لم يتم تثبيت الإعدادات ..."
+
+msgid "Show automatic"
+msgstr "عرض تلقائي"
+
+msgid "Skin check completed.\nLog: /tmp/my_debug.log"
+msgstr "تم الانتهاء من فحص الجلد.\nLog: /tmp/my_debug.log"
 
 msgid "Skip duplicates"
 msgstr "تخطي المكررات"
@@ -312,8 +427,11 @@ msgstr "الترتيب الافتراضي"
 msgid "Sports"
 msgstr "رياضة"
 
-msgid "Suggested by: @masterG - @oktus - @pcd\\n"
-msgstr ""
+msgid "Suggested by: @masterG - @oktus - @pcd\n"
+msgstr "مقترح بواسطة: @masterG - @oktus - @pcd\n"
+
+msgid "Support on: Linuxsat-support.com\n\n"
+msgstr "الدعم على: Linuxsat-support.com\n\n"
 
 msgid "Terrestrial"
 msgstr "أرضي"
@@ -339,11 +457,23 @@ msgstr "الباقة الأرضية:"
 msgid "Test Channels"
 msgstr "قنوات اختبار"
 
-msgid "The Plugin lives thanks to the donations of each of you.\\n"
-msgstr ""
+msgid "Thank you for choosing plugin for management of your Enigma Box.\n\n"
+msgstr "نشكرك على اختيار البرنامج الإضافي لإدارة Enigma Box.\n\n"
+
+msgid "Thank's to @pQu4k3r\n"
+msgstr "شكرًا لـ @pQu4k3r\n"
+
+msgid "The Plugin lives thanks to the donations of each of you.\n"
+msgstr "البرنامج المساعد يعيش بفضل تبرعات كل واحد منكم.\n"
 
 msgid "There is currently no LCN data stored."
 msgstr "لا توجد بيانات LCN مخزنة حاليًا."
+
+msgid "These Panel may contain Adult content\n\nare you sure you want to continue?"
+msgstr "قد تحتوي هذه اللوحة على محتوى للبالغين\n\nهل أنت متأكد من رغبتك في المتابعة؟"
+
+msgid "This commit has no package for your receiver."
+msgstr "لا يحتوي هذا الالتزام على حزمة لجهاز الاستقبال الخاص بك."
 
 msgid "This plugin depends on LCN data being broadcast by your local tansmitter."
 msgstr "يعتمد هذا الملحق على بيانات LCN التي يبثها جهاز الإرسال المحلي الخاص بك."
@@ -355,7 +485,10 @@ msgid "UK"
 msgstr "المملكة المتحدة"
 
 msgid "Unable to load data!"
-msgstr ""
+msgstr "غير قادر على تحميل البيانات!"
+
+msgid "Unable to read this commit from GitHub.\nPlease try again later."
+msgstr "غير قادر على قراءة هذا الالتزام من GitHub.\nيرجى المحاولة مرة أخرى لاحقًا."
 
 msgid "Unknown Image!"
 msgstr "صورة غير معروفة!"
@@ -367,17 +500,11 @@ msgid "Update Aborted!"
 msgstr "تم إلغاء التحديث!"
 
 msgid "Update cancelled. You can update later from Information -> Green button."
-msgstr ""
+msgstr "تم إلغاء التحديث. يمكنك التحديث لاحقًا من المعلومات -> الزر الأخضر."
 
 msgid "Update completed! The panel will now reload."
-msgstr ""
+msgstr "اكتمل التحديث! سيتم الآن إعادة تحميل اللوحة."
 
 msgid "Update failed! Please try again later."
-msgstr ""
-
-msgid "of"
-msgstr "من"
-
-msgid "please make a donation:\\n"
-msgstr ""
+msgstr "فشل التحديث! يرجى المحاولة مرة أخرى لاحقا."
 

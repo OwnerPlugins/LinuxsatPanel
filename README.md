@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/Belfagor2005/LinuxsatPanel">
-    <img src="https://img.shields.io/badge/Version-3.0.8-blue.svg" alt="Version">
+    <img src="https://img.shields.io/badge/Version-3.0.9-blue.svg" alt="Version">
   </a>
 
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -55,7 +55,27 @@
 
 ## 🗓️ Version History
 
-### v3.0.8 (Current)
+### v3.0.9 (Current)
+
+**New**
+- 🔔 **Top bar** on every grid: addon search pill + notification bell with red badge (1, 3, …).
+- 🔔 **Notifications**: at startup (and every 15 min while the panel is open) the panel checks `OwnerPlugins/upload` for new commits. Conditional requests (ETag): when nothing changed GitHub answers `304`, which does not count against the API rate limit.
+- 🆕 **Clickable Commit History**: new commits highlighted, **OK** on a commit installs the `.ipk`/`.deb` it added or updated (only packages for your receiver). Works for bot commits and commits without a meaningful message.
+- 🆕 **Hide / show automatic commits** (bots and merges) with YELLOW, choice remembered.
+- 🔎 **One search for everything**: catalog + `LulullaScript` + `Ciefp` + `Script Installer`, multi-word, filtered for your receiver, installed addons in green, **recent searches**.
+- 🆕 **GioppyGio** settings in Channel List.
+- ⌨️ YELLOW = notifications, UP from the first row = top bar, CH+/CH- = page.
+
+**Fixes**
+- ✅ Ciefp settings list empty (GitHub changed its page layout) — now read through the GitHub API.
+- ✅ Update-check timer in the Information screen called itself instead of the check.
+- ✅ Selected row always visible in the new lists (own highlight bar).
+- ✅ Commit cache and notification state moved to `/etc/enigma2/LinuxsatPanel/` (a plugin update no longer resets them).
+
+**Removed**
+- ❌ Cyrus and Vhannibal Tek settings sources (no longer working).
+
+### v3.0.8
 
 **Fixes**
 - ✅ Removed broken link icon.
@@ -166,6 +186,9 @@
 - ✅ Automatic update notifications
 - ✅ **JSON-driven script catalog** — update the addon list without releasing a plugin update
 - ✅ Commit History viewer (via GitHub API with cache)
+- ✅ Notification bell for new addons/updates
+- ✅ Install addons directly from a commit
+- ✅ Unified search with recent searches
 
 ---
 
@@ -174,13 +197,17 @@
 | Key | Action |
 |-----|--------|
 | Arrow keys | Navigate through the grid |
-| OK | Open selected category/execute action |
+| UP (first row) | Go to the top bar (search / bell), LEFT/RIGHT to switch, DOWN to go back |
+| OK | Open selected category / execute action |
 | RED | Exit to About screen |
-| GREEN | Search addons |
-| YELLOW (long press) | Force update |
-| BLUE | Restart Enigma2 GUI |
-| INFO | Show system information / Commit History |
+| GREEN | Search addons (catalog + scripts) |
+| YELLOW | Notifications / Commit History |
+| CH+ / CH- | Next / previous page |
+| INFO | Commit History |
 | 0 (ZERO) | Toggle A-Z/Default sorting |
+
+**Commit History:** OK = install packages of the commit · GREEN = refresh · YELLOW = hide/show automatic commits
+**Information screen:** GREEN = update · YELLOW (long press) = force update
 
 ---
 

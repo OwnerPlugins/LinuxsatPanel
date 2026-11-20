@@ -120,6 +120,7 @@
       {"name": "Lcn Scanner", "icon": "LcnSearch.png", "action": "lcn"},
       {"name": "Levi45 Manager", "icon": "Levi45Manager.png", "cmd": "wget -q \"https://raw.githubusercontent.com/levi-45/Manager/main/installer.sh?inline=false\" -O - | /bin/sh"},
       {"name": "Linuxsat Addons Panel", "icon": "Linuxsat.png", "cmd": "wget -q https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/installer.sh -O - | /bin/sh"},
+      {"name": "LukaConnect", "icon": "lukaconnect.png", "cmd": "wget -qO - https://raw.githubusercontent.com/popking159/lukaconnect/refs/heads/main/myinstaller.sh | /bin/sh"},
       {"name": "Mountpoints", "icon": "Mountpoints.png", "cmd": "wget -q \"https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Mountpoints.sh?inline=false\" -O - | /bin/sh"},
       {"name": "Moviebrowser", "icon": "moviebrowser.png", "cmd": "wget -q https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/installer.sh -O - | /bin/sh"},
       {"name": "Multistalker Pro 1 Eliesat", "icon": "MultistalkerPro.png", "cmd": "wget -q \"https://raw.githubusercontent.com/OwnerPlugins/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/multisalker_pro1_eliesat.sh?inline=false\" -O - | /bin/sh"},

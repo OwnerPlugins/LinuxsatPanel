@@ -9,7 +9,9 @@ from __future__ import absolute_import
 import re
 
 _RE_BLOCK = re.compile(r'<plugins cont="(.*?)">(.*?)</plugins>', re.DOTALL)
-_RE_PLUGIN = re.compile(r'<plugin name="(.*?)".*?<url>"(.*?)"</url>', re.DOTALL)
+_RE_PLUGIN = re.compile(
+    r'<plugin name="(.*?)".*?<url>"(.*?)"</url>',
+    re.DOTALL)
 
 # packages uploaded to OwnerPlugins/upload (old name: Belfagor2005/upload)
 RAW_BASE = "https://github.com/OwnerPlugins/upload/raw/main/"

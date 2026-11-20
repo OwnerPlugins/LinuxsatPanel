@@ -199,7 +199,9 @@ def main():
         return 1
 
     if len(items) < 20:
-        print("   ERRORE: trovati solo %d plugin. Formato cambiato?" % len(items))
+        print(
+            "   ERRORE: trovati solo %d plugin. Formato cambiato?" %
+            len(items))
         return 1
 
     print(f"   trovati {len(items)} plugin")

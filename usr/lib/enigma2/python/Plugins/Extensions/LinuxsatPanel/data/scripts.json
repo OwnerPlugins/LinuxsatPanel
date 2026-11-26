@@ -479,6 +479,11 @@
         "cmd": "wget -q \"https://raw.githubusercontent.com/Belfagor2005/LinuxsatPanel/main/usr/lib/enigma2/python/Plugins/Extensions/LinuxsatPanel/sh/Bissfeedautokey.sh?inline=false\" -O - | /bin/sh"
       },
       {
+        "name": "Cache Flush Pro",
+        "icon": "CacheFlushPro.png",
+        "cmd": "wget -q -O /tmp/cacheflush-pro.ipk \"https://github.com/ismailelkhooly/Ismail-/raw/main/enigma2-plugin-extensions-cacheflush-pro_2.0_all.ipk\" && opkg install --force-overwrite /tmp/cacheflush-pro.ipk"
+      }
+      {
         "name": "Check Skin Conponent",
         "icon": "CheckSkin.png",
         "action": "checkskin"

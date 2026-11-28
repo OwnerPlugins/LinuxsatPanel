@@ -487,7 +487,7 @@
         "name": "Cache Flush Pro",
         "icon": "CacheFlushPro.png",
         "cmd": "wget -q -O /tmp/cacheflush-pro.ipk \"https://github.com/ismailelkhooly/Ismail-/raw/main/enigma2-plugin-extensions-cacheflush-pro_2.0_all.ipk\" && opkg install --force-overwrite /tmp/cacheflush-pro.ipk"
-      }
+      },
       {
         "name": "Check Skin Conponent",
         "icon": "CheckSkin.png",
